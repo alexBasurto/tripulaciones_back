@@ -29,6 +29,7 @@
 ## Dudas
 - ¿Los motivos son universales o dependen de la puntuación del 1 al 5 previa?
 Necesitamos saber esto para saber como relacionar la tabla tbReasons con el resto de tablas.
+- ¿Cómo deben llegar los reportes a RRHH? ¿Mail? ¿Dashboard? ¿Los dos?
 
 ## Estructura SQL
 Este es el esquema de la base de datos.
