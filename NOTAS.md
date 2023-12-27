@@ -28,9 +28,7 @@
     - 
 
 ## Dudas
-- ¿Los motivos son universales o dependen de la puntuación del 1 al 5 previa?
-Necesitamos saber esto para saber como relacionar la tabla tbReasons con el resto de tablas.
-Universales en bbdd y separarmos por lógica de JS.
+- ¿Las etiquetas son universales o dependen de la puntuación del 1 al 5 previa?
 - ¿Cómo deben llegar los reportes a RRHH? Solo por el dashboard.
 - ¿Se va a fichar desde esta app? No.
 - Notificaciones del navegador.
