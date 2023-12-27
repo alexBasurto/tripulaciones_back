@@ -11,6 +11,7 @@
 ## Funcionalidad del back
 - Superadministrador:
     - CRUD empresas/clientes.
+    - CRUD admin. empresas/clientes.
     - Puede ver todas las empresas.
 - Administrador:
     - En principio es alguien del dpt. de RRHH de cada empresa.
@@ -29,7 +30,10 @@
 ## Dudas
 - ¿Los motivos son universales o dependen de la puntuación del 1 al 5 previa?
 Necesitamos saber esto para saber como relacionar la tabla tbReasons con el resto de tablas.
-- ¿Cómo deben llegar los reportes a RRHH? ¿Mail? ¿Dashboard? ¿Los dos?
+Universales en bbdd y separarmos por lógica de JS.
+- ¿Cómo deben llegar los reportes a RRHH? Solo por el dashboard.
+- ¿Se va a fichar desde esta app? No.
+- Notificaciones del navegador.
 
 ## Estructura SQL
 Este es el esquema de la base de datos.
@@ -93,18 +97,21 @@ erDiagram
         id idVoting PK
         id idEmployee FK
         id idScore FK
+        bool entry
         date dateOfVoting
     }
 
-    tbScores |o--o{ tbVoting : allow
-    tbScores {
-        id idScore PK
-        string description
+    tbTags {
+        id idTag PK
+        string tagName
     }
 
-    tbReasons {
-        id idReason PK
-        string reasonName
+    tbTags |o--o{ tbVotingTags : allow
+    tbVoting |o--o{ tbVotingTags : allow
+    tbVotingTags {
+        id idVotingTag PK
+        id idVoting FK
+        id idTag FK
     }
 
 ```
