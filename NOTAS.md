@@ -116,4 +116,13 @@ erDiagram
         id idTag FK
     }
 
+    tbEmployees |o--o{ tbReports : allow
+    tbCompanies |o--o{ tbReports : allow
+    tbReports {
+        id idReport PK
+        id idEmployee FK
+        id idCompany FK
+        string report
+    }
+
 ```

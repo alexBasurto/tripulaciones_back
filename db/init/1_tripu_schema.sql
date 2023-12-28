@@ -8,22 +8,10 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
--- -----------------------------------------------------
--- Schema tripulaciones
--- -----------------------------------------------------
-
--- -----------------------------------------------------
 -- Schema tripulaciones
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `tripulaciones` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `mydb` ;
+USE `tripulaciones` ;
 
 -- -----------------------------------------------------
 -- Table `tripulaciones`.`tbCompanies`
@@ -150,9 +138,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tbReports`
+-- Table `tripulaciones`.`tbReports`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tbReports` (
+CREATE TABLE IF NOT EXISTS `tripulaciones`.`tbReports` (
   `idReport` INT NOT NULL AUTO_INCREMENT,
   `idEmployee` INT NULL,
   `report` VARCHAR(200) NOT NULL,
