@@ -300,6 +300,7 @@ VALUES
         'B12345678',
         'PHARMA SOLUTIONS',
         'Soluciones Farmacéuticas S.A.',
+        '08:00:00',
         NULL
     ),
 (
@@ -307,6 +308,7 @@ VALUES
         'C98765432',
         'GLOBAL CONSULTING',
         'Consultores Globales S.L.',
+        '09:00:00',
         NULL
     ),
 (
@@ -314,6 +316,7 @@ VALUES
         'D55555555',
         'OIL MASTERS',
         'Maestros del Petróleo S.A.',
+        '08:30:00',
         NULL
     ),
 (
@@ -321,6 +324,7 @@ VALUES
         'E87654321',
         'TECH INNOVATORS',
         'Innovadores Tecnológicos S.A.',
+        '09:30:00',
         NULL
     ),
 (
@@ -328,6 +332,7 @@ VALUES
         'F99999999',
         'GREEN POWER CORP',
         'Corporación de Energía Verde S.A.',
+        '08:00:00',
         NULL
     ),
 (
@@ -335,6 +340,7 @@ VALUES
         'A48484848',
         'BBK BOOTCAMPS BY THE BRIDGE',
         'THE BRIDGE S.A.',
+        '09:00:00',
         NULL
     );
 
@@ -827,15 +833,15 @@ LOCK TABLES `tbShifts` WRITE;
 INSERT INTO
     `tbShifts`
 VALUES
-    (1, 1, 'Mañanas', ''),
-(2, 1, 'Tardes', ''),
-(3, 1, 'Noches', ''),
-(4, 3, 'Mañanas', ''),
-(5, 3, 'Tardes', ''),
-(6, 3, 'Noches', ''),
-(7, 5, 'Mañanas', ''),
-(8, 5, 'Tardes', ''),
-(9, 5, 'Noches', '');
+    (1, 1, 'Mañanas', '08:00:00', ''),
+(2, 1, 'Tardes', '16:00:00', ''),
+(3, 1, 'Noches', '22:00:00', ''),
+(4, 3, 'Mañanas', '08:00:00', ''),
+(5, 3, 'Tardes', '16:00:00', ''),
+(6, 3, 'Noches', '22:00:00', ''),
+(7, 5, 'Mañanas', '08:00:00', ''),
+(8, 5, 'Tardes', '16:00:00', ''),
+(9, 5, 'Noches', '22:00:00', '');
 
 /*!40000 ALTER TABLE `tbShifts` ENABLE KEYS */
 ;

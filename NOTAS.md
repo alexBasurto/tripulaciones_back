@@ -28,9 +28,8 @@
     - 
 
 ## Dudas
-- ¿Las etiquetas son universales o dependen de la puntuación del 1 al 5 previa?
-- ¿Cómo deben llegar los reportes a RRHH? Solo por el dashboard.
-- ¿Se va a fichar desde esta app? No.
+- Las etiquetas son universales, no dependen de la puntuación del 1 al 5 previa
+- Los reportes a RRHH llegan solo por el dashboard, y en 2a fase, por mail.
 - Notificaciones del navegador.
 
 ## Estructura SQL
@@ -44,6 +43,7 @@ erDiagram
         string CIF
         string displayName
         string razonSocial
+        string horaEntrada
         string comments
     }
 
@@ -52,6 +52,7 @@ erDiagram
         id idDepartment PK
         id idCompany FK
         string departmentName
+        string departmentCode
         string comments
     }
 
@@ -60,6 +61,7 @@ erDiagram
         id idBranch PK
         id idCompany FK
         string branchName
+        string branchCode
         string location
         string comments
     }
@@ -69,6 +71,8 @@ erDiagram
         id idShift PK
         id idCompany FK
         string shiftName
+        string shiftCode
+        string horaEntrada
         string comments
 
     }
