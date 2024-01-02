@@ -2,8 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import session from "express-session";
 import cors from "cors";
-
-/* import router from "./routes/router.js"; */
+import router from "./routes/router.js";
 
 dotenv.config();
 
@@ -25,15 +24,11 @@ app.use(cors(corsOptions)); */
     }
 })) */
 
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+/* app.use(express.json());
 
-/* app.use("/",router); */
+app.use(express.urlencoded({extended:true})); */
 
-app.use("/",(req,res)=>{
-    res.send("hola mundo");
-});
+app.use("/",router);
 
-// Inicia el servidor en el puerto 3006 y muestra un mensaje en la consola
-app.listen(3000, () => console.log(`Servidor web en marcha en puerto ${process.env.APP_PORT}.`));
+app.listen(process.env.APP_LOCAL_PORT, () => console.log(`Servidor web en marcha en puerto ${process.env.APP_LOCAL_PORT}.`));
 
