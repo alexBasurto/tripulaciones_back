@@ -35,7 +35,7 @@
 ## Estructura SQL
 Este es el esquema de la base de datos.
 
-La base de datos tiene la siguiente carencia: a un trabajador le puedes añadir departamentos, sedes, turnos y empresas que estén vinculados a empresas distintas entre sí. Para solucionarlo, la tabla empleados tiene un trigger before insert, que comprueba que empresa, departamento, sede y turno pertenezcan a la misma empresa o sean Null. En caso contrario, devuelve error 45000.
+La tabla trabajadores posee un trigger before insert que comprueba que el trabajador, el departamento, el turno y la sede pertenezcan a la misma empresa. En caso contrario, devuelve un error 45000.
 
 ```mermaid
 erDiagram
@@ -100,7 +100,7 @@ erDiagram
     tbVoting {
         id idVoting PK
         id idEmployee FK
-        id idScore FK
+        int score
         bool entry
         date dateOfVoting
     }
