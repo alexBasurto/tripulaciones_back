@@ -34,15 +34,15 @@
 ;
 
 --
--- Dumping data for table `tbBranchs`
+-- Dumping data for table `tbBranches`
 --
-LOCK TABLES `tbBranchs` WRITE;
+LOCK TABLES `tbBranches` WRITE;
 
-/*!40000 ALTER TABLE `tbBranchs` DISABLE KEYS */
+/*!40000 ALTER TABLE `tbBranches` DISABLE KEYS */
 ;
 
 INSERT INTO
-    `tbBranchs`
+    `tbBranches`
 VALUES
     (
         1,
@@ -279,7 +279,7 @@ VALUES
         'Oficina principal'
     );
 
-/*!40000 ALTER TABLE `tbBranchs` ENABLE KEYS */
+/*!40000 ALTER TABLE `tbBranches` ENABLE KEYS */
 ;
 
 UNLOCK TABLES;
