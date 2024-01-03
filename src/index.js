@@ -30,5 +30,5 @@ app.use(express.urlencoded({extended:true}));
 
 app.use("/", router);
 
-app.listen(process.env.APP_LOCAL_PORT, () => console.log('\x1b[42m%s\x1b[0m', `Servidor web en marcha en puerto ${process.env.APP_LOCAL_PORT}.`));
+app.listen(process.env.APP_PORT, () => console.log('\x1b[42m%s\x1b[0m', `Servidor web en marcha en puerto ${process.env.APP_LOCAL_PORT}.`));
 
