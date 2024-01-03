@@ -1,11 +1,11 @@
 import { Router } from 'express';
 
-import getAll from '../controllers/employeesController.js';
+import employeesController from '../controllers/employeesController.js';
 
 const employeesRouter = Router();
 
 employeesRouter.get ('/', (req, res) => {
-    getAll(req, res);
+    employeesController.getAll(req, res);
 }
 );
 

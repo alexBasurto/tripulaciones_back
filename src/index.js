@@ -14,7 +14,7 @@ const app = express();
 }
 app.use(cors(corsOptions)); */
 
-/* app.use(session({
+app.use(session({
     secret: process.env.SESSION_SECRET,
     resave:false,
     saveUninitialized:false,
@@ -22,13 +22,13 @@ app.use(cors(corsOptions)); */
         secure:false,
         maxAge: 1000 * 60 * 20
     }
-})) */
+}))
 
-/* app.use(express.json());
+app.use(express.json());
 
-app.use(express.urlencoded({extended:true})); */
+app.use(express.urlencoded({extended:true}));
 
-app.use("/",router);
+app.use("/", router);
 
-app.listen(process.env.APP_LOCAL_PORT, () => console.log(`Servidor web en marcha en puerto ${process.env.APP_LOCAL_PORT}.`));
+app.listen(process.env.APP_LOCAL_PORT, () => console.log('\x1b[42m%s\x1b[0m', `Servidor web en marcha en puerto ${process.env.APP_LOCAL_PORT}.`));
 

@@ -15,7 +15,6 @@ const sequelize = new Sequelize(
         timestamps: false,
         freezeTableName: true,
     },
-    schema: "tripulaciones",
     });
 
 async function testConnection() {

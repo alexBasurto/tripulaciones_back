@@ -32,6 +32,12 @@
 - Los reportes a RRHH llegan solo por el dashboard, y en 2a fase, por mail.
 - Notificaciones del navegador.
 
+## Plazos
+- Back: día 9
+- Front: días 11 - 12
+    - Gráficos de data: día 13
+- VPS: día 15-16
+
 ## Estructura SQL
 Este es el esquema de la base de datos.
 
@@ -80,6 +86,9 @@ erDiagram
     }
 
     tbCompanies |o--o{ tbEmployees : allow
+    tbDepartments |o--o{ tbEmployees : allow
+    tbBranchs |o--o{ tbEmployees : allow
+    tbShifts |o--o{ tbEmployees : allow
     tbEmployees {
         id idEmployee PK
         id idCompany FK
@@ -128,3 +137,8 @@ erDiagram
     }
 
 ```
+
+## Notas rápidas:
+
+Sacar la IP del contenedor de docker de node:
+```docker inspect node_tripulaciones | grep IPAddress```
