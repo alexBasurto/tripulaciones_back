@@ -46,19 +46,19 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `tripulaciones`.`tbBranchs`
+-- Table `tripulaciones`.`tbBranches`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tripulaciones`.`tbBranchs` (
+CREATE TABLE IF NOT EXISTS `tripulaciones`.`tbBranches` (
   `idBranch` INT NOT NULL AUTO_INCREMENT,
   `idCompany` INT NOT NULL,
   `name` VARCHAR(100) NOT NULL,
   `address` VARCHAR(200) NOT NULL,
   `city` VARCHAR(100) NOT NULL,
   `country` VARCHAR(100) NOT NULL,
-  `code` VARCHAR(200) NULL DEFAULT NULL,
+  `comments` VARCHAR(200) NULL DEFAULT NULL,
   PRIMARY KEY (`idBranch`),
-  INDEX `fk_tbBranchs_tbCompanies1_idx` (`idCompany` ASC) VISIBLE,
-  CONSTRAINT `fk_tbBranchs_tbCompanies1`
+  INDEX `fk_tbBranches_tbCompanies1_idx` (`idCompany` ASC) VISIBLE,
+  CONSTRAINT `fk_tbBranches_tbCompanies1`
     FOREIGN KEY (`idCompany`)
     REFERENCES `tripulaciones`.`tbCompanies` (`idCompany`))
 ENGINE = InnoDB
@@ -130,11 +130,11 @@ CREATE TABLE IF NOT EXISTS `tripulaciones`.`tbEmployees` (
   UNIQUE INDEX `mobile_UNIQUE` (`mobile` ASC) VISIBLE,
   INDEX `fk_tbEmployees_tbCompanies1_idx` (`idCompany` ASC) VISIBLE,
   INDEX `fk_tbEmployees_tbDepartments1_idx` (`idDepartment` ASC) VISIBLE,
-  INDEX `fk_tbEmployees_tbBranchs1_idx` (`idBranch` ASC) VISIBLE,
+  INDEX `fk_tbEmployees_tbBranches1_idx` (`idBranch` ASC) VISIBLE,
   INDEX `fk_tbEmployees_tbShifts1_idx` (`idShift` ASC) VISIBLE,
-  CONSTRAINT `fk_tbEmployees_tbBranchs1`
+  CONSTRAINT `fk_tbEmployees_tbBranches1`
     FOREIGN KEY (`idBranch`)
-    REFERENCES `tripulaciones`.`tbBranchs` (`idBranch`),
+    REFERENCES `tripulaciones`.`tbBranches` (`idBranch`),
   CONSTRAINT `fk_tbEmployees_tbCompanies1`
     FOREIGN KEY (`idCompany`)
     REFERENCES `tripulaciones`.`tbCompanies` (`idCompany`),
@@ -246,7 +246,7 @@ BEGIN
     END IF;
 
     IF NEW.idBranch IS NOT NULL THEN
-        SELECT idCompany INTO empresa_sede FROM tripulaciones.tbBranchs WHERE idBranch = NEW.idBranch;
+        SELECT idCompany INTO empresa_sede FROM tripulaciones.tbBranches WHERE idBranch = NEW.idBranch;
         IF NEW.idCompany != empresa_sede THEN
             SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La sede no corresponde a la empresa del empleado.';
         END IF;
@@ -277,7 +277,7 @@ BEGIN
     END IF;
 
     IF NEW.idBranch IS NOT NULL THEN
-        SELECT idCompany INTO empresa_sede FROM tripulaciones.tbBranchs WHERE idBranch = NEW.idBranch;
+        SELECT idCompany INTO empresa_sede FROM tripulaciones.tbBranches WHERE idBranch = NEW.idBranch;
         IF NEW.idCompany != empresa_sede THEN
             SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La sede no corresponde a la empresa del empleado.';
         END IF;
