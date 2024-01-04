@@ -1,4 +1,5 @@
 import sequelize from "../config/sequelize.js";
+import companiesModel from "./companiesModel.js";
 
 const shiftsModel = sequelize.define("tbShifts", {
     idShift: {
