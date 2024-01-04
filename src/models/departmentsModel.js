@@ -1,4 +1,4 @@
-import sequelize from "../config/sequelize";
+import sequelize from "../config/sequelize.js";
 
 const departmentsModel = sequelize.define("tbDepartments", {
     idDepartment: {

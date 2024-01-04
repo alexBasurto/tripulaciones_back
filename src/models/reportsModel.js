@@ -1,4 +1,4 @@
-import sequelize from "../config/sequelize";
+import sequelize from "../config/sequelize.js";
 
 const reportsModel = sequelize.define("tbReports", {
     idReport: {
