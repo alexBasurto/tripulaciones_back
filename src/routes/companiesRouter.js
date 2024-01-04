@@ -5,27 +5,27 @@ import companiesController from '../controllers/companiesController.js';
 const companiesRouter = Router();
 
 companiesRouter.get ('/', (req, res) => {
-    employeesController.getAll(req, res);
+    companiesController.getAll(req, res);
 }
 );
 
 companiesRouter.get ('/:id', (req, res) => {
-    employeesController.getById(req, res);
+    companiesController.getById(req, res);
 }
 );
 
 companiesRouter.post('/new', (req, res) => {
-    employeesController.create(req, res);
+    companiesController.create(req, res);
 }
 );
 
 companiesRouter.put('/:id', (req, res) => {
-    employeesController.update(req, res);
+    companiesController.update(req, res);
 }
 );
 
 companiesRouter.delete('/:id', (req, res) => {
-    employeesController.remove(req, res);
+    companiesController.remove(req, res);
 }
 );
 
