@@ -20,10 +20,6 @@ const companiesModel = sequelize.define("tbCompanies", {
         allowNull: false,
         unique: true,
     },
-    horarioEntrada: {
-        type: sequelize.Sequelize.TIME,
-        allowNull: true,
-    },
     comments: {
         type: sequelize.Sequelize.STRING(200),
         allowNull: true,
