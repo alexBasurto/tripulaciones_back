@@ -142,3 +142,13 @@ erDiagram
 
 Sacar la IP del contenedor de docker de node:
 ```docker inspect node_tripulaciones | grep IPAddress```
+
+
+#### Ventanas inicio sesión:
+Usuario:
+- localhost:3020/
+- dni
+
+Admin y superadmin:	
+- localhost:3020/admin
+- mail
