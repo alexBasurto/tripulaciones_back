@@ -51,44 +51,41 @@ erDiagram
         string CIF
         string displayName
         string razonSocial
-        string horaEntrada
         string comments
     }
-
     tbCompanies |o--o{ tbDepartments : allow
+    tbCompanies |o--o{ tbBranchs : allow
+    tbCompanies |o--o{ tbShifts : allow
+    tbCompanies |o--o{ tbEmployees : allow
+    tbCompanies |o--o{ tbComments : allow
+
     tbDepartments {
         id idDepartment PK
         id idCompany FK
-        string departmentName
-        string departmentCode
+        string name
         string comments
     }
+    tbDepartments |o--o{ tbEmployees : allow
 
-    tbCompanies |o--o{ tbBranchs : allow
+    
     tbBranchs {
         id idBranch PK
         id idCompany FK
-        string branchName
-        string branchCode
+        string name
         string location
         string comments
     }
+    tbBranchs |o--o{ tbEmployees : allow
 
-    tbCompanies |o--o{ tbShifts : allow
     tbShifts {
         id idShift PK
         id idCompany FK
-        string shiftName
-        string shiftCode
-        string horaEntrada
+        string name
         string comments
 
     }
-
-    tbCompanies |o--o{ tbEmployees : allow
-    tbDepartments |o--o{ tbEmployees : allow
-    tbBranchs |o--o{ tbEmployees : allow
     tbShifts |o--o{ tbEmployees : allow
+
     tbEmployees {
         id idEmployee PK
         id idCompany FK
@@ -104,33 +101,55 @@ erDiagram
         bool companyAdministrator
         bool superAdministrator
     }
-
     tbEmployees |o--o{ tbVoting : allow
+    tbEmployees |o--o{ tbComments : allow
+
+    tbScores |o--o{ tbVoting : allow
+    tbScores |o--o{ tbVoting : allow
+    tbScores {
+        id idScore PK
+        string name
+    }
+
+    tbFeelings {
+        id idFeeling PK
+        string name
+    }
+    tbFeelings |o--o{ tbVotingFeelings : allow
+
+    tbReasons {
+        id idReason PK
+        string name
+    }
+    tbReasons |o--o{ tbVotingReasons : allow
+    
     tbVoting {
         id idVoting PK
         id idEmployee FK
-        int score
-        bool entry
-        date dateOfVoting
+        id idCompany FK
+        date previousDay
+        int previousDayScore FK
+        date currentDay
+        int currentDayScore FK
     }
+    tbVoting |o--o{ tbVotingFeelings : allow
+    tbVoting |o--o{ tbVotingReasons : allow
 
-    tbTags {
-        id idTag PK
-        string tagName
-    }
-
-    tbTags |o--o{ tbVotingTags : allow
-    tbVoting |o--o{ tbVotingTags : allow
-    tbVotingTags {
-        id idVotingTag PK
+    tbVotingFeelings {
+        id idVotingFeelings PK
         id idVoting FK
-        id idTag FK
+        id idFeeling FK
     }
 
-    tbEmployees |o--o{ tbReports : allow
-    tbCompanies |o--o{ tbReports : allow
-    tbReports {
-        id idReport PK
+    tbVotingReasons {
+        id idVotingReasons PK
+        id idVoting FK
+        id idReason FK
+    }
+
+
+    tbComments {
+        id idComment PK
         id idEmployee FK
         id idCompany FK
         string report
