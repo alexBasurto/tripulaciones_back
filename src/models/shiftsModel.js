@@ -17,11 +17,11 @@ const shiftsModel = sequelize.define("tbShifts", {
     },
     horarioEntrada: {
         type: sequelize.Sequelize.TIME,
-        allowNull: true,
+        defaultValue: null,
     },
     comments: {
         type: sequelize.Sequelize.STRING(200),
-        allowNull: true,
+        defaultValue: null,
     },
 }, {
     tableName: "tbShifts",
