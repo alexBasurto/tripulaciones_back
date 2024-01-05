@@ -1,19 +1,26 @@
 import votingModel from "../models/votingModel.js";
 
-const getAll = async (req, res) => {
+const getAllByIdCompany = async (req, res) => {
     try {
-        const votings = await votingModel.findAll();
+        const votings = await votingModel.findAll({
+            where: {
+                idCompany: req.params.id
+            }
+        });
         res.status(200).json(votings);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 }
 
-const getLastVote = async (req, res) => {
+const getLatestByIdEmployee = async (req, res) => {
     try {
         const votings = await votingModel.findAll({
-            limit: 1,
-            order: [['date', 'DESC']]
+            where: {
+                idEmployee: req.params.id
+            },
+            order: [['currentDay', 'DESC']],
+            limit: 1
         });
         res.status(200).json(votings);
     } catch (error) {
@@ -30,4 +37,4 @@ const create = async (req, res) => {
     }
 }
 
-export default { getAll, getLastVote, create };
+export default { getAllByIdCompany, getLatestByIdEmployee, create };

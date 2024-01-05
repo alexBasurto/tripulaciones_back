@@ -1,9 +1,16 @@
 import { Router } from 'express';
 import employeesRouter from './employeesRouter.js';
 import branchesRouter from './branchesRouter.js';
+import companiesRouter from './companiesRouter.js';
 import votingRouter from './votingRouter.js';
 
 const router = Router();
+
+router.use('/employees', employeesRouter);
+
+router.use('/branches', branchesRouter);
+
+router.use('/companies', companiesRouter);
 
 router.use('/employees', employeesRouter);
 

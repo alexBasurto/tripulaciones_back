@@ -4,13 +4,13 @@ import votingController from '../controllers/votingController.js';
 
 const votingRouter = Router();
 
-votingRouter.get ('/', (req, res) => {
-    votingController.getAll(req, res);
+votingRouter.get ('/company/:id', (req, res) => {
+    votingController.getAllByIdCompany(req, res);
 }
 );
 
-votingRouter.get ('/latest', (req, res) => {
-    votingController.getLastVote(req, res);
+votingRouter.get ('/latest/:id', (req, res) => {
+    votingController.getLatestByIdEmployee(req, res);
 }
 );
 
