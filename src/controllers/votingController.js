@@ -2,13 +2,25 @@ import votingModel from "../models/votingModel.js";
 
 const getAllByIdCompany = async (req, res) => {
     try {
-        const votings = await votingModel.findAll({
-            where: {
-                idCompany: req.params.id
+        if (req.params.id) {
+            if (req.params.id === 'all') {
+                const votings = await votingModel.findAll();
+                res.status(200).json(votings);
             }
-        });
-        res.status(200).json(votings);
-    } catch (error) {
+            else {
+                const votings = await votingModel.findAll({
+                    where: {
+                        idCompany: req.params.id
+                    }
+                });
+                res.status(200).json(votings);
+            }
+        }
+        else {
+            res.status(400).json({ message: 'Missing parameters' });
+        }
+    }
+    catch (error) {
         res.status(500).json({ message: error.message });
     }
 }
