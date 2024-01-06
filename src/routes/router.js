@@ -3,6 +3,8 @@ import employeesRouter from './employeesRouter.js';
 import departmentsRouter from './departmentsRouter.js';
 import commentsRouter from './commentsRouter.js';
 import branchesRouter from './branchesRouter.js';
+import companiesRouter from './companiesRouter.js';
+import votingRouter from './votingRouter.js';
 
 const router = Router();
 
@@ -12,5 +14,13 @@ router.use('/comments', reportsRouter);
 
 
 router.use('/branches', branchesRouter);
+
+router.use('/companies', companiesRouter);
+
+router.use('/employees', employeesRouter);
+
+router.use('/branches', branchesRouter);
+
+router.use('/voting', votingRouter);
 
 export default router;
