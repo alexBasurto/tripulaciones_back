@@ -1,27 +1,27 @@
 import { Router } from "express";
 
-import reportsController from "../controllers/reportsController.js";
+import commentsController from "../controllers/commentsController.js";
 
 const reportsRouter = Router();
 
 reportsRouter.get("/employees", (req, res) => {
-  reportsController.getEmployees(req, res);
+  commentsController.getEmployees(req, res);
 }
 );
 
 reportsRouter.get("/departments", (req, res) => {
-  reportsController.getDepartments(req, res);
+  commentsController.getDepartments(req, res);
 }
 );
 
 reportsRouter.get("/employees/:id", (req, res) => {
-  reportsController.getEmployeeById(req, res);
+  commentsController.getEmployeeById(req, res);
 }
 );
 
 reportsRouter.get("/departments/:id", (req, res) => {
-  reportsController.getDepartmentById(req, res);
+  commentsController.getDepartmentById(req, res);
 }
 );
 
-export default reportsRouter;
+export default commentsRouter;

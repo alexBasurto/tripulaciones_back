@@ -1,4 +1,4 @@
-import reportsModel from "../models/reportsModel.js";
+import reportsModel from "../models/commentsModel.js";
 
 const getAll = async (req, res) => {
     try {

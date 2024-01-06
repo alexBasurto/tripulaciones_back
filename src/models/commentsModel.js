@@ -1,7 +1,7 @@
 import sequelize from "../config/sequelize.js";
 
 const reportsModel = sequelize.define("tbReports", {
-    idReport: {
+    idComment: {
         type: sequelize.Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,

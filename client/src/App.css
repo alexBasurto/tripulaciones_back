@@ -1,42 +1,115 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.app {
+  font-family: 'Arial', sans-serif;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+header {
+  background-color: transparent;
+  color: #8B4513;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
+main {
+  flex: 1;
   padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.read-the-docs {
-  color: #888;
+main h2 {
+  color: #8B4513;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.mood-text {
+  font-size: 1.5em;
+  color: #8B4513;
+  margin: 1em 0;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin: 1em 0;
+  width: 80%;
+  background: transparent;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 36px;
+  background: #CD853F;
+  border-radius: 18px;
+  border: none;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 36px;
+  background: #CD853F;
+  border-radius: 18px;
+  border: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 36px;
+  width: 36px;
+  border-radius: 18px;
+  background: #FFD700;
+  cursor: pointer;
+  margin-top: -14px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 36px;
+  width: 36px;
+  border-radius: 18px;
+  background: #FFD700;
+  cursor: pointer;
+}
+
+.flower {
+  background-image: url('path-to-your-flower-image.png');
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  margin: 2em 0;
+}
+
+footer {
+  padding: 20px;
+  background-color: transparent;
+}
+
+footer button {
+  width: 90%;
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #FF8C00;
+  color: white;
+  cursor: pointer;
+}
+
+header button,
+footer button {
+  background-color: #FF8C00;
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
