@@ -4,6 +4,7 @@ import employeesModel from '../models/employeesModel.js';
 
 const login = async (req, res) => {
     const { dni, password } = req.body;
+
     try {
         const employee = await employeesModel.findOne({ where: { dni: dni } });
         if (!employee) {

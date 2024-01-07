@@ -8,11 +8,12 @@ dotenv.config();
 
 const app = express();
 
-/* const corsOptions = {
+const corsOptions = {
     origin: process.env.FRONTEND_URL,
     credentials: true,
 }
-app.use(cors(corsOptions)); */
+
+app.use(cors(corsOptions));
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
