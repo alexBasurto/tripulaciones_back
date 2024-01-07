@@ -5,6 +5,7 @@ import commentsRouter from './commentsRouter.js';
 import branchesRouter from './branchesRouter.js';
 import companiesRouter from './companiesRouter.js';
 import votingRouter from './votingRouter.js';
+import feelingsRouter from './feelingsRouter.js';
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router.use('/departments', departmentsRouter);
 
 router.use('/comments', commentsRouter);
 
+router.use('/feelings', feelingsRouter);
 
 router.use('/branches', branchesRouter);
 
