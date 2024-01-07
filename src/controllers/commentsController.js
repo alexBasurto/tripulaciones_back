@@ -19,7 +19,18 @@ const getById = async (req, res) => {
 }
 
 
+const create = async (req, res) => {
+    try {
+        const comment = await commentsModel.create(req.body);
+        res.status(201).json(comment);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+
 export default {
     getAll,
     getById,
+    create
 }

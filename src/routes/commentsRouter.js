@@ -12,5 +12,9 @@ commentsRouter.get("/:id", (req, res) => {
   commentsController.getById(req, res)
 });
 
+commentsRouter.post("/new", (req, res) => {
+  commentsController.create(req, res)
+});
+
 
 export default commentsRouter;
