@@ -14,10 +14,15 @@ const commentsModel = sequelize.define("tbComments", {
         type: sequelize.Sequelize.INTEGER,
         allowNull: false,
     },
-    comments: {
+    comment: {
         type: sequelize.Sequelize.STRING(200),
         allowNull: true,
     }
-});
+},
+    {
+        tableName: "tbComments",
+    }
+
+);
 
 export default commentsModel;
