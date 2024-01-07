@@ -9,8 +9,10 @@ import votingRouter from './votingRouter.js';
 const router = Router();
 
 router.use('/employees', employeesRouter);
+
 router.use('/departments', departmentsRouter);
-router.use('/comments', reportsRouter);
+
+router.use('/comments', commentsRouter);
 
 
 router.use('/branches', branchesRouter);

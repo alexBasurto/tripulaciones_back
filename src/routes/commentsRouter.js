@@ -2,26 +2,15 @@ import { Router } from "express";
 
 import commentsController from "../controllers/commentsController.js";
 
-const reportsRouter = Router();
+const commentsRouter = Router();
 
-reportsRouter.get("/employees", (req, res) => {
-  commentsController.getEmployees(req, res);
-}
-);
+commentsRouter.get("/", (req, res) => {
+  commentsController.getAll(req, res)
+});
 
-reportsRouter.get("/departments", (req, res) => {
-  commentsController.getDepartments(req, res);
-}
-);
+commentsRouter.get("/:id", (req, res) => {
+  commentsController.getById(req, res)
+});
 
-reportsRouter.get("/employees/:id", (req, res) => {
-  commentsController.getEmployeeById(req, res);
-}
-);
-
-reportsRouter.get("/departments/:id", (req, res) => {
-  commentsController.getDepartmentById(req, res);
-}
-);
 
 export default commentsRouter;
