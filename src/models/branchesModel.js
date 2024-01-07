@@ -1,31 +1,37 @@
 import sequelize from "../config/sequelize.js";
 
-const companiesModel = sequelize.define("tbCompanies", {
-    idCompany: {
+const branchesModel = sequelize.define("tbBranches", {
+    idBranch: {
         type: sequelize.Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    CIF: {
-        type: sequelize.Sequelize.STRING(10),
+    idCompany: {
+        type: sequelize.Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
     },
-    displayName: {
+    name: {
         type: sequelize.Sequelize.STRING(100),
         allowNull: false,
     },
-    razonSocial: {
+    address: {
+        type: sequelize.Sequelize.STRING(200),
+        allowNull: false,
+    },
+    city: {
         type: sequelize.Sequelize.STRING(100),
         allowNull: false,
-        unique: true,
+    },
+    country: {
+        type: sequelize.Sequelize.STRING(100),
+        allowNull: false,
     },
     comments: {
         type: sequelize.Sequelize.STRING(200),
         allowNull: true,
     },
 }, {
-    tableName: "tbCompanies",
+    tableName: "tbBranches",
 });
 
-export default companiesModel;
+export default branchesModel;

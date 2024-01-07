@@ -1,4 +1,4 @@
-import employeesModel from "../models/companiesModel.js";
+import companiesModel from "../models/companiesModel.js";
 
 const getAll = async (req, res) => {
     try {
@@ -20,8 +20,8 @@ const getById = async (req, res) => {
 
 const create = async (req, res) => {
     try {
-        const user = await companiesModel.create(req.body);
-        res.status(200).json(user);
+        const company = await companiesModel.create(req.body);
+        res.status(200).json(company);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -31,14 +31,14 @@ const update = async (req, res) => {
     try {
         // Check if company exists
         const companyExists = await companiesModel.findByPk(req.params.id);
-        if (!userExists) {
+        if (!companyExists) {
             res.status(404).json({ message: `Compañía con ID ${req.params.id} no encontrada.` });
             return;
         }
         // Update company
-        const [affectedRows] = await companyModel.update(req.body, {
+        const [affectedRows] = await companiesModel.update(req.body, {
             where: {
-                idEmployee: req.params.id
+                idCompany: req.params.id
             }
         });
 
@@ -58,10 +58,10 @@ const remove = async (req, res) => {
     try {
         const company = await companiesModel.destroy({
             where: {
-                idEmployee: req.params.id
+                idCompany: req.params.id
             }
         });
-        if (user === 0) {
+        if (company === 0) {
             res.status(404).json({message: `Compañía con ID ${req.params.id} no encontrada.`});
             return;
         }
