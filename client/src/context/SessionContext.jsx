@@ -13,7 +13,7 @@ const SessionProvider = ({ children }) => {
                 const data = await response.json();
                 setSession(data);
             } catch (error) {
-                console.error('Error en la peticion de usuario', error.message);
+                setSession(null);
             }
         };
         getSession();

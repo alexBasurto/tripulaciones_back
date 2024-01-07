@@ -9,7 +9,6 @@ const App = () => {
   return (
     <div className="app">
       <SessionProvider>
-        <h1>React App</h1>
         <Login />
       </SessionProvider>
     </div>

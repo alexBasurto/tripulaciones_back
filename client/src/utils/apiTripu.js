@@ -12,8 +12,7 @@ const loginApi = async (dni, password) => {
             body: JSON.stringify({ dni, password }),
         });
         if (response.ok) {
-            const data = await response.json();
-            return { response, data };
+            return response;
         } else {
             throw new Error(
                 `ERROR en la solicitud: ${response.status} - ${response.statusText}`

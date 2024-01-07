@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import {loginApi} from '../utils/apiTripu';
+import { loginApi } from '../utils/apiTripu';
 import { useSession } from '../context/SessionContext';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function Login() {
     const { session, setSession } = useSession();
@@ -43,7 +45,7 @@ function Login() {
         setError(null);
         loginApi(dni, password)
         .then(response => {
-            setSession(response.data);
+            setSession(response);
         }).catch(error => {
             setError('Usuario o contraseña incorrectos', error);
         });            
@@ -51,6 +53,7 @@ function Login() {
 
     return (
         <>
+        <Header />
         <main>
             <h2>Login</h2>
             {session && !error && <p>Usuario logueado correctamente</p>}
@@ -88,6 +91,7 @@ function Login() {
             </>
             }
         </main>
+        <Footer />
         </>
 
 
