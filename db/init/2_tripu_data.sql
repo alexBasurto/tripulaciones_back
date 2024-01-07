@@ -596,7 +596,7 @@ VALUES
         '12345678A',
         '+123456789',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         1,
         0
     ),
@@ -612,7 +612,7 @@ VALUES
         '23456789B',
         '+234567890',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -628,7 +628,7 @@ VALUES
         '34567890C',
         '+345678901',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -644,7 +644,7 @@ VALUES
         '45678901D',
         '+456789012',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -660,7 +660,7 @@ VALUES
         '56789012E',
         '+567890123',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -676,7 +676,7 @@ VALUES
         '67890123F',
         '+678901234',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -692,7 +692,7 @@ VALUES
         '78901234G',
         '+789012345',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -708,7 +708,7 @@ VALUES
         '89012345H',
         '+890123456',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -724,7 +724,7 @@ VALUES
         '90123456I',
         '+901234567',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -740,7 +740,7 @@ VALUES
         '01234567J',
         '+0123456789',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -756,7 +756,7 @@ VALUES
         '12345678K',
         '+1234567890',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -772,7 +772,7 @@ VALUES
         '23456789L',
         '+2345678901',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -788,7 +788,7 @@ VALUES
         '34567890M',
         '+3456789012',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -804,7 +804,7 @@ VALUES
         '45678901N',
         '+4567890123',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -820,7 +820,7 @@ VALUES
         '56789012O',
         '+5678901234',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         0
     ),
@@ -836,7 +836,7 @@ VALUES
         '11114444Z',
         '666555444',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         1
     ),
@@ -852,7 +852,7 @@ VALUES
         '22225555W',
         '666444555',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         1
     ),
@@ -868,7 +868,7 @@ VALUES
         '33337777Y',
         '666454545',
         '',
-        'hash',
+        '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
         0,
         1
     );
