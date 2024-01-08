@@ -10,6 +10,8 @@ const feelingsModel = sequelize.define('tbFeelings', {
         type: sequelize.Sequelize.STRING(100),
         allowNull: false,
     }
+},{
+    tableName: 'tbFeelings',
 });
 
 export default feelingsModel;

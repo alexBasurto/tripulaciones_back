@@ -10,6 +10,8 @@ const reasonsModel = sequelize.define('tbReasons', {
         type: sequelize.Sequelize.STRING(100),
         allowNull: false,
     }
+},{
+    tableName: 'tbReasons',
 });
 
 export default reasonsModel;

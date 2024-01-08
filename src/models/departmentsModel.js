@@ -18,6 +18,8 @@ const departmentsModel = sequelize.define("tbDepartments", {
         type: sequelize.Sequelize.STRING(200),
         allowNull: true,
     },
+},{
+    tableName: "tbDepartments",
 });
 
 export default departmentsModel;
