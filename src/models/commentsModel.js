@@ -22,6 +22,10 @@ const commentsModel = sequelize.define("tbComments", {
         type: sequelize.Sequelize.DATE,
         allowNull: false,
     },
+    idTag: {
+        type: sequelize.Sequelize.INTEGER,
+        allowNull: true,
+    },
 },
     {
         tableName: "tbComments",

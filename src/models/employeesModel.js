@@ -38,6 +38,10 @@ const employeesModel = sequelize.define("tbEmployees", {
         type: sequelize.Sequelize.STRING(9),
         allowNull: false,
     },
+    workerId: {
+        type: sequelize.Sequelize.STRING(15),
+        allowNull: false,
+    },
     mobile: {
         type: sequelize.Sequelize.STRING(15),
         allowNull: false,
