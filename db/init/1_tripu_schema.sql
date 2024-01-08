@@ -127,6 +127,7 @@ CREATE TABLE IF NOT EXISTS `tripulaciones`.`tbEmployees` (
   `lastName` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `dni` VARCHAR(9) NOT NULL,
+  `workerId` VARCHAR(15) NOT NULL,
   `mobile` VARCHAR(15) NOT NULL,
   `comments` VARCHAR(200) NULL DEFAULT NULL,
   `passwordHash` VARCHAR(100) NULL DEFAULT NULL,
@@ -136,6 +137,7 @@ CREATE TABLE IF NOT EXISTS `tripulaciones`.`tbEmployees` (
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   UNIQUE INDEX `dni_UNIQUE` (`dni` ASC) VISIBLE,
   UNIQUE INDEX `mobile_UNIQUE` (`mobile` ASC) VISIBLE,
+  UNIQUE INDEX `company_worker_UNIQUE` (`idCompany`, `workerId`) VISIBLE, -- Agregado aquí
   INDEX `fk_tbEmployees_tbCompanies1_idx` (`idCompany` ASC) VISIBLE,
   INDEX `fk_tbEmployees_tbDepartments1_idx` (`idDepartment` ASC) VISIBLE,
   INDEX `fk_tbEmployees_tbBranches1_idx` (`idBranch` ASC) VISIBLE,
@@ -156,6 +158,7 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
+
 
 
 -- -----------------------------------------------------
@@ -181,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `tripulaciones`.`tbComments` (
   CONSTRAINT `fk_tbComments_tbTags1`
     FOREIGN KEY (`idTag`)
     REFERENCES `tripulaciones`.`tbTags` (`idTag`)
-    ON DELETE NO ACTION
+    ON DELETE RESTRICT
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
@@ -298,7 +301,9 @@ CREATE TABLE IF NOT EXISTS `tripulaciones`.`tbVotingReasons` (
   INDEX `fk_tbVotingReasons_tbReasons1_idx` (`idReason` ASC) VISIBLE,
   CONSTRAINT `fk_tbVotingReasons_tbReasons1`
     FOREIGN KEY (`idReason`)
-    REFERENCES `tripulaciones`.`tbReasons` (`idReason`),
+    REFERENCES `tripulaciones`.`tbReasons` (`idReason`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
   CONSTRAINT `fk_tbVotingReasons_tbVoting`
     FOREIGN KEY (`idVoting`)
     REFERENCES `tripulaciones`.`tbVoting` (`idVoting`))
