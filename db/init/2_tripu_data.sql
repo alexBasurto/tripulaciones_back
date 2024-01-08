@@ -295,58 +295,65 @@ LOCK TABLES `tbComments` WRITE;
 INSERT INTO
     `tbComments`
 VALUES
-    (1, 1, 1, 'Me cae mal mi jefe.', '2022-04-01'),
+    (1, 1, 1, 'Me cae mal mi jefe.', '2022-04-01', NULL),
 (
         2,
         2,
         1,
         'El parking para empleados está muy lejos de la fábrica.',
-        '2022-04-01'
+        '2022-04-01',
+        NULL
 
     ),
-(3, 3, 1, 'Tengo mucha carga de trabajo.', '2023-07-01'),
+(3, 3, 1, 'Tengo mucha carga de trabajo.', '2023-07-01', NULL),
 (
         4,
         4,
         1,
         'La cafetería necesita más opciones saludables.',
-        '2023-07-01'
+        '2023-07-01',
+        NULL
     ),
 (
         5,
         5,
         1,
         'Las reuniones suelen ser demasiado largas.',
-        '2023-07-01'
+        '2023-07-01',
+        NULL
     ),
 (
         6,
         6,
         1,
         'Me gustaría más oportunidades de formación.',
-        '2023-07-01'
+        '2023-07-01',
+        NULL
     ),
-(7, 7, 1, 'El ambiente de trabajo es muy bueno.', '2023-09-20'),
+(7, 7, 1, 'El ambiente de trabajo es muy bueno.', '2023-09-20', NULL),
 (
         8,
         8,
         1,
         'Necesitamos mejores equipos informáticos.',
-        '2023-09-20'
+        '2023-09-20',
+        NULL
     ),
 (
         9,
         9,
         1,
         'El sistema de climatización no funciona bien.',
-        '2023-09-20'
+        '2023-09-20',
+        NULL
     ),
 (
         10,
         10,
         1,
         'Sería útil tener más flexibilidad en los horarios.',
-        '2023-09-20'
+        '2023-09-20',
+        NULL
     );
 
 /*!40000 ALTER TABLE `tbComments` ENABLE KEYS */
