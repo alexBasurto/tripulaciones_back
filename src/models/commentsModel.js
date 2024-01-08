@@ -17,7 +17,11 @@ const commentsModel = sequelize.define("tbComments", {
     comment: {
         type: sequelize.Sequelize.STRING(200),
         allowNull: true,
-    }
+    },
+    date: {
+        type: sequelize.Sequelize.DATE,
+        allowNull: false,
+    },
 },
     {
         tableName: "tbComments",
