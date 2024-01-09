@@ -19,8 +19,6 @@ function Header() {
             <h1>Tripulaciones</h1>
             <nav>
                 <ul>
-                    <li><a href="">Enlace 1</a></li>
-                    <li><a href="">Enlace 2</a></li>
                     {session && <button onClick={handleLogout}>Cerrar sesión</button>}
                 </ul>
             </nav>

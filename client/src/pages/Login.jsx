@@ -4,7 +4,7 @@ import { useSession } from '../context/SessionContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-function Login() {
+function Login({activeComponent, setActiveComponent}) {
     const { session, setSession } = useSession();
     const [dni, setDni] = useState('');
     const [password, setPassword] = useState('');
@@ -46,6 +46,7 @@ function Login() {
         loginApi(dni, password)
         .then(response => {
             setSession(response);
+            setActiveComponent('preMood');
         }).catch(error => {
             setError('Usuario o contraseña incorrectos', error);
         });            

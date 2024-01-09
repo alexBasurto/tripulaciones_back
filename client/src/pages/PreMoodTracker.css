@@ -1,0 +1,125 @@
+.rastreador-de-emociones {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  min-height: 100vh; /* Asegura que el contenedor sea al menos tan alto como la ventana del navegador */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Aplicar el gradiente radial al fondo de todo el componente */
+.rastreador-de-emociones {
+  background: radial-gradient(circle at center, var(--color-centro) 0%, var(--color-borde) 70%, rgba(255,255,255,1) 100%);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  color: #333;
+}
+
+/* Estilizar botones para que sean transparentes y encajen al lado del título */
+header button {
+  background: none;
+  border: 1px solid transparent;
+  color: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+header button:hover {
+  border-color: #ddd; /* Opcional: mostrar un borde sutil al pasar el ratón */
+}
+
+main {
+  padding: 1rem;
+  transition: background-color 0.5s;
+}
+
+/* Colores de fondo para cada estado emocional */
+.muy-mal {
+  --color-centro: #ff6666; /* Rojo más vivo */
+  --color-borde: #ffcccc; /* Rojo claro */
+}
+
+.mal {
+  --color-centro: #ffcc66; /* Amarillo más vivo */
+  --color-borde: #ffecb3; /* Amarillo claro */
+}
+
+.normal {
+  --color-centro: #ffff66; /* Amarillo limón más vivo */
+  --color-borde: #ffffcc; /* Amarillo limón claro */
+}
+
+.bien {
+  --color-centro: #66ff66; /* Verde más vivo */
+  --color-borde: #ccffcc; /* Verde claro */
+}
+
+.muy-bien {
+  --color-centro: #66ffff; /* Cian más vivo */
+  --color-borde: #ccffff; /* Cian claro */
+}
+
+.estado-actual {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #555; /* Cambia este color si es necesario */
+}
+
+.deslizador-emocion {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 2rem;
+  border-radius: 1rem;
+  background: #ddd;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.deslizador-emocion::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  background: #f57c00;
+  cursor: pointer;
+}
+
+.deslizador-emocion::-moz-range-thumb {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  background: #f57c00;
+  cursor: pointer;
+}
+
+.boton-siguiente {
+  background-color: #f57c00;
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.boton-siguiente:hover {
+  background-color: #ef6c00;
+}
+
+.etiquetas-emocion {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.icono-flor {
+  /* Aquí debes agregar los estilos para tu icono de flor si es necesario */
+}

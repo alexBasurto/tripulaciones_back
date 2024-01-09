@@ -8,6 +8,7 @@ const login = async (req, res) => {
     try {
         console.log('\x1b[44m%s\x1b[0m', `${dni} ${password}`);
         const employee = await employeesModel.findOne({ where: { dni: dni } });
+        console.log('\x1b[44m%s\x1b[0m', `${employee}`);
         if (!employee) {
             return res.status(401).json({ errorMessage: "Wrong dni or password" });
         }

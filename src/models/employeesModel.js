@@ -2,9 +2,10 @@ import sequelize from "../config/sequelize.js";
 
 const employeesModel = sequelize.define("tbEmployees", {
     idEmployee: {
-        type: sequelize.Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+        type: sequelize.Sequelize.INTEGER,
+        allowNull: false,
     },
     idCompany: {
         type: sequelize.Sequelize.INTEGER,
