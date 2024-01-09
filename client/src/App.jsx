@@ -34,6 +34,22 @@ const App = () => {
         {activeComponent == 'registered' && <Registered setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'curMood' && <CurMoodTracker setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'ending' && <Ending/> }
+
+        {(activeComponent == 'preMood' || activeComponent == 'feelings' || activeComponent == 'reasons' || activeComponent == 'curMood') &&
+        <button onClick={() => 
+          {
+            if (activeComponent == 'preMood') {
+              setActiveComponent('feelings');
+            } else if (activeComponent == 'feelings') {
+              setActiveComponent('reasons');
+            } else if (activeComponent == 'reasons') {
+              setActiveComponent('curMood');
+            } else if (activeComponent == 'curMood') {
+              setActiveComponent('ending');
+            }
+          }
+        }>Siguiente</button>}
+
       </SessionProvider>
     </div>
   );
