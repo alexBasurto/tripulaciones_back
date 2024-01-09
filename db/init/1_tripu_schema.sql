@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `tripulaciones`.`tbEmployees` (
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   UNIQUE INDEX `dni_UNIQUE` (`dni` ASC) VISIBLE,
   UNIQUE INDEX `mobile_UNIQUE` (`mobile` ASC) VISIBLE,
-  UNIQUE INDEX `company_worker_UNIQUE` (`idCompany`, `workerId`) VISIBLE, -- Agregado aquí
+  UNIQUE INDEX `company_worker_UNIQUE` (`idCompany`, `workerId`) VISIBLE,
   INDEX `fk_tbEmployees_tbCompanies1_idx` (`idCompany` ASC) VISIBLE,
   INDEX `fk_tbEmployees_tbDepartments1_idx` (`idDepartment` ASC) VISIBLE,
   INDEX `fk_tbEmployees_tbBranches1_idx` (`idBranch` ASC) VISIBLE,
