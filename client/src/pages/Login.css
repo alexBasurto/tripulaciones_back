@@ -1,0 +1,107 @@
+.login-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+  }
+  
+  .login-title {
+    font-size: 18px; /* Más pequeño para dispositivos móviles */
+    color: #000;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .app-logo {
+    width: 100px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    margin-bottom: 0;
+  }
+  
+  .login-form-container {
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%; /* Ancho completo en dispositivos móviles */
+    margin-bottom: 1em;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5em;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  .form-actions {
+    text-align: center;
+  }
+  
+  .form-actions button {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #888;
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  
+  .login-success {
+    color: green;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  
+  /* Estilos para los requisitos de la contraseña, si decides añadirlos */
+  .password-requirements {
+    font-size: 14px;
+    color: #666;
+    margin-top: -1em;
+    margin-bottom: 2em;
+  }
+  
+  /* Media queries para pantallas más grandes */
+  @media (min-width: 768px) {
+    .login-main {
+      padding: 40px;
+    }
+  
+    .login-title {
+      font-size: 22px; /* Más grande para pantallas más amplias */
+    }
+  
+    .login-form-container {
+      width: 90%; /* Ajusta el ancho para pantallas más grandes */
+      max-width: 400px; /* Máximo ancho del contenedor */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    }
+  
+    .form-group input {
+      padding: 10px; /* Ajusta el relleno para pantallas más grandes si es necesario */
+    }
+  
+    .form-actions button {
+      font-size: 18px; /* Botones más grandes en pantallas más amplias */
+    }
+  }

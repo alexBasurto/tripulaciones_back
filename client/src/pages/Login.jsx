@@ -1,8 +1,10 @@
+import './Login.css';
 import { useState } from 'react';
 import { loginApi } from '../utils/apiTripu';
 import { useSession } from '../context/SessionContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+
 
 function Login({activeComponent, setActiveComponent}) {
     const { session, setSession } = useSession();
@@ -55,45 +57,38 @@ function Login({activeComponent, setActiveComponent}) {
     return (
         <>
         <Header />
-        <main>
-            <h2>Login</h2>
-            {session && !error && <p>Usuario logueado correctamente</p>}
+        <main className="login-main">
+            <h2 className="login-title">Bienvenido a <img src="/logo.gif" alt="Logo" className="app-logo" /></h2>
+            {session && !error && <p className="login-success">Usuario logueado correctamente</p>}
             {!session &&
-            <>
-            <p>Introduce tus datos para iniciar sesión</p>
+            <div className="login-form-container">
+                <p className="login-instructions">Introduce tus datos para iniciar sesión</p>
 
-            {error && <p>{error}</p>}
-            <form action="post" onSubmit={handleSumbit} onReset={() => {
-                setWorkerId('');
-                setPassword('');
-                }
-            }>
-                <div>
-                    <label>
-                    Usuario:
-                    <input type="text" name="workerId" value={workerId} onChange={(e) => setWorkerId(e.target.value)}/>
-                    </label>
-                </div>
+                {error && <p className="error-message">{error}</p>}
+                <form onSubmit={handleSumbit} onReset={() => {
+                    setWorkerId('');
+                    setPassword('');
+                }}>
+                    <div className="form-group">
+                        <label htmlFor="workerId">ID de usuario</label>
+                        <input type="text" id="workerId" name="workerId" value={workerId} onChange={(e) => setWorkerId(e.target.value)} />
+                    </div>
 
-                <div>
-                    <label>
-                    Contraseña:
-                    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                    </label>
-                </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Contraseña:</label>
+                        <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </div>
 
-                <div>
-                    <button type="submit">Iniciar sesión</button>
-                </div>
-            </form>
-            </>
+                    <div className="form-actions">
+                        <button type="submit">Iniciar sesión</button>
+                    </div>
+                </form>
+            </div>
             }
         </main>
         <Footer />
         </>
-
-
     );
-    }
+}
 
 export default Login;

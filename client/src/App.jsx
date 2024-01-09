@@ -4,7 +4,6 @@ import Login from './pages/Login';
 import PreMoodTracker from './pages/PreMoodTracker';
 import Feelings from './pages/Feelings';
 import Reasons from './pages/Reasons';
-import Registered from './pages/Registered';
 import CurMoodTracker from './pages/CurMoodTracker';
 import Ending from './pages/Ending';
 
@@ -12,7 +11,8 @@ import { SessionProvider } from './context/SessionContext';
 
 const App = () => {
   const [activeComponent, setActiveComponent] = useState('login');
-  const [registered, setRegistered] = useState(false);
+  const [registered1, setRegistered1] = useState(false);
+  const [registered2, setRegistered2] = useState(false);
 
 
  
@@ -34,9 +34,9 @@ const App = () => {
         {activeComponent == 'preMood' && <PreMoodTracker setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'feelings' && <Feelings setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'reasons' && <Reasons setActiveComponent={setActiveComponent} /> }
-        {registered && <div className='blur'>Registrado</div>}
-        {activeComponent == 'registered' && <Registered setActiveComponent={setActiveComponent} /> }
+        {registered1 && <div className='blur'>Registrado 1/2</div>}
         {activeComponent == 'curMood' && <CurMoodTracker setActiveComponent={setActiveComponent} /> }
+        {registered2 && <div className='blur'>Registrado 2/2</div>}
         {activeComponent == 'ending' && <Ending/> }
 
         {(activeComponent == 'preMood' || activeComponent == 'feelings' || activeComponent == 'reasons' || activeComponent == 'curMood') &&
@@ -47,13 +47,17 @@ const App = () => {
             } else if (activeComponent == 'feelings') {
               setActiveComponent('reasons');
             } else if (activeComponent == 'reasons') {
-              setRegistered(true);
+              setRegistered1(true);
               setTimeout(() => {
-                setRegistered(false);
+                setRegistered1(false);
                 setActiveComponent('curMood');
               }, 3000);
             } else if (activeComponent == 'curMood') {
-              setActiveComponent('ending');
+              setRegistered2(true);
+              setTimeout(() => {
+                setRegistered2(false);
+                setActiveComponent('ending');
+              }, 3000);
             }
           }
         }>Siguiente</button>}
