@@ -85,9 +85,6 @@ function Login({activeComponent, setActiveComponent}) {
                 <div>
                     <button type="submit">Iniciar sesión</button>
                 </div>
-                <div>
-                    <button type="reset" value="Restablecer">Restablecer</button>
-                </div>
             </form>
             </>
             }

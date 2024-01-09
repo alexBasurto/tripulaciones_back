@@ -12,6 +12,9 @@ import { SessionProvider } from './context/SessionContext';
 
 const App = () => {
   const [activeComponent, setActiveComponent] = useState('login');
+  const [registered, setRegistered] = useState(false);
+
+
  
   return (
     <div className="app">
@@ -31,6 +34,7 @@ const App = () => {
         {activeComponent == 'preMood' && <PreMoodTracker setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'feelings' && <Feelings setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'reasons' && <Reasons setActiveComponent={setActiveComponent} /> }
+        {registered && <div className='blur'>Registrado</div>}
         {activeComponent == 'registered' && <Registered setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'curMood' && <CurMoodTracker setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'ending' && <Ending/> }
@@ -43,7 +47,11 @@ const App = () => {
             } else if (activeComponent == 'feelings') {
               setActiveComponent('reasons');
             } else if (activeComponent == 'reasons') {
-              setActiveComponent('curMood');
+              setRegistered(true);
+              setTimeout(() => {
+                setRegistered(false);
+                setActiveComponent('curMood');
+              }, 3000);
             } else if (activeComponent == 'curMood') {
               setActiveComponent('ending');
             }
