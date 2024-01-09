@@ -3,20 +3,20 @@ import jwt from 'jsonwebtoken';
 import employeesModel from '../models/employeesModel.js';
 
 const login = async (req, res) => {
-    const { dni, password } = req.body;
+    const { workerId, password } = req.body;
 
     try {
-        console.log('\x1b[44m%s\x1b[0m', `${dni} ${password}`);
-        const employee = await employeesModel.findOne({ where: { dni: dni } });
+        console.log('\x1b[44m%s\x1b[0m', `${workerId} ${password}`);
+        const employee = await employeesModel.findOne({ where: { workerId: workerId } });
         console.log('\x1b[44m%s\x1b[0m', `${employee}`);
         if (!employee) {
-            return res.status(401).json({ errorMessage: "Wrong dni or password" });
+            return res.status(401).json({ errorMessage: "Wrong workerId or password" });
         }
         const passwordValid = await bcrypt.compare(password, employee.passwordHash);
         if (!passwordValid) {
-            return res.status(401).json({ errorMessage: "Wrong dni or password" });
+            return res.status(401).json({ errorMessage: "Wrong workerId or password" });
         }
-        const token = jwt.sign({ idEmployee: employee.idEmployee, email: employee.email, name: employee.name, lastName: employee.lastName, dni: employee.dni }, process.env.JWT_SECRET);
+        const token = jwt.sign({ idEmployee: employee.idEmployee, email: employee.email, name: employee.name, lastName: employee.lastName, dni: employee.dni, workerId: employee.workerId }, process.env.JWT_SECRET);
         res.cookie("token", token, {
             httpOnly: true
         }).send();
@@ -41,7 +41,7 @@ const session = (req, res) => {
         }, {});
         const token = cookies.token;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        res.status(200).json({ idEmployee: decoded.idEmployee, email: decoded.email, name: decoded.name, lastName: decoded.lastName, dni: decoded.dni });
+        res.status(200).json({ idEmployee: decoded.idEmployee, email: decoded.email, name: decoded.name, lastName: decoded.lastName, dni: decoded.dni, workerId: decoded.workerId });
     } catch (err) {
         res.status(401).json({ errorMessage: "Unauthorized" });
     }

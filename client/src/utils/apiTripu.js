@@ -1,7 +1,7 @@
 const VITE_BACKEND_HOST =
     import.meta.env.VITE_BACKEND_HOST || "http://localhost:3020";
 
-const loginApi = async (dni, password) => {
+const loginApi = async (workerId, password) => {
     try {
         const response = await fetch(`${VITE_BACKEND_HOST}/login`, {
             method: "POST",
@@ -9,7 +9,7 @@ const loginApi = async (dni, password) => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ dni, password }),
+            body: JSON.stringify({ workerId, password }),
         });
         if (response.ok) {
             return response;

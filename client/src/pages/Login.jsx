@@ -6,17 +6,17 @@ import Footer from '../components/Footer';
 
 function Login({activeComponent, setActiveComponent}) {
     const { session, setSession } = useSession();
-    const [dni, setDni] = useState('');
+    const [workerId, setWorkerId] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
     const validateInputs = () => {
-        // Validación de DNI
+        // Validación de WORKER ID
         let errorsAccumulated = '';
-        const dniRegex =  /^\d{8}[a-zA-Z]$/;
-
-        if (!dniRegex.test(dni)) {
-        errorsAccumulated += 'El formato del DNI no es válido. ';
+        const workerIdRegex = /^[a-zA-Z0-9]{3,15}$/;
+        
+        if (!workerIdRegex.test(workerId)) {
+        errorsAccumulated += 'El usuario debe tener mínimo 3 caracteres y máximo 15.';
         }
 
         // Validación de contraseña
@@ -35,7 +35,7 @@ function Login({activeComponent, setActiveComponent}) {
 
     const handleSumbit = (e) => {
         e.preventDefault();
-        if (dni === '' || password === '') {
+        if (workerId === '' || password === '') {
             setError('Todos los campos son obligatorios');
             return;
         }
@@ -43,7 +43,7 @@ function Login({activeComponent, setActiveComponent}) {
             return;
         }
         setError(null);
-        loginApi(dni, password)
+        loginApi(workerId, password)
         .then(response => {
             setSession(response);
             setActiveComponent('preMood');
@@ -64,14 +64,14 @@ function Login({activeComponent, setActiveComponent}) {
 
             {error && <p>{error}</p>}
             <form action="post" onSubmit={handleSumbit} onReset={() => {
-                setDni('');
+                setWorkerId('');
                 setPassword('');
                 }
             }>
                 <div>
                     <label>
-                    DNI:
-                    <input type="text" name="dni" value={dni} onChange={(e) => setDni(e.target.value)}/>
+                    Usuario:
+                    <input type="text" name="workerId" value={workerId} onChange={(e) => setWorkerId(e.target.value)}/>
                     </label>
                 </div>
 
