@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div className="app">
       <SessionProvider>
-        {activeComponent == 'preMood' || activeComponent == 'feelings' || activeComponent == 'reasons' &&
+        {(activeComponent == 'feelings' || activeComponent == 'reasons') &&
         <button onClick={() => {
           if (activeComponent == 'feelings') {
             setActiveComponent('preMood');
