@@ -2,19 +2,19 @@ import { useState, useEffect } from 'react';
 import './PreMoodTracker.css';
 
 const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
-  const [valorEmocion, setValorEmocion] = useState(50);
-  const [estadoEmocion, setEstadoEmocion] = useState('normal'); // nuevo estado para el texto del estado emocional
+  const [valorEmocion, setValorEmocion] = useState(3);
+  const [estadoEmocion, setEstadoEmocion] = useState('normal');
 
   useEffect(() => {
-    if (valorEmocion <= 20) {
+    if (valorEmocion == 1) {
       setEstadoEmocion('muy mal');
-    } else if (valorEmocion <= 40) {
+    } else if (valorEmocion == 2) {
       setEstadoEmocion('mal');
-    } else if (valorEmocion <= 60) {
+    } else if (valorEmocion == 3) {
       setEstadoEmocion('normal');
-    } else if (valorEmocion <= 80) {
+    } else if (valorEmocion == 4) {
       setEstadoEmocion('bien');
-    } else {
+    } else if (valorEmocion == 5) {
       setEstadoEmocion('muy bien');
     }
   }, [valorEmocion]);
@@ -38,8 +38,8 @@ const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
         <div className="contenedor-deslizador">
           <input
             type="range"
-            min="0"
-            max="100"
+            min="1"
+            max="5"
             value={valorEmocion}
             onChange={manejarCambioDeslizador}
             className="deslizador-emocion"
@@ -49,7 +49,6 @@ const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
             <span className="muy-bien">MUY BIEN</span>
           </div>
         </div>
-        <button onClick={manejarEnvio} className="boton-siguiente">Siguiente</button>
       </main>
     </div>
   );
