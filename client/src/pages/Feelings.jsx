@@ -1,3 +1,5 @@
+import './Feelings.css';
+
 const Feelings = ({ preMood, feelings, setFeelings }) => {
     const badFeelings = {
         1: "Agobio",
@@ -62,8 +64,12 @@ const Feelings = ({ preMood, feelings, setFeelings }) => {
                     {/* // Utiliza el método map para renderizar las etiquetas de emociones en función del preMood. */}
                     {Object.keys(feelingsToDisplay).map((key) => (
                         <button
-                            className="feeling-tag"
-                            key={key}
+                            className={`feeling-tag ${
+                                feelings.includes(parseInt(key, 10))
+                                    ? "selected"
+                                    : ""
+                            }`}
+                            key={parseInt(key, 10)}
                             onClick={() => {
                                 const keyNum = parseInt(key, 10);
                                 if (feelings.includes(keyNum)) {
@@ -72,12 +78,8 @@ const Feelings = ({ preMood, feelings, setFeelings }) => {
                                             (feeling) => feeling !== keyNum
                                         )
                                     );
-                                    // quita la clase 'selected' al botón
-                                    
                                 } else {
                                     setFeelings([...feelings, keyNum]);
-                                    // agrega la clase 'selected' al botón
-
                                 }
                             }}
                         >
