@@ -1,46 +1,36 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './PreMoodTracker.css';
 
-const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
-  const [valorEmocion, setValorEmocion] = useState(3);
-  const [estadoEmocion, setEstadoEmocion] = useState('normal');
-
-  useEffect(() => {
-    if (valorEmocion == 1) {
-      setEstadoEmocion('muy mal');
-    } else if (valorEmocion == 2) {
-      setEstadoEmocion('mal');
-    } else if (valorEmocion == 3) {
-      setEstadoEmocion('normal');
-    } else if (valorEmocion == 4) {
-      setEstadoEmocion('bien');
-    } else if (valorEmocion == 5) {
-      setEstadoEmocion('muy bien');
-    }
-  }, [valorEmocion]);
-
-  const manejarCambioDeslizador = (evento) => {
-    setValorEmocion(evento.target.value);
+const PreMoodTracker = ({activeComponent, setActiveComponent, preMood, setPreMood}) => {
+  const moods = {
+    1: 'muy mal',
+    2: 'mal',
+    3: 'normal',
+    4: 'bien',
+    5: 'muy bien',
   };
 
-  const manejarEnvio = () => {
-    setActiveComponent('feelings');
+  const manejarCambioDeslizador = (evento) => {
+    setPreMood(evento.target.value);
   };
 
   return (
-    <div className={`rastreador-de-emociones ${estadoEmocion}`}>
+    <div className={`rastreador-de-emociones ${moods[preMood].replace(" ", "-")}`}>
       <header>
         <h1>Estado de ánimo</h1>
       </header>
       <main>
         <h2>¿Cómo te sientes ahora mismo?</h2>
-        <div className="estado-actual">{estadoEmocion.toUpperCase()}</div>
+        <div className="estado-actual">{
+          moods[preMood].toUpperCase()
+        
+        }</div>
         <div className="contenedor-deslizador">
           <input
             type="range"
             min="1"
             max="5"
-            value={valorEmocion}
+            value={preMood}
             onChange={manejarCambioDeslizador}
             className="deslizador-emocion"
           />

@@ -14,6 +14,8 @@ const App = () => {
   const [registered1, setRegistered1] = useState(false);
   const [registered2, setRegistered2] = useState(false);
 
+  const [preMood, setPreMood] = useState(3);
+
 
  
   return (
@@ -31,7 +33,7 @@ const App = () => {
           {activeComponent === 'feelings' ? 'Estado de ánimo' : activeComponent === 'reasons' ? 'Emociones' : 'Atrás'}
           </button>}
         {activeComponent == 'login' && <Login setActiveComponent={setActiveComponent} /> }
-        {activeComponent == 'preMood' && <PreMoodTracker setActiveComponent={setActiveComponent} /> }
+        {activeComponent == 'preMood' && <PreMoodTracker setActiveComponent={setActiveComponent} preMood={preMood} setPreMood={setPreMood} /> }
         {activeComponent == 'feelings' && <Feelings setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'reasons' && <Reasons setActiveComponent={setActiveComponent} /> }
         {registered1 && <div className='blur'>Registrado 1/2</div>}
