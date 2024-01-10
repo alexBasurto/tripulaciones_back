@@ -5,26 +5,38 @@ const SessionContext = createContext();
 
 const SessionProvider = ({ children }) => {
     const [session, setSession] = useState({ data: "not-started", lastVoting: null });
-    /* let latestVotingAgain = 0; */
+
+    // Use a separate state variable to track the need for fetching latest voting data
+    const [fetchLatestVoting, setFetchLatestVoting] = useState(false);
 
     useEffect(() => {
-        if (session.data === "not-started") {
-        const getSession = async () => {
-            try {
-                const response = await sessionApi();
-                const data = await response.json();
-                setSession({ ...session, data: data });
-/*                 latestVotingAgain++;
- */            } catch (error) {
-                setSession({ data: null, lastVoting: null });
-            }
-        };
+        if (session.data === "not-started" || session.data === null) {
+            const getSession = async () => {
+                try {
+                    const response = await sessionApi();
+                    const data = await response.json();
+                    if (data === null) {
+                        setSession({ data: null, lastVoting: null });
+                        return;
+                    } else {
+                        setSession((prevSession) => ({
+                            ...prevSession,
+                            data: data,
+                        }));
+                        setFetchLatestVoting(true); // Set this flag to fetch latest voting data
+                    }
+                
+                } catch (error) {
+                    setSession({ data: null, lastVoting: null });
+                }
+            };
             getSession();
         }
     }, [session.data]);
 
-    /* useEffect(() => {
-        if (session.data !== null || session.data !== "not-started") {
+    useEffect(() => {
+        // Fetch latest voting data when fetchLatestVoting flag is true
+        if (fetchLatestVoting && session.data !== null && session.data !== "not-started") {
             const getLatestVoting = async () => {
                 try {
                     const response = await latestVotingApi(
@@ -41,8 +53,10 @@ const SessionProvider = ({ children }) => {
                 }
             };
             getLatestVoting();
+            // Reset the flag after fetching latest voting data
+            setFetchLatestVoting(false);
         }
-    }, [latestVotingAgain]); */
+    }, [fetchLatestVoting, session.data]);
 
     return (
         <SessionContext.Provider value={{ session, setSession }}>

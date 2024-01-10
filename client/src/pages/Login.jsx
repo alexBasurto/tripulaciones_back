@@ -47,7 +47,10 @@ function Login({activeComponent, setActiveComponent}) {
         setError(null);
         loginApi(workerId, password)
         .then(response => {
-            setSession(response);
+            setSession((prevSession) => ({
+                ...prevSession,
+                data: response,
+            }));
             setActiveComponent('preMood');
         }).catch(error => {
             setError('Usuario o contraseña incorrectos', error);

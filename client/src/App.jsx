@@ -64,7 +64,7 @@ const App = () => {
           <p>Reasons: {reasons}</p>
           <p>Curmood: {curMood}</p>
           <p>Empleado y empresa {session.data && session.data.idEmployee + ' ' + session.data.idCompany}</p>
-          <p>Último voto {session.lastVoting}</p>
+          
         </div>
 
         {(activeComponent == 'preMood' || activeComponent == 'feelings' || activeComponent == 'reasons' || activeComponent == 'curMood') &&
