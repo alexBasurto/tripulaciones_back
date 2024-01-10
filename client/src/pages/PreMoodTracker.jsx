@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './PreMoodTracker.css';
 
-const PreMoodTracker = ({activeComponent, setActiveComponent, preMood, setPreMood}) => {
+const PreMoodTracker = ({preMood, setPreMood}) => {
   const moods = {
     1: 'muy mal',
     2: 'mal',

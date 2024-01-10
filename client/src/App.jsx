@@ -15,6 +15,9 @@ const App = () => {
   const [registered2, setRegistered2] = useState(false);
 
   const [preMood, setPreMood] = useState(3);
+  const [feelings, setFeelings] = useState([]);
+  const [reasons, setReasons] = useState([]);
+  const [curMood, setCurMood] = useState(3);
 
 
  
@@ -33,13 +36,18 @@ const App = () => {
           {activeComponent === 'feelings' ? 'Estado de ánimo' : activeComponent === 'reasons' ? 'Emociones' : 'Atrás'}
           </button>}
         {activeComponent == 'login' && <Login setActiveComponent={setActiveComponent} /> }
-        {activeComponent == 'preMood' && <PreMoodTracker setActiveComponent={setActiveComponent} preMood={preMood} setPreMood={setPreMood} /> }
-        {activeComponent == 'feelings' && <Feelings setActiveComponent={setActiveComponent} /> }
-        {activeComponent == 'reasons' && <Reasons setActiveComponent={setActiveComponent} /> }
+        {activeComponent == 'preMood' && <PreMoodTracker preMood={preMood} setPreMood={setPreMood} /> }
+        {activeComponent == 'feelings' && <Feelings preMood={preMood} setFeelings={setFeelings} /> }
+        {activeComponent == 'reasons' && <Reasons preMood={preMood} setReasons={setReasons} /> }
         {registered1 && <div className='blur'>Registrado 1/2</div>}
-        {activeComponent == 'curMood' && <CurMoodTracker setActiveComponent={setActiveComponent} /> }
+        {activeComponent == 'curMood' && <CurMoodTracker curMood={curMood} setCurMood={setCurMood} /> }
         {registered2 && <div className='blur'>Registrado 2/2</div>}
         {activeComponent == 'ending' && <Ending/> }
+
+        <p>{preMood}</p>
+        <p>{feelings}</p>
+        <p>{reasons}</p>
+        <p>{curMood}</p>
 
         {(activeComponent == 'preMood' || activeComponent == 'feelings' || activeComponent == 'reasons' || activeComponent == 'curMood') &&
         <button onClick={() => 
