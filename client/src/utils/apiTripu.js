@@ -66,8 +66,34 @@ const sessionApi = async () => {
     }
 }
 
+const latestVotingApi = async (idEmployee, idCompany) => {
+    try {
+        console.log("idEmployee", idEmployee);
+        console.log("idCompany", idCompany);
+        const response = await fetch(`${VITE_BACKEND_HOST}/voting/user/recent`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ idEmployee, idCompany }),
+        });
+        if (response.ok) {
+            return response;
+        } else {
+            throw new Error(
+                `ERROR en la solicitud: ${response.status} - ${response.statusText}`
+            );
+        }
+    } catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
 export {
     loginApi,  
     logoutApi,
-    sessionApi
+    sessionApi,
+    latestVotingApi,
   };

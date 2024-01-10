@@ -33,6 +33,7 @@ const login = async (req, res) => {
                 lastName: employee.lastName,
                 dni: employee.dni,
                 workerId: employee.workerId,
+                idCompany: employee.idCompany,
             },
             process.env.JWT_SECRET
         );

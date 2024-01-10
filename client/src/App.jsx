@@ -7,6 +7,7 @@ import Reasons from './pages/Reasons';
 import CurMoodTracker from './pages/CurMoodTracker';
 import Ending from './pages/Ending';
 import LogoutButton from './components/LogoutButton';
+import { latestVotingApi } from './utils/apiTripu.js';
 
 import { useSession } from './context/SessionContext';
 
@@ -31,6 +32,24 @@ const App = () => {
     }
   }
   , [session]);
+
+  useEffect(() => {
+    const getLatestVoting = async () => {
+      try {
+        console.log(session);
+        const response = await latestVotingApi(session.idEmployee, session.idCompany);
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (session !== null && session !== 'not-started') {
+      getLatestVoting();
+    }
+  }
+  , [session]);
+
 
   return (
     <div className="app">
