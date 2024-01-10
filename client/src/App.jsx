@@ -37,8 +37,8 @@ const App = () => {
           </button>}
         {activeComponent == 'login' && <Login setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'preMood' && <PreMoodTracker preMood={preMood} setPreMood={setPreMood} /> }
-        {activeComponent == 'feelings' && <Feelings preMood={preMood} setFeelings={setFeelings} /> }
-        {activeComponent == 'reasons' && <Reasons preMood={preMood} setReasons={setReasons} /> }
+        {activeComponent == 'feelings' && <Feelings preMood={preMood} feelings={feelings} setFeelings={setFeelings} /> }
+        {activeComponent == 'reasons' && <Reasons preMood={preMood} reasons={reasons} setReasons={setReasons} /> }
         {registered1 && <div className='blur'>Registrado 1/2</div>}
         {activeComponent == 'curMood' && <CurMoodTracker curMood={curMood} setCurMood={setCurMood} /> }
         {registered2 && <div className='blur'>Registrado 2/2</div>}

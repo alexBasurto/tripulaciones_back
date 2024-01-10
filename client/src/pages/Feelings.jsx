@@ -1,4 +1,4 @@
-const Feelings = ({ preMood, setFeelings }) => {
+const Feelings = ({ preMood, feelings, setFeelings }) => {
     const badFeelings = {
         1: "Agobio",
         2: "Agotamiento",
@@ -42,6 +42,7 @@ const Feelings = ({ preMood, setFeelings }) => {
         34: "Orgullo",
     };
 
+    // elige en función del estado de ánimo previo cuales son las emociones a mostrar
     let feelingsToDisplay = {};
     if (preMood == 1 || preMood == 2) {
         feelingsToDisplay = badFeelings;
@@ -57,20 +58,33 @@ const Feelings = ({ preMood, setFeelings }) => {
             <div className="feelings-tags-box">
                 <p>¿A qué se debía el cómo te sentiste ayer?</p>
                 <div className="feelings-tags">
+
+                    {/* // Utiliza el método map para renderizar las etiquetas de emociones en función del preMood. */}
                     {Object.keys(feelingsToDisplay).map((key) => (
                         <button
                             className="feeling-tag"
                             key={key}
-                            onClick={() =>
-                                setFeelings((prevFeelings) => [
-                                    ...prevFeelings,
-                                    feelingsToDisplay[key],
-                                ])
-                            }
+                            onClick={() => {
+                                const keyNum = parseInt(key, 10);
+                                if (feelings.includes(keyNum)) {
+                                    setFeelings(
+                                        feelings.filter(
+                                            (feeling) => feeling !== keyNum
+                                        )
+                                    );
+                                    // quita la clase 'selected' al botón
+                                    
+                                } else {
+                                    setFeelings([...feelings, keyNum]);
+                                    // agrega la clase 'selected' al botón
+
+                                }
+                            }}
                         >
                             {feelingsToDisplay[key]}
                         </button>
                     ))}
+
                 </div>
             </div>
         </div>
