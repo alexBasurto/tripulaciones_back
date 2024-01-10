@@ -6,6 +6,7 @@ import Feelings from './pages/Feelings';
 import Reasons from './pages/Reasons';
 import CurMoodTracker from './pages/CurMoodTracker';
 import Ending from './pages/Ending';
+import LogoutButton from './components/LogoutButton';
 
 import { useSession } from './context/SessionContext';
 
@@ -21,10 +22,12 @@ const App = () => {
   const [curMood, setCurMood] = useState(3);
 
   useEffect(() => {
-    if (session) {
-      setActiveComponent('preMood');
-    } else {
+    if (session === null) {
       setActiveComponent('login');
+    } else if (session === 'not-started') {
+      setActiveComponent('loading');
+    } else {
+      setActiveComponent('preMood');
     }
   }
   , [session]);
@@ -43,7 +46,7 @@ const App = () => {
           {activeComponent === 'feelings' ? 'Estado de ánimo' : activeComponent === 'reasons' ? 'Emociones' : 'Atrás'}
           </button>}
 
-        
+        {(activeComponent == 'loading') && <div className='blur'>Cargando...</div>}
 
         {activeComponent == 'login' && <Login setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'preMood' && <PreMoodTracker preMood={preMood} setPreMood={setPreMood} /> }
@@ -82,6 +85,7 @@ const App = () => {
           }
         }>Siguiente</button>}
 
+        {session !== null && session!== 'not-started' && <LogoutButton />}
     </div>
   );
 };

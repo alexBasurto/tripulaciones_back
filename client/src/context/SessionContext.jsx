@@ -4,7 +4,7 @@ import { sessionApi } from '../utils/apiTripu';
 const SessionContext = createContext();
 
 const SessionProvider = ({ children }) => {
-    const [session, setSession] = useState(null);
+    const [session, setSession] = useState('not-started');
 
     useEffect(() => {
         const getSession = async () => {
