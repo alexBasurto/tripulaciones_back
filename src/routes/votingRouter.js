@@ -9,13 +9,13 @@ votingRouter.get ('/company/:id', (req, res) => {
 }
 );
 
-votingRouter.get ('/latest/:id', (req, res) => {
-    votingController.getLatestByIdEmployee(req, res);
+votingRouter.post('/user/new', (req, res) => {
+    votingController.create(req, res);
 }
 );
 
-votingRouter.post('/new', (req, res) => {
-    votingController.create(req, res);
+votingRouter.post('/user/recent', (req, res) => {
+    votingController.userRecentVotingData(req, res);
 }
 );
 
