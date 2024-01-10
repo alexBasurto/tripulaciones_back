@@ -64,6 +64,7 @@ const App = () => {
           <p>Reasons: {reasons}</p>
           <p>Curmood: {curMood}</p>
           <p>Empleado y empresa {session.data && session.data.idEmployee + ' ' + session.data.idCompany}</p>
+          <p>Último voto y racha {session.lastVoting && session.lastVoting.latestVoting.currentDay + ' ' + session.lastVoting.streak}</p>
           
         </div>
 

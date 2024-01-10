@@ -47,10 +47,8 @@ function Login({activeComponent, setActiveComponent}) {
         setError(null);
         loginApi(workerId, password)
         .then(response => {
-            setSession((prevSession) => ({
-                ...prevSession,
-                data: response,
-            }));
+            setSession({ data: 'not-started', lastVoting: null });
+            // session data es actualizado y activa el useEffect de App.jsx y SessionContext.jsx
             setActiveComponent('preMood');
         }).catch(error => {
             setError('Usuario o contraseña incorrectos', error);

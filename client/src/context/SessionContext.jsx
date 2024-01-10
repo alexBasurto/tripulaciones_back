@@ -10,7 +10,7 @@ const SessionProvider = ({ children }) => {
     const [fetchLatestVoting, setFetchLatestVoting] = useState(false);
 
     useEffect(() => {
-        if (session.data === "not-started" || session.data === null) {
+        if (session.data === "not-started") {
             const getSession = async () => {
                 try {
                     const response = await sessionApi();
@@ -23,6 +23,7 @@ const SessionProvider = ({ children }) => {
                             ...prevSession,
                             data: data,
                         }));
+                        console.log('hecho', data);
                         setFetchLatestVoting(true); // Set this flag to fetch latest voting data
                     }
                 
