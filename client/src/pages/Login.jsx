@@ -59,7 +59,7 @@ function Login({activeComponent, setActiveComponent}) {
         <Header />
         <main className="login-main">
             <h2 className="login-title">Bienvenido a <img src="/logo.gif" alt="Logo" className="app-logo" /></h2>
-            {session && !error && <p className="login-success">Usuario logueado correctamente</p>}
+            {session && <p>{session.name} {session.lastName}</p>}
             {!session &&
             <div className="login-form-container">
                 <p className="login-instructions">Introduce tus datos para iniciar sesión</p>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Login from './pages/Login';
 import PreMoodTracker from './pages/PreMoodTracker';
@@ -7,10 +7,11 @@ import Reasons from './pages/Reasons';
 import CurMoodTracker from './pages/CurMoodTracker';
 import Ending from './pages/Ending';
 
-import { SessionProvider } from './context/SessionContext';
+import { useSession } from './context/SessionContext';
 
 const App = () => {
-  const [activeComponent, setActiveComponent] = useState('login');
+  const [activeComponent, setActiveComponent] = useState('loading');
+  const { session } = useSession();
   const [registered1, setRegistered1] = useState(false);
   const [registered2, setRegistered2] = useState(false);
 
@@ -19,11 +20,17 @@ const App = () => {
   const [reasons, setReasons] = useState([]);
   const [curMood, setCurMood] = useState(3);
 
+  useEffect(() => {
+    if (session) {
+      setActiveComponent('preMood');
+    } else {
+      setActiveComponent('login');
+    }
+  }
+  , [session]);
 
- 
   return (
     <div className="app">
-      <SessionProvider>
         {(activeComponent == 'feelings' || activeComponent == 'reasons') &&
         <button onClick={() => {
           if (activeComponent == 'feelings') {
@@ -35,6 +42,9 @@ const App = () => {
         }>
           {activeComponent === 'feelings' ? 'Estado de ánimo' : activeComponent === 'reasons' ? 'Emociones' : 'Atrás'}
           </button>}
+
+        
+
         {activeComponent == 'login' && <Login setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'preMood' && <PreMoodTracker preMood={preMood} setPreMood={setPreMood} /> }
         {activeComponent == 'feelings' && <Feelings preMood={preMood} feelings={feelings} setFeelings={setFeelings} /> }
@@ -72,7 +82,6 @@ const App = () => {
           }
         }>Siguiente</button>}
 
-      </SessionProvider>
     </div>
   );
 };
