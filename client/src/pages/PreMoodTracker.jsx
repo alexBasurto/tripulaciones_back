@@ -23,17 +23,14 @@ const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
     setValorEmocion(evento.target.value);
   };
 
-  const manejarEnvio = () => {
-    setActiveComponent('feelings');
-  };
 
   return (
     <div className={`rastreador-de-emociones ${estadoEmocion}`}>
       <header>
-        <h1>Estado de ánimo</h1>
+        <h4>Estado de ánimo</h4>
       </header>
       <main>
-        <h2>¿Cómo te sientes ahora mismo?</h2>
+        <h2>¿Cómo te sentiste ayer al finalizar la jornada?</h2>
         <div className="estado-actual">{estadoEmocion.toUpperCase()}</div>
         <div className="contenedor-deslizador">
           <input
@@ -49,7 +46,6 @@ const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
             <span className="muy-bien">MUY BIEN</span>
           </div>
         </div>
-        <button onClick={manejarEnvio} className="boton-siguiente">Siguiente</button>
       </main>
     </div>
   );

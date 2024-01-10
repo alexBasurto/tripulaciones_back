@@ -1,14 +1,14 @@
 .rastreador-de-emociones {
   font-family: 'Arial', sans-serif;
   text-align: center;
-  min-height: 100vh; /* Asegura que el contenedor sea al menos tan alto como la ventana del navegador */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 /* Aplicar el gradiente radial al fondo de todo el componente */
 .rastreador-de-emociones {
-  background: radial-gradient(circle at center, var(--color-centro) 0%, var(--color-borde) 70%, rgba(255,255,255,1) 100%);
+  background: radial-gradient(circle at center, var(--color-centro) 20%, var(--color-borde) 70%, rgba(255,255,255,1) 100%);
 }
 
 header {
@@ -40,28 +40,28 @@ main {
 
 /* Colores de fondo para cada estado emocional */
 .muy-mal {
-  --color-centro: #ff6666; /* Rojo más vivo */
-  --color-borde: #ffcccc; /* Rojo claro */
+  --color-centro: #2732c3;
+  --color-borde: #66bbf7; 
 }
 
 .mal {
-  --color-centro: #ffcc66; /* Amarillo más vivo */
-  --color-borde: #ffecb3; /* Amarillo claro */
+  --color-centro: #6ECFBC;
+  --color-borde: #abfbff;
 }
 
 .normal {
-  --color-centro: #ffff66; /* Amarillo limón más vivo */
-  --color-borde: #ffffcc; /* Amarillo limón claro */
+  --color-centro: #f09e38;
+  --color-borde: #FEC581;
 }
 
 .bien {
-  --color-centro: #66ff66; /* Verde más vivo */
-  --color-borde: #ccffcc; /* Verde claro */
+  --color-centro: #e24018;
+  --color-borde: #FF7453;
 }
 
 .muy-bien {
-  --color-centro: #66ffff; /* Cian más vivo */
-  --color-borde: #ccffff; /* Cian claro */
+  --color-centro: #bb2f5b;
+  --color-borde: #FF80A9;
 }
 
 .estado-actual {
@@ -76,7 +76,7 @@ main {
   width: 100%;
   height: 2rem;
   border-radius: 1rem;
-  background: #ddd;
+  background: #dfdfdf5c;
   outline: none;
   opacity: 0.7;
   transition: opacity .2s;
@@ -88,7 +88,7 @@ main {
   width: 3rem;
   height: 3rem;
   border-radius: 1.5rem;
-  background: #f57c00;
+  background: var(--color-borde);
   cursor: pointer;
 }
 
@@ -96,7 +96,7 @@ main {
   width: 3rem;
   height: 3rem;
   border-radius: 1.5rem;
-  background: #f57c00;
+  background: var(--color-borde);
   cursor: pointer;
 }
 
@@ -111,7 +111,7 @@ main {
 }
 
 .boton-siguiente:hover {
-  background-color: #ef6c00;
+  background-color: #FEC581;
 }
 
 .etiquetas-emocion {
@@ -120,6 +120,14 @@ main {
   font-size: 0.8rem;
 }
 
-.icono-flor {
-  /* Aquí debes agregar los estilos para tu icono de flor si es necesario */
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.muy-mal, .muy-bien {
+  color: #000000;
+  font-weight: 200;
 }
