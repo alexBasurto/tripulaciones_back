@@ -70,6 +70,7 @@ const latestVotingApi = async (idEmployee, idCompany) => {
     try {
         console.log("idEmployee", idEmployee);
         console.log("idCompany", idCompany);
+        //LLAMADA POST A LA API
         const response = await fetch(`${VITE_BACKEND_HOST}/voting/user/recent`, {
             method: "POST",
             credentials: "include",

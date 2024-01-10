@@ -7,7 +7,6 @@ import Reasons from './pages/Reasons';
 import CurMoodTracker from './pages/CurMoodTracker';
 import Ending from './pages/Ending';
 import LogoutButton from './components/LogoutButton';
-import { latestVotingApi } from './utils/apiTripu.js';
 
 import { useSession } from './context/SessionContext';
 
@@ -23,33 +22,15 @@ const App = () => {
   const [curMood, setCurMood] = useState(3);
 
   useEffect(() => {
-    if (session === null) {
+    if (session.data === null) {
       setActiveComponent('login');
-    } else if (session === 'not-started') {
+    } else if (session.data === 'not-started') {
       setActiveComponent('loading');
     } else {
       setActiveComponent('preMood');
     }
   }
-  , [session]);
-
-  useEffect(() => {
-    const getLatestVoting = async () => {
-      try {
-        console.log(session);
-        const response = await latestVotingApi(session.idEmployee, session.idCompany);
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    if (session !== null && session !== 'not-started') {
-      getLatestVoting();
-    }
-  }
-  , [session]);
-
+  , [session.data]);
 
   return (
     <div className="app">
@@ -76,10 +57,15 @@ const App = () => {
         {registered2 && <div className='blur'>Registrado 2/2</div>}
         {activeComponent == 'ending' && <Ending/> }
 
-        <p>{preMood}</p>
-        <p>{feelings}</p>
-        <p>{reasons}</p>
-        <p>{curMood}</p>
+        <div>
+          <p>TEST</p>
+          <p>Preemood: {preMood}</p>
+          <p>Feelings: {feelings}</p>
+          <p>Reasons: {reasons}</p>
+          <p>Curmood: {curMood}</p>
+          <p>Empleado y empresa {session.data && session.data.idEmployee + ' ' + session.data.idCompany}</p>
+          <p>Último voto {session.lastVoting}</p>
+        </div>
 
         {(activeComponent == 'preMood' || activeComponent == 'feelings' || activeComponent == 'reasons' || activeComponent == 'curMood') &&
         <button onClick={() => 
@@ -104,7 +90,7 @@ const App = () => {
           }
         }>Siguiente</button>}
 
-        {session !== null && session!== 'not-started' && <LogoutButton />}
+        {session.data !== null && session.data!== 'not-started' && <LogoutButton />}
     </div>
   );
 };
