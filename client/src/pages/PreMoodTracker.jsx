@@ -3,11 +3,11 @@ import './PreMoodTracker.css';
 
 const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
   const [valorEmocion, setValorEmocion] = useState(50);
-  const [estadoEmocion, setEstadoEmocion] = useState('normal'); // nuevo estado emocional
+  const [estadoEmocion, setEstadoEmocion] = useState('normal'); // como valor predefinido
 
   useEffect(() => {
-    if (valorEmocion <= 20) {
-      setEstadoEmocion('Muy Mal');
+    if (valorEmocion <= 10) {
+      setEstadoEmocion('Muy mal');
     } else if (valorEmocion <= 40) {
       setEstadoEmocion('Mal');
     } else if (valorEmocion <= 60) {
@@ -15,7 +15,7 @@ const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
     } else if (valorEmocion <= 80) {
       setEstadoEmocion('Bien');
     } else {
-      setEstadoEmocion('Muy Bien');
+      setEstadoEmocion('Muy bien');
     }
   }, [valorEmocion]);
 
@@ -31,7 +31,9 @@ const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
       </header>
       <main>
         <h2>¿Cómo te sentiste ayer al finalizar la jornada?</h2>
-        <div className="estado-actual">{estadoEmocion}</div>
+        <div className={`estado-actual ${estadoEmocion.toLowerCase()}`}>
+          {estadoEmocion}
+        </div>
         <div className="contenedor-deslizador">
           <input
             type="range"
@@ -42,13 +44,13 @@ const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
             className="deslizador-emocion"
           />
           <div className="etiquetas-emocion">
-            <span className="muy-mal">MUY MAL</span>
-            <span className="muy-bien">MUY BIEN</span>
+            <span className="muymal">MUY MAL</span>
+            <span className="muybien">MUY BIEN</span>
           </div>
         </div>
       </main>
     </div>
   );
-};
+  }
 
 export default PreMoodTracker;

@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Inter';
+  src: url(https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap);
+}
+
+*{
+  font-family: 'Inter', sans-serif;
+}
+
 .login-main {
     display: flex;
     flex-direction: column;
@@ -5,7 +14,6 @@
     justify-content: center;
     min-height: 100vh;
     background-color: #fff;
-    font-family: 'Arial', sans-serif;
     padding: 20px;
   }
   
@@ -18,7 +26,7 @@
   }
   
   .app-logo {
-    width: 100px; /* Ajusta el tamaño según sea necesario */
+    width: 100px;
     height: auto;
     margin-bottom: 0;
   }
@@ -27,7 +35,7 @@
     background-color: #f7f7f7;
     border-radius: 10px;
     padding: 20px;
-    width: 100%; /* Ancho completo en dispositivos móviles */
+    width: 100%;
     margin-bottom: 1em;
   }
   
@@ -73,7 +81,6 @@
     margin-bottom: 1em;
   }
   
-  /* Estilos para los requisitos de la contraseña, si decides añadirlos */
   .password-requirements {
     font-size: 14px;
     color: #666;

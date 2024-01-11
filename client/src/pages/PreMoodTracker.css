@@ -1,5 +1,13 @@
+@font-face {
+  font-family: 'Inter';
+  src: url(https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap);
+}
+
+*{
+  font-family: 'Inter', sans-serif;
+}
+
 .rastreador-de-emociones {
-  font-family: 'Arial', sans-serif;
   text-align: center;
   min-height: 100vh;
   display: flex;
@@ -19,28 +27,14 @@ header {
   color: #333;
 }
 
-/* Estilizar botones para que sean transparentes y encajen al lado del título */
-header button {
-  background: none;
-  border: 1px solid transparent;
-  color: inherit;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-}
-
-header button:hover {
-  border-color: #ddd; /* Opcional: mostrar un borde sutil al pasar el ratón */
-}
-
 main {
   padding: 1rem;
   transition: background-color 0.5s;
 }
 
 /* Colores de fondo para cada estado emocional */
-.Muy-Mal {
-  --color-centro: #2732c3;
+.Muy-mal {
+  --color-centro: #3843D0;
   --color-borde: #66bbf7; 
 }
 
@@ -50,17 +44,17 @@ main {
 }
 
 .Normal {
-  --color-centro: #f09e38;
-  --color-borde: #FEC581;
+  --color-centro:#FFC466;
+  --color-borde: #e39c45;
 }
 
 .Bien {
-  --color-centro: #e24018;
+  --color-centro: #FF7453;
   --color-borde: #FF7453;
 }
 
-.Muy-Bien {
-  --color-centro: #bb2f5b;
+.Muy-bien {
+  --color-centro: #FF80A9;
   --color-borde: #FF80A9;
 }
 
@@ -68,7 +62,6 @@ main {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   font-weight: bold;
-  color: #555; /* Cambia este color si es necesario */
 }
 
 .deslizador-emocion {
@@ -100,20 +93,6 @@ main {
   cursor: pointer;
 }
 
-.boton-siguiente {
-  background-color: #f57c00;
-  color: #fff;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 2rem;
-}
-
-.boton-siguiente:hover {
-  background-color: #FEC581;
-}
-
 .etiquetas-emocion {
   display: flex;
   justify-content: space-between;
@@ -127,7 +106,28 @@ h2 {
   color: #000000;
 }
 
-.muy-mal, .muy-bien {
+.muymal, .muybien {
   color: #000000;
-  font-weight: 200;
+  font-weight: 400;
+}
+
+/* Colores de fuente para cada estado emocional */
+.muy-mal.estado-actual {
+  color: #3843D0;
+}
+
+.mal.estado-actual {
+  color: #6ECFBC;
+}
+
+.normal.estado-actual {
+  color: #FFC466;
+}
+
+.bien.estado-actual {
+  color: #FF7453;
+}
+
+.muy-bien.estado-actual {
+  color: #FF80A9;
 }
