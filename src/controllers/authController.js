@@ -1,6 +1,10 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import employeesModel from "../models/employeesModel.js";
+import companiesModel from "../models/companiesModel.js";
+import departmentsModel from "../models/departmentsModel.js";
+import branchesModel from "../models/branchesModel.js";
+import shiftsModel from "../models/shiftsModel.js";
 
 const login = async (req, res) => {
     const { workerId, password } = req.body;
@@ -52,7 +56,7 @@ const logout = (req, res) => {
     }).send();
 };
 
-const session = (req, res) => {
+const session = async (req, res) => {
     try {
         const cookies = req.headers?.cookie
             .split(";")
@@ -63,6 +67,12 @@ const session = (req, res) => {
             }, {});
         const token = cookies.token;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const user = await employeesModel.findByPk(decoded.idEmployee);
+        // TODO - user con inner joins
+        // res.status(200).json(user);
+        console.log("\x1b[44m%s\x1b[0m", `${user}`);
+
         res.status(200).json({
             idEmployee: decoded.idEmployee,
             email: decoded.email,
