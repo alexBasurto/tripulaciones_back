@@ -34,14 +34,30 @@ const App = () => {
   }
   , [session.data]);
 
-  useEffect(() => {        
-    const currentDay = new Date().toISOString().slice(0, 10);
-    let previousDay = new Date();
-    previousDay.setDate(previousDay.getDate() - 1);
-    previousDay = previousDay.toISOString().slice(0, 10);
-    const voteResult = createVoteApi(session.data.idEmployee, session.data.idCompany, previousDay, preMood, currentDay, curMood);
+  useEffect(() => { 
+    const sendVoteApi = async () => {
+      try {      
+        const currentDay = new Date().toISOString().slice(0, 10);
+        let previousDay = new Date();
+        previousDay.setDate(previousDay.getDate() - 1);
+        previousDay = previousDay.toISOString().slice(0, 10);
+        const vote = await createVoteApi(session.data.idEmployee, session.data.idCompany, previousDay, preMood, currentDay, curMood);
+        const voteFormated = await vote.json();
+          
+        for (let i = 0; i < feelings.length; i++) {
+          createVoteFeelingApi(voteFormated.idVoting, feelings[i]);
+        }
+        for (let i = 0; i < reasons.length; i++) {
+          createVoteReasonApi(voteFormated.idVoting, reasons[i]);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+  }
+  sendVoteApi();
+  }
 
-  }, [sendVote]);
+  , [sendVote]);
 
 
   return (
