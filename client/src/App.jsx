@@ -40,9 +40,9 @@ const App = () => {
     previousDay.setDate(previousDay.getDate() - 1);
     previousDay = previousDay.toISOString().slice(0, 10);
     const voteResult = createVoteApi(session.data.idEmployee, session.data.idCompany, previousDay, preMood, currentDay, curMood);
-    setSendReasons(voteResult);
-    setSendFeelings(voteResult);
+
   }, [sendVote]);
+
 
   return (
     <div className="app">
