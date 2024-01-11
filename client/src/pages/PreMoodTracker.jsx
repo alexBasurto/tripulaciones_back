@@ -1,45 +1,38 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './PreMoodTracker.css';
 
-const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
-  const [valorEmocion, setValorEmocion] = useState(50);
-  const [estadoEmocion, setEstadoEmocion] = useState('normal'); // como valor predefinido
-
-  useEffect(() => {
-    if (valorEmocion <= 10) {
-      setEstadoEmocion('Muy mal');
-    } else if (valorEmocion <= 40) {
-      setEstadoEmocion('Mal');
-    } else if (valorEmocion <= 60) {
-      setEstadoEmocion('Normal');
-    } else if (valorEmocion <= 80) {
-      setEstadoEmocion('Bien');
-    } else {
-      setEstadoEmocion('Muy bien');
-    }
-  }, [valorEmocion]);
-
-  const manejarCambioDeslizador = (evento) => {
-    setValorEmocion(evento.target.value);
+const PreMoodTracker = ({preMood, setPreMood}) => {
+  const moods = {
+    1: 'muy mal',
+    2: 'mal',
+    3: 'normal',
+    4: 'bien',
+    5: 'muy bien',
   };
 
+  const manejarCambioDeslizador = (evento) => {
+    setPreMood(evento.target.value);
+  };
 
   return (
-    <div className={`rastreador-de-emociones ${estadoEmocion}`}>
+    <div className={`rastreador-de-emociones ${moods[preMood].replace(" ", "-")}`}>
       <header>
         <h4>Estado de ánimo</h4>
       </header>
       <main>
         <h2>¿Cómo te sentiste ayer al finalizar la jornada?</h2>
-        <div className={`estado-actual ${estadoEmocion.toLowerCase()}`}>
+        <div className={`estado-actual ${
+          moods[preMood].toLowerCase()
+        
+        }`}>
           {estadoEmocion}
         </div>
         <div className="contenedor-deslizador">
           <input
             type="range"
-            min="0"
-            max="100"
-            value={valorEmocion}
+            min="1"
+            max="5"
+            value={preMood}
             onChange={manejarCambioDeslizador}
             className="deslizador-emocion"
           />
