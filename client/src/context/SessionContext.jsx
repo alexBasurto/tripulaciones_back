@@ -45,10 +45,12 @@ const SessionProvider = ({ children }) => {
                         session.data.idCompany
                     );
                     const data = await response.json();
+                    // haz setSession con el ultimo voto, añadiendolo a la información que ya tiene
                     setSession((prevSession) => ({
                         ...prevSession,
                         lastVoting: data,
                     }));
+                    console.log('hecho2', data);
                 } catch (error) {
                     console.log(error);
                 }

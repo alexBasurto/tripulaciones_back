@@ -24,15 +24,35 @@ const App = () => {
   const [sendVote, setSendVote] = useState(false);
 
   useEffect(() => {
-    if (session.data === null) {
-      setActiveComponent('login');
-    } else if (session.data === 'not-started') {
-      setActiveComponent('loading');
-    } else {
-      setActiveComponent('preMood');
+    if (session.lastVoting === null) {
+      if (session.data === null) {
+        setActiveComponent('login');
+      } else if (session.data === 'not-started') {
+        setActiveComponent('loading');
+      } else {
+          setActiveComponent('preMood');
+      }
     }
   }
-  , [session.data]);
+  , [session]);
+
+  useEffect(() => {
+    if (session.lastVoting !== null) {
+    const currentDay = new Date().toISOString().slice(0, 10);
+    let lastDay = session.lastVoting.latestVoting.currentDay;
+    
+    console.log('lastDay', lastDay);
+    console.log('currentDay', currentDay);
+    
+
+    if (lastDay !== currentDay) {
+      setActiveComponent('preMood');
+    } else {
+      setActiveComponent('ending');
+    }
+  }
+  }
+  , [session]);
 
   useEffect(() => { 
     const sendVoteApi = async () => {
