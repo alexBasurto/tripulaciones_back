@@ -3,19 +3,19 @@ import './PreMoodTracker.css';
 
 const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
   const [valorEmocion, setValorEmocion] = useState(50);
-  const [estadoEmocion, setEstadoEmocion] = useState('normal'); // nuevo estado para el texto del estado emocional
+  const [estadoEmocion, setEstadoEmocion] = useState('normal'); // nuevo estado emocional
 
   useEffect(() => {
     if (valorEmocion <= 20) {
-      setEstadoEmocion('muy mal');
+      setEstadoEmocion('Muy Mal');
     } else if (valorEmocion <= 40) {
-      setEstadoEmocion('mal');
+      setEstadoEmocion('Mal');
     } else if (valorEmocion <= 60) {
-      setEstadoEmocion('normal');
+      setEstadoEmocion('Normal');
     } else if (valorEmocion <= 80) {
-      setEstadoEmocion('bien');
+      setEstadoEmocion('Bien');
     } else {
-      setEstadoEmocion('muy bien');
+      setEstadoEmocion('Muy Bien');
     }
   }, [valorEmocion]);
 
@@ -31,7 +31,7 @@ const PreMoodTracker = ({activeComponent, setActiveComponent}) => {
       </header>
       <main>
         <h2>¿Cómo te sentiste ayer al finalizar la jornada?</h2>
-        <div className="estado-actual">{estadoEmocion.toUpperCase()}</div>
+        <div className="estado-actual">{estadoEmocion}</div>
         <div className="contenedor-deslizador">
           <input
             type="range"

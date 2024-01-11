@@ -39,27 +39,27 @@ main {
 }
 
 /* Colores de fondo para cada estado emocional */
-.muy-mal {
+.Muy-Mal {
   --color-centro: #2732c3;
   --color-borde: #66bbf7; 
 }
 
-.mal {
+.Mal {
   --color-centro: #6ECFBC;
   --color-borde: #abfbff;
 }
 
-.normal {
+.Normal {
   --color-centro: #f09e38;
   --color-borde: #FEC581;
 }
 
-.bien {
+.Bien {
   --color-centro: #e24018;
   --color-borde: #FF7453;
 }
 
-.muy-bien {
+.Muy-Bien {
   --color-centro: #bb2f5b;
   --color-borde: #FF80A9;
 }
