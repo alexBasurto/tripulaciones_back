@@ -7,7 +7,7 @@ import Reasons from './pages/Reasons';
 import CurMoodTracker from './pages/CurMoodTracker';
 import Ending from './pages/Ending';
 import LogoutButton from './components/LogoutButton';
-
+import { createVoteApi, createVoteReasonApi, createVoteFeelingApi } from './utils/apiTripu';
 import { useSession } from './context/SessionContext';
 
 const App = () => {
@@ -21,6 +21,8 @@ const App = () => {
   const [reasons, setReasons] = useState([]);
   const [curMood, setCurMood] = useState(3);
 
+  const [sendVote, setSendVote] = useState(false);
+
   useEffect(() => {
     if (session.data === null) {
       setActiveComponent('login');
@@ -31,6 +33,16 @@ const App = () => {
     }
   }
   , [session.data]);
+
+  useEffect(() => {        
+    const currentDay = new Date().toISOString().slice(0, 10);
+    let previousDay = new Date();
+    previousDay.setDate(previousDay.getDate() - 1);
+    previousDay = previousDay.toISOString().slice(0, 10);
+    const voteResult = createVoteApi(session.data.idEmployee, session.data.idCompany, previousDay, preMood, currentDay, curMood);
+    setSendReasons(voteResult);
+    setSendFeelings(voteResult);
+  }, [sendVote]);
 
   return (
     <div className="app">
@@ -83,6 +95,7 @@ const App = () => {
               }, 3000);
             } else if (activeComponent == 'curMood') {
               setRegistered2(true);
+              setSendVote(true);
               setTimeout(() => {
                 setRegistered2(false);
                 setActiveComponent('ending');
