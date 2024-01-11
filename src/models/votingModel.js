@@ -15,7 +15,7 @@ const votingModel = sequelize.define('tbVoting', {
         allowNull: false
     },
     previousDay: {
-        type: sequelize.Sequelize.DATE,
+        type: sequelize.Sequelize.DATEONLY,
         allowNull: false
     },
     previousDayScore: {
@@ -23,7 +23,7 @@ const votingModel = sequelize.define('tbVoting', {
         allowNull: false
     },
     currentDay: {
-        type: sequelize.Sequelize.DATE,
+        type: sequelize.Sequelize.DATEONLY,
         allowNull: false
     },
     currentDayScore: {
@@ -31,9 +31,8 @@ const votingModel = sequelize.define('tbVoting', {
         allowNull: false
     }
 }, {
-    tableName: 'tbVoting',
+    timestamps: false
 });
-
 
 export default votingModel;
 
