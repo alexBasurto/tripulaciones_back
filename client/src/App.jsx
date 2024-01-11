@@ -36,7 +36,8 @@ const App = () => {
 
   useEffect(() => { 
     const sendVoteApi = async () => {
-      try {      
+      try {
+        if (!sendVote) return;
         const currentDay = new Date().toISOString().slice(0, 10);
         let previousDay = new Date();
         previousDay.setDate(previousDay.getDate() - 1);
