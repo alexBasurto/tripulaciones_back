@@ -68,10 +68,41 @@ const session = async (req, res) => {
         const token = cookies.token;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        const user = await employeesModel.findByPk(decoded.idEmployee);
-        // TODO - user con inner joins
-        // res.status(200).json(user);
-        console.log("\x1b[44m%s\x1b[0m", `${user}`);
+        const literal = `
+            SELECT
+                e.idEmployee,
+                e.email,
+                e.name,
+                e.lastName,
+                e.dni,
+                e.workerId,
+                e.idCompany,
+                e.idDepartment,
+                e.idBranch,
+                e.idShift,
+                c.displayName AS companyName,
+                d.name AS departmentName,
+                b.name AS branchName,
+                s.name AS shiftName
+            FROM tbEmployees e
+            INNER JOIN tbCompanies c ON e.idCompany = c.idCompany
+            LEFT JOIN tbDepartments d ON e.idDepartment = d.idDepartment
+            LEFT JOIN tbBranches b ON e.idBranch = b.idBranch
+            LEFT JOIN tbShifts s ON e.idShift = s.idShift
+            WHERE e.idEmployee = ${decoded.idEmployee}
+        `;
+        const [userDetail, metadata] = await employeesModel.sequelize.query(literal);
+
+        const [employeesCount, metadata2] = await employeesModel.sequelize.query(`
+            SELECT COUNT(*) AS employeesCount
+            FROM tbEmployees e
+            WHERE e.idCompany = ${decoded.idCompany}
+            AND e.idDepartment = ${userDetail[0].idDepartment}
+            AND e.idBranch = ${userDetail[0].idBranch}
+            AND e.idShift = ${userDetail[0].idShift}
+
+        `);
+
 
         res.status(200).json({
             idEmployee: decoded.idEmployee,
@@ -81,6 +112,16 @@ const session = async (req, res) => {
             dni: decoded.dni,
             workerId: decoded.workerId,
             idCompany: decoded.idCompany,
+            companyName: userDetail[0].companyName,
+            idDepartment: userDetail[0].idDepartment,
+            departmentName: userDetail[0].departmentName,
+            idBranch: userDetail[0].idBranch,
+            branchName: userDetail[0].branchName,
+            idShift: userDetail[0].idShift,
+            shiftName: userDetail[0].shiftName,
+            employeesCount: employeesCount[0].employeesCount,
+
+
         });
     } catch (err) {
         res.status(401).json({ errorMessage: "Unauthorized" });
