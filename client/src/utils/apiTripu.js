@@ -135,6 +135,33 @@ const createVoteFeelingApi = async (idVoting, idFeeling) => {
     }
 }
 
+const createCommentApi = async (idEmployee, idCompany, comment, anonymous) => {
+    if (anonymous === true) {
+        idEmployee = null;
+    }   
+    
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/comments/new`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ idEmployee, idCompany, comment }),
+        });
+        if (response.ok) {
+            return response;
+        } else {
+            throw new Error(
+                `ERROR en la solicitud: ${response.status} - ${response.statusText}`
+            );
+        }
+    } catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
 export {
     loginApi,  
     logoutApi,
@@ -142,4 +169,5 @@ export {
     createVoteApi,
     createVoteReasonApi,
     createVoteFeelingApi,
+    createCommentApi,
   };

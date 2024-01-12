@@ -2,7 +2,7 @@ import { useSession } from '../context/SessionContext';
 import { logoutApi } from '../utils/apiTripu';
 
 
-function LogoutButton() {
+const LogoutButton = () => {
     const { session, setSession } = useSession();
 
     const handleLogout = () => {
@@ -15,7 +15,23 @@ function LogoutButton() {
     }
 
     return (<>
-    {session && <button onClick={handleLogout}>Cerrar sesión</button>}
+    {session && <button style={
+        {
+            position: 'absolute',
+            top: '10px',
+            right: '10px',
+            width: '30px',
+            height: '30px',
+            backgroundColor: 'red',
+            opacity: '0.5',
+            color: 'white',
+            fontSize: '12px',
+            fontWeight: 'bold',
+            borderRadius: '50%',
+            border: 'none',
+            cursor: 'pointer',
+        }
+    } onClick={handleLogout}>X</button>}
     </>);
 }
 

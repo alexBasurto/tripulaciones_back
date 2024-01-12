@@ -21,7 +21,11 @@ const getById = async (req, res) => {
 
 const create = async (req, res) => {
     try {
-        const comment = await commentsModel.create(req.body);
+        const today = new Date().toISOString().slice(0, 10);
+        const [comment, metadata] = await commentsModel.sequelize.query(`
+            INSERT INTO tbComments (idEmployee, idCompany, comment, date)
+            VALUES (${req.body.idEmployee}, ${req.body.idCompany}, '${req.body.comment}', '${today}')
+        `);
         res.status(201).json({ message: "Comment created" });
     } catch (error) {
         res.status(500).json({ message: error.message });
