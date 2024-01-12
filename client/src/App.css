@@ -24,6 +24,39 @@ main {
 }
 
 
+.button-container {
+  top: 3px;
+}
+
+.back-arrow{
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  color: black;
+}
+
+.btn-back {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  background: none;
+  border: none;
+  color: #007aff; /* O cualquier color que desees para el texto y la flecha */
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+
+.btn-back .header-text {
+  font-size: 18px; /* Ajusta el tamaño según necesites */
+  color: #000000; /* Ajusta el color del texto según necesites */
+}
+
+
+
 .btn-next {
   width: 85%;
   height: 50px;

@@ -57,7 +57,7 @@ const Feelings = ({ preMood, feelings, setFeelings }) => {
     return (
         <div className="feelings">
             <div className="feelings-tags-box">
-                <p>¿Qué define mejor lo que sentiste ayer?</p>
+                <p className='feelings-question'>¿Qué define mejor lo que sentiste ayer?</p>
                 <div className="feelings-tags">
                     {/* // Utiliza el método map para renderizar las etiquetas de emociones en función del preMood. */}
                     {Object.keys(feelingsToDisplay).map((key) => (

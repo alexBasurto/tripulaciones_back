@@ -85,19 +85,20 @@ const App = () => {
     <div className="app">
       {(activeComponent === 'feelings' || activeComponent === 'reasons') && (
         <div className="button-container">
-          <button
-            className="btn-back text-button"
-            onClick={() => {
-              if (activeComponent === 'feelings') {
-                setActiveComponent('preMood');
-              } else if (activeComponent === 'reasons') {
-                setActiveComponent('feelings');
-              }
-            }}
-          >
-            {activeComponent === 'feelings' ? 'Estado de ánimo' : 'Emociones'}
-          </button>
-        </div>
+        <button
+          className="btn-back"
+          onClick={() => {
+            if (activeComponent === 'feelings') {
+              setActiveComponent('preMood');
+            } else if (activeComponent === 'reasons') {
+              setActiveComponent('feelings');
+            }
+          }}
+        >
+          <span className="back-arrow"><img src="/icons/arrowIcon.svg" alt="Arrow" className='arrow-icon'/></span>
+          <span className="header-text">{activeComponent === 'feelings' ? 'Estado de ánimo' : 'Emociones'}</span>
+        </button>
+      </div>
       )}
 
       {(activeComponent == 'loading') && <div className='blur'>Cargando...</div>}
@@ -124,7 +125,7 @@ const App = () => {
 
       {(activeComponent == 'preMood' || activeComponent == 'feelings' || activeComponent == 'reasons' || activeComponent == 'curMood') &&
         <button
-          className="btn-next"
+          className="btn-next text-button"
           onClick={() => {
           if (activeComponent == 'preMood') {
             setActiveComponent('feelings');
