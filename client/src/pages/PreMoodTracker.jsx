@@ -36,11 +36,10 @@ const PreMoodTracker = ({preMood, setPreMood, activeComponent, setActiveComponen
 
   return (
     <div className={`main-container rastreador-de-emociones ${moods[preMood].replace(" ", "-")}`}>
-      <header>
+      <header className='title'>
         <h4>Estado de ánimo</h4>
       </header>
       <main>
-      <div className="content-wrapper">
         <h2>¿Cómo te sentiste ayer al finalizar la jornada?</h2>
         <div className={`rotating-image-container ${moods[preMood].toLowerCase()}`}>
           <img className="rotating-image" src={icons[moods[preMood]]} alt={`Icon ${moods[preMood]}`} />
@@ -62,32 +61,6 @@ const PreMoodTracker = ({preMood, setPreMood, activeComponent, setActiveComponen
             <span className="muymal">MUY MAL</span>
             <span className="muybien">MUY BIEN</span>
           </div>
-          <button
-              className="siguiente-button"
-              onClick={() => {
-                // Lógica para el botón de Siguiente
-                if (activeComponent === 'preMood') {
-                  setActiveComponent('feelings');
-                } else if (activeComponent === 'feelings') {
-                  setActiveComponent('reasons');
-                } else if (activeComponent === 'reasons') {
-                  setRegistered1(true);
-                  setTimeout(() => {
-                    setRegistered1(false);
-                    setActiveComponent('curMood');
-                  }, 3000);
-                } else if (activeComponent === 'curMood') {
-                  setRegistered2(true);
-                  setTimeout(() => {
-                    setRegistered2(false);
-                    setActiveComponent('ending');
-                  }, 3000);
-                }
-              }}
-            >
-              Siguiente
-            </button>
-        </div>
         </div>
       </main>
     </div>

@@ -9,10 +9,6 @@
   font-family: 'Inter', sans-serif;
 }
 
-main {
-  height: 70dvh; /* para las primeras pruebas */
-}
-
 /* Blur */
 
 .blur {
@@ -66,12 +62,12 @@ main {
 .btn-next {
   width: 85%;
   height: 50px;
-  background-color: #646cff;
+  background-color: var(--background-color);
   border-radius: 100px;
-  border: none;
-  color: white;
+  border: 1px solid var(--estado-color);
+  color: black;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
 }

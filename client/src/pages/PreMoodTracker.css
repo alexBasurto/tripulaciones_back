@@ -13,12 +13,16 @@ html, body {
   padding: 0;
 }
 
-header {
+.title {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
-  color: #333;
+}
+
+h4 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: var(--estado-color);
 }
 
 main {
@@ -30,15 +34,6 @@ main-container {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-}
-
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1rem;
 }
 
 .rastreador-de-emociones::before {
@@ -200,13 +195,6 @@ h2 {
   width: 80%;
 }
 
-h4 {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  font-weight: 500;
-  color: var(--estado-color);
-}
-
 .estado-actual {
   font-size: 0.5rem;
   margin-bottom: 1rem;
@@ -222,17 +210,17 @@ h4 {
 img {
   width: 90%;
   height: auto;
-  padding: 5%;
+  padding: 2%;
 }
 
 .rotating-image-container {
   position: relative;
   display: inline-block;
+  height: 300px;
 }
 
 .rotating-image {
   width: 60%;
-  max-width: 282px;
   height: auto;
   padding: 5%;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
