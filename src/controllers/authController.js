@@ -5,6 +5,7 @@ import companiesModel from "../models/companiesModel.js";
 import departmentsModel from "../models/departmentsModel.js";
 import branchesModel from "../models/branchesModel.js";
 import shiftsModel from "../models/shiftsModel.js";
+import votingModel from "../models/votingModel.js";
 
 const login = async (req, res) => {
     const { workerId, password } = req.body;
@@ -103,6 +104,46 @@ const session = async (req, res) => {
 
         `);
 
+        const [latestVoting, metadata3] = await employeesModel.sequelize.query(`
+            SELECT *
+            FROM tbVoting v
+            WHERE v.idEmployee = ${decoded.idEmployee}
+            AND v.idCompany = ${decoded.idCompany}
+            ORDER BY v.currentDay DESC
+            LIMIT 1
+        `);
+        
+        
+
+        let streak = 0;
+
+
+        
+        if (latestVoting.currentDay) {
+            console.log(latestVoting[0].currentDay);
+            let dateToCheck = latestVoting[0].currentDay;
+
+            while (true) {
+                const voting = await votingModel.findOne({
+                    where: {
+                        idEmployee,
+                        idCompany,
+                        currentDay: dateToCheck,
+                    },
+                });
+
+                if (!voting) {
+                    break;
+                }
+                streak++;
+                console.log(streak);
+                dateToCheck = new Date(dateToCheck);
+                dateToCheck.setDate(dateToCheck.getDate() - 1);
+                dateToCheck = dateToCheck.toISOString().slice(0, 10);
+            }
+        }
+
+        
 
         res.status(200).json({
             idEmployee: decoded.idEmployee,
@@ -120,6 +161,8 @@ const session = async (req, res) => {
             idShift: userDetail[0].idShift,
             shiftName: userDetail[0].shiftName,
             employeesCount: employeesCount[0].employeesCount,
+            latestVoting: latestVoting,
+            streak: streak,
 
 
         });

@@ -32,7 +32,7 @@ const App = () => {
       } else {
           setActiveComponent('preMood');
       }
-    }
+    } 
   }
   , [session]);
 
@@ -103,7 +103,14 @@ const App = () => {
         {activeComponent == 'reasons' && <Reasons preMood={preMood} reasons={reasons} setReasons={setReasons} /> }
         {registered1 && <div className='blur'>Registrado 1/2</div>}
         {activeComponent == 'curMood' && <CurMoodTracker curMood={curMood} setCurMood={setCurMood} /> }
-        {registered2 && <div className='blur'>Registrado 2/2</div>}
+        {registered2 && <div className='blur'>
+          <span>Registrado 2/2</span>
+          <span>¡Gracias por participar!</span>
+          <span>Tu racha es de {session.lastVoting.streak} días</span>
+          <span>Reuerda que tu voto es anónimo y se registrará junto al de otras {session.data.employeesCount}</span>
+            </div>}
+
+          
         {activeComponent == 'ending' && <Ending/> }
 
         <div>

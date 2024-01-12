@@ -22,7 +22,7 @@ const getById = async (req, res) => {
 const create = async (req, res) => {
     try {
         const comment = await commentsModel.create(req.body);
-        res.status(201).json(comment);
+        res.status(201).json({ message: "Comment created" });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
