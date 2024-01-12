@@ -93,16 +93,26 @@ const session = async (req, res) => {
             WHERE e.idEmployee = ${decoded.idEmployee}
         `;
         const [userDetail, metadata] = await employeesModel.sequelize.query(literal);
-
-        const [employeesCount, metadata2] = await employeesModel.sequelize.query(`
+        
+        // construir query para obtener la cantidad de empleados de la empresa
+        // y que estén en el mismo departamento, sucursal y turno que el usuario logueado
+        // y que tenga en cuenta si idDepartment o idBranc o idShift es null
+        let employeeCountQuery = `
             SELECT COUNT(*) AS employeesCount
             FROM tbEmployees e
             WHERE e.idCompany = ${decoded.idCompany}
-            AND e.idDepartment = ${userDetail[0].idDepartment}
-            AND e.idBranch = ${userDetail[0].idBranch}
-            AND e.idShift = ${userDetail[0].idShift}
+        `;
 
-        `);
+        if (userDetail[0].idDepartment !== null) {
+            employeeCountQuery += ` AND e.idDepartment = ${userDetail[0].idDepartment}`;
+        }
+        if (userDetail[0].idBranch !== null) {
+            employeeCountQuery += ` AND e.idBranch = ${userDetail[0].idBranch}`;
+        }
+        if (userDetail[0].idShift !== null) {
+            employeeCountQuery += ` AND e.idShift = ${userDetail[0].idShift}`;
+        }
+        const [employeesCount, metadata2] = await employeesModel.sequelize.query(employeeCountQuery);
 
         const [latestVoting, metadata3] = await employeesModel.sequelize.query(`
             SELECT *
@@ -115,6 +125,13 @@ const session = async (req, res) => {
 
         // Calcular la racha de fechas consecutivas hacia atrás desde currentDay
         // Y alimentar un array donde indique si votó o no en cada fecha los últimos 7 días
+        if (latestVoting.length === 0) {
+            latestVoting.push({
+                currentDay: 0,
+                currentDayScore: 0,
+            });
+        }
+
         let streak = 0;
         let streakFlag = true;
         let counter = 0;
