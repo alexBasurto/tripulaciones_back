@@ -24,33 +24,15 @@ const App = () => {
   const [sendVote, setSendVote] = useState(false);
 
   useEffect(() => {
-    if (session.lastVoting === null) {
-      if (session.data === null) {
-        setActiveComponent('login');
-      } else if (session.data === 'not-started') {
-        setActiveComponent('loading');
+    if (session === null) {
+      setActiveComponent('login');
       } else {
-        setActiveComponent('preMood');
-      }
-    }
-  }
-    , [session]);
-
-  useEffect(() => {
-    if (session.lastVoting !== null) {
-      const currentDay = new Date().toISOString().slice(0, 10);
-      let lastDay = session.lastVoting.latestVoting.currentDay;
-
-      console.log('lastDay', lastDay);
-      console.log('currentDay', currentDay);
-
-
-      if (lastDay !== currentDay) {
-        setActiveComponent('preMood');
-      } else {
-        setActiveComponent('ending');
-      }
-    }
+        if (session.lastWeekVotes[0] === 1) {
+          setActiveComponent('ending');
+        } else {
+          setActiveComponent('preMood');
+        }
+    } 
   }
     , [session]);
 
@@ -103,14 +85,28 @@ const App = () => {
 
       {(activeComponent == 'loading') && <div className='blur'>Cargando...</div>}
 
-      {activeComponent == 'login' && <Login setActiveComponent={setActiveComponent} />}
-      {activeComponent == 'preMood' && <PreMoodTracker preMood={preMood} setPreMood={setPreMood} />}
-      {activeComponent == 'feelings' && <Feelings preMood={preMood} feelings={feelings} setFeelings={setFeelings} />}
-      {activeComponent == 'reasons' && <Reasons preMood={preMood} reasons={reasons} setReasons={setReasons} />}
-      {registered1 && <div className='blur'>Registrado 1/2</div>}
-      {activeComponent == 'curMood' && <CurMoodTracker curMood={curMood} setCurMood={setCurMood} />}
-      {registered2 && <div className='blur'>Registrado 2/2</div>}
-      {activeComponent == 'ending' && <Ending />}
+        {activeComponent == 'login' && <Login setActiveComponent={setActiveComponent} /> }
+        {activeComponent == 'preMood' && <PreMoodTracker preMood={preMood} setPreMood={setPreMood} /> }
+        {activeComponent == 'feelings' && <Feelings preMood={preMood} feelings={feelings} setFeelings={setFeelings} /> }
+        {activeComponent == 'reasons' && <Reasons preMood={preMood} reasons={reasons} setReasons={setReasons} /> }
+        {registered1 && <div className='blur'>Registrado 1/2</div>}
+        {activeComponent == 'curMood' && <CurMoodTracker curMood={curMood} setCurMood={setCurMood} /> }
+        {registered2 && <div className='blur'>
+          <span>Registrado 2/2</span>
+          <span>¡Gracias por participar!</span>
+          <span>Tu racha es de {session.streak + 1} días</span>
+          <span>
+            Recuerda que tu voto es anónimo y se registrará junto al de otras {session.employeesCount} personas
+            {session.departmentName && ` del departamento ${session.departmentName}`}
+            {session.branchName && `, de la sede ${session.branchName}`}
+            {session.shiftName && `, del turno ${session.shiftName}`}
+            .
+        </span>
+
+            </div>}
+
+          
+        {activeComponent == 'ending' && <Ending/> }
 
       {/* <div>
           <p>TEST</p>
@@ -118,8 +114,8 @@ const App = () => {
           <p>Feelings: {feelings}</p>
           <p>Reasons: {reasons}</p>
           <p>Curmood: {curMood}</p>
-          <p>Empleado y empresa {session.data && session.data.idEmployee + ' ' + session.data.idCompany}</p>
-          <p>Último voto y racha {session.lastVoting && session.lastVoting.latestVoting.currentDay + ' ' + session.lastVoting.streak}</p>
+          <p>Empleado y empresa {session && session.idEmployee + ' ' + session.idCompany}</p>
+          <p>Último voto y racha {session && session.latestVoting[0].currentDay + ' ' + session.streak}</p>
           
         </div> */}
 
@@ -148,7 +144,7 @@ const App = () => {
         }
         }>Siguiente</button>}
 
-      {session.data !== null && session.data !== 'not-started' && <LogoutButton />}
+        {session !== null && <LogoutButton />}
     </div>
   );
 };

@@ -65,7 +65,10 @@ const userRecentVotingData = async (req, res) => {
         });
 
         if (!latestVoting) {
-            res.status(404).json({ message: "No se encontró ningún voto." });
+            res.status(200).json({
+                latestVoting: null,
+                streak: 0,
+            });
         } else {
             // Calcular la racha de fechas consecutivas hacia atrás desde currentDay
             let streak = 0;

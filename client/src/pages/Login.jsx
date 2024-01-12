@@ -1,6 +1,6 @@
 import './Login.css';
 import { useState } from 'react';
-import { loginApi } from '../utils/apiTripu';
+import { loginApi, sessionApi } from '../utils/apiTripu';
 import { useSession } from '../context/SessionContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -47,9 +47,31 @@ function Login({activeComponent, setActiveComponent}) {
         setError(null);
         loginApi(workerId, password)
         .then(response => {
-            setSession({ data: 'not-started', lastVoting: null });
-            // session data es actualizado y activa el useEffect de App.jsx y SessionContext.jsx
-            setActiveComponent('preMood');
+            if (!response.ok) {
+                setError('Usuario o contraseña incorrectos');
+                return;
+            }
+            
+            // llamar a sessionApi y setear el session
+            sessionApi()
+            .then(response => {
+                if (!response.ok) {
+                    setError('Usuario o contraseña incorrectos');
+                    return;
+                }
+                return response.json();
+            }).then(data => {
+                setSession(data);
+            }).catch(error => {
+                setError('Usuario o contraseña incorrectos', error);
+            });
+
+            if (session.lastWeekVotes[0] === 1) {
+                setActiveComponent('ending');
+                return;
+            } else {
+                setActiveComponent('preMood');
+            }
         }).catch(error => {
             setError('Usuario o contraseña incorrectos', error);
         });            
@@ -60,7 +82,7 @@ function Login({activeComponent, setActiveComponent}) {
         <Header />
         <main className="login-main">
             <h2 className="login-title">Bienvenido a <img src="/logo.gif" alt="Logo" className="app-logo" /></h2>
-            {!session.data &&
+            {!session &&
             <div className="login-form-container">
                 <p className="login-instructions">Introduce tus datos para iniciar sesión</p>
 
