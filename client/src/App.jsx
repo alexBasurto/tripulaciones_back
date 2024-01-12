@@ -44,7 +44,7 @@ const App = () => {
         let previousDay = new Date();
         previousDay.setDate(previousDay.getDate() - 1);
         previousDay = previousDay.toISOString().slice(0, 10);
-        const vote = await createVoteApi(session.data.idEmployee, session.data.idCompany, previousDay, preMood, currentDay, curMood);
+        const vote = await createVoteApi(session.idEmployee, session.idCompany, previousDay, preMood, currentDay, curMood);
         const voteFormated = await vote.json();
 
         for (let i = 0; i < feelings.length; i++) {
