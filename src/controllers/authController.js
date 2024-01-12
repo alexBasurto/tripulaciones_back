@@ -112,38 +112,44 @@ const session = async (req, res) => {
             ORDER BY v.currentDay DESC
             LIMIT 1
         `);
-        
-        
 
+        // Calcular la racha de fechas consecutivas hacia atrás desde currentDay
+        // Y alimentar un array donde indique si votó o no en cada fecha los últimos 7 días
         let streak = 0;
+        let streakFlag = true;
+        let counter = 0;
+        let dateToCheck = latestVoting[0].currentDay;
+        let lastWeekVotes = [];
 
+        while (true) {
+            const voting = await votingModel.findOne({
+                where: {
+                    idEmployee: decoded.idEmployee,
+                    idCompany: decoded.idCompany,
+                    currentDay: dateToCheck,
+                },
+            });
 
-        
-        if (latestVoting.currentDay) {
-            console.log(latestVoting[0].currentDay);
-            let dateToCheck = latestVoting[0].currentDay;
-
-            while (true) {
-                const voting = await votingModel.findOne({
-                    where: {
-                        idEmployee,
-                        idCompany,
-                        currentDay: dateToCheck,
-                    },
-                });
-
-                if (!voting) {
-                    break;
-                }
-                streak++;
-                console.log(streak);
-                dateToCheck = new Date(dateToCheck);
-                dateToCheck.setDate(dateToCheck.getDate() - 1);
-                dateToCheck = dateToCheck.toISOString().slice(0, 10);
+            if (!voting) {
+                streakFlag = false;
             }
-        }
+            
+            if (streakFlag) {
+                streak++;
+            }
 
-        
+            if (counter === 7) {
+                break;
+            }
+
+            voting ? lastWeekVotes.push(1) : lastWeekVotes.push(0);
+
+            counter++;
+
+            dateToCheck = new Date(dateToCheck);
+            dateToCheck.setDate(dateToCheck.getDate() - 1);
+            dateToCheck = dateToCheck.toISOString().slice(0, 10);
+        }
 
         res.status(200).json({
             idEmployee: decoded.idEmployee,
@@ -163,8 +169,7 @@ const session = async (req, res) => {
             employeesCount: employeesCount[0].employeesCount,
             latestVoting: latestVoting,
             streak: streak,
-
-
+            lastWeekVotes: lastWeekVotes,
         });
     } catch (err) {
         res.status(401).json({ errorMessage: "Unauthorized" });
