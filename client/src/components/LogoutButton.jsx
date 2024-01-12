@@ -8,7 +8,7 @@ function LogoutButton() {
     const handleLogout = () => {
         logoutApi()
         .then(() => {
-            setSession({ data: null, lastVoting: null });
+            setSession(null);
         }).catch(error => {
             console.log(error);
         });

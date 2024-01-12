@@ -7,7 +7,7 @@ import Reasons from './pages/Reasons';
 import CurMoodTracker from './pages/CurMoodTracker';
 import Ending from './pages/Ending';
 import LogoutButton from './components/LogoutButton';
-
+import { createVoteApi, createVoteReasonApi, createVoteFeelingApi } from './utils/apiTripu';
 import { useSession } from './context/SessionContext';
 
 const App = () => {
@@ -21,32 +21,69 @@ const App = () => {
   const [reasons, setReasons] = useState([]);
   const [curMood, setCurMood] = useState(3);
 
+  const [sendVote, setSendVote] = useState(false);
+
   useEffect(() => {
-    if (session.data === null) {
+    if (session === null) {
       setActiveComponent('login');
-    } else if (session.data === 'not-started') {
-      setActiveComponent('loading');
-    } else {
-      setActiveComponent('preMood');
-    }
+      } else {
+        if (session.lastWeekVotes[0] === 1) {
+          setActiveComponent('ending');
+        } else {
+          setActiveComponent('preMood');
+        }
+    } 
   }
-  , [session.data]);
+    , [session]);
+
+  useEffect(() => {
+    const sendVoteApi = async () => {
+      try {
+        if (!sendVote) return;
+        const currentDay = new Date().toISOString().slice(0, 10);
+        let previousDay = new Date();
+        previousDay.setDate(previousDay.getDate() - 1);
+        previousDay = previousDay.toISOString().slice(0, 10);
+        const vote = await createVoteApi(session.idEmployee, session.idCompany, previousDay, preMood, currentDay, curMood);
+        const voteFormated = await vote.json();
+
+        for (let i = 0; i < feelings.length; i++) {
+          createVoteFeelingApi(voteFormated.idVoting, feelings[i]);
+        }
+        for (let i = 0; i < reasons.length; i++) {
+          createVoteReasonApi(voteFormated.idVoting, reasons[i]);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    sendVoteApi();
+  }
+
+    , [sendVote]);
+
 
   return (
     <div className="app">
-        {(activeComponent == 'feelings' || activeComponent == 'reasons') &&
-        <button onClick={() => {
-          if (activeComponent == 'feelings') {
-            setActiveComponent('preMood');
-          } else if (activeComponent == 'reasons') {
-            setActiveComponent('feelings');
-          }
-        }
-        }>
-          {activeComponent === 'feelings' ? 'Estado de ánimo' : activeComponent === 'reasons' ? 'Emociones' : 'Atrás'}
-          </button>}
+      {(activeComponent === 'feelings' || activeComponent === 'reasons') && (
+        <div className="button-container">
+        <button
+          className="btn-back"
+          onClick={() => {
+            if (activeComponent === 'feelings') {
+              setActiveComponent('preMood');
+            } else if (activeComponent === 'reasons') {
+              setActiveComponent('feelings');
+            }
+          }}
+        >
+          <span className="back-arrow"><img src="/icons/arrowIcon.svg" alt="Arrow" className='arrow-icon'/></span>
+          <span className="header-text">{activeComponent === 'feelings' ? 'Estado de ánimo' : 'Emociones'}</span>
+        </button>
+      </div>
+      )}
 
-        {(activeComponent == 'loading') && <div className='blur'>Cargando...</div>}
+      {(activeComponent == 'loading') && <div className='blur'>Cargando...</div>}
 
         {activeComponent == 'login' && <Login setActiveComponent={setActiveComponent} /> }
         {activeComponent == 'preMood' && <PreMoodTracker preMood={preMood} setPreMood={setPreMood} /> }
@@ -54,44 +91,60 @@ const App = () => {
         {activeComponent == 'reasons' && <Reasons preMood={preMood} reasons={reasons} setReasons={setReasons} /> }
         {registered1 && <div className='blur'>Registrado 1/2</div>}
         {activeComponent == 'curMood' && <CurMoodTracker curMood={curMood} setCurMood={setCurMood} /> }
-        {registered2 && <div className='blur'>Registrado 2/2</div>}
+        {registered2 && <div className='blur'>
+          <span>Registrado 2/2</span>
+          <span>¡Gracias por participar!</span>
+          <span>Tu racha es de {session.streak + 1} días</span>
+          <span>
+            Recuerda que tu voto es anónimo y se registrará junto al de otras {session.employeesCount} personas
+            {session.departmentName && ` del departamento ${session.departmentName}`}
+            {session.branchName && `, de la sede ${session.branchName}`}
+            {session.shiftName && `, del turno ${session.shiftName}`}
+            .
+        </span>
+
+            </div>}
+
+          
         {activeComponent == 'ending' && <Ending/> }
 
-        <div>
+      {/* <div>
           <p>TEST</p>
           <p>Preemood: {preMood}</p>
           <p>Feelings: {feelings}</p>
           <p>Reasons: {reasons}</p>
           <p>Curmood: {curMood}</p>
-          <p>Empleado y empresa {session.data && session.data.idEmployee + ' ' + session.data.idCompany}</p>
-          <p>Último voto y racha {session.lastVoting && session.lastVoting.latestVoting.currentDay + ' ' + session.lastVoting.streak}</p>
+          <p>Empleado y empresa {session && session.idEmployee + ' ' + session.idCompany}</p>
+          <p>Último voto y racha {session && session.latestVoting[0].currentDay + ' ' + session.streak}</p>
           
-        </div>
+        </div> */}
 
-        {(activeComponent == 'preMood' || activeComponent == 'feelings' || activeComponent == 'reasons' || activeComponent == 'curMood') &&
-        <button onClick={() => 
-          {
-            if (activeComponent == 'preMood') {
-              setActiveComponent('feelings');
-            } else if (activeComponent == 'feelings') {
-              setActiveComponent('reasons');
-            } else if (activeComponent == 'reasons') {
-              setRegistered1(true);
-              setTimeout(() => {
-                setRegistered1(false);
-                setActiveComponent('curMood');
-              }, 3000);
-            } else if (activeComponent == 'curMood') {
-              setRegistered2(true);
-              setTimeout(() => {
-                setRegistered2(false);
-                setActiveComponent('ending');
-              }, 3000);
-            }
+      {(activeComponent == 'preMood' || activeComponent == 'feelings' || activeComponent == 'reasons' || activeComponent == 'curMood') &&
+        <button
+          className="btn-next text-button"
+          onClick={() => {
+          if (activeComponent == 'preMood') {
+            setActiveComponent('feelings');
+          } else if (activeComponent == 'feelings') {
+            setActiveComponent('reasons');
+          } else if (activeComponent == 'reasons') {
+            setRegistered1(true);
+            setTimeout(() => {
+              setRegistered1(false);
+              setActiveComponent('curMood');
+            }, 3000);
+          } else if (activeComponent == 'curMood') {
+            setRegistered2(true);
+            setSendVote(true);
+            setTimeout(() => {
+              setRegistered2(false);
+              setActiveComponent('ending');
+            }, 3000);
           }
+        }
         }>Siguiente</button>}
 
-        {session.data !== null && session.data!== 'not-started' && <LogoutButton />}
+        {session !== null && <LogoutButton />}
     </div>
   );
 };

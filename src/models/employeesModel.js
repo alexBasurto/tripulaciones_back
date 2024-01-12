@@ -1,5 +1,11 @@
 import sequelize from "../config/sequelize.js";
 
+import companiesModel from "./companiesModel.js";
+import departmentsModel from "./departmentsModel.js";
+import branchesModel from "./branchesModel.js";
+import shiftsModel from "./shiftsModel.js";
+import votingModel from "./votingModel.js";
+
 const employeesModel = sequelize.define("tbEmployees", {
     idEmployee: {
         primaryKey: true,
@@ -66,5 +72,11 @@ const employeesModel = sequelize.define("tbEmployees", {
 }, {
     tableName: "tbEmployees",
 });
+
+employeesModel.belongsTo(companiesModel, { foreignKey: "idCompany" });
+employeesModel.belongsTo(departmentsModel, { foreignKey: "idDepartment" });
+employeesModel.belongsTo(branchesModel, { foreignKey: "idBranch" });
+employeesModel.belongsTo(shiftsModel, { foreignKey: "idShift" });
+employeesModel.hasMany(votingModel, { foreignKey: "idEmployee" });
 
 export default employeesModel;

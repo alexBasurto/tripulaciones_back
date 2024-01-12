@@ -1,10 +1,90 @@
-.selected {
-    color: black;
+/* Establece tu contenedor .feelings para que se centre */
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.feelings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.feelings .feelings-question {
+    font-size: 14px;
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    text-align: start;
+    width: 90%;
+}
+
+
+.feelings-tags-box {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+}
+
+.feelings-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    margin: 0 10px;
+    width: 100%;
+    max-width: 500px;
+
+}
+
+.feeling-tag {
+    font-size: 12px;
+    color: #000000;
     background-color: #f5f5f5;
     border: 1px solid #e3e3e3;
-    border-radius: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #e3e3e3;
+}
+
+.no-selected {
+    color: #000000;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 20px;
     padding: 5px;
     margin: 5px;
     cursor: pointer;
     box-shadow: 0 0 5px #e3e3e3;
+}
+
+.feeling-tag.selected {
+    color: white;
+    background-color: #8d8d8d;
+    border: 1px solid #8d8d8d;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-back.text-button {
+    background: none;
+    border: none;
+    color: #007aff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
 }

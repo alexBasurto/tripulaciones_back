@@ -1,10 +1,119 @@
-.selected {
-    color: black;
+/* Establece tu contenedor .reasons para que se centre */
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.reasons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.reasons .reasons-question {
+    font-size: 14px;
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    text-align: start;
+    width: 90%;
+}
+
+
+.reasons-tags-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    width: 350px;
+    height: 215px;
+}
+
+.reasons-tags {
+    width: 350px;
+    height: 256px;
+    display: flex;
+    justify-content: start; /* Asegura que los elementos se centren */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    align-items: flex-start;
+
+    list-style: none; /* Elimina los estilos de lista si se trata de un <ul> */
+}
+
+.reason-tag {
+    font-size: 10px;
+    display: flex; /* Establece el display a flex para usar flexbox */
+    flex-direction: column; /* Alinea los elementos en columna */
+    justify-content: center; /* Centra los elementos verticalmente en la columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    padding: 0; /* Ajusta el padding según sea necesario */
+    margin: 5px; /* Ajusta el margen para separar los botones */
+    width: 77px; /* Ajusta el ancho automáticamente */
+    height: 67px; /* Ajusta el alto automáticamente */
+    text-align: center; /* Alinea el texto al centro */
+    border: 1px solid #e3e3e3; /* Borde para el botón, si es necesario */
+    border-radius: 10px; /* Radio del borde para redondear los botones */
+    background-color: #f5f5f5; /* Color de fondo para botones no seleccionados */
+    box-shadow: 0 0 5px #e3e3e3; /* Sombra alrededor del botón */
+    cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+    transition: background-color 0.3s; /* Transición suave para el fondo */
+}
+
+/* Estilos para cuando .reason-tag está seleccionado */
+.reason-tag.selected {
+    background-color: #8d8d8d; /* Color de fondo para botones seleccionados */
+    color: white; /* Color del texto para botones seleccionados */
+}
+
+.reason-icon {
+    width: 30px; /* Tamaño del ícono */
+    height: 30px; /* Tamaño del ícono */
+}
+
+.reason-text {
+    font-size: 10px; /* Tamaño del texto */
+    margin: 0;
+    padding: 0;
+}
+
+.no-selected {
+    display: flex;
+    justify-content: center;
+    color: #000000;
     background-color: #f5f5f5;
     border: 1px solid #e3e3e3;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 5px;
     margin: 5px;
     cursor: pointer;
-    box-shadow: 0 0 5px #e3e3e3;
+}
+
+.reason-tag.selected {
+    color: white;
+    background-color: #8d8d8d;
+    border: 1px solid #8d8d8d;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-back.text-button {
+    background: none;
+    border: none;
+    color: #007aff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
 }

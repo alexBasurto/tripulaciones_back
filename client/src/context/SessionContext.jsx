@@ -1,41 +1,34 @@
 import { useState, useContext, createContext, useEffect } from "react";
-import { sessionApi, latestVotingApi } from "../utils/apiTripu";
+import { sessionApi } from "../utils/apiTripu";
 
 const SessionContext = createContext();
 
 const SessionProvider = ({ children }) => {
-    const [session, setSession] = useState({ data: "not-started", lastVoting: null });
-
-    // Use a separate state variable to track the need for fetching latest voting data
-    const [fetchLatestVoting, setFetchLatestVoting] = useState(false);
+    const [session, setSession] = useState(null);
 
     useEffect(() => {
-        if (session.data === "not-started") {
+        if (session === null) {
             const getSession = async () => {
                 try {
                     const response = await sessionApi();
                     const data = await response.json();
                     if (data === null) {
-                        setSession({ data: null, lastVoting: null });
+                        // setSession(null);
                         return;
                     } else {
-                        setSession((prevSession) => ({
-                            ...prevSession,
-                            data: data,
-                        }));
+                        setSession(data);
                         console.log('hecho', data);
-                        setFetchLatestVoting(true); // Set this flag to fetch latest voting data
                     }
                 
                 } catch (error) {
-                    setSession({ data: null, lastVoting: null });
+                    return;
                 }
             };
             getSession();
         }
-    }, [session.data]);
+    }, []);
 
-    useEffect(() => {
+    /* useEffect(() => {
         // Fetch latest voting data when fetchLatestVoting flag is true
         if (fetchLatestVoting && session.data !== null && session.data !== "not-started") {
             const getLatestVoting = async () => {
@@ -45,10 +38,12 @@ const SessionProvider = ({ children }) => {
                         session.data.idCompany
                     );
                     const data = await response.json();
+                    // haz setSession con el ultimo voto, añadiendolo a la información que ya tiene
                     setSession((prevSession) => ({
                         ...prevSession,
                         lastVoting: data,
                     }));
+                    console.log('hecho2', data);
                 } catch (error) {
                     console.log(error);
                 }
@@ -57,7 +52,7 @@ const SessionProvider = ({ children }) => {
             // Reset the flag after fetching latest voting data
             setFetchLatestVoting(false);
         }
-    }, [fetchLatestVoting, session.data]);
+    }, [fetchLatestVoting, session.data]); */
 
     return (
         <SessionContext.Provider value={{ session, setSession }}>
