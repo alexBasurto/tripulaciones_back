@@ -3,8 +3,7 @@ import React from 'react';
 function Footer() {
     return (
         <footer>
-            <p>© 2023 Desafío Tripulaciones</p>
-            <p>Esto es un Footer</p>
+            <p>Al registrarte, aceptas nuestra <a href="#" style={{ textDecoration: 'underline' }}>Política de privacidad</a></p>
         </footer>
     )
 }
