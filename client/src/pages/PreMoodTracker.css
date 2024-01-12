@@ -7,16 +7,10 @@
   font-family: 'Inter', sans-serif;
 }
 
-.rastreador-de-emociones {
-  text-align: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Aplicar el gradiente radial al fondo de todo el componente */
-.rastreador-de-emociones {
-  background: radial-gradient(circle at center, var(--color-centro) 20%, var(--color-borde) 70%, rgba(255,255,255,1) 100%);
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 header {
@@ -29,68 +23,167 @@ header {
 
 main {
   padding: 1rem;
-  transition: background-color 0.5s;
+}
+
+main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.rastreador-de-emociones::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  filter: blur(10px);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.rastreador-de-emociones {
+  position: relative;
 }
 
 /* Colores de fondo para cada estado emocional */
 .Muy-mal {
-  --color-centro: #3843D0;
-  --color-borde: #66bbf7; 
+  /* --color-centro: #3843D0;
+  --color-borde: #66bbf7; */
+  --estado-color:#3843D0;
+  text-shadow: #0000005f 0px 0px 1px;
 }
 
+
 .Mal {
-  --color-centro: #6ECFBC;
-  --color-borde: #abfbff;
+ /* --color-centro: #6ECFBC;
+  --color-borde: #abfbff; */
+  --estado-color: #2A4F48;
+  text-shadow: #0000005f 0px 0px 1px;
 }
 
 .Normal {
-  --color-centro:#FFC466;
-  --color-borde: #e39c45;
+  /* --color-centro:#FFC466;
+  --color-borde: #e39c45; */
+  --estado-color: #73582E;
+  text-shadow: #0000005f 0px 0px 1px;
 }
 
 .Bien {
-  --color-centro: #FF7453;
-  --color-borde: #FF7453;
+  /* --color-centro: #FF7453;
+  --color-borde: #FF7453; */
+  --estado-color: #733425;
+  text-shadow: #0000005f 0px 0px 1px;
 }
 
 .Muy-bien {
-  --color-centro: #FF80A9;
-  --color-borde: #FF80A9;
+ /* --color-centro: #fe8eb2;
+  --color-borde: #f56f99; */
+  --estado-color: #994D65;
+  text-shadow: #0000005f 0px 0px 1px;
 }
 
-.estado-actual {
+/* Colores de fondo para cada estado emocional */
+body.Muy-mal {
+  background-color: rgba(68, 78, 221, 0.5);
+  transition: background-color 1s ease-out;
+  z-index: -10;
+  backdrop-filter: blur(550px);
+}
+
+body.Muy-mal::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+  circle at center,
+  rgba(255, 255, 255, 0.7) 5%,
+  rgba(68, 78, 221, 0.6) 15%,
+  rgb(255, 255, 255, 1) 100%
+);
+  z-index: -1;
+  pointer-events: none;
+}
+
+body.Mal {
+  background-color: rgb(110, 207, 188, 0.7);
+  transition: background-color 1s ease-out;
+  backdrop-filter: blur(120px);
+  z-index: -1;
+}
+
+body.Normal {
+  background-color: rgb(255, 196, 102, 0.880);
+  transition: background-color 1s ease-out;
+  backdrop-filter: blur(300px);
+  z-index: -1;
+}
+
+body.Bien {
+  background-color: rgb(255, 116, 83, 0.8);
+  transition: background-color 1s ease-out;
+  backdrop-filter: blur(250px);
+  z-index: -1;
+}
+
+body.Muy-bien {
+  background-color: rgb(254, 142, 178, 0.8);
+  transition: background-color 1s ease-out;
+  backdrop-filter: blur(200px);
+  z-index: -1;
+}
+
+.preMood {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  font-weight: bold;
+  color: var(--estado-color);
+  text-shadow: #0000005f 0px 0px 1px;
 }
 
-.deslizador-emocion {
+.contenedor-deslizador {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.slider-white {
   -webkit-appearance: none;
-  width: 100%;
-  height: 2rem;
+  width: 90%;
+  height: 2.5rem;
   border-radius: 1rem;
-  background: #dfdfdf5c;
+  background: rgba(255, 255, 255, 0.2);
   outline: none;
   opacity: 0.7;
-  transition: opacity .2s;
+  transition: opacity .1s;
+  color: white;
+  padding: 0;
+  margin: 0;
 }
 
-.deslizador-emocion::-webkit-slider-thumb {
+.slider-white::-webkit-slider-thumb,
+.slider-white::-moz-range-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 3rem;
-  height: 3rem;
-  border-radius: 1.5rem;
-  background: var(--color-borde);
+  height: 5rem;
+  border-radius: 50%;
+  background: #ffffff;
   cursor: pointer;
-}
-
-.deslizador-emocion::-moz-range-thumb {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 1.5rem;
-  background: var(--color-borde);
-  cursor: pointer;
+  margin: 0;
 }
 
 .etiquetas-emocion {
@@ -100,34 +193,92 @@ main {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1,2rem;
   margin-bottom: 1rem;
   font-weight: bold;
-  color: #000000;
+  color: var(--estado-color);
+  width: 80%;
+}
+
+h4 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: var(--estado-color);
+}
+
+.estado-actual {
+  font-size: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: var(--estado-color);
 }
 
 .muymal, .muybien {
-  color: #000000;
+  color: var(--estado-color, #000000);
   font-weight: 400;
 }
 
-/* Colores de fuente para cada estado emocional */
-.muy-mal.estado-actual {
-  color: #3843D0;
+img {
+  width: 60%;
+  max-width: 282px;
+  height: auto;
+  padding: 5%;
 }
 
-.mal.estado-actual {
-  color: #6ECFBC;
+.rotating-image-container {
+  position: relative;
+  display: inline-block;
 }
 
-.normal.estado-actual {
-  color: #FFC466;
+.rotating-image {
+  width: 60%;
+  max-width: 282px;
+  height: auto;
+  padding: 5%;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s ease-in-out;
 }
 
-.bien.estado-actual {
-  color: #FF7453;
+body.Muy-mal .rotating-image {
+  transform: rotate(-10deg);
 }
 
-.muy-bien.estado-actual {
-  color: #FF80A9;
+body.Mal .rotating-image {
+  transform: rotate(-5deg);
+}
+
+body.Normal .rotating-image {
+  transform: rotate(0deg);
+}
+
+body.Bien .rotating-image {
+  transform: rotate(10deg);
+}
+
+body.Muy-bien .rotating-image {
+  transform: rotate(5deg);
+}
+
+.siguiente-button {
+  width: 90%;
+  margin-top: 1rem;
+  background-color: var(--background-color);
+  color: black;
+  padding: 0.5rem;
+  border: 1px solid var(--estado-color);
+  cursor: pointer;
+  border-radius: 1rem;
+  font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+  img {
+    width: 70%;
+  }
+  .slider-white {
+    width: 100%; 
+    margin: 0;
+  }
 }
