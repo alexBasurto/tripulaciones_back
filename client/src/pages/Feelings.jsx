@@ -56,18 +56,16 @@ const Feelings = ({ preMood, feelings, setFeelings }) => {
 
     return (
         <div className="feelings">
-            <h1>Feelings</h1>
             <div className="feelings-tags-box">
                 <p>¿Qué define mejor lo que sentiste ayer?</p>
                 <div className="feelings-tags">
-
                     {/* // Utiliza el método map para renderizar las etiquetas de emociones en función del preMood. */}
                     {Object.keys(feelingsToDisplay).map((key) => (
                         <button
                             className={`feeling-tag ${
                                 feelings.includes(parseInt(key, 10))
                                     ? "selected"
-                                    : ""
+                                    : "no-selected"
                             }`}
                             key={parseInt(key, 10)}
                             onClick={() => {

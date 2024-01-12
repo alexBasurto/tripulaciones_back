@@ -1,10 +1,76 @@
-.selected {
-    color: black;
+/* Establece tu contenedor .feelings para que se centre */
+.app{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.reasons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+
+.reasons-tags-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+}
+
+.reason-tag {
+    color: #000000;
     background-color: #f5f5f5;
     border: 1px solid #e3e3e3;
-    border-radius: 5px;
+    border-radius: 20px;
     padding: 5px;
     margin: 5px;
     cursor: pointer;
     box-shadow: 0 0 5px #e3e3e3;
+}
+
+.no-selected {
+    color: #000000;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #e3e3e3;
+}
+
+.reason-tag.selected {
+    background-color: #8d8d8d;
+    /* Color muy visible para probar */
+    color: white;
+    border: 1px solid #8d8d8d;
+    border-radius: 20px;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+    /* Ajusta según sea necesario para el espaciado vertical */
+}
+
+.btn-back.text-button {
+    background: none;
+    border: none;
+    color: #007aff;
+    /* O cualquier color que desees para el texto */
+    cursor: pointer;
+    padding: 10px;
+    /* Ajusta según sea necesario para el espaciado */
+    font-size: 16px;
+    /* Ajusta según sea necesario para el tamaño del texto */
 }

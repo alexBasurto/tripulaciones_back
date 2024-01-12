@@ -21,5 +21,18 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  
+}
+
+
+.btn-next {
+  width: 85%;
+  height: 50px;
+  background-color: #646cff;
+  border-radius: 100px;
+  border: none;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }

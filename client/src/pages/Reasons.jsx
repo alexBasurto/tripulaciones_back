@@ -19,7 +19,6 @@ const Reasons = ({ preMood, reasons, setReasons }) => {
 
     return (
         <div className="reasons">
-        <h1>Reasons</h1>
         <div className="reasons-tags-box">
                 <p>¿A qué se debía el cómo te sentiste ayer?</p>
                 <div className="reasons-tags">
