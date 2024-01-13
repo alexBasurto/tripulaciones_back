@@ -3,6 +3,10 @@
   src: url(https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap);
 }
 
+*{
+  font-family: 'Inter', sans-serif;
+}
+
 /* Blur */
 
 .blur {
@@ -10,7 +14,7 @@
   z-index: 1;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   top: 0;
   left: 0;
   display: flex;
