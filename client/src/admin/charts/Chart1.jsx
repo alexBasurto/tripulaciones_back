@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Plot from "react-plotly.js";
+import { useState } from "react";
+import { apiCharts } from "../utils/apiCharts.js";
+import { useSession } from "../SessionAdminContext.jsx";
 
 class Chart extends React.Component {
     render() {
@@ -22,10 +25,33 @@ class Chart extends React.Component {
 }
 
 const Chart1 = () => {
+const [loading, setLoading] = useState(true);
+const { session } = useSession();
+
+useEffect(() => {
+    apiCharts(session.idCompany, 1).then((result) => {
+        setLoading(false);
+        console.log(result);
+    }
+    ).catch((error) => {
+        console.log(error);
+    });
+}
+, []);
+
+
+
+
     return (
         <div>
             <h1>Chart1</h1>
-            <Chart />
+            {loading ? (
+                <div>Loading...</div>
+            ) : (
+                <div>
+                    <Chart />
+                </div>
+            )}
         </div>
     );
 };
