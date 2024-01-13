@@ -1,6 +1,8 @@
+import { useState } from "react";
 import './Feelings.css';
 
 const Feelings = ({ preMood, feelings, setFeelings }) => {
+    const [maxAlert, setMaxAlert] = useState(false);
     const badFeelings = {
         1: "Agobio",
         2: "Agotamiento",
@@ -58,6 +60,7 @@ const Feelings = ({ preMood, feelings, setFeelings }) => {
         <div className="feelings">
             <div className="feelings-tags-box">
                 <p className='feelings-question'>¿Qué define mejor lo que sentiste ayer?</p>
+                <p className={`info ${maxAlert && 'max-alert'}`}>Selecciona 3 opciones como máximo</p>
                 <div className="feelings-tags">
                     {/* // Utiliza el método map para renderizar las etiquetas de emociones en función del preMood. */}
                     {Object.keys(feelingsToDisplay).map((key) => (
@@ -77,6 +80,13 @@ const Feelings = ({ preMood, feelings, setFeelings }) => {
                                         )
                                     );
                                 } else {
+                                    if (feelings.length === 3) {
+                                        setMaxAlert(true);
+                                        setTimeout(() => {
+                                            setMaxAlert(false);
+                                        }, 2000);
+                                        return;
+                                    }
                                     setFeelings([...feelings, keyNum]);
                                 }
                             }}

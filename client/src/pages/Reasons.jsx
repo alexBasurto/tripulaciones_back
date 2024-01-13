@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import './Reasons.css';
 
 const Reasons = ({ preMood, reasons, setReasons }) => {
-
+    const [maxAlert, setMaxAlert] = useState(false);
     const reasonsToDisplay = {
         1: { text: 'Ambiente', icon: '/icons/ambienteLaboralIcon.svg' },
         2: { text: 'Carga de trabajo', icon: '/icons/cargaDeTrabajoIcon.svg' },
@@ -21,6 +22,7 @@ const Reasons = ({ preMood, reasons, setReasons }) => {
         <div className="reasons">
             <div className="reasons-tags-box">
                 <p className='reasons-question'>¿A qué se debía el cómo te sentiste ayer?</p>
+                <p className={`info ${maxAlert && 'max-alert'}`}>Selecciona 3 opciones como máximo</p>
                 <div className="reasons-tags">
                     {Object.keys(reasonsToDisplay).map((key) => {
                         const reason = reasonsToDisplay[key];
@@ -30,6 +32,13 @@ const Reasons = ({ preMood, reasons, setReasons }) => {
                                 key={key}
                                 onClick={() => {
                                     const keyNum = parseInt(key, 10);
+                                    if (reasons.length === 3 && !reasons.includes(keyNum)) {
+                                        setMaxAlert(true);
+                                        setTimeout(() => {
+                                            setMaxAlert(false);
+                                        }, 2000);
+                                        return;
+                                    }
                                     setReasons(reasons.includes(keyNum) ? reasons.filter((reason) => reason !== keyNum) : [...reasons, keyNum]);
                                 }}
                             >
