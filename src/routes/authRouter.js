@@ -10,8 +10,8 @@ router.get('/session', isAuthenticated, authController.session);
 router.post('/logout', isAuthenticated, authController.logout);
 
 
-router.post('/loginAdmin', authController.login);
-router.get('/sessionAdmin', isAdministrator, authController.session);
-router.post('/logoutAdmin', isAdministrator, authController.logout);
+router.post('/loginAdmin', authController.loginAdmin);
+router.get('/sessionAdmin', isAdministrator, authController.sessionAdmin);
+router.post('/logoutAdmin', isAdministrator, authController.logoutAdmin);
 
 export default router;

@@ -227,7 +227,7 @@ const loginAdmin = async (req, res) => {
                 dni: employee.dni,
                 workerId: employee.workerId,
                 idCompany: employee.idCompany,
-                isAdmin: isAdmin,
+                isAdmin: 'isAdmin',
             },
             process.env.JWT_SECRET
         );
@@ -382,6 +382,7 @@ const sessionAdmin = async (req, res) => {
             latestVoting: latestVoting,
             streak: streak,
             lastWeekVotes: lastWeekVotes,
+            isAdmin: 'isAdmin',
         });
     } catch (err) {
         res.status(401).json({ errorMessage: "Unauthorized" });
