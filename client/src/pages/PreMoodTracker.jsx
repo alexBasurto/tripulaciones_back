@@ -46,7 +46,6 @@ const PreMoodTracker = ({preMood, setPreMood, activeComponent, setActiveComponen
         </div>
       </main>
 
-
         <div className={`estado-actual ${moods[preMood]}`}style={{ color: 'var(--estado-color)' }}>
           {moods[preMood]}
         </div>
