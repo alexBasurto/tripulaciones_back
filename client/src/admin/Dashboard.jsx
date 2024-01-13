@@ -1,4 +1,8 @@
 import { useState } from "react";
+import Chart1 from "./charts/Chart1";
+import Chart2 from "./charts/Chart2";
+import Chart3 from "./charts/Chart3";
+import Chart4 from "./charts/Chart4";
 
 const Dashboard = () => {
     const [chart, setChart] = useState("");
@@ -31,7 +35,12 @@ const Dashboard = () => {
                     </ul>
                 </nav>
             </div>
-            <div className="chart-container">{chart}</div>
+            <div className="chart-container">
+                {chart === "chart1" && <Chart1 />}
+                {chart === "chart2" && <Chart2 />}
+                {chart === "chart3" && <Chart3 />}
+                {chart === "chart4" && <Chart4 />}
+            </div>
         </div>
     );
 };
