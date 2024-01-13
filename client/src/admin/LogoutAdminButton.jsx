@@ -1,4 +1,4 @@
-import { useSession } from '../context/SessionContext';
+import { useSession } from './SessionAdminContext';
 import { logoutApi } from './utils/apiAdmin.js';
 
 
