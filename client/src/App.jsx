@@ -120,6 +120,7 @@ const App = () => {
         </div> */}
 
       {(activeComponent == 'preMood' || activeComponent == 'feelings' || activeComponent == 'reasons' || activeComponent == 'curMood') &&
+      
         <button
           className="btn-next text-button"
           onClick={() => {

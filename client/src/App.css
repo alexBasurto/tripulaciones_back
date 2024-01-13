@@ -68,4 +68,6 @@
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: auto;
+  margin-bottom: 20px;
 }
