@@ -30,6 +30,10 @@ const App = () => {
         if (session.lastWeekVotes[0] === 1) {
           setActiveComponent('ending');
         } else {
+          setFeelings([]);
+          setReasons([]);
+          setPreMood(3);
+          setCurMood(3);
           setActiveComponent('preMood');
         }
     } 
