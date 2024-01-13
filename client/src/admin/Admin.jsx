@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 import LoginAdmin from './LoginAdmin';
 import Dashboard from './Dashboard';
 import LogoutButton from '../components/LogoutButton';

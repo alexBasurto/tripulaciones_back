@@ -1,10 +1,9 @@
-import './Login.css';
 import { useState } from 'react';
 import { loginApi, sessionApi } from '../utils/apiTripu';
 import { useSession } from '../context/SessionContext';
 import Footer from '../components/Footer';
 
-function Login({ activeComponent, setActiveComponent }) {
+function LoginAdmin({ activeComponent, setActiveComponent }) {
     const { session, setSession } = useSession();
     const [workerId, setWorkerId] = useState('');
     const [password, setPassword] = useState('');
@@ -121,4 +120,4 @@ function Login({ activeComponent, setActiveComponent }) {
     );
 }
 
-export default Login;
+export default LoginAdmin;
