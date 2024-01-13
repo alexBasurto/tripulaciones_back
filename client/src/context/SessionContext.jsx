@@ -17,7 +17,6 @@ const SessionProvider = ({ children }) => {
                         return;
                     } else {
                         setSession(data);
-                        console.log('hecho', data);
                     }
                 
                 } catch (error) {
