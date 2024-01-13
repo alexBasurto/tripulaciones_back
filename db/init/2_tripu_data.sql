@@ -902,7 +902,7 @@ VALUES
         '666454545',
         '',
         '$2b$10$JPmhNW3/dHo0IuLaqR6NHub/qT7rUXj9t7StM2Zd14jgNPPI0nYeu',
-        0,
+        1,
         1
     );
 

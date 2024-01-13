@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { isAuthenticated } from '../middlewares/authMiddleware.js';
+import { isAuthenticated, isAdministrator } from '../middlewares/authMiddleware.js';
 import feelingsController from '../controllers/feelingsController.js';
 
 const feelingsRouter = Router();

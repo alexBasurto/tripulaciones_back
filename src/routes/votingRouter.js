@@ -1,13 +1,13 @@
 import { Router } from 'express';
 
-import { isAuthenticated } from '../middlewares/authMiddleware.js';
+import { isAuthenticated, isAdministrator } from '../middlewares/authMiddleware.js';
 import votingController from '../controllers/votingController.js';
 import votingReasonsController from '../controllers/votingReasonsController.js';
 import votingFeelingsController from '../controllers/votingFeelingsController.js';
 
 const votingRouter = Router();
 
-votingRouter.get ('/company/:id', isAuthenticated, (req, res) => {
+votingRouter.get ('/company/:id', isAuthenticated, isAdministrator, (req, res) => {
     votingController.getAllByIdCompany(req, res);
 }
 );
