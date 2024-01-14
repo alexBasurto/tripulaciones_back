@@ -238,15 +238,15 @@ INSERT INTO
 VALUES
     (1, 'Ambiente laboral'),
 (2, 'Carga de trabajo'),
-(3, 'ComunicaciÃ³n'),
-(4, 'ConciliaciÃ³n'),
+(3, 'Comunicación'),
+(4, 'Conciliación'),
 (5, 'Descansos'),
 (6, 'Motivo personal'),
 (7, 'Reconocimiento'),
 (8, 'Rendimiento'),
 (9, 'Salario'),
 (10, 'Salud'),
-(11, 'SueÃ±o'),
+(11, 'Sueño'),
 (12, 'Transporte');
 
 /*!40000 ALTER TABLE `tbReasons` ENABLE KEYS */
@@ -270,7 +270,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `tbShifts` WRITE;
 /*!40000 ALTER TABLE `tbShifts` DISABLE KEYS */;
-INSERT INTO `tbShifts` VALUES (1,1,'MaÃ±anas',''),(2,1,'Tardes',''),(3,1,'Noches',''),(4,3,'MaÃ±anas',''),(5,3,'Tardes',''),(6,3,'Noches',''),(7,5,'MaÃ±anas',''),(8,5,'Tardes',''),(9,5,'Noches','');
+INSERT INTO `tbShifts` VALUES (1,1,'Mañanas',''),(2,1,'Tardes',''),(3,1,'Noches',''),(4,3,'Mañanas',''),(5,3,'Tardes',''),(6,3,'Noches',''),(7,5,'Mañanas',''),(8,5,'Tardes',''),(9,5,'Noches','');
 /*!40000 ALTER TABLE `tbShifts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -280,7 +280,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `tbTags` WRITE;
 /*!40000 ALTER TABLE `tbTags` DISABLE KEYS */;
-INSERT INTO `tbTags` VALUES (1,'AlegrÃ­a'),(2,'MotivaciÃ³n'),(3,'Tristeza'),(4,'EstrÃ©s'),(5,'Enfado');
+INSERT INTO `tbTags` VALUES (1,'Alegría'),(2,'Motivación'),(3,'Tristeza'),(4,'Estrés'),(5,'Enfado');
 /*!40000 ALTER TABLE `tbTags` ENABLE KEYS */;
 UNLOCK TABLES;
 

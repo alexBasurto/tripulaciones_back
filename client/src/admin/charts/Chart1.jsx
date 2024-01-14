@@ -11,6 +11,7 @@ const Chart1 = () => {
     const [loading, setLoading] = useState(true);
     const { session } = useSession();
     const [dataProcessed, setDataProcessed] = useState([]);
+    const [numberOfVotes, setNumberOfVotes] = useState(0);
 
     useEffect(() => {
         apiCharts(session.idCompany, 1).then((result) => {
@@ -23,7 +24,7 @@ const Chart1 = () => {
     , []);
 
     const processData = (data) => {
-       console.log(data);
+        setNumberOfVotes(data.length);
         // 1. Array con los ultimos 12 meses en formato YYYY-MM
         const months = Array.from({ length: 12 }, (_, i) => {
             const date = new Date();
@@ -102,7 +103,20 @@ const Chart1 = () => {
                         yaxis: {
                             title: 'Puntuación Media',
                             range: [0, 5]
-                        }
+                        },
+                        annotations: [
+                            {
+                                text: `Votos totales: ${numberOfVotes}`,
+                                showarrow: false,
+                                arrowhead: 7,
+                                x: 1,
+                                y: 1,
+                                xref: "paper",
+                                yref: "paper",
+                                xanchor: "right",
+                                yanchor: "top",
+                            },
+                        ],
                     }}
                 />
             );

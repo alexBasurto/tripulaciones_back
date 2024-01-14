@@ -7,10 +7,10 @@ import { useSession } from "../SessionAdminContext.jsx";
 
 
 const Chart3 = () => {
-    // 
     const [loading, setLoading] = useState(true);
     const { session } = useSession();
     const [feelingsVotes, setFeelingsVotes] = useState([]);
+    const [numberOfVotes, setNumberOfVotes] = useState(0);
 
     useEffect(() => {
         apiCharts(session.idCompany, 2).then((result) => {
@@ -24,6 +24,7 @@ const Chart3 = () => {
     , []);
 
     const processData = (data) => {
+        setNumberOfVotes(data.data.length);
         // Contar los votos de cada sentimiento
         const feelingsCount = data.feelings.map((feeling) => {
             const count = data.data.filter((vote) => vote.idFeeling === feeling.idFeeling).length;
@@ -68,7 +69,21 @@ const Chart3 = () => {
                         width: 720,
                         height: 440,
                         title: 'Conteo de los 5 sentimientos más frecuentes',
-                    }}
+                        annotations: [
+                            {
+                                text: `Votos totales: ${numberOfVotes}`,
+                                showarrow: false,
+                                arrowhead: 7,
+                                x: 1,
+                                y: 1,
+                                xref: "paper",
+                                yref: "paper",
+                                xanchor: "right",
+                                yanchor: "top",
+                            },
+                        ],
+                    }
+                }
                 />
             );
         }

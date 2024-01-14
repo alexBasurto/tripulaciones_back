@@ -7,10 +7,10 @@ import { useSession } from "../SessionAdminContext.jsx";
 
 
 const Chart3b = () => {
-    // 
     const [loading, setLoading] = useState(true);
     const { session } = useSession();
     const [reasonsVotes, setReasonsVotes] = useState([]);
+    const [numberOfVotes, setNumberOfVotes] = useState(0);
 
     useEffect(() => {
         apiCharts(session.idCompany, 3).then((result) => {
@@ -24,6 +24,7 @@ const Chart3b = () => {
     , []);
 
     const processData = (data) => {
+        setNumberOfVotes(data.data.length);
         // Contar los votos de cada motivo
         const reasonsCount = data.reasons.map((feeling) => {
             const count = data.data.filter((vote) => vote.idReason === feeling.idReason).length;
@@ -68,6 +69,19 @@ const Chart3b = () => {
                         width: 720,
                         height: 440,
                         title: 'Conteo de los 5 motivos más frecuentes',
+                        annotations: [
+                            {
+                                text: `Votos totales: ${numberOfVotes}`,
+                                showarrow: false,
+                                arrowhead: 7,
+                                x: 1,
+                                y: 1,
+                                xref: "paper",
+                                yref: "paper",
+                                xanchor: "right",
+                                yanchor: "top",
+                            },
+                        ],
                     }}
                 />
             );

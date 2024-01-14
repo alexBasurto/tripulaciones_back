@@ -76,6 +76,7 @@ const App = () => {
           className="btn-back"
           onClick={() => {
             if (activeComponent === 'feelings') {
+              setFeelings([]);
               setActiveComponent('preMood');
             } else if (activeComponent === 'reasons') {
               setActiveComponent('feelings');

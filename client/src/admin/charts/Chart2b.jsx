@@ -5,10 +5,10 @@ import { apiCharts } from "../utils/apiCharts.js";
 import { useSession } from "../SessionAdminContext.jsx";
 
 const Chart2b = () => {
-    //
     const [loading, setLoading] = useState(true);
     const { session } = useSession();
     const [reasonsVotes, setReasonsVotes] = useState([]);
+    const [numberOfVotes, setNumberOfVotes] = useState(0);
 
     useEffect(() => {
         apiCharts(session.idCompany, 3).then((result) => {
@@ -21,6 +21,7 @@ const Chart2b = () => {
     }, []);
 
     const processData = (data) => {
+        setNumberOfVotes(data.data.length);
         // Contar los votos de cada motivo
         const reasonsCount = data.reasons.map((reason) => {
             const count = data.data.filter(
@@ -88,6 +89,19 @@ const Chart2b = () => {
                         yaxis: {
                             title: "Conteo",
                         },
+                        annotations: [
+                            {
+                                text: `Votos totales: ${numberOfVotes}`,
+                                showarrow: false,
+                                arrowhead: 7,
+                                x: 1,
+                                y: 1,
+                                xref: "paper",
+                                yref: "paper",
+                                xanchor: "right",
+                                yanchor: "top",
+                            },
+                        ],
                     }}
                 />
             );

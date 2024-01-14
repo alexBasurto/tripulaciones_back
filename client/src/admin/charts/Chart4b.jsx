@@ -4,7 +4,7 @@ import { useState } from "react";
 import { apiCharts } from "../utils/apiCharts.js";
 import { useSession } from "../SessionAdminContext.jsx";
 
-const Chart4 = () => {
+const Chart4b = () => {
     const [loading, setLoading] = useState(true);
     const { session } = useSession();
     const [dataProcessed, setDataProcessed] = useState([]);
@@ -16,10 +16,12 @@ const Chart4 = () => {
             setDataProcessed(data);
             setLoading(false);
         });
-    }, []);
+    }
+    , []);
 
     const processData = (data) => {
         setNumberOfComments(data.data.length);
+
         let tagCount = {};
         data.data.forEach((comment) => {
             if (tagCount[comment.idTag]) {
@@ -32,35 +34,40 @@ const Chart4 = () => {
         const tagCountProcessed = {};
         for (const key in tagCount) {
             // Asegúrate de que la comparación se haga con el mismo tipo de datos
-            const tag = data.tags.find((tag) => tag.idTag.toString() === key);
-
-            if (tag) {
-                tagCountProcessed[tag.name] = tagCount[key];
-            } else {
-                // Manejar el caso en que no se encuentra el tag
-                tagCountProcessed[`Unknown tag with id ${key}`] = tagCount[key];
-            }
+        const tag = data.tags.find((tag) => tag.idTag.toString() === key);
+        
+        if (tag) {
+            tagCountProcessed[tag.name] = tagCount[key];
+        } else {
+            // Manejar el caso en que no se encuentra el tag
+            tagCountProcessed[`Unknown tag with id ${key}`] = tagCount[key];
         }
+        }
+        console.log(tagCountProcessed);
         return tagCountProcessed;
-    };
+    }
 
+
+
+   
     class Chart extends React.Component {
         render() {
             return (
                 <Plot
                     data={[
                         {
-                            x: Object.keys(dataProcessed),
-                            y: Object.values(dataProcessed),
+                            labels: Object.keys(dataProcessed),
+                            values: Object.values(dataProcessed),
                             name: "NLP a partir de los comentarios",
-                            type: "bar",
+                            type: "pie",
+                            hole: 0.4,
                             marker: {
-                                color: [
+                                colors: [
                                     "#3834D0",
                                     "#6ECFBC",
                                     "#FF80A9",
                                     "#FFC466",
-                                    "#FF7453",
+                                    "#FF7453"
                                 ],
                             },
                         },
@@ -69,12 +76,6 @@ const Chart4 = () => {
                         width: 720,
                         height: 440,
                         title: "Clasificación de sentimientos en los comentarios - NLP",
-                        xaxis: {
-                            title: "Sentimientos",
-                        },
-                        yaxis: {
-                            title: "Conteo",
-                        },
                         annotations: [
                             {
                                 text: `Comentarios analizados: ${numberOfComments}`,
@@ -88,11 +89,13 @@ const Chart4 = () => {
                                 yanchor: "top",
                             },
                         ],
+
                     }}
                 />
             );
         }
     }
+
 
     return (
         <div className="chart">
@@ -101,11 +104,11 @@ const Chart4 = () => {
                 <div>Cargando...</div>
             ) : (
                 <div>
-                    <Chart />
+                    <Chart/>
                 </div>
             )}
         </div>
     );
-};
+}
 
-export default Chart4;
+export default Chart4b;

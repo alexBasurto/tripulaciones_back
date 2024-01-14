@@ -7,10 +7,10 @@ import { useSession } from "../SessionAdminContext.jsx";
 
 
 const Chart2 = () => {
-    // 
     const [loading, setLoading] = useState(true);
     const { session } = useSession();
     const [feelingsVotes, setFeelingsVotes] = useState([]);
+    const [numberOfVotes, setNumberOfVotes] = useState(0);
 
     useEffect(() => {
         apiCharts(session.idCompany, 2).then((result) => {
@@ -24,6 +24,7 @@ const Chart2 = () => {
     , []);
 
     const processData = (data) => {
+        setNumberOfVotes(data.data.length);
         // Contar los votos de cada sentimiento
         const feelingsCount = data.feelings.map((feeling) => {
             const count = data.data.filter((vote) => vote.idFeeling === feeling.idFeeling).length;
@@ -105,6 +106,19 @@ const Chart2 = () => {
                         yaxis: {
                             title: "Conteo",
                         },
+                        annotations: [
+                            {
+                                text: `Votos totales: ${numberOfVotes}`,
+                                showarrow: false,
+                                arrowhead: 7,
+                                x: 1,
+                                y: 1,
+                                xref: "paper",
+                                yref: "paper",
+                                xanchor: "right",
+                                yanchor: "top",
+                            },
+                        ],
                     }}
                 />
             );

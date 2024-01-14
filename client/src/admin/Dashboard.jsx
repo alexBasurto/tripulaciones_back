@@ -5,6 +5,7 @@ import Chart2b from "./charts/Chart2b";
 import Chart3 from "./charts/Chart3";
 import Chart3b from "./charts/Chart3b";
 import Chart4 from "./charts/Chart4";
+import Chart4b from "./charts/Chart4b";
 
 const Dashboard = () => {
     const [chart, setChart] = useState("");
@@ -41,7 +42,12 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <button onClick={() => setChart("chart4")}>
-                                GRÁFICO NLP
+                                GRÁFICO NLP Barras
+                            </button>
+                        </li>
+                        <li>
+                            <button onClick={() => setChart("chart4b")}>
+                                GRÁFICO NLP Donut
                             </button>
                         </li>
                     </ul>
@@ -54,6 +60,7 @@ const Dashboard = () => {
                 {chart === "chart3" && <Chart3 />}
                 {chart === "chart3b" && <Chart3b />}
                 {chart === "chart4" && <Chart4 />}
+                {chart === "chart4b" && <Chart4b />}
             </div>
         </div>
     );
