@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { loginApi, sessionApi } from '../utils/apiTripu';
-import { useSession } from '../context/SessionContext';
+import { loginApi, sessionApi } from './utils/apiAdmin';
+import { useSession } from './SessionAdminContext';
 import Footer from '../components/Footer';
 
 function LoginAdmin({ activeComponent, setActiveComponent }) {
@@ -59,16 +59,10 @@ function LoginAdmin({ activeComponent, setActiveComponent }) {
                         return response.json();
                     }).then(data => {
                         setSession(data);
+                        
                     }).catch(error => {
                         setError('Usuario o contraseña incorrectos', error);
                     });
-
-                if (session.lastWeekVotes[0] === 1) {
-                    setActiveComponent('ending');
-                    return;
-                } else {
-                    setActiveComponent('preMood');
-                }
             }).catch(error => {
                 setError('Usuario o contraseña incorrectos', error);
             });
@@ -80,9 +74,9 @@ function LoginAdmin({ activeComponent, setActiveComponent }) {
     return (
         <>
             <main className="login-main">
-                <h2 className="login-title">Bienvenido a <img src="/logo.gif" alt="Logo" className="app-logo" /></h2>
+                <h2 className="login-title">Panel Admin RRHH <img src="/logo.gif" alt="Logo" className="app-logo" /></h2>
                 <span className='login-text'>Frase de para que sirve esta webapp motivadora :/</span>
-                {!session &&
+
                     <div className="login-form-container">
                         {error && <p className="error-message">{error}</p>}
                         <form onSubmit={handleSumbit} onReset={() => {
@@ -113,7 +107,7 @@ function LoginAdmin({ activeComponent, setActiveComponent }) {
                             </div>
                         </form>
                     </div>
-                }
+
                 <Footer />
             </main>
         </>
