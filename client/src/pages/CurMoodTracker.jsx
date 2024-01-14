@@ -6,13 +6,13 @@ import normalIcon from '/shapes/normal.svg';
 import bienIcon from '/shapes/bien.svg';
 import muyBienIcon from '/shapes/muy-bien.svg';
 
-const CurMoodTracker = ({activeComponent, setActiveComponent, curMood, setCurMood}) => {
+const CurMoodTracker = ({curMood, setCurMood, activeComponent, setActiveComponent, }) => {
   const moods = {
-    1: 'muy mal',
-    2: 'mal',
-    3: 'normal',
-    4: 'bien',
-    5: 'muy bien',
+    1: 'Muy mal',
+    2: 'Mal',
+    3: 'Normal',
+    4: 'Bien',
+    5: 'Muy bien',
   };
 
   const icons = {
