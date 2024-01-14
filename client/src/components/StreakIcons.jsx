@@ -18,12 +18,14 @@ const StreakIcons = () => {
                         const value = vote[day];
                         return (
                             <div key={index} className="streak-icon">
-                                {value === 1 ? 'K' : day}
+                                {value === 1 ? <img src="icons/flameIcon.svg" alt="" /> : day}
                             </div>
                         )
                     }
                     )}
-                    <div className='streak-icon today-streak-icon'>K</div> {/* voto de hoy */}
+                    <div className='streak-icon today-streak-icon'>
+                        <img src="icons/flameIcon.svg" alt="" />
+                        </div> {/* voto de hoy */}
                 </div>
         )
     }
