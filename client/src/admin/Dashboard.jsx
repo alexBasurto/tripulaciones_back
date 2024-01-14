@@ -8,6 +8,8 @@ import Chart4 from "./charts/Chart4";
 import Chart4b from "./charts/Chart4b";
 import Chart5 from "./charts/Chart5";
 
+import "./Dashboard.css";
+
 const Dashboard = () => {
     const [chart, setChart] = useState("");
 
