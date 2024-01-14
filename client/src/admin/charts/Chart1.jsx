@@ -80,7 +80,7 @@ const Chart1 = () => {
                             y: dataProcessed.previousAverage,
                             type: 'scatter',
                             mode: 'lines+markers',
-                            marker: { color: 'red' },
+                            marker: { color: '#3834D0' },
                             name: 'Valoración del día'
                         },
                         {
@@ -88,7 +88,7 @@ const Chart1 = () => {
                             y: dataProcessed.currentAverage,
                             type: 'scatter',
                             mode: 'lines+markers',
-                            marker: { color: 'blue' },
+                            marker: { color: '#FF7453' },
                             name: 'Espectativa del día'
                         }
                     ]}

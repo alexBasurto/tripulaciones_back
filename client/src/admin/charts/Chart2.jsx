@@ -10,13 +10,12 @@ const Chart2 = () => {
     // 
     const [loading, setLoading] = useState(true);
     const { session } = useSession();
-    const [feelings, setFeelings] = useState([]);
     const [feelingsVotes, setFeelingsVotes] = useState([]);
 
     useEffect(() => {
         apiCharts(session.idCompany, 2).then((result) => {
-            setFeelings(result.feelings);
-            const counterOrdered = processData(result.data);
+            console.log(result);
+            const counterOrdered = processData(result);
             console.log(counterOrdered);
             setFeelingsVotes(counterOrdered);
             setLoading(false);
@@ -25,22 +24,9 @@ const Chart2 = () => {
     , []);
 
     const processData = (data) => {
-        /*
-                {
-            "idVotingFeelings": 117,
-            "idFeeling": 1,
-            "idVoting": 105
-        },
-        {
-            "idVotingFeelings": 118,
-            "idFeeling": 1,
-            "idVoting": 106
-        }
-        */
-
         // Contar los votos de cada sentimiento
-        const feelingsCount = feelings.map((feeling) => {
-            const count = data.filter((vote) => vote.idFeeling === feeling.idFeeling).length;
+        const feelingsCount = data.feelings.map((feeling) => {
+            const count = data.data.filter((vote) => vote.idFeeling === feeling.idFeeling).length;
             return {
                 ...feeling,
                 count,
@@ -93,7 +79,7 @@ const Chart2 = () => {
 
     return (
         <div>
-            <h1>Conteo de los 5 sentimientos más frecuentes</h1>
+            <h1>Conteo de sentimientos</h1>
             {loading ? (
                 <div>Loading...</div>
             ) : (
