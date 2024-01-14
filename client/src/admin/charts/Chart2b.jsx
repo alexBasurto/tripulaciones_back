@@ -12,9 +12,7 @@ const Chart2b = () => {
 
     useEffect(() => {
         apiCharts(session.idCompany, 3).then((result) => {
-            console.log("LA API ME DEVUELVE ESTO", result);
             const counterOrdered = processData(result);
-            console.log(counterOrdered);
             setReasonsVotes(counterOrdered);
             setLoading(false);
         });
@@ -32,12 +30,11 @@ const Chart2b = () => {
                 count,
             };
         });
-        console.log(reasonsCount);
+
         // Ordenar reasonsCount de mayor a menor
         const reasonsCountSorted = reasonsCount.sort(
             (a, b) => b.count - a.count
         );
-        console.log(reasonsCountSorted);
 
         // // Obtener los 5 motivos más frecuentes
         // reasonsCountSorted.splice(5);

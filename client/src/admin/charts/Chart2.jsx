@@ -14,9 +14,7 @@ const Chart2 = () => {
 
     useEffect(() => {
         apiCharts(session.idCompany, 2).then((result) => {
-            console.log(result);
             const counterOrdered = processData(result);
-            console.log(counterOrdered);
             setFeelingsVotes(counterOrdered);
             setLoading(false);
     }
@@ -33,10 +31,8 @@ const Chart2 = () => {
                 count,
             };
         });
-        console.log(feelingsCount);
         // Ordenar feeligsCount de mayor a menor
         const feelingsCountSorted = feelingsCount.sort((a, b) => b.count - a.count);
-        console.log(feelingsCountSorted);
 
         return {
             feelings: feelingsCountSorted.map((feeling) => feeling.name),

@@ -15,7 +15,6 @@ const Chart1 = () => {
 
     useEffect(() => {
         apiCharts(session.idCompany, 1).then((result) => {
-            console.log(result);
             const data = processData(result);
             setDataProcessed(data);
             setLoading(false);
@@ -55,9 +54,6 @@ const Chart1 = () => {
             const average = votes.reduce((total, vote) => total + vote.currentDayScore, 0) / votes.length;
             return average;
         });
-        console.log(months);
-        console.log(previousAverage);
-        console.log(currentAverage);
             return {
                 months,
                 previousAverage,

@@ -43,7 +43,6 @@ const Chart4b = () => {
             tagCountProcessed[`Unknown tag with id ${key}`] = tagCount[key];
         }
         }
-        console.log(tagCountProcessed);
         return tagCountProcessed;
     }
 

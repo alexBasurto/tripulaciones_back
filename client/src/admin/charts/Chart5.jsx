@@ -15,7 +15,6 @@ const Chart5 = () => {
 
     useEffect(() => {
         apiCharts(session.idCompany, 1).then((result) => {
-            console.log(result);
             const data = processData(result);
             setDataProcessed(data);
             setLoading(false);
@@ -40,8 +39,6 @@ const Chart5 = () => {
             const votes = data.filter((vote) => vote.previousDay.substring(0, 7) === month);
             return votes.length;
         });
-        console.log(months);
-        console.log(votesCount);
         return {
             months,
             votesCount
