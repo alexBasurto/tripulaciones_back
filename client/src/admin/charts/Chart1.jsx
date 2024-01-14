@@ -95,12 +95,13 @@ const Chart1 = () => {
                     layout={{
                         width: 720,
                         height: 440,
-                        title: 'Media de Puntuaciones por Mes',
+                        title: 'Media mensual de puntajes del trabajador a lo largo del tiempo',
                         xaxis: {
-                            title: 'Mes'
+                            title: 'Meses último año'
                         },
                         yaxis: {
-                            title: 'Puntuación Media'
+                            title: 'Puntuación Media',
+                            range: [0, 5]
                         }
                     }}
                 />
@@ -110,7 +111,7 @@ const Chart1 = () => {
 
     return (
         <div>
-            <h1>Chart1</h1>
+            <h1>Media mensual de puntajes del trabajador a lo largo del tiempo</h1>
             {loading ? (
                 <div>Loading...</div>
             ) : (
