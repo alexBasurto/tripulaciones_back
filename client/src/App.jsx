@@ -7,6 +7,7 @@ import Reasons from './pages/Reasons';
 import CurMoodTracker from './pages/CurMoodTracker';
 import Ending from './pages/Ending';
 import LogoutButton from './components/LogoutButton';
+import StreakIcons from './components/StreakIcons';
 import { createVoteApi, createVoteReasonApi, createVoteFeelingApi } from './utils/apiTripu';
 import { useSession } from './context/SessionContext';
 
@@ -99,6 +100,8 @@ const App = () => {
           <span>Registrado 2/2</span>
           <span>¡Gracias por participar!</span>
           <span>Tu racha es de {session.streak + 1} días</span>
+          <StreakIcons />
+        
           <span>
             Recuerda que tu voto es anónimo y se registrará junto al de otras {session.employeesCount} personas
             {session.departmentName && ` del departamento ${session.departmentName}`}
@@ -143,7 +146,7 @@ const App = () => {
             setTimeout(() => {
               setRegistered2(false);
               setActiveComponent('ending');
-            }, 3000);
+            }, 300000000000000000000);
           }
         }
         }>Siguiente</button>}
