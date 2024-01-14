@@ -11,11 +11,11 @@ const Chart5 = () => {
     const [loading, setLoading] = useState(true);
     const { session } = useSession();
     const [dataProcessed, setDataProcessed] = useState([]);
-    const [numberOfVotes, setNumberOfVotes] = useState(0);
+    const [numberOfComments, setNumberOfComments] = useState(0);
 
     useEffect(() => {
-        apiCharts(session.idCompany, 1).then((result) => {
-            const data = processData(result);
+        apiCharts(session.idCompany, 4).then((result) => {
+            const data = processData(result.data);
             setDataProcessed(data);
             setLoading(false);
     }
@@ -24,7 +24,7 @@ const Chart5 = () => {
 
     const processData = (data) => {
 
-        setNumberOfVotes(data.length);
+        setNumberOfComments(data.length);
 
         // 1. Array con los ultimos 12 meses en formato YYYY-MM
         const months = Array.from({ length: 12 }, (_, i) => {
@@ -33,25 +33,17 @@ const Chart5 = () => {
             return date.toISOString().substring(0, 7);
         });
         
-        // Creo un array con la cantidad de votos de cada mes
-        const votesCount = months.map((month) => {
-            // Filtra las votaciones del mes actual
-            const votes = data.filter((vote) => vote.previousDay.substring(0, 7) === month);
+        // Creo un array con la cantidad de comentarios de cada mes
+        const commentsCount = months.map((month) => {
+            // Filtra los comentarios del mes actual
+            const votes = data.filter((vote) => vote.date.substring(0, 7) === month);
             return votes.length;
         });
         return {
             months,
-            votesCount
+            commentsCount
         };
     }
-
-
-
-    
-    // Ahora tienes los datos en el formato: 
-    // [{ month: '2024-01', previousAverage: X, currentAverage: Y }, ...]
-    
-
 
     class Chart extends React.Component {
         render() {
@@ -61,7 +53,7 @@ const Chart5 = () => {
                     data = {[
                         {
                             x: dataProcessed.months,
-                            y: dataProcessed.votesCount,
+                            y: dataProcessed.commentsCount,
                             type: 'scatter',
                             mode: 'lines+markers',
                             marker: { color: '#3834D0' },
@@ -71,16 +63,16 @@ const Chart5 = () => {
                     layout={{
                         width: 720,
                         height: 440,
-                        title: 'Media mensual de puntajes del trabajador a lo largo del tiempo',
+                        title: 'Cantidad de comentarios por mes | Último año',
                         xaxis: {
                             title: 'Último año'
                         },
                         yaxis: {
-                            title: 'Cantidad de votos por mes',
+                            title: 'Cantidad de comentarios por mes',
                         },
                         annotations: [
                             {
-                                text: `Votos totales: ${numberOfVotes}`,
+                                text: `Votos totales: ${numberOfComments}`,
                                 showarrow: false,
                                 arrowhead: 7,
                                 x: 1,
@@ -99,7 +91,7 @@ const Chart5 = () => {
 
     return (
         <div>
-            <h1>Media mensual de puntajes del trabajador a lo largo del tiempo</h1>
+            <h1>Cantidad de comentarios por mes | Último año</h1>
             {loading ? (
                 <div>Loading...</div>
             ) : (

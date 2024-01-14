@@ -74,7 +74,7 @@ const Chart4b = () => {
                     layout={{
                         width: 720,
                         height: 440,
-                        title: "Clasificación de sentimientos en los comentarios - NLP",
+                        title: "Clasificación de sentimientos en los comentarios | NLP",
                         annotations: [
                             {
                                 text: `Comentarios analizados: ${numberOfComments}`,
@@ -98,7 +98,7 @@ const Chart4b = () => {
 
     return (
         <div className="chart">
-            <h2>Clasificación de sentimientos en los comentarios - NLP</h2>
+            <h2>Clasificación de sentimientos en los comentarios | NLP</h2>
             {loading ? (
                 <div>Cargando...</div>
             ) : (
