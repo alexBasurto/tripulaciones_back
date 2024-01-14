@@ -3,6 +3,7 @@ import Chart1 from "./charts/Chart1";
 import Chart2 from "./charts/Chart2";
 import Chart2b from "./charts/Chart2b";
 import Chart3 from "./charts/Chart3";
+import Chart3b from "./charts/Chart3b";
 import Chart4 from "./charts/Chart4";
 
 const Dashboard = () => {
@@ -34,8 +35,13 @@ const Dashboard = () => {
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart4")}>
+                            <button onClick={() => setChart("chart3b")}>
                                 GRÁFICO Donut Motivos
+                            </button>
+                        </li>
+                        <li>
+                            <button onClick={() => setChart("chart4")}>
+                                GRÁFICO NLP
                             </button>
                         </li>
                     </ul>
@@ -46,6 +52,7 @@ const Dashboard = () => {
                 {chart === "chart2" && <Chart2 />}
                 {chart === "chart2b" && <Chart2b />}
                 {chart === "chart3" && <Chart3 />}
+                {chart === "chart3b" && <Chart3b />}
                 {chart === "chart4" && <Chart4 />}
             </div>
         </div>

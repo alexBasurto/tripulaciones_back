@@ -1,7 +1,9 @@
 const Chart4 = () => {
+    
     return (
-        <div>
-            <h1>Chart4</h1>
+        <div className="chart">
+            <h2>GRÁFICO NLP</h2>
+            <p>En construcción...</p>
         </div>
     );
 }
