@@ -39,7 +39,7 @@ const PreMoodTracker = ({preMood, setPreMood, activeComponent, setActiveComponen
       <header className='title'>
         <h4>Estado de ánimo</h4>
       </header>
-      <main>
+      <main className='main-mood'>
         <h2>¿Cómo te sentiste ayer al finalizar la jornada?</h2>
         <div className={`rotating-image-container ${moods[preMood].toLowerCase()}`}>
           <img className="rotating-image" src={icons[moods[preMood]]} alt={`Icon ${moods[preMood]}`} />
