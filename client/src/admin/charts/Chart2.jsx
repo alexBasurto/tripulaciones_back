@@ -68,7 +68,11 @@ const Chart2 = () => {
                             x: feelingsVotes.feelings,
                             y: feelingsVotes.votes,
                             name: 'Valoración del día',
-                            type: 'bar'
+                            type: 'bar',
+                            marker: {
+                                color: ['#3834D0', '#6ECFBC', '#FF80A9', '#FFC466', '#FF7453', '#3834D0', '#6ECFBC', '#FF80A9', '#FFC466']
+                            }
+                            
                         }
                     ]}
                     layout={{
