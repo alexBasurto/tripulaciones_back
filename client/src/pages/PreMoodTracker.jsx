@@ -44,6 +44,8 @@ const PreMoodTracker = ({preMood, setPreMood, activeComponent, setActiveComponen
         <div className={`rotating-image-container ${moods[preMood].toLowerCase()}`}>
           <img className="rotating-image" src={icons[moods[preMood]]} alt={`Icon ${moods[preMood]}`} />
         </div>
+      </main>
+
         <div className={`estado-actual ${moods[preMood]}`}style={{ color: 'var(--estado-color)' }}>
           {moods[preMood]}
         </div>
@@ -55,14 +57,12 @@ const PreMoodTracker = ({preMood, setPreMood, activeComponent, setActiveComponen
         value={preMood}
         onChange={manejarCambioDeslizador}
         className='slider-white'
-        
       />
           <div className="etiquetas-emocion">
             <span className="muymal">MUY MAL</span>
             <span className="muybien">MUY BIEN</span>
           </div>
         </div>
-      </main>
     </div>
   );
 }
