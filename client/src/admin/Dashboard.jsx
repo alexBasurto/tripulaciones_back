@@ -15,27 +15,27 @@ const Dashboard = () => {
                     <ul>
                         <li>
                             <button onClick={() => setChart("chart1")}>
-                                GRÁFICO Puntuaciones
+                                GRÁFICO Lineal Puntuaciones
                             </button>
                         </li>
                         <li>
                             <button onClick={() => setChart("chart2")}>
-                                GRÁFICO Sentimientos
+                                GRÁFICO Barras Sentimientos
                             </button>
                         </li>
                         <li>
                             <button onClick={() => setChart("chart2b")}>
-                                GRÁFICO Motivos
+                                GRÁFICO Barras Motivos
                             </button>
                         </li>
                         <li>
                             <button onClick={() => setChart("chart3")}>
-                                GRÁFICO 3
+                                GRÁFICO Donut Sentimientos
                             </button>
                         </li>
                         <li>
                             <button onClick={() => setChart("chart4")}>
-                                GRÁFICO 4
+                                GRÁFICO Donut Motivos
                             </button>
                         </li>
                     </ul>
