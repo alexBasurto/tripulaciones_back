@@ -7,6 +7,9 @@ import tagsModel from "../models/tagsModel.js";
 
 const getData = async (req, res) => {
 try {
+    // Convertir a numbero req.body.idCompany y req.body.chart
+    req.body.idCompany = Number(req.body.idCompany);
+    req.body.chart = Number(req.body.chart);
     // GRÁFICO 1: Votos por empresa
     if (req.body.chart === 1) {
             const data = await votingModel.findAll({

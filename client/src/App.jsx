@@ -146,7 +146,7 @@ const App = () => {
             setTimeout(() => {
               setRegistered2(false);
               setActiveComponent('ending');
-            }, 300000000000000000000);
+            }, 3000);
           }
         }
         }>Siguiente</button>}
