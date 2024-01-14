@@ -137,13 +137,27 @@ const session = async (req, res) => {
         let lastWeekVotes = [];
 
         while (true) {
-            const voting = await votingModel.findOne({
-                where: {
-                    idEmployee: decoded.idEmployee,
-                    idCompany: decoded.idCompany,
-                    currentDay: dateToCheck,
-                },
-            });
+            // chequea si dateToCheck es fin de semana
+            const date = new Date(dateToCheck);
+            const day = date.getDay();
+            const isWeekend = (day === 6) || (day === 0);
+            let voting = '';
+
+            if (!isWeekend) {
+                voting = await votingModel.findOne({
+                    where: {
+                        idEmployee: decoded.idEmployee,
+                        idCompany: decoded.idCompany,
+                        currentDay: dateToCheck,
+                    },
+                });
+            } else {
+                // retrasa un día
+                dateToCheck = new Date(dateToCheck);
+                dateToCheck.setDate(dateToCheck.getDate() - 1);
+                dateToCheck = dateToCheck.toISOString().slice(0, 10);
+                continue;
+            }
 
             if (!voting) {
                 streakFlag = false;
@@ -153,11 +167,22 @@ const session = async (req, res) => {
                 streak++;
             }
 
-            if (counter === 7) {
+            if (counter === 5) {
                 break;
             }
 
-            voting ? lastWeekVotes.push(1) : lastWeekVotes.push(0);
+            // voting ? lastWeekVotes.push(1) : lastWeekVotes.push(0);
+            // añade al array un objeto, donde la clave sea el día de la semana y el valor sea 1 si voting y 0 si no voting
+            const daysOfWeekCaps = ['D', 'L', 'M', 'X', 'J', 'V', 'S'];
+            if (voting) {
+                lastWeekVotes.push({
+                    [daysOfWeekCaps[day]]: 1,
+                });
+            } else {
+                lastWeekVotes.push({
+                    [daysOfWeekCaps[day]]: 0,
+                });
+            }
 
             counter++;
 
