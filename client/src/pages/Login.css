@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
   width: 100dvw;
-  height: 100dvh;
+  height: 100lvh;
   background-image: url(pattern-color.jpg);
   background-color: rgba(255, 255, 255,0.55);
   background-blend-mode: lighten;
@@ -24,12 +24,11 @@
 
 .app-logo {
   display: flex;
-  flex-direction: column;
-  position: fixed;
-    top: 2%;
-    left: 2%;
-    width: 150px;
-    height: auto;
+  position: relative;
+  width: 125px;
+  align-self: self-start;
+  margin-top: -35%;
+  margin-bottom: 15%;
 }
 
 .login-title {
@@ -54,7 +53,7 @@
   width: 90%;
   margin-bottom: 1em;
   background-color: rgba(255, 255, 255, 0.8);
-  max-height: 55%;
+  height: 250px;
 }
 
 .form-group label {
