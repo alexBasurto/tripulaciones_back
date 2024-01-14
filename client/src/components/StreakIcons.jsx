@@ -13,7 +13,7 @@ const StreakIcons = () => {
         return (
             
                 <div className="streak-icons">
-                    {session.lastWeekVotes.slice().reverse().map((vote, index) => {
+                    {session.lastWeekVotes.slice(1).reverse().map((vote, index) => {
                         const day = Object.keys(vote)[0];
                         const value = vote[day];
                         return (
@@ -23,6 +23,7 @@ const StreakIcons = () => {
                         )
                     }
                     )}
+                    <div className='streak-icon today-streak-icon'>K</div> {/* voto de hoy */}
                 </div>
         )
     }
