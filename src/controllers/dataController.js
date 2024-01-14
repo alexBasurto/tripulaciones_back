@@ -32,7 +32,7 @@ try {
     // GRÁFICO 3: Votos por empresa y razones
     if (req.body.chart === 3) {
             const [data, metadata] = await votingFeelingsModel.sequelize.query(
-                `SELECT * FROM tbVotingFeelings WHERE idVoting IN (SELECT idVoting FROM tbVoting WHERE idCompany = ${req.body.idCompany});`
+                `SELECT * FROM tbVotingReasons WHERE idVoting IN (SELECT idVoting FROM tbVoting WHERE idCompany = ${req.body.idCompany});`
             );
             const reasons = await reasonsModel.findAll();
             res.status(200).json({ data, reasons });
