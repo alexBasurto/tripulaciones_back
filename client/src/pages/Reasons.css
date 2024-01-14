@@ -25,6 +25,18 @@
     width: 90%;
 }
 
+.reasons-image {
+    margin-top: 15%;
+    width: 30%;
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+}
+
+.reasons-state {
+    color: var(--estado-color);
+    font-size: 16px;
+    margin-bottom: 10%;
+}
 
 .reasons-tags-box {
     display: flex;
@@ -32,7 +44,7 @@
     justify-content: space-evenly;
     margin: 0 auto;
     width: 350px;
-    height: 215px;
+    height: 55%;
 }
 
 .reasons-tags {

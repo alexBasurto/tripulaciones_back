@@ -1,7 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './Feelings.css';
+import muyMalIcon from '/shapes/muy-mal.svg';
+import malIcon from '/shapes/mal.svg';
+import normalIcon from '/shapes/normal.svg';
+import bienIcon from '/shapes/bien.svg';
+import muyBienIcon from '/shapes/muy-bien.svg';
 
 const Feelings = ({ preMood, feelings, setFeelings }) => {
+
+    const moods = {
+        1: 'Muy mal',
+        2: 'Mal',
+        3: 'Normal',
+        4: 'Bien',
+        5: 'Muy bien',
+      };
+
+      const icons = {
+        "Muy mal": muyMalIcon,
+        "Mal": malIcon,
+        "Normal": normalIcon,
+        "Bien": bienIcon,
+        "Muy bien": muyBienIcon,
+      };
+    
     const [maxAlert, setMaxAlert] = useState(false);
     const badFeelings = {
         1: "Agobio",
@@ -56,11 +78,23 @@ const Feelings = ({ preMood, feelings, setFeelings }) => {
         feelingsToDisplay = goodFeelings;
     }
 
+    useEffect(() => {
+        document.body.className = `rastreador-de-emociones ${moods[preMood].replace(" ", "-")}`;
+        return () => {
+          document.body.className = 'rastreador-de-emociones';
+        };
+      }, [preMood]);
+
     return (
         <div className="feelings">
+             <div className={`feelings-image-container ${moods[preMood].toLowerCase()}`}>
+            <img className="feelings-image" src={icons[moods[preMood]]} alt={`Icon ${moods[preMood]}`} />
+            <div className={`feelings-state ${moods[preMood]}`}style={{ color: 'var(--estado-color)' }}>
+          {moods[preMood]}</div>
+        </div>
             <div className="feelings-tags-box">
                 <p className='feelings-question'>¿Qué define mejor lo que sentiste ayer?</p>
-                <p className={`info ${maxAlert && 'max-alert'}`}>Selecciona 3 opciones como máximo</p>
+                <p className={`info ${maxAlert && 'max-alert'}`}style={{ marginLeft: '3%'}}>Selecciona 3 opciones como máximo</p>
                 <div className="feelings-tags">
                     {/* // Utiliza el método map para renderizar las etiquetas de emociones en función del preMood. */}
                     {Object.keys(feelingsToDisplay).map((key) => (
