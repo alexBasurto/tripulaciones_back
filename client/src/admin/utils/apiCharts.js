@@ -13,7 +13,7 @@ const apiCharts = async (idCompany, chart) => {
         });
         if (response.ok) {
             const data = await response.json();
-            console.log("data", data);
+            return data;
         } else {
             throw new Error(
                 `ERROR en la solicitud: ${response.status} - ${response.statusText}`
