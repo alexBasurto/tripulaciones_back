@@ -48,29 +48,63 @@ const Chart2 = () => {
         render() {
             return (
                 <Plot
-
-                    data = {[
+                    data={[
                         {
                             x: feelingsVotes.feelings,
                             y: feelingsVotes.votes,
-                            name: 'Valoración del día',
-                            type: 'bar',
+                            name: "Valoración del día",
+                            type: "bar",
                             marker: {
-                                color: ['#3834D0', '#6ECFBC', '#FF80A9', '#FFC466', '#FF7453', '#3834D0', '#6ECFBC', '#FF80A9', '#FFC466']
-                            }
-                            
-                        }
+                                color: [
+                                    "#3834D0",
+                                    "#6ECFBC",
+                                    "#FF80A9",
+                                    "#FFC466",
+                                    "#FF7453",
+                                    "#3834D0",
+                                    "#6ECFBC",
+                                    "#FF80A9",
+                                    "#FFC466",
+                                    "#FF7453",
+                                    "#3834D0",
+                                    "#6ECFBC",
+                                    "#FF80A9",
+                                    "#FFC466",
+                                    "#FF7453",
+                                    "#3834D0",
+                                    "#6ECFBC",
+                                    "#FF80A9",
+                                    "#FFC466",
+                                    "#FF7453",
+                                    "#3834D0",
+                                    "#6ECFBC",
+                                    "#FF80A9",
+                                    "#FFC466",
+                                    "#FF7453",
+                                    "#3834D0",
+                                    "#6ECFBC",
+                                    "#FF80A9",
+                                    "#FFC466",
+                                    "#FF7453",
+                                    "#3834D0",
+                                    "#6ECFBC",
+                                    "#FF80A9",
+                                    "#FFC466",
+                                    "#FF7453",
+                                ],
+                            },
+                        },
                     ]}
                     layout={{
                         width: 720,
                         height: 440,
-                        title: 'Conteo de los 5 sentimientos más frecuentes',
+                        title: "Conteo de los 5 sentimientos más frecuentes",
                         xaxis: {
-                            title: 'Sentimientos'
+                            title: "Sentimientos",
                         },
                         yaxis: {
-                            title: 'Conteo'
-                        }
+                            title: "Conteo",
+                        },
                     }}
                 />
             );
