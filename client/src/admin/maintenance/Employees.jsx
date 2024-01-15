@@ -157,27 +157,24 @@ const Employees = () => {
             {crudState === "read" && (
                 <>
                     <h2>Detalle de empleado</h2>
-                    <button onClick={() => { setReadOrEditState('read') }}>Volver</button>
+                        <button onClick={() => { setCrudState("table") }}>Volver al listado</button>
                     <button onClick={() => { setReadOrEditState('edit') }}>Editar</button>
                     <form
-                        onSubmit={(event) => {
-                            event.preventDefault();
-                            const formData = new FormData(event.target);
-                            const data = Object.fromEntries(formData);
-                            data.idEmployee = employeeToUpdate.idEmployee;
-                            data.companyAdministrator = data.companyAdministrator === "true" ? 1 : 0;
-                            data.superAdministrator = data.superAdministrator === "true" ? 1 : 0;
-                            createEmployee(data)
-                                .then((response) => {
-                                    // alert en navegador
-                                    alert(`Empleado con id ${response.idEmployee} actualizado`);
-                                    setCrudState("table");
-                                })
-                                .catch((error) => {
-                                    console.log(error);
-                                });
+                        onSubmit={
+                            (event) => {
+                                event.preventDefault();
+                                const formData = new FormData(event.target);
+                                const data = Object.fromEntries(formData);
+                                updateEmployee(employeeToUpdate.idEmployee, data)
+                                    .then((response) => {
+                                        alert(`Empleado con id ${employeeToUpdate.idEmployee} actualizado`);
+                                        setCrudState("table");
+                                    })
+                                    .catch((error) => {
+                                        console.log(error);
+                                    });
                         }
-                        }
+                    }
                         >
                         <label htmlFor="lastName">
                             Apellidos
@@ -305,8 +302,11 @@ const Employees = () => {
                         
                         
                         {readOrEditState === "edit" && (
-                            <button type="submit">Actualizar</button>
+                            <button type="submit" >Guardar</button>
                         )}
+                        {readOrEditState === "edit" && (
+                        <button onClick={() => { setReadOrEditState("read") }}>Cancelar</button>
+                    )}
                         </form>
                 </>
                 )}

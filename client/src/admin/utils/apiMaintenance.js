@@ -72,6 +72,7 @@ const createEmployee = async (employee) => {
 
 const updateEmployee = async (id, employee) => {
     try {
+        console.log(employee);
         const response = await fetch(`${VITE_BACKEND_HOST}/employees/${id}`, {
             method: "PUT",
             credentials: "include",
