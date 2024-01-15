@@ -39,7 +39,7 @@ const CurMoodTracker = ({curMood, setCurMood, activeComponent, setActiveComponen
       <header className='title'>
         <h4>Estado de ánimo</h4>
       </header>
-      <main>
+      <main className='main-mood'>
         <h2>¿Cómo afrontas el inicio de la jornada?</h2>
         <div className={`rotating-image-container ${moods[curMood].toLowerCase()}`}>
           <img className="rotating-image" src={icons[moods[curMood]]} alt={`Icon ${moods[curMood]}`} />

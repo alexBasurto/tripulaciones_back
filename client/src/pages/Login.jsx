@@ -81,7 +81,7 @@ function Login({ activeComponent, setActiveComponent }) {
     return (
         <>
             <main className="login-main">
-                <h2 className="login-title">Bienvenido a <img src="/logo.gif" alt="Logo" className="app-logo" /></h2>
+                <img src="/logo-unscreen.gif" alt="Logo" className="app-logo" />
                 <span className='login-text'>Frase de para que sirve esta webapp motivadora :/</span>
                 {!session &&
                     <div className="login-form-container">
@@ -111,11 +111,11 @@ function Login({ activeComponent, setActiveComponent }) {
 
                             <div className="form-actions">
                                 <button className='btn-iniciar' type="submit" disabled={isButtonDisabled}>Iniciar sesión</button>
+                                <Footer />
                             </div>
                         </form>
                     </div>
                 }
-                <Footer />
             </main>
         </>
     );
