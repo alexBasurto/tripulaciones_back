@@ -24,12 +24,16 @@ const App = () => {
 
   const [sendVote, setSendVote] = useState(false);
 
+  const [justLogged, setJustLogged] = useState(false);
+
 
   useEffect(() => {
     if (session === null) {
       setActiveComponent('login');
       } else {
-        if (session.lastWeekVotes[0] === 1) {
+        console.log(session.latestVoting[0].currentDay, new Date().toISOString().slice(0, 10));
+        if (session.latestVoting[0].currentDay === new Date().toISOString().slice(0, 10)) {
+          setJustLogged(true);
           setActiveComponent('ending');
         } else {
           setFeelings([]);
@@ -115,7 +119,7 @@ const App = () => {
             </div>}
 
           
-        {activeComponent == 'ending' && <Ending/> }
+        {activeComponent == 'ending' && <Ending justLogged={justLogged} /> }
 
       {/* <div>
           <p>TEST</p>
