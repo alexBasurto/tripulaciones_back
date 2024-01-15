@@ -7,6 +7,7 @@ import {
 } from "../utils/apiMaintenance";
 
 const Employees = () => {
+    const [crudState, setCrudState] = useState("table");
     const [employeesData, setEmployeesData] = useState([]);
     const [currentPageData, setCurrentPageData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -43,7 +44,8 @@ const Employees = () => {
     const deleteRow = (id) => {
         deleteEmployee(id)
             .then((response) => {
-                console.log(response);
+                // alert en navegador
+                alert(`Empleado con id ${id} eliminado`);
                 setEmployeesData(employeesData.filter((employee) => employee.id !== id));
             })
             .catch((error) => {
@@ -54,7 +56,8 @@ const Employees = () => {
     return (
         <div className="container-maintenance-detail">
             <h1>Empleados</h1>
-
+            {crudState === "table" && (
+                <>
             <table className="tb-employees">
                 <thead>
                     <tr>
@@ -117,6 +120,10 @@ const Employees = () => {
                     Siguiente
                 </button>
             </div>
+            </>
+
+            )}
+
         </div>
     );
 };
