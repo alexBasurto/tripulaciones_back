@@ -62,7 +62,7 @@ const Reasons = ({ preMood, reasons, setReasons }) => {
                         const reason = reasonsToDisplay[key];
                         return (
                             <button
-                                className={`reason-tag ${reasons.includes(parseInt(key, 10)) ? "selected" : "no-selected"}`}
+                                className={`reason-tag ${reasons.includes(parseInt(key, 10)) ? "selected" : "reasons-no-selected"}`}
                                 key={key}
                                 onClick={() => {
                                     const keyNum = parseInt(key, 10);
