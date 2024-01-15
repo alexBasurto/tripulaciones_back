@@ -1,4 +1,5 @@
 .app {
+    font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,12 +17,12 @@
 }
 
 .feelings .feelings-question {
-    font-size: 14px;
+    font-size: 15px;
     border-bottom: 1px solid #ffffff;
     padding-bottom: 5px;
     margin-bottom: 20px;
     text-align: start;
-    width: 90%;
+    width: 80%;
     margin-left: 3%;
 }
 
@@ -46,9 +47,8 @@
 }
 
 .feeling-tag {
-    font-size: 12px;
-    color: #000000;
-    background-color: #f5f5f5;
+    font-size: 14px;
+    color: var(--estado-color);
     border: 1px solid #e3e3e3;
     border-radius: 20px;
     cursor: pointer;
@@ -56,9 +56,9 @@
 }
 
 .no-selected {
-    color: #000000;
+    color: var(--estado-color);
     background-color: #f5f5f5;
-    border: 1px solid #e3e3e3;
+    border: 1px solid #f5f3f3;
     border-radius: 20px;
     padding: 5px;
     margin: 5px;
@@ -68,12 +68,13 @@
 
 .feeling-tag.selected {
     color: white;
-    background-color: #8d8d8d;
-    border: 1px solid #8d8d8d;
+    background-color: #8d8d8d60;
+    border: 0.5px white;
     border-radius: 20px;
     padding: 5px;
     margin: 5px;
     cursor: pointer;
+    font-weight: lighter;
 }
 
 .button-container {
@@ -84,7 +85,6 @@
 .btn-back.text-button {
     background: none;
     border: none;
-    color: #007aff;
     cursor: pointer;
     padding: 10px;
     font-size: 16px;
@@ -92,9 +92,14 @@
 
 .feelings-image {
     margin-top: 15%;
-    width: 40%;
+    width: 50%;
     height: auto;
     transition: transform 0.5s ease-in-out;
+    padding-top: 100px;
+}
+
+.feelings-image-container {
+    padding-bottom: 50px;
 }
 
 .feelings-state {
@@ -118,7 +123,8 @@
   margin-bottom: 20px;
 }
 
-
 .max-alert {
-    color: #f44336;
+    color: #ff2c1d;
+    font-weight: bold;
+    font-size: 10px;
 }
