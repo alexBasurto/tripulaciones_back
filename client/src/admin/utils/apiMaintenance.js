@@ -70,4 +70,26 @@ const createEmployee = async (employee) => {
     }
 }
 
-export { getAllEmployees, getEmployee, createEmployee };
+const deleteEmployee = async (id) => {
+    try {
+        console.log("id", id);
+        const response = await fetch(`${VITE_BACKEND_HOST}/employees/${id}`, {
+            method: "DELETE",
+            credentials: "include",
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(
+                `ERROR en la solicitud: ${response.status} - ${response.statusText}`
+            );
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
+export { getAllEmployees, getEmployee, createEmployee, deleteEmployee };
