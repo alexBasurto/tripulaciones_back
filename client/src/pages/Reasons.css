@@ -94,7 +94,7 @@
     padding: 0;
 }
 
-.no-selected {
+.reasons-no-selected {
     display: flex;
     justify-content: center;
     color: #000000;
@@ -129,3 +129,4 @@
     padding: 10px;
     font-size: 16px;
 }
+

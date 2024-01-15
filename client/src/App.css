@@ -51,8 +51,7 @@
 
 
 .btn-back .header-text {
-  font-size: 18px;
-  /* Ajusta el tamaño según necesites */
+  font-size: 15px;
   color: var(--estado-color);
 }
 
