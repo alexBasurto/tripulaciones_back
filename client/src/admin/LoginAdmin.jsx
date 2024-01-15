@@ -74,7 +74,7 @@ function LoginAdmin({ activeComponent, setActiveComponent }) {
     return (
         <>
             <main className="login-main">
-                <h2 className="login-title">Panel Admin RRHH <img src="/logo.gif" alt="Logo" className="app-logo" /></h2>
+                <h2 className="login-title">Panel Admin RRHH <img src="/logo-unscreen.gif" alt="Logo" className="app-logo" /></h2>
                 <span className='login-text'>Frase de para que sirve esta webapp motivadora :/</span>
 
                     <div className="login-form-container">
@@ -104,11 +104,10 @@ function LoginAdmin({ activeComponent, setActiveComponent }) {
 
                             <div className="form-actions">
                                 <button className='btn-iniciar' type="submit" disabled={isButtonDisabled}>Iniciar sesión</button>
+                                <Footer />
                             </div>
                         </form>
                     </div>
-
-                <Footer />
             </main>
         </>
     );
