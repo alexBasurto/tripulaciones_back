@@ -234,6 +234,72 @@ const getAllBranches = async () => {
     }
 }
 
+const createBranch = async (branch) => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/branches/new`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(branch),
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(`ERROR en la solicitud: ${response.status} - ${response.statusText}`);
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
+const updateBranch = async (id, branch) => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/branches/${id}`, {
+            method: "PUT",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(branch),
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(`ERROR en la solicitud: ${response.status} - ${response.statusText}`);
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
+const deleteBranch = async (id) => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/branches/${id}`, {
+            method: "DELETE",
+            credentials: "include",
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(`ERROR en la solicitud: ${response.status} - ${response.statusText}`);
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
+
 // Shifts
 const getAllShifts = async () => {
     try {
@@ -256,5 +322,89 @@ const getAllShifts = async () => {
     }
 }
 
+const createShift = async (shift) => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/shifts/new`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(shift),
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(`ERROR en la solicitud: ${response.status} - ${response.statusText}`);
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
 
-export { getAllEmployees, getEmployee, createEmployee, deleteEmployee, updateEmployee, getAllDepartments, getAllShifts, getAllBranches, updateDepartment, createDepartment, deleteDepartment };
+const updateShift = async (id, shift) => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/shifts/${id}`, {
+            method: "PUT",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(shift),
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(`ERROR en la solicitud: ${response.status} - ${response.statusText}`);
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
+const deleteShift = async (id) => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/shifts/${id}`, {
+            method: "DELETE",
+            credentials: "include",
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(`ERROR en la solicitud: ${response.status} - ${response.statusText}`);
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
+
+
+export {
+    getAllEmployees,
+    getEmployee,
+    createEmployee,
+    deleteEmployee,
+    updateEmployee,
+    getAllDepartments,
+    getAllShifts,
+    getAllBranches,
+    updateDepartment,
+    createDepartment,
+    deleteDepartment,
+    createBranch,
+    updateBranch,
+    deleteBranch,
+    createShift,
+    updateShift,
+    deleteShift
+};

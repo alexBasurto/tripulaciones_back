@@ -22,7 +22,7 @@ const Departments = () => {
             }
             );
     }
-        , [departmentsData]);
+        , []);
 
 
     return (
@@ -37,7 +37,6 @@ const Departments = () => {
                             <tr>
                                 <th></th>
                                 <th></th>
-                                <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Comentarios</th>
                             </tr>
@@ -61,7 +60,6 @@ const Departments = () => {
                                             }
                                             );
                                     }}>Eliminar</button></td>
-                                    <td>{department.idDepartment}</td>
                                     <td>{department.name}</td>
                                     <td>{department.comments}</td>
                                 </tr>
@@ -106,10 +104,10 @@ const Departments = () => {
                         }}
                     >
                         <label htmlFor='name'>Nombre
-                            <input type="text" name="name" id='name' defaultValue={departmentsData[0].name} {...(readOrEditState === "read" && { disabled: true })} />
+                            <input type="text" name="name" id='name' defaultValue={departmentToUpdate.name} {...(readOrEditState === "read" && { disabled: true })} />
                         </label>
                         <label htmlFor='comments'>Comentarios
-                            <input type="text" name="comments" id='comments' defaultValue={departmentsData[0].comments} {...(readOrEditState === "read" && { disabled: true })} />
+                            <input type="text" name="comments" id='comments' defaultValue={departmentToUpdate.comments} {...(readOrEditState === "read" && { disabled: true })} />
                         </label>
                         {readOrEditState === "edit" &&
                             <button type="submit">Guardar</button>

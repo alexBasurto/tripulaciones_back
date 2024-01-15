@@ -3,7 +3,6 @@ import branchesModel from "../models/branchesModel.js";
 
 const getAll = async (req, res) => {
     try {
-        console.log('AQUÍIII');
         const cookies = req.headers?.cookie
             .split(";")
             .reduce((cookiesObject, cookie) => {
@@ -33,6 +32,18 @@ const getById = async (req, res) => {
 
 const create = async (req, res) => {
     try {
+        const cookies = req.headers?.cookie
+            .split(";")
+            .reduce((cookiesObject, cookie) => {
+                const [name, value] = cookie.trim().split("=");
+                cookiesObject[name] = value;
+                return cookiesObject;
+            }, {});
+        const token = cookies.token;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const idCompany = decoded.idCompany;
+        req.body.idCompany = idCompany;
         // Check if the name exists in the database for the same company
         const branchExists = await branchesModel.findOne({
             where: {
@@ -53,6 +64,19 @@ const create = async (req, res) => {
 
 const update = async (req, res) => {
     try {
+        const cookies = req.headers?.cookie
+            .split(";")
+            .reduce((cookiesObject, cookie) => {
+                const [name, value] = cookie.trim().split("=");
+                cookiesObject[name] = value;
+                return cookiesObject;
+            }, {});
+        const token = cookies.token;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const idCompany = decoded.idCompany;
+        req.body.idCompany = idCompany;
+        
         // Check if branch exists
         const branchExists = await branchesModel.findByPk(req.params.id);
         if (!branchExists) {

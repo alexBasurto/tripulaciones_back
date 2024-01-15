@@ -31,7 +31,7 @@ const Employees = () => {
             .catch((error) => {
                 console.log(error);
             });
-    }, [employeesData]);
+    }, []);
 
     useEffect(() => {
         const start = (currentPage - 1) * itemsPerPage;

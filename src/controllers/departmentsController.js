@@ -49,6 +49,18 @@ const create = async (req, res) => {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         const idCompany = decoded.idCompany;
+        // Check if the name exists in the database for the same company
+        const departmentExists = await departmentsModel.findOne({
+            where: {
+                name: req.body.name,
+                idCompany: idCompany
+            }
+        });
+        if (departmentExists) {
+            res.status(400).json({ message: `El departamento ${req.body.name} ya existe para la empresa con ID ${idCompany}.` });
+            return;
+        }
+
         req.body.idCompany = idCompany;
         const department = await departmentsModel.create(req.body);
         res.status(200).json(department);
