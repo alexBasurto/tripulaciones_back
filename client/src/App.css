@@ -30,8 +30,8 @@
 .back-arrow {
   width: 24px;
   height: 24px;
-  margin-right: 10px;
   color: black;
+  display: flex;
 }
 
 .btn-back {
