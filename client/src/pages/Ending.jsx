@@ -44,6 +44,7 @@ const Ending = ({ justLogged }) => {
             <p className="ending-txt3">¿Hay algo más que nos quieras comentar?</p>
             <div className="comment-input">
                 <input type="text" placeholder="Escribe aquí" />
+                <div className="checkbox">
                 <input type="checkbox" id="anonimousCheckbox" defaultChecked onChange={
                     () => {
                         setIsChecked(!isChecked);
@@ -51,6 +52,7 @@ const Ending = ({ justLogged }) => {
                 } /> <label htmlFor="anonimousCheckbox">
                     Mantener anonimato
                 </label>
+                </div>
                 {!isChecked && <p className="alert">Tu comentario será enviado con tu identificación visible.</p>}
                 <div className="ending-btn">
                     <button

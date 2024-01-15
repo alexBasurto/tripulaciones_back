@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { loginApi, sessionApi } from './utils/apiAdmin';
 import { useSession } from './SessionAdminContext';
 import Footer from '../components/Footer';
+import './LoginAdmin.css';
 
 function LoginAdmin({ activeComponent, setActiveComponent }) {
     const { session, setSession } = useSession();
@@ -73,11 +74,11 @@ function LoginAdmin({ activeComponent, setActiveComponent }) {
 
     return (
         <>
-            <main className="login-main">
-                <h2 className="login-title">Panel Admin RRHH <img src="/logo-unscreen.gif" alt="Logo" className="app-logo" /></h2>
-                <span className='login-text'>Frase de para que sirve esta webapp motivadora :/</span>
+            <main className="admin-login-main">
+                <p className="admin-login-title">Panel RRHH <img src="/logo-unscreen.gif" alt="Logo" className="app-logo" /></p>
+                <span className='admin-login-text'>Mejora el bienestar de tu equipo</span>
 
-                    <div className="login-form-container">
+                    <div className="admin-login-form-container">
                         {error && <p className="error-message">{error}</p>}
                         <form onSubmit={handleSumbit} onReset={() => {
                             setWorkerId('');

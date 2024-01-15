@@ -98,7 +98,7 @@ function Login({ activeComponent, setActiveComponent }) {
         <>
             <main className="login-main">
                 <img src="/logo-unscreen.gif" alt="Logo" className="app-logo" />
-                <span className='login-text'>Frase de para que sirve esta webapp motivadora :/</span>
+                <span className='login-text'>Comparte tus emociones, mejoremos juntos el entorno laboral</span>
                 {!session &&
                     <div className={`login-form-container ${shakeError ? 'shake-animation' : ''}`}>
                         {error && <p className="error-message">{error}</p>}
