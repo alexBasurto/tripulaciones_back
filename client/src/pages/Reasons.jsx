@@ -1,7 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Reasons.css';
+import muyMalIcon from '/shapes/muy-mal.svg';
+import malIcon from '/shapes/mal.svg';
+import normalIcon from '/shapes/normal.svg';
+import bienIcon from '/shapes/bien.svg';
+import muyBienIcon from '/shapes/muy-bien.svg';
 
 const Reasons = ({ preMood, reasons, setReasons }) => {
+
+    const moods = {
+        1: 'Muy mal',
+        2: 'Mal',
+        3: 'Normal',
+        4: 'Bien',
+        5: 'Muy bien',
+      };
+
+      const icons = {
+        "Muy mal": muyMalIcon,
+        "Mal": malIcon,
+        "Normal": normalIcon,
+        "Bien": bienIcon,
+        "Muy bien": muyBienIcon,
+      };
+    
     const [maxAlert, setMaxAlert] = useState(false);
     const reasonsToDisplay = {
         1: { text: 'Ambiente', icon: '/icons/ambienteLaboralIcon.svg' },
@@ -18,8 +40,20 @@ const Reasons = ({ preMood, reasons, setReasons }) => {
         12: { text: 'Transporte', icon: '/icons/transporteIcon.svg' },
     }
 
+    useEffect(() => {
+        document.body.className = `rastreador-de-emociones ${moods[preMood].replace(" ", "-")}`;
+        return () => {
+          document.body.className = 'rastreador-de-emociones';
+        };
+      }, [preMood]);
+
     return (
         <div className="reasons">
+             <div className={`reasons-image-container ${moods[preMood].toLowerCase()}`}>
+            <img className="reasons-image" src={icons[moods[preMood]]} alt={`Icon ${moods[preMood]}`} />
+            <div className={`reasons-state ${moods[preMood]}`}style={{ color: 'var(--estado-color)' }}>
+          {moods[preMood]}</div>
+        </div>
             <div className="reasons-tags-box">
                 <p className='reasons-question'>¿A qué se debía el cómo te sentiste ayer?</p>
                 <p className={`info ${maxAlert && 'max-alert'}`}>Selecciona 3 opciones como máximo</p>

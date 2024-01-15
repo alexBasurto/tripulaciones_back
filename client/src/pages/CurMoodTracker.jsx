@@ -1,46 +1,70 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './CurMoodTracker.css';
+import muyMalIcon from '/shapes/muy-mal.svg';
+import malIcon from '/shapes/mal.svg';
+import normalIcon from '/shapes/normal.svg';
+import bienIcon from '/shapes/bien.svg';
+import muyBienIcon from '/shapes/muy-bien.svg';
 
-const CurMoodTracker = ({activeComponent, setActiveComponent, curMood, setCurMood}) => {
+const CurMoodTracker = ({curMood, setCurMood, activeComponent, setActiveComponent, }) => {
   const moods = {
-    1: 'muy mal',
-    2: 'mal',
-    3: 'normal',
-    4: 'bien',
-    5: 'muy bien',
+    1: 'Muy mal',
+    2: 'Mal',
+    3: 'Normal',
+    4: 'Bien',
+    5: 'Muy bien',
+  };
+
+  const icons = {
+    "Muy mal": muyMalIcon,
+    "Mal": malIcon,
+    "Normal": normalIcon,
+    "Bien": bienIcon,
+    "Muy bien": muyBienIcon,
   };
 
   const manejarCambioDeslizador = (evento) => {
     setCurMood(evento.target.value);
   };
 
+  useEffect(() => {
+    document.body.className = `rastreador-de-emociones ${moods[curMood].replace(" ", "-")}`;
+    return () => {
+      document.body.className = 'rastreador-de-emociones';
+    };
+  }, [curMood]);
+
   return (
-    <div className={`rastreador-de-emociones ${moods[curMood].replace(" ", "-")}`}>
-      <header>
-        <h1>Estado de ánimo</h1>
+    <div className={`main-container rastreador-de-emociones ${moods[curMood].replace(" ", "-")}`}>
+      <header className='title'>
+        <h4>Estado de ánimo</h4>
       </header>
       <main>
         <h2>¿Cómo afrontas el inicio de la jornada?</h2>
-        <div className="estado-actual">{
-          moods[curMood].toUpperCase()
-        }</div>
-        <div className="contenedor-deslizador">
-          <input
-            type="range"
-            min="1"
-            max="5"
-            value={curMood}
-            onChange={manejarCambioDeslizador}
-            className="deslizador-emocion"
-          />
-          <div className="etiquetas-emocion">
-            <span className="muy-mal">MUY MAL</span>
-            <span className="muy-bien">MUY BIEN</span>
-          </div>
+        <div className={`rotating-image-container ${moods[curMood].toLowerCase()}`}>
+          <img className="rotating-image" src={icons[moods[curMood]]} alt={`Icon ${moods[curMood]}`} />
         </div>
       </main>
+
+      <div className={`estado-actual ${moods[curMood]}`}style={{ color: 'var(--estado-color)' }}>
+          {moods[curMood]}
+        </div>
+        <div className={`contenedor-deslizador ${moods[curMood].toLowerCase()}`}>
+      <input
+        type="range"
+        min="1"
+        max="5"
+        value={curMood}
+        onChange={manejarCambioDeslizador}
+        className='slider-white'
+      />
+          <div className="etiquetas-emocion">
+            <span className="muymal">MUY MAL</span>
+            <span className="muybien">MUY BIEN</span>
+          </div>
+        </div>
     </div>
   );
-};
+}
 
 export default CurMoodTracker;

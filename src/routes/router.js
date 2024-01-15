@@ -10,6 +10,7 @@ import reasonsRouter from './reasonsRouter.js';
 import shiftsRouter from './shiftsRouter.js';
 import scoresRouter from './scoresRouter.js';
 import authRouter from './authRouter.js';
+import dataRouter from './dataRouter.js';
 
 const router = Router();
 
@@ -28,5 +29,7 @@ router.use('/scores', scoresRouter);
 router.use('/branches', branchesRouter);
 router.use('/voting', votingRouter);
 router.use("/", authRouter);
+
+router.use("/data", dataRouter);
 
 export default router;

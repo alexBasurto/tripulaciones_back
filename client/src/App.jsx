@@ -7,6 +7,7 @@ import Reasons from './pages/Reasons';
 import CurMoodTracker from './pages/CurMoodTracker';
 import Ending from './pages/Ending';
 import LogoutButton from './components/LogoutButton';
+import StreakIcons from './components/StreakIcons';
 import { createVoteApi, createVoteReasonApi, createVoteFeelingApi } from './utils/apiTripu';
 import { useSession } from './context/SessionContext';
 
@@ -30,6 +31,10 @@ const App = () => {
         if (session.lastWeekVotes[0] === 1) {
           setActiveComponent('ending');
         } else {
+          setFeelings([]);
+          setReasons([]);
+          setPreMood(3);
+          setCurMood(3);
           setActiveComponent('preMood');
         }
     } 
@@ -71,6 +76,7 @@ const App = () => {
           className="btn-back"
           onClick={() => {
             if (activeComponent === 'feelings') {
+              setFeelings([]);
               setActiveComponent('preMood');
             } else if (activeComponent === 'reasons') {
               setActiveComponent('feelings');
@@ -95,6 +101,8 @@ const App = () => {
           <span>Registrado 2/2</span>
           <span>¡Gracias por participar!</span>
           <span>Tu racha es de {session.streak + 1} días</span>
+          <StreakIcons />
+        
           <span>
             Recuerda que tu voto es anónimo y se registrará junto al de otras {session.employeesCount} personas
             {session.departmentName && ` del departamento ${session.departmentName}`}
@@ -120,6 +128,7 @@ const App = () => {
         </div> */}
 
       {(activeComponent == 'preMood' || activeComponent == 'feelings' || activeComponent == 'reasons' || activeComponent == 'curMood') &&
+      
         <button
           className="btn-next text-button"
           onClick={() => {
