@@ -42,7 +42,9 @@ const getAll = async (req, res) => {
         INNER JOIN 
             tripulaciones.tbBranches b ON e.idBranch = b.idBranch AND e.idCompany = b.idCompany
         WHERE 
-            e.idCompany = ${idCompany};
+            e.idCompany = ${idCompany}
+        ORDER BY
+            e.lastName ASC;
 `
         );
         res.status(200).json(users);

@@ -70,9 +70,33 @@ const createEmployee = async (employee) => {
     }
 }
 
+const updateEmployee = async (id, employee) => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/employees/${id}`, {
+            method: "PUT",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(employee),
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(
+                `ERROR en la solicitud: ${response.status} - ${response.statusText}`
+            );
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
 const deleteEmployee = async (id) => {
     try {
-        console.log("id", id);
         const response = await fetch(`${VITE_BACKEND_HOST}/employees/${id}`, {
             method: "DELETE",
             credentials: "include",
@@ -92,4 +116,4 @@ const deleteEmployee = async (id) => {
     }
 }
 
-export { getAllEmployees, getEmployee, createEmployee, deleteEmployee };
+export { getAllEmployees, getEmployee, createEmployee, deleteEmployee, updateEmployee };

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import {
     getAllEmployees,
-    getEmployee,
     createEmployee,
     deleteEmployee,
+    updateEmployee,
 } from "../utils/apiMaintenance";
 
 const Employees = () => {
@@ -12,6 +12,7 @@ const Employees = () => {
     const [currentPageData, setCurrentPageData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [employeeToUpdate, setEmployeeToUpdate] = useState({});
     const itemsPerPage = 20;
 
     useEffect(() => {
@@ -53,6 +54,12 @@ const Employees = () => {
             });
     }
 
+    const updateRow = (employeeDetail) => {
+        //Open update form
+        setEmployeeToUpdate(employeeDetail);
+        setCrudState("update");
+    }
+
     return (
         <div className="container-maintenance-detail">
             <h1>Empleados</h1>
@@ -63,8 +70,8 @@ const Employees = () => {
                     <tr>
                         <th></th>
                         <th></th>
-                        <th scope="col">Nombre</th>
                         <th scope="col">Apellidos</th>
+                        <th scope="col">Nombre</th>
                         <th scope="col">Email</th>
                         <th scope="col">Teléfono</th>
                         <th scope="col">Comentarios</th>
@@ -80,19 +87,13 @@ const Employees = () => {
                         return (
                             <tr key={index}>
                                 <td>
-                                    <button
-                                        onClick={() => {
-                                            getEmployee(employee.id);
-                                        }}
-                                    >
-                                        Editar
-                                    </button>
+                                    <button onClick={() => { updateRow(employee) }}>Editar</button>
                                 </td>
                                 <td>
                                     <button onClick={() => { deleteRow(employee.idEmployee); }}>Eliminar</button>
                                 </td>
-                                <td>{employee.name}</td>
                                 <td>{employee.lastName}</td>
+                                <td>{employee.name}</td>
                                 <td>{employee.email}</td>
                                 <td>{employee.mobile}</td>
                                 <td>{employee.comments}</td>
@@ -107,22 +108,45 @@ const Employees = () => {
                 </tbody>
             </table>
             <div>
-                <button onClick={handlePrevPage} disabled={currentPage === 1}>
-                    Anterior
-                </button>
-                <span>
-                    Página {currentPage} de {totalPages}
-                </span>
-                <button
-                    onClick={handleNextPage}
-                    disabled={currentPage === totalPages}
-                >
-                    Siguiente
-                </button>
+                <button onClick={handlePrevPage} disabled={currentPage === 1}>Anterior</button>
+                <span>Página {currentPage} de {totalPages}</span>
+                <button onClick={handleNextPage} disabled={currentPage === totalPages}>Siguiente</button>
             </div>
             </>
-
             )}
+
+            {crudState === "update" && (
+                <>
+                    <h2>Actualizar empleado</h2>
+                    <form
+                        onSubmit={(event) => {
+                            event.preventDefault();
+                            const formData = new FormData(event.target);
+                            const data = Object.fromEntries(formData);
+                            data.idEmployee = employeeToUpdate.idEmployee;
+                            data.companyAdministrator = data.companyAdministrator === "true" ? 1 : 0;
+                            data.superAdministrator = data.superAdministrator === "true" ? 1 : 0;
+                            createEmployee(data)
+                                .then((response) => {
+                                    // alert en navegador
+                                    alert(`Empleado con id ${response.idEmployee} actualizado`);
+                                    setCrudState("table");
+                                })
+                                .catch((error) => {
+                                    console.log(error);
+                                });
+                        }
+                        }
+                        >
+                        
+                        </form>
+                </>
+            )
+
+
+            }
+
+
 
         </div>
     );
