@@ -124,11 +124,8 @@ function Login({ activeComponent, setActiveComponent }) {
                                     />
                                 </div>
                             </div>
-
-                            <div className="form-actions">
                                 <button className='btn-iniciar' type="submit" disabled={isButtonDisabled}>Iniciar sesión</button>
                                 <Footer />
-                            </div>
                         </form>
                     </div>
                 }
