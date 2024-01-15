@@ -133,7 +133,9 @@ const session = async (req, res) => {
         let streak = 0;
         let streakFlag = true;
         let counter = 0;
-        let dateToCheck = latestVoting[0].currentDay;
+        let dateToCheck = new Date();
+        dateToCheck.setDate(dateToCheck.getDate());
+        dateToCheck = dateToCheck.toISOString().slice(0, 10);
         let lastWeekVotes = [];
 
         while (true) {

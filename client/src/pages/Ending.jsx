@@ -4,7 +4,7 @@ import { useSession } from "../context/SessionContext";
 
 import './Ending.css';
 
-const Ending = () => {
+const Ending = ({ justLogged }) => {
     const { session } = useSession();
     const [registered, setRegistered] = useState(false);
     const [error, setError] = useState('');
@@ -39,7 +39,7 @@ const Ending = () => {
     return (
         <div className="ending">
             <img src="cheque.png" alt="check" className="checklist" />
-            <p className="ending-txt1">Bienvenido a Moodly!</p>
+            {justLogged && <p className="ending-txt1">¡Bienvenido a Moodly!</p>}
             <p className="ending-txt2">¡Ya has realizado la encuesta!</p>
             <p className="ending-txt3">¿Hay algo más que nos quieras comentar?</p>
             <div className="comment-input">
