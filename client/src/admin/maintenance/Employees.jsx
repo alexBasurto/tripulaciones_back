@@ -352,7 +352,7 @@ const Employees = () => {
                 <>
                     <h2>Crear empleado</h2>
                     <button onClick={() => {
-                        setCrudState("table")
+                        setCrudState("table");
                         setDepartmentsList([]);
                         setBranchesList([]);
                         setShiftsList([]);

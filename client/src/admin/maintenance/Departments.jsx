@@ -22,7 +22,7 @@ const Departments = () => {
             }
             );
     }
-        , []);
+        , [departmentsData]);
 
 
     return (
@@ -73,7 +73,12 @@ const Departments = () => {
             {crudState === "read" &&
                 <div>
                     <h1>Detalles del departamento</h1>
-                    <button onClick={() => setCrudState("table")}>Volver al listado</button>
+                    <button onClick={() => {
+                        setCrudState("table");
+                        setError("");
+                        setDepartmentToUpdate({});
+                    }
+                    }>Volver al listado</button>
                     {readOrEditState === "read" &&
                     <button onClick={() => setReadOrEditState("edit")}>Editar</button>
                     }
@@ -118,7 +123,40 @@ const Departments = () => {
             }
             {crudState === "create" &&
                 <div>
-                    <h1>Agregar</h1>
+                    <h1>Crear departamento</h1>
+                    <button onClick={() => {
+                        setCrudState("table");
+                        setError("");
+                        setDepartmentsData([]);
+                    }
+                    }>Volver al listado</button>
+                    <form
+                        onSubmit={(event) => {
+                            event.preventDefault();
+                            const formData = new FormData(event.target);
+                            const data = Object.fromEntries(formData);
+                            console.log(data);
+                            createDepartment(data)
+                                .then(response => {
+                                    console.log(response);
+                                    setDepartmentsData([...departmentsData, response]);
+                                })
+                                .catch(error => {
+                                    console.log(error);
+                                    setError('No se puede crear el departamento.');
+                                }
+                                );
+                            setCrudState("table");
+                        }}
+                    >
+                        <label htmlFor='name'>Nombre
+                            <input type="text" name="name" id='name' />
+                        </label>
+                        <label htmlFor='comments'>Comentarios
+                            <input type="text" name="comments" id='comments' />
+                        </label>
+                        <button type="submit">Guardar</button>
+                    </form>
                 </div>
             }
         </div>
