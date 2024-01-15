@@ -9,6 +9,7 @@ function Login({ activeComponent, setActiveComponent }) {
     const [workerId, setWorkerId] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
+    const [shakeError, setShakeError] = useState(false);
 
     const validateInputs = () => {
         // Validación de WORKER ID
@@ -35,43 +36,58 @@ function Login({ activeComponent, setActiveComponent }) {
 
     const handleSumbit = (e) => {
         e.preventDefault();
+
         if (workerId === '' || password === '') {
             setError('Todos los campos son obligatorios');
+            setShakeError(true); // Activa el temblor
+            setTimeout(() => setShakeError(false), 500); // Desactiva el temblor después de 0.5 segundos
             return;
         }
+
         if (!validateInputs()) {
+            setShakeError(true); // Activa el temblor si la validación falla
+            setTimeout(() => setShakeError(false), 500); // Desactiva el temblor después de 0.5 segundos
             return;
         }
+
         setError(null);
         loginApi(workerId, password)
             .then(response => {
                 if (!response.ok) {
                     setError('Usuario o contraseña incorrectos');
+                    setShakeError(true); // Activa el temblor si la respuesta no es correcta
+                    setTimeout(() => setShakeError(false), 500); // Desactiva el temblor después de 0.5 segundos
                     return;
                 }
 
-                // llamar a sessionApi y setear el session
+                // Llama a sessionApi y setea el session
                 sessionApi()
                     .then(response => {
                         if (!response.ok) {
                             setError('Usuario o contraseña incorrectos');
+                            setShakeError(true); // Activa el temblor si la respuesta no es correcta
+                            setTimeout(() => setShakeError(false), 500); // Desactiva el temblor después de 0.5 segundos
                             return;
                         }
                         return response.json();
                     }).then(data => {
                         setSession(data);
                     }).catch(error => {
-                        setError('Usuario o contraseña incorrectos', error);
+                        setError('Usuario o contraseña incorrectos');
+                        setShakeError(true); // Activa el temblor en caso de error
+                        setTimeout(() => setShakeError(false), 500); // Desactiva el temblor después de 0.5 segundos
                     });
 
-                if (session.lastWeekVotes[0] === 1) {
+                if (session && session.lastWeekVotes && sessionlastWeekVotes[0] === 1) {
                     setActiveComponent('ending');
                     return;
                 } else {
                     setActiveComponent('preMood');
                 }
             }).catch(error => {
-                setError('Usuario o contraseña incorrectos', error);
+                setError('Usuario o contraseña incorrectos');
+                setShakeError(true); // Activa el temblor en caso de error en la petición
+                setTimeout(() => setShakeError(false), 500); // Desactiva el temblor después de 0.5 segundos
             });
     }
 
@@ -84,7 +100,7 @@ function Login({ activeComponent, setActiveComponent }) {
                 <img src="/logo-unscreen.gif" alt="Logo" className="app-logo" />
                 <span className='login-text'>Frase de para que sirve esta webapp motivadora :/</span>
                 {!session &&
-                    <div className="login-form-container">
+                    <div className={`login-form-container ${shakeError ? 'shake-animation' : ''}`}>
                         {error && <p className="error-message">{error}</p>}
                         <form onSubmit={handleSumbit} onReset={() => {
                             setWorkerId('');
@@ -98,11 +114,11 @@ function Login({ activeComponent, setActiveComponent }) {
                             <div className="form-group">
                                 <label htmlFor="password">Contraseña:</label>
                                 <div className='password-input-container'>
-                                    <input 
-                                        type="password" 
-                                        id="password" 
-                                        name="password" 
-                                        value={password} 
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         placeholder='--------'
                                     />
