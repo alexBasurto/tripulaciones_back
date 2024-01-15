@@ -63,7 +63,43 @@ const getById = async (req, res) => {
 
 const create = async (req, res) => {
     try {
-        const user = await employeesModel.create(req.body);
+        // Extraer idCompany del token
+        const cookies = req.headers?.cookie
+            .split(";")
+            .reduce((cookiesObject, cookie) => {
+                const [name, value] = cookie.trim().split("=");
+                cookiesObject[name] = value;
+                return cookiesObject;
+            }, {});
+        const token = cookies.token;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        req.body.idCompany = decoded.idCompany;
+        // Añadir superAdministrator como 0
+        req.body.superAdministrator = 0;
+        console.log(req.body);
+
+        if (req.body.comments === "") req.body.comments = null;
+
+        // Nuevo objeto
+        const newUser = {
+            idCompany: req.body.idCompany,
+            idDepartment: req.body.idDepartment,
+            idBranch: req.body.idBranch,
+            idShift: req.body.idShift,
+            name: req.body.name,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            dni: req.body.dni,
+            workerId: req.body.workerId,
+            mobile: req.body.mobile,
+            comments: req.body.comments,
+            passwordHash: null,
+            companyAdministrator: req.body.companyAdministrator,
+            superAdministrator: req.body.superAdministrator,
+        };
+
+        const user = await employeesModel.create(newUser);
         res.status(200).json(user);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -80,6 +116,8 @@ const update = async (req, res) => {
             });
             return;
         }
+        // Conservar su contraseña
+        req.body.passwordHash = userExists.passwordHash;
         // Update user
         const [affectedRows] = await employeesModel.update(req.body, {
             where: {
