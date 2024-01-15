@@ -16,7 +16,7 @@
   width: 100dvw;
   height: 100lvh;
   background-image: url(pattern-color.jpg);
-  background-color: rgba(255, 255, 255,0.55);
+  background-color: rgba(255, 255, 255,0.66);
   background-blend-mode: lighten;
   background-size: cover;
   background-repeat: no-repeat;
@@ -30,13 +30,6 @@
   margin-bottom: 10%;
 }
 
-.login-title {
-  font-size: 26px;
-  color: rgba(15, 0, 76, 1);
-  display: flex;
-  flex-direction: column;
-}
-
 .login-text{
   font-size: 24px;
   text-align: center;
@@ -45,6 +38,8 @@
   font-weight: 600;
   padding-bottom: 4%;
   padding-top: 2%;
+  color: rgba(15, 0, 76);
+  font-weight: 750;
 }
 
 .login-form-container {
