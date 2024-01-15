@@ -8,6 +8,8 @@ import Chart4 from "./charts/Chart4";
 import Chart4b from "./charts/Chart4b";
 import Chart5 from "./charts/Chart5";
 
+import Maintenance from "./maintenance/Maintenance";
+
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -16,8 +18,14 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
             <div className="lateral">
+                <img src="public/logo.svg" alt="Moodly Logo" />
                 <nav>
                     <ul>
+                        <li>
+                            <button onClick={() => setChart("maintenance")}>
+                                Mantenimiento
+                            </button>
+                        </li>
                         <li>
                             <button onClick={() => setChart("chart1")}>
                                 GRÁFICO Lineal Puntuaciones
@@ -70,6 +78,7 @@ const Dashboard = () => {
                 {chart === "chart4" && <Chart4 />}
                 {chart === "chart4b" && <Chart4b />}
                 {chart === "chart5" && <Chart5 />}
+                {chart === "maintenance" && <Maintenance />}
             </div>
         </div>
     );

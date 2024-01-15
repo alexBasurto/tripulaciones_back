@@ -91,11 +91,11 @@ const Chart5 = () => {
 
     return (
         <div>
-            <h1>Cantidad de comentarios por mes | Último año</h1>
             {loading ? (
                 <div>Loading...</div>
-            ) : (
-                <div>
+                ) : (
+                    <div className="chart-container">
+                    <h1>Cantidad de comentarios por mes | Último año</h1>
                     <Chart />
                 </div>
             )}

@@ -96,11 +96,11 @@ const Chart4 = () => {
 
     return (
         <div className="chart">
-            <h2>Clasificación de sentimientos en los comentarios | NLP</h2>
             {loading ? (
                 <div>Cargando...</div>
-            ) : (
-                <div>
+                ) : (
+                    <div className="chart-container">
+                    <h2>Clasificación de sentimientos en los comentarios | NLP</h2>
                     <Chart />
                 </div>
             )}

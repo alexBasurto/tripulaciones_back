@@ -121,11 +121,11 @@ const Chart1 = () => {
 
     return (
         <div>
-            <h1>Media mensual de puntajes del trabajador a lo largo del tiempo</h1>
             {loading ? (
                 <div>Loading...</div>
-            ) : (
-                <div>
+                ) : (
+                    <div className="chart-container">
+                    <h1>Media mensual de puntajes del trabajador a lo largo del tiempo</h1>
                     <Chart />
                 </div>
             )}

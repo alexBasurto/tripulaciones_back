@@ -88,11 +88,11 @@ const Chart3 = () => {
 
     return (
         <div>
-            <h1>Conteo de sentimientos</h1>
             {loading ? (
                 <div>Loading...</div>
-            ) : (
-                <div>
+                ) : (
+                    <div className="chart-container">
+                    <h1>Conteo de sentimientos</h1>
                     <Chart />
                 </div>
             )}

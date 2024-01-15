@@ -3,5 +3,24 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+}
+
+.maintenance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-maintenance-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tb-employees {
+  margin-top: auto;
+  width: 100%;
+  margin-top: 20px;
 }
