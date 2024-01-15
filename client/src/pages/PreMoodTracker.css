@@ -217,6 +217,7 @@ h2 {
 
 .estado-actual {
   font-size: 1.5rem;
+  margin-bottom: 1rem;
   font-weight: bold;
   color: var(--estado-color);
   padding-bottom: 2%;
