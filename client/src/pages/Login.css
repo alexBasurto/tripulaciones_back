@@ -24,11 +24,10 @@
 
 .app-logo {
   display: flex;
-  position: absolute;
+  position: relative;
   width: 125px;
-  align-self: self-start;
-  margin-top: -50%;
-  margin-bottom: 15%;
+  margin-left: -60%;
+  margin-bottom: 10%;
 }
 
 .login-title {

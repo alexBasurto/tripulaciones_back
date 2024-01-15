@@ -24,6 +24,7 @@ const App = () => {
 
   const [sendVote, setSendVote] = useState(false);
 
+
   useEffect(() => {
     if (session === null) {
       setActiveComponent('login');
