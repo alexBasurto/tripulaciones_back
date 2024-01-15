@@ -47,12 +47,12 @@
     justify-content: start;
     margin: 0 auto;
     width: 350px;
-    height: 45%;
+    height: 300px;
 }
 
 .reasons-tags {
     width: 350px;
-    height: 256px;
+    height: 220px;
     display: flex;
     justify-content: start; /* Asegura que los elementos se centren */
     flex-wrap: wrap; /* Permite que los elementos se envuelvan */
