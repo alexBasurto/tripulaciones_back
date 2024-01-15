@@ -17,7 +17,7 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard">
-            <div className="lateral">
+            <div className="lateral-menu">
                 <img src="public/logo.svg" alt="Moodly Logo" />
                 <nav>
                     <ul>
@@ -69,7 +69,7 @@ const Dashboard = () => {
                     </ul>
                 </nav>
             </div>
-            <div className="chart-container">
+            <div className="chart-container dashboard-main">
                 {chart === "chart1" && <Chart1 />}
                 {chart === "chart2" && <Chart2 />}
                 {chart === "chart2b" && <Chart2b />}

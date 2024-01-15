@@ -5,6 +5,24 @@
   justify-content: center;
 }
 
+.lateral-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 100%;
+}
+
 .maintenance {
   display: flex;
   flex-direction: column;
