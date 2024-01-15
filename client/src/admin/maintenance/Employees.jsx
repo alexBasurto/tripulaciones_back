@@ -20,6 +20,7 @@ const Employees = () => {
     const [departmentsList, setDepartmentsList] = useState([]);
     const [branchesList, setBranchesList] = useState([]);
     const [shiftsList, setShiftsList] = useState([]);
+    const [load, setLoad] = useState(false);
     const itemsPerPage = 20;
 
     useEffect(() => {
@@ -31,7 +32,7 @@ const Employees = () => {
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    }, [load]);
 
     useEffect(() => {
         const start = (currentPage - 1) * itemsPerPage;
@@ -89,6 +90,7 @@ const Employees = () => {
                 // alert en navegador
                 alert(`Empleado con id ${id} eliminado`);
                 setEmployeesData(employeesData.filter((employee) => employee.id !== id));
+                setLoad(!load);
             })
             .catch((error) => {
                 console.log(error);
