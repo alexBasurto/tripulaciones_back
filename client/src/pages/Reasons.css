@@ -17,8 +17,8 @@
 }
 
 .reasons .reasons-question {
-    font-size: 14px;
-    border-bottom: 1px solid #000000;
+    font-size: 15px;
+    border-bottom: 1px solid var(--estado-color);
     padding-bottom: 5px;
     margin-bottom: 20px;
     text-align: start;
@@ -45,7 +45,7 @@
     justify-content: start;
     margin: 0 auto;
     width: 350px;
-    height: 55%;
+    height: 45%;
 }
 
 .reasons-tags {
@@ -78,15 +78,9 @@
     transition: background-color 0.3s; /* Transición suave para el fondo */
 }
 
-/* Estilos para cuando .reason-tag está seleccionado */
-.reason-tag.selected {
-    background-color: #8d8d8d; /* Color de fondo para botones seleccionados */
-    color: white; /* Color del texto para botones seleccionados */
-}
-
 .reason-icon {
-    width: 30px; /* Tamaño del ícono */
-    height: 30px; /* Tamaño del ícono */
+    width: 38px; /* Tamaño del ícono */
+    height: 38px; /* Tamaño del ícono */
 }
 
 .reason-text {
@@ -108,13 +102,13 @@
 }
 
 .reason-tag.selected {
-    color: white;
-    background-color: #8d8d8d;
-    border: 1px solid #8d8d8d;
     border-radius: 10px;
     padding: 5px;
     margin: 5px;
     cursor: pointer;
+    color: white;
+    font-weight: 600;
+    background-color: #13121289;
 }
 
 .button-container {
