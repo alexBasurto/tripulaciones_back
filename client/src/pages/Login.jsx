@@ -76,7 +76,7 @@ function Login({ activeComponent, setActiveComponent }) {
     }
 
     // Condition to check if both inputs are empty
-    const isButtonDisabled = workerId === '' && password === '';
+    const isButtonDisabled = workerId === '';
 
     return (
         <>
