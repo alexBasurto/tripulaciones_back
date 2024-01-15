@@ -139,6 +139,79 @@ const getAllDepartments = async () => {
     }
 }
 
+const updateDepartment = async (id, department) => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/departments/${id}`, {
+            method: "PUT",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(department),
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(
+                `ERROR en la solicitud: ${response.status} - ${response.statusText}`
+            );
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
+const createDepartment = async (department) => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/departments/new`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(department),
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(
+                `ERROR en la solicitud: ${response.status} - ${response.statusText}`
+            );
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+
+}
+
+const deleteDepartment = async (id) => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/departments/${id}`, {
+            method: "DELETE",
+            credentials: "include",
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(
+                `ERROR en la solicitud: ${response.status} - ${response.statusText}`
+            );
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+
+    }
+}
+
 // Branches
 const getAllBranches = async () => {
     try {
@@ -184,4 +257,4 @@ const getAllShifts = async () => {
 }
 
 
-export { getAllEmployees, getEmployee, createEmployee, deleteEmployee, updateEmployee, getAllDepartments, getAllShifts, getAllBranches };
+export { getAllEmployees, getEmployee, createEmployee, deleteEmployee, updateEmployee, getAllDepartments, getAllShifts, getAllBranches, updateDepartment, createDepartment, deleteDepartment };

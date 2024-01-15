@@ -38,6 +38,18 @@ const getById = async (req, res) => {
 
 const create = async (req, res) => {
     try {
+        const cookies = req.headers?.cookie
+            .split(";")
+            .reduce((cookiesObject, cookie) => {
+                const [name, value] = cookie.trim().split("=");
+                cookiesObject[name] = value;
+                return cookiesObject;
+            }, {});
+        const token = cookies.token;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const idCompany = decoded.idCompany;
+        req.body.idCompany = idCompany;
         const department = await departmentsModel.create(req.body);
         res.status(200).json(department);
     } catch (error) {
@@ -47,6 +59,19 @@ const create = async (req, res) => {
 
 const update = async (req, res) => {
     try {
+        const cookies = req.headers?.cookie
+            .split(";")
+            .reduce((cookiesObject, cookie) => {
+                const [name, value] = cookie.trim().split("=");
+                cookiesObject[name] = value;
+                return cookiesObject;
+            }, {});
+        const token = cookies.token;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const idCompany = decoded.idCompany;
+        req.body.idCompany = idCompany;
+
         // Check if department exists
         const departmentExists = await departmentsModel.findByPk(req.params.id);
         if (!departmentExists) {
@@ -81,7 +106,7 @@ const remove = async (req, res) => {
         });
         res.status(200).json({ message: `Departamento con ID ${req.params.id} eliminado.` });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: 'No se puede eliminar el departamento.' });
     }
 }
 
