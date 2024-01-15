@@ -1,8 +1,26 @@
+import jwt from "jsonwebtoken";
 import departmentsModel from "../models/departmentsModel.js";
 
 const getAll = async (req, res) => {
     try {
-        const departments = await departmentsModel.findAll();
+        const cookies = req.headers?.cookie
+            .split(";")
+            .reduce((cookiesObject, cookie) => {
+                const [name, value] = cookie.trim().split("=");
+                cookiesObject[name] = value;
+                return cookiesObject;
+            }, {});
+        const token = cookies.token;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const idCompany = decoded.idCompany;
+        const departments = await departmentsModel.findAll(
+            {
+                where: {
+                    idCompany: idCompany
+                }
+            }
+        );
         res.status(200).json(departments);
     } catch (error) {
         res.status(500).json({ message: error.message });

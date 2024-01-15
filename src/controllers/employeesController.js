@@ -28,8 +28,7 @@ const getAll = async (req, res) => {
             e.workerId, 
             e.mobile, 
             e.comments, 
-            e.companyAdministrator, 
-            e.superAdministrator,
+            e.companyAdministrator,
             d.name AS departmentName, 
             s.name AS shiftName, 
             b.name AS branchName

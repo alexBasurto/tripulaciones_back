@@ -4,15 +4,22 @@ import {
     createEmployee,
     deleteEmployee,
     updateEmployee,
+    getAllDepartments,
+    getAllBranches,
+    getAllShifts,
 } from "../utils/apiMaintenance";
 
 const Employees = () => {
     const [crudState, setCrudState] = useState("table");
+    const [readOrEditState, setReadOrEditState] = useState("read");
     const [employeesData, setEmployeesData] = useState([]);
     const [currentPageData, setCurrentPageData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [employeeToUpdate, setEmployeeToUpdate] = useState({});
+    const [employeeToUpdate, setEmployeeToRead] = useState({});
+    const [departmentsList, setDepartmentsList] = useState([]);
+    const [branchesList, setBranchesList] = useState([]);
+    const [shiftsList, setShiftsList] = useState([]);
     const itemsPerPage = 20;
 
     useEffect(() => {
@@ -54,10 +61,44 @@ const Employees = () => {
             });
     }
 
-    const updateRow = (employeeDetail) => {
-        //Open update form
-        setEmployeeToUpdate(employeeDetail);
-        setCrudState("update");
+    const readRow = (employeeDetail) => {
+        const getDeptBranchShift = () => {
+            //Fetch departments, branches and shifts for use them in the form
+            getAllDepartments()
+                .then((response) => {
+                    setDepartmentsList(response);
+                    console.log(response);
+                })
+                .then(() => {
+                    getAllBranches()
+                        .then((response) => {
+                            setBranchesList(response);
+                            console.log(response);
+                        })
+                        .then(() => {
+                            getAllShifts()
+                                .then((response) => {
+                                    setShiftsList(response);
+                                    console.log(response);
+                                    //Open update form
+
+                                })
+                                .catch((error) => {
+                                    console.log(error);
+                                });
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+        getDeptBranchShift();
+        setEmployeeToRead(employeeDetail);
+        setCrudState("read");
+        setReadOrEditState("read");
     }
 
     return (
@@ -79,7 +120,6 @@ const Employees = () => {
                         <th scope="col">Turno</th>
                         <th scope="col">Campus</th>
                         <th scope="col">Administrador</th>
-                        <th scope="col">Superadministrador</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -87,7 +127,7 @@ const Employees = () => {
                         return (
                             <tr key={index}>
                                 <td>
-                                    <button onClick={() => { updateRow(employee) }}>Editar</button>
+                                    <button onClick={() => { readRow(employee) }}>Ver</button>
                                 </td>
                                 <td>
                                     <button onClick={() => { deleteRow(employee.idEmployee); }}>Eliminar</button>
@@ -101,7 +141,6 @@ const Employees = () => {
                                 <td>{employee.shiftName}</td>
                                 <td>{employee.branchName}</td>
                                 <td>{employee.companyAdministrator === 1 ? 'SI' : 'NO'}</td>
-                                <td>{employee.superAdministrator === 1 ? 'SI' : 'NO'}</td>
                             </tr>
                         );
                     })}
@@ -115,9 +154,11 @@ const Employees = () => {
             </>
             )}
 
-            {crudState === "update" && (
+            {crudState === "read" && (
                 <>
-                    <h2>Actualizar empleado</h2>
+                    <h2>Detalle de empleado</h2>
+                    <button onClick={() => { setReadOrEditState('read') }}>Volver</button>
+                    <button onClick={() => { setReadOrEditState('edit') }}>Editar</button>
                     <form
                         onSubmit={(event) => {
                             event.preventDefault();
@@ -138,16 +179,137 @@ const Employees = () => {
                         }
                         }
                         >
+                        <label htmlFor="lastName">
+                            Apellidos
+                            <input
+                                type="text"
+                                name="lastName"
+                                id="lastName"
+                                defaultValue={employeeToUpdate.lastName}
+                                {...(readOrEditState === "read" && { disabled: true })}
+                            />    
+                        </label>
+
+                        <label htmlFor="name">
+                            Nombre
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                defaultValue={employeeToUpdate.name}
+                                {...(readOrEditState === "read" && { disabled: true })}
+                            />
+                        </label>
+
+                        <label htmlFor="email">
+                            Email
+                            <input
+                                type="text"
+                                name="email"
+                                id="email"
+                                defaultValue={employeeToUpdate.email}
+                                {...(readOrEditState === "read" && { disabled: true })}
+                            />
+                        </label>
+
+                        <label htmlFor="mobile">
+                            Teléfono
+                            <input
+                                type="text"
+                                name="mobile"
+                                id="mobile"
+                                defaultValue={employeeToUpdate.mobile}
+                                {...(readOrEditState === "read" && { disabled: true })}
+                            />
+                        </label>
+
+                        <label htmlFor="comments">
+                            Comentarios
+                            <input
+                                type="text"
+                                name="comments"
+                                id="comments"
+                                defaultValue={employeeToUpdate.comments}
+                                {...(readOrEditState === "read" && { disabled: true })}
+                            />
+                        </label>
+
+                        <label htmlFor="department">
+                            Departamento
+                            <select
+                                name="department"
+                                id="department"
+                                defaultValue={employeeToUpdate.department}
+                                {...(readOrEditState === "read" && { disabled: true })}
+                            >
+                                {departmentsList.map((department, index) => {
+                                    return (
+                                        <option key={index} value={department.idDepartment}>
+                                            {department.name}
+                                        </option>
+                                    );
+                                }
+                                )}
+                            </select>
+                        </label>
+
+                        <label htmlFor="branch">
+                            Sede
+                            <select
+                                name="branch"
+                                id="branch"
+                                defaultValue={employeeToUpdate.branch}
+                                {...(readOrEditState === "read" && { disabled: true })}
+                            >
+                                {branchesList.map((branch, index) => {
+                                    return (
+                                        <option key={index} value={branch.idBranch}>
+                                            {branch.name}
+                                        </option>
+                                    );
+                                }
+                                )}
+                            </select>
+                        </label>
+
+                        <label htmlFor="shift">
+                            Turno
+                            <select
+                                name="shift"
+                                id="shift"
+                                defaultValue={employeeToUpdate.shift}
+                                {...(readOrEditState === "read" && { disabled: true })}
+                            >
+                                {shiftsList.map((shift, index) => {
+                                    return (
+                                        <option key={index} value={shift.idShift}>
+                                            {shift.name}
+                                        </option>
+                                    );
+                                }
+                                )}
+                            </select>
+                        </label>
+
+                        <label htmlFor="companyAdministrator">
+                            Administrador
+                            {/* inputbox */}
+                            <input
+                                type="checkbox"
+                                name="companyAdministrator"
+                                id="companyAdministrator"
+                                defaultChecked={employeeToUpdate.companyAdministrator === 1 ? true : false}
+                                {...(readOrEditState === "read" && { disabled: true })}
+                            />
+                        </label>
                         
+                        
+                        {readOrEditState === "edit" && (
+                            <button type="submit">Actualizar</button>
+                        )}
                         </form>
                 </>
-            )
-
-
-            }
-
-
-
+                )}
         </div>
     );
 };

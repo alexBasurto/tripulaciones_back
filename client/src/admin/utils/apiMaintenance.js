@@ -116,4 +116,71 @@ const deleteEmployee = async (id) => {
     }
 }
 
-export { getAllEmployees, getEmployee, createEmployee, deleteEmployee, updateEmployee };
+// Departments
+const getAllDepartments = async () => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/departments`, {
+            method: "GET",
+            credentials: "include",
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(
+                `ERROR en la solicitud: ${response.status} - ${response.statusText}`
+            );
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
+// Branches
+const getAllBranches = async () => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/branches`, {
+            method: "GET",
+            credentials: "include",
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(
+                `ERROR en la solicitud: ${response.status} - ${response.statusText}`
+            );
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
+// Shifts
+const getAllShifts = async () => {
+    try {
+        const response = await fetch(`${VITE_BACKEND_HOST}/shifts`, {
+            method: "GET",
+            credentials: "include",
+        });
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            throw new Error(
+                `ERROR en la solicitud: ${response.status} - ${response.statusText}`
+            );
+        }
+    }
+    catch (error) {
+        console.error("Error en la solicitud:", error.message);
+        throw error;
+    }
+}
+
+
+export { getAllEmployees, getEmployee, createEmployee, deleteEmployee, updateEmployee, getAllDepartments, getAllShifts, getAllBranches };
