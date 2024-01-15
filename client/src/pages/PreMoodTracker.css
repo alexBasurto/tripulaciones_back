@@ -3,7 +3,7 @@
   src: url(https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap);
 }
 
-*{
+* {
   font-family: 'Inter', sans-serif;
 }
 
@@ -27,10 +27,10 @@ h4 {
   flex-direction: column;
 }
 
-main-container {
+.main-container {
   display: flex;
   flex-direction: column;
-  height: 90dvh;
+  height: 90vh;
 }
 
 .rastreador-de-emociones::before {
@@ -39,7 +39,7 @@ main-container {
   top: 0;
   left: 0;
   width: 100%;
-  height: 90dvh;
+  height: 90vh;
   filter: blur(10px);
   opacity: 0.8;
   z-index: -1;
@@ -47,7 +47,7 @@ main-container {
 
 .rastreador-de-emociones {
   position: relative;
-  min-height: 90dvh;
+  min-height: 90vh;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -56,11 +56,10 @@ main-container {
 /* Colores de fondo para cada estado emocional */
 .Muy-mal {
   --color-borde: #66bbf7;
-  --estado-color:#424781;
+  --estado-color: #424781;
   --color-figura: #3843D0;
   text-shadow: #0000005f 0px 0px 1px;
 }
-
 
 .Mal {
   --color-borde: #abfbff;
@@ -93,12 +92,10 @@ main-container {
 
 /* Colores de fondo para cada estado emocional */
 body.Muy-mal {
-  background: radial-gradient(
-    circle at center,
-    rgb(255, 255, 255) 0.2%,
-    rgba(68, 78, 221, 0.8) 15%,
-    rgb(255, 255, 255, 1) 90%
-  ), rgba(68, 78, 221, 0.5);
+  background: radial-gradient(circle at center,
+      rgb(255, 255, 255) 0.2%,
+      rgba(68, 78, 221, 0.8) 15%,
+      rgb(255, 255, 255, 1) 90%), rgba(68, 78, 221, 0.5);
   background-attachment: fixed;
   background-size: cover;
   transition: background-color 1s ease-out;
@@ -107,12 +104,10 @@ body.Muy-mal {
 }
 
 body.Mal {
-  background: radial-gradient(
-    circle at center,
-    rgb(255, 255, 255) 0.2%,
-    rgba(110, 207, 188, 0.8) 15%,
-    rgb(255, 255, 255, 1) 90%
-  ), rgba(110, 207, 188, 0.6);
+  background: radial-gradient(circle at center,
+      rgb(255, 255, 255) 0.2%,
+      rgba(110, 207, 188, 0.8) 15%,
+      rgb(255, 255, 255, 1) 90%), rgba(110, 207, 188, 0.6);
   background-attachment: fixed;
   background-size: cover;
   transition: background-color 1s ease-out;
@@ -121,12 +116,10 @@ body.Mal {
 }
 
 body.Normal {
-  background: radial-gradient(
-    circle at center,
-    rgb(255, 255, 255) 0.2%,
-    rgba(250, 200, 121, 0.9) 15%,
-    rgb(255, 255, 255, 1) 90%
-  ), rgba(250, 200, 121, 0.88);
+  background: radial-gradient(circle at center,
+      rgb(255, 255, 255) 0.2%,
+      rgba(250, 200, 121, 0.9) 15%,
+      rgb(255, 255, 255, 1) 90%), rgba(250, 200, 121, 0.88);
   background-attachment: fixed;
   background-size: cover;
   transition: background-color 1s ease-out;
@@ -135,12 +128,10 @@ body.Normal {
 }
 
 body.Bien {
-  background: radial-gradient(
-    circle at center,
-    rgb(255, 255, 255) 0.2%,
-    rgba(255, 116, 83, 0.9) 15%,
-    rgb(255, 255, 255, 1) 90%
-  ), rgb(255, 116, 83, 0.8);
+  background: radial-gradient(circle at center,
+      rgb(255, 255, 255) 0.2%,
+      rgba(255, 116, 83, 0.9) 15%,
+      rgb(255, 255, 255, 1) 90%), rgb(255, 116, 83, 0.8);
   background-attachment: fixed;
   background-size: cover;
   transition: background-color 1s ease-out;
@@ -149,12 +140,10 @@ body.Bien {
 }
 
 body.Muy-bien {
-  background: radial-gradient(
-    circle at center,
-    rgb(255, 255, 255) 0.2%,
-    rgba(254, 142, 178, 0.9) 15%,
-    rgb(255, 255, 255, 1) 90%
-  ), rgb(254, 142, 178, 0.8);
+  background: radial-gradient(circle at center,
+      rgb(255, 255, 255) 0.2%,
+      rgba(254, 142, 178, 0.9) 15%,
+      rgb(255, 255, 255, 1) 90%), rgb(254, 142, 178, 0.8);
   background-attachment: fixed;
   background-size: cover;
   transition: background-color 1s ease-out;
@@ -183,26 +172,34 @@ body.Muy-bien {
   height: 2.5rem;
   border-radius: 1rem;
   background: rgba(255, 255, 255, 0.668);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   outline: none;
   opacity: 0.7;
   transition: opacity .1s;
-  display: flex;
-  flex-direction: column;
-  position: relative;
 }
 
-.slider-white::-webkit-slider-thumb,
-.slider-white::-moz-range-thumb {
+.slider-white::-webkit-slider-thumb {
   -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
+  width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
   background: white;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  cursor: pointer;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.slider-white::-moz-range-thumb {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  margin-top: -0.75rem;
+}
+
+.slider-white::-webkit-slider-runnable-track,
+.slider-white::-moz-range-track {
+  background: transparent;
 }
 
 .etiquetas-emocion {
@@ -219,7 +216,7 @@ body.Muy-bien {
 }
 
 h2 {
-  font-size: 1,2rem;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
   font-weight: bold;
   color: var(--estado-color);
@@ -235,7 +232,8 @@ h2 {
   margin-top: auto;
 }
 
-.muymal, .muybien {
+.muymal,
+.muybien {
   color: var(--estado-color, #000000);
   font-weight: 350;
 }
@@ -257,6 +255,7 @@ img {
   transition: transform 0.5s ease-in-out;
 }
 
+/* Rotación de imágenes según el estado de ánimo */
 body.Muy-mal .rotating-image {
   transform: rotate(-40deg);
 }
@@ -284,7 +283,7 @@ body.Muy-bien .rotating-image {
   border-radius: 1.5rem;
   border: none;
   color: black;
-  font-size: o.8rem;
+  font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -292,13 +291,13 @@ body.Muy-bien .rotating-image {
   margin-bottom: 20px;
 }
 
-
 @media (max-width: 768px) {
   img {
     width: 70%;
   }
+
   .slider-white {
-    width: 100%; 
+    width: 100%;
     margin: 0;
   }
 }
