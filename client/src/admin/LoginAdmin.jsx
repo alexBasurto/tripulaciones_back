@@ -103,7 +103,7 @@ function LoginAdmin({ activeComponent, setActiveComponent }) {
                                     />
                                 </div>
                             </div>
-                                <button className='btn-iniciar' type="submit" disabled={isButtonDisabled}>Iniciar sesión</button>
+                                <button className='logging' type="submit" disabled={isButtonDisabled}>Iniciar sesión</button>
                                 <Footer />
                         </form>
                     </div>

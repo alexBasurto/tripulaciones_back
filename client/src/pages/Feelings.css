@@ -4,7 +4,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 
@@ -27,7 +26,7 @@
 }
 
 
-.feelings-tags-box {
+feelings-tags-box {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -35,7 +34,7 @@
     max-width: 500px;
 }
 
-.feelings-tags {
+button.feelings-tags {
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
@@ -46,7 +45,7 @@
 
 }
 
-.feeling-tag {
+button.feeling-tag {
     font-size: 14px;
     color: var(--estado-color);
     border: 1px solid #e3e3e3;
@@ -55,7 +54,7 @@
     box-shadow: 0 0 5px #e3e3e3;
 }
 
-.no-selected {
+button.no-selected {
     color: var(--estado-color);
     background-color: #f5f5f5;
     border: 1px solid #f5f3f3;
@@ -66,7 +65,7 @@
     box-shadow: 0 0 5px #e3e3e3;
 }
 
-.feeling-tag.selected {
+button.feeling-tag.selected {
     color: white;
     background-color: #8d8d8d60;
     border: 0.5px white;
