@@ -164,7 +164,12 @@ const Employees = () => {
                 <>
                     <h2>Detalle de empleado</h2>
                         <button onClick={() => { setCrudState("table") }}>Volver al listado</button>
+                    {readOrEditState === "read" && (
                     <button onClick={() => { setReadOrEditState('edit') }}>Editar</button>
+                    )}
+                    {readOrEditState === "edit" && (
+                        <button onClick={() => { setReadOrEditState('read') }}>Cancelar</button>
+                    )}
                     <form
                         onSubmit={
                             (event) => {
@@ -339,9 +344,6 @@ const Employees = () => {
                         {readOrEditState === "edit" && (
                             <button type="submit" >Guardar</button>
                         )}
-                        {readOrEditState === "edit" && (
-                        <button onClick={() => { setReadOrEditState("read") }}>Cancelar</button>
-                    )}
                         </form>
                 </>
                 )}

@@ -3,7 +3,9 @@ import { getAllDepartments, createDepartment, updateDepartment, deleteDepartment
 
 const Departments = () => {
     const [crudState, setCrudState] = useState("table");
+    const [readOrEditState, setReadOrEditState] = useState("read");
     const [departmentsData, setDepartmentsData] = useState([]);
+    const [departmentToUpdate, setDepartmentToUpdate] = useState({});
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -43,7 +45,10 @@ const Departments = () => {
                         <tbody>
                             {departmentsData.map((department) => (
                                 <tr key={department.idDepartment}>
-                                    <td><button>Editar</button></td>
+                                    <td><button onClick={() => {
+                                        setDepartmentToUpdate(department);
+                                        setCrudState("read");
+                                    }}>Ver</button></td>
                                     <td><button onClick={() => {
                                         deleteDepartment(department.idDepartment)
                                             .then(response => {
@@ -65,9 +70,50 @@ const Departments = () => {
                     </table>
                 </>
             }
-            {crudState === "edit" &&
+            {crudState === "read" &&
                 <div>
-                    <h1>Editar</h1>
+                    <h1>Detalles del departamento</h1>
+                    <button onClick={() => setCrudState("table")}>Volver al listado</button>
+                    {readOrEditState === "read" &&
+                    <button onClick={() => setReadOrEditState("edit")}>Editar</button>
+                    }
+                    {readOrEditState === "edit" &&
+                    <button onClick={() => setReadOrEditState("read")}>Cancelar</button>
+                    }
+                    <form
+                        onSubmit={(event) => {
+                            event.preventDefault();
+                            const formData = new FormData(event.target);
+                            const data = Object.fromEntries(formData);
+                            console.log(data);
+                            updateDepartment(departmentToUpdate.idDepartment, data)
+                                .then(response => {
+                                    console.log(response);
+                                    setDepartmentsData(departmentsData.map((item) => item.idDepartment === departmentToUpdate.idDepartment ? { ...item, ...data } : item));
+                                    setReadOrEditState("read");
+                                })
+                                .catch(error => {
+                                    console.log(error);
+                                    setError('No se puede actualizar el departamento.');
+                                }
+                                );
+                            setCrudState("table");
+                        }}
+                    >
+                        <label htmlFor='name'>Nombre
+                            <input type="text" name="name" id='name' defaultValue={departmentsData[0].name} {...(readOrEditState === "read" && { disabled: true })} />
+                        </label>
+                        <label htmlFor='comments'>Comentarios
+                            <input type="text" name="comments" id='comments' defaultValue={departmentsData[0].comments} {...(readOrEditState === "read" && { disabled: true })} />
+                        </label>
+                        {readOrEditState === "edit" &&
+                            <button type="submit">Guardar</button>
+                        }
+                    </form>
+                    
+
+
+
                 </div>
             }
             {crudState === "create" &&
