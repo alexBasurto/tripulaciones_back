@@ -7,19 +7,23 @@ import Admin from './admin/Admin.jsx'
 import SuperAdmin from './superadmin/SuperAdmin.jsx'
 import './index.css'
 import { SessionAdminProvider } from './admin/SessionAdminContext.jsx';
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <SessionProvider>
-      <SessionAdminProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/superadmin" element={<SuperAdmin />} />
-        </Routes>
-      </BrowserRouter>
-      </SessionAdminProvider>
-    </SessionProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={
+          <SessionProvider>
+            <App />
+          </SessionProvider>
+        } />
+        <Route path="/admin" element={
+          <SessionAdminProvider>
+            <Admin />
+          </SessionAdminProvider>
+        } />
+        <Route path="/superadmin" element={<SuperAdmin />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
 )
+

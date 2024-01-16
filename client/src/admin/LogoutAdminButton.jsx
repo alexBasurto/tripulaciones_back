@@ -1,12 +1,12 @@
 import { useSession } from './SessionAdminContext';
-import { logoutApi } from './utils/apiAdmin.js';
+import { logoutAdminApi } from './utils/apiAdmin';
 
 
 const LogoutAdminButton = () => {
     const { session, setSession } = useSession();
 
     const handleLogout = () => {
-        logoutApi()
+        logoutAdminApi()
         .then(() => {
             setSession(null);
         }).catch(error => {

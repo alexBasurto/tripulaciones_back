@@ -1,7 +1,7 @@
 const VITE_BACKEND_HOST =
     import.meta.env.VITE_BACKEND_HOST || "http://localhost:3020";
 
-const loginApi = async (workerId, password) => {
+const loginAdminApi = async (workerId, password) => {
     try {
         const response = await fetch(`${VITE_BACKEND_HOST}/loginAdmin`, {
             method: "POST",
@@ -24,7 +24,7 @@ const loginApi = async (workerId, password) => {
     }
 };
 
-const logoutApi = async () => {
+const logoutAdminApi = async () => {
     try {
         const response = await fetch(`${VITE_BACKEND_HOST}/logoutAdmin`, {
             method: "POST",
@@ -46,7 +46,7 @@ const logoutApi = async () => {
     }
 };
 
-const sessionApi = async () => {
+const sessionAdminApi = async () => {
     try {
         const response = await fetch(`${VITE_BACKEND_HOST}/sessionAdmin`, {
             method: "GET",
@@ -65,4 +65,4 @@ const sessionApi = async () => {
         throw error;
     }
 }
-export { loginApi, logoutApi, sessionApi };
+export { loginAdminApi, logoutAdminApi, sessionAdminApi };

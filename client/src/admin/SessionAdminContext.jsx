@@ -1,5 +1,5 @@
 import { useState, useContext, createContext, useEffect } from "react";
-import { sessionApi } from "./utils/apiAdmin";
+import { sessionAdminApi } from "./utils/apiAdmin";
 
 const SessionAdminContext = createContext();
 
@@ -10,7 +10,7 @@ const SessionAdminProvider = ({ children }) => {
         if (session === null) {
             const getSession = async () => {
                 try {
-                    const response = await sessionApi();
+                    const response = await sessionAdminApi();
                     const data = await response.json();
                     if (data === null) {
                         // setSession(null);

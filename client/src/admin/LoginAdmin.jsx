@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { loginApi, sessionApi } from './utils/apiAdmin';
+import { loginAdminApi, sessionAdminApi } from './utils/apiAdmin';
 import { useSession } from './SessionAdminContext';
 import Footer from '../components/Footer';
 import './LoginAdmin.css';
@@ -43,15 +43,15 @@ function LoginAdmin({ activeComponent, setActiveComponent }) {
             return;
         }
         setError(null);
-        loginApi(workerId, password)
+        loginAdminApi(workerId, password)
             .then(response => {
                 if (!response.ok) {
                     setError('Usuario o contraseña incorrectos');
                     return;
                 }
 
-                // llamar a sessionApi y setear el session
-                sessionApi()
+                // llamar a sessionAdminApi y setear el session
+                sessionAdminApi()
                     .then(response => {
                         if (!response.ok) {
                             setError('Usuario o contraseña incorrectos');

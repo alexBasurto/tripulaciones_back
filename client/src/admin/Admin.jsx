@@ -11,7 +11,7 @@ const Admin = () => {
   useEffect(() => {
     // si session no tiene la propiedad isAdmin, entonces setear activeComponent a 'login'
 
-    if (session && session.isAdmin === 'isAdmin') {
+    if (session && session.isAdmin && session.isAdmin && session.isAdmin === 'isAdmin') {
       setActiveComponent('dashboard');
     } else {
       setActiveComponent('login');

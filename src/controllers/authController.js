@@ -258,7 +258,7 @@ const loginAdmin = async (req, res) => {
             },
             process.env.JWT_SECRET
         );
-        res.cookie("token", token, {
+        res.cookie("adminToken", token, {
             httpOnly: true,
         }).send();
     } catch (err) {
@@ -267,7 +267,7 @@ const loginAdmin = async (req, res) => {
 };
 
 const logoutAdmin = (req, res) => {
-    res.cookie("token", "", {
+    res.cookie("adminToken", "", {
         httpOnly: true,
         expires: new Date(0),
     }).send();
@@ -282,7 +282,7 @@ const sessionAdmin = async (req, res) => {
                 cookiesObject[name] = value;
                 return cookiesObject;
             }, {});
-        const token = cookies.token;
+        const token = cookies.adminToken;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         if (!decoded.isAdmin) {
             return res.status(401).json({ errorMessage: "Unauthorized" });
