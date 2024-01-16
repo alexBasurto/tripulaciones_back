@@ -129,7 +129,7 @@ const Feelings = ({ preMood, feelings, setFeelings }) => {
                         </button>
                     ))}
                 </div>
-                <p className={`info ${maxAlert && 'max-alert'}`} style={{ marginLeft: '10%', fontSize: '10px' }}>Selecciona 3 opciones como máximo</p>
+                <p className={`info ${maxAlert && 'max-alert'}`} style={{ marginLeft: '2%', fontSize: '10px' }}>Selecciona 3 opciones como máximo</p>
             </div>
         </div>
     );

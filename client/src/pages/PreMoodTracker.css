@@ -89,9 +89,9 @@ h4 {
 /* Colores de fondo para cada estado emocional */
 body.Muy-mal {
   background: radial-gradient(circle at center,
-      rgb(255, 255, 255) 0.2%,
-      rgba(68, 78, 221, 0.8) 15%,
-      rgb(255, 255, 255, 1) 90%), rgba(68, 78, 221, 0.5);
+      rgb(255, 255, 255) 70%,
+      rgb(68, 78, 221) 2%,
+      rgb(255, 255, 255, 1) 90%);
   background-attachment: fixed;
   background-size: cover;
   transition: background-color 1s ease-out;
@@ -102,8 +102,8 @@ body.Muy-mal {
 body.Mal {
   background: radial-gradient(circle at center,
       rgb(255, 255, 255) 0.2%,
-      rgba(110, 207, 188, 0.8) 15%,
-      rgb(255, 255, 255, 1) 90%), rgba(110, 207, 188, 0.6);
+      rgba(110, 207, 188, 0.8) 5%,
+      rgb(255, 255, 255, 1) 70%);
   background-attachment: fixed;
   background-size: cover;
   transition: background-color 1s ease-out;
@@ -113,9 +113,9 @@ body.Mal {
 
 body.Normal {
   background: radial-gradient(circle at center,
-      rgb(255, 255, 255) 0.2%,
-      rgba(250, 200, 121) 25%,
-     rgba(250, 200, 121, 0.5));
+      rgb(255, 255, 255) 80%,
+      rgb(252, 225, 182) 2%,
+     rgb(243, 234, 219)90%);
   background-attachment: fixed;
   background-size: cover;
   transition: background-color 1s ease-out;
@@ -125,9 +125,9 @@ body.Normal {
 
 body.Bien {
   background: radial-gradient(circle at center,
-      rgb(255, 255, 255) 0.2%,
-      rgba(255, 116, 83, 0.9) 15%,
-      rgb(255, 255, 255, 1) 90%), rgb(255, 116, 83, 0.8);
+      rgb(255, 255, 255) 20%,
+      rgb(255, 117, 83) 2%,
+      rgb(255, 255, 255, 1) 80%);
   background-attachment: fixed;
   background-size: cover;
   transition: background-color 1s ease-out;
@@ -137,9 +137,9 @@ body.Bien {
 
 body.Muy-bien {
   background: radial-gradient(circle at center,
-      rgb(255, 255, 255) 0.2%,
+      rgb(255, 255, 255) 20%,
       rgba(254, 142, 178, 0.9) 15%,
-      rgb(255, 255, 255, 1) 90%), rgb(254, 142, 178, 0.8);
+      rgb(255, 255, 255, 1) 70%);
   background-attachment: fixed;
   background-size: cover;
   transition: background-color 1s ease-out;
@@ -274,7 +274,6 @@ body.Muy-bien .rotating-image {
   border: none;
   color: black;
   font-size: 0.8rem;
-  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: auto;

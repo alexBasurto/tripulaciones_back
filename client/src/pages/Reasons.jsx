@@ -82,7 +82,7 @@ const Reasons = ({ preMood, reasons, setReasons }) => {
                     })}
                 </div>
             </div>
-                <p className={`info ${maxAlert && 'max-alert'}`} style={{ fontSize: '10px', position: 'relative', top: '30px' }}>Selecciona 3 opciones como máximo</p>
+                <p className={`info ${maxAlert && 'max-alert'}`} style={{ fontSize: '10px', position: 'relative', top: '30px', marginLeft: '-190px'}}>Selecciona 3 opciones como máximo</p>
         </div>
     );
 
