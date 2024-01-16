@@ -1,0 +1,157 @@
+.container-maintenance-detail {
+    background-color: white;
+    /* Fondo blanco para el contenedor */
+    color: #333;
+    /* Color de texto oscuro para contraste */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+    max-width: 1200px;
+    margin: auto;
+    /* Centra el contenedor si no ocupa todo el ancho */
+}
+
+.container-maintenance-detail h1,
+.container-maintenance-detail h2 {
+    color: #102250;
+    /* Color de título oscuro */
+    margin-bottom: 20px;
+}
+
+.container-maintenance-detail button {
+    background-color: #4a69bd;
+    /* Color de fondo para botones */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    /* Margen a la derecha de los botones */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.container-maintenance-detail button:hover {
+    background-color: #6a89cc;
+    /* Color de fondo al pasar el ratón */
+}
+
+.tb-employees {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    /* Espacio arriba de la tabla */
+}
+
+.tb-employees thead {
+    background-color: #f4f7fa;
+    /* Fondo claro para el encabezado de la tabla */
+}
+
+.tb-employees th,
+.tb-employees td {
+    padding: 10px;
+    border: 1px solid #e1e5eb;
+    /* Borde claro para las celdas */
+    text-align: left;
+}
+
+.tb-employees th {
+    color: #102250;
+    /* Color de texto para encabezado de la tabla */
+}
+
+.tb-employees tr:hover {
+    background-color: #e1e5eb;
+    /* Fondo al pasar el ratón por filas */
+}
+
+.container-maintenance-detail .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.container-maintenance-detail .pagination button {
+    margin: 0 5px;
+    /* Margen entre botones de paginación */
+}
+
+.container-maintenance-detail form {
+    margin-top: 20px;
+    /* Espacio arriba del formulario */
+}
+
+.container-maintenance-detail label {
+    display: block;
+    /* Asegura que los inputs no estén en la misma línea que los labels */
+    margin-bottom: 5px;
+    /* Espacio debajo de cada label */
+    color: #102250;
+    /* Color de texto para los labels */
+}
+
+.container-maintenance-detail input[type="text"],
+.container-maintenance-detail select,
+.container-maintenance-detail input[type="checkbox"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    /* Espacio debajo de los inputs */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    /* Borde ligero para los inputs */
+    box-sizing: border-box;
+    /* Asegura que el padding no añada ancho al elemento */
+}
+
+.container-maintenance-detail input[type="checkbox"] {
+    width: auto;
+    /* Restablece el ancho para los checkbox */
+    margin-top: 2px;
+    /* Ajusta la alineación vertical para los checkbox */
+}
+
+.container-maintenance-detail form button[type="submit"] {
+    background-color: #27ae60;
+    color: white;
+    padding: 10px 15px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.container-maintenance-detail form button[type="submit"]:hover {
+    background-color: #2ecc71;
+    /* Color de fondo al pasar el ratón */
+}
+
+.container-maintenance-detail .error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    margin: 0 10px;
+}
+
+.container-maintenance-detail form {
+    margin-top: 20px;
+    /* Espacio arriba del formulario */
+    max-width: 600px;
+    /* Establece un ancho máximo para el formulario */
+    margin-left: auto;
+    /* Centra el formulario horizontalmente */
+    margin-right: auto;
+}

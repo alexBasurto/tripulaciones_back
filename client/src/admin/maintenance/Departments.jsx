@@ -1,3 +1,4 @@
+import './Maintenance.css'
 import { useState, useEffect } from 'react';
 import { getAllDepartments, createDepartment, updateDepartment, deleteDepartment } from '../utils/apiMaintenance';
 

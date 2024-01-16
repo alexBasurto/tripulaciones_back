@@ -1,5 +1,5 @@
+import "./Maintenance.css";
 import { useState } from "react";
-
 import Employees from "./Employees";
 import Departments from "./Departments";
 import Branches from "./Branches";

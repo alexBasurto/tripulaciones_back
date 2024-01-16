@@ -7,13 +7,15 @@ import Chart3b from "./charts/Chart3b";
 import Chart4 from "./charts/Chart4";
 import Chart4b from "./charts/Chart4b";
 import Chart5 from "./charts/Chart5";
-
 import Maintenance from "./maintenance/Maintenance";
-
 import "./Dashboard.css";
 
 const Dashboard = () => {
-    const [chart, setChart] = useState("");
+    const [chart, setChart] = useState("maintenance");
+
+    const getButtonClassName = (chartName) => {
+        return chart === chartName ? "active" : "";
+    };
 
     return (
         <div className="dashboard">
@@ -22,54 +24,56 @@ const Dashboard = () => {
                 <nav>
                     <ul>
                         <li>
-                            <button onClick={() => setChart("maintenance")}>
+                            <button className={getButtonClassName("maintenance")} onClick={() => setChart("maintenance")}>
                                 Mantenimiento
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart1")}>
+                            <button className={getButtonClassName("chart1")} onClick={() => setChart("chart1")}>
                                 GRÁFICO Lineal Puntuaciones
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart2")}>
-                                GRÁFICO Barras Sentimientos
+                            <button className={getButtonClassName("chart2")} onClick={() => setChart("chart2")}>
+                                Estado de ánimo
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart2b")}>
-                                GRÁFICO Barras Motivos
+                            <button className={getButtonClassName("chart2b")} onClick={() => setChart("chart2b")}>
+                                Razones
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart3")}>
-                                GRÁFICO Donut Sentimientos
+                            <button className={getButtonClassName("chart3")} onClick={() => setChart("chart3")}>
+                                Sentimientos
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart3b")}>
-                                GRÁFICO Donut Motivos
+                            <button className={getButtonClassName("chart3b")} onClick={() => setChart("chart3b")}>
+
+                                Razones
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart4")}>
-                                GRÁFICO NLP Barras
+                            <button className={getButtonClassName("chart4")} onClick={() => setChart("chart4")}>
+                                NLP Barras
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart4b")}>
-                                GRÁFICO NLP Donut
+                            <button className={getButtonClassName("chart4b")} onClick={() => setChart("chart4b")}>
+                                NLP Donut
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart5")}>
-                                GRÁFICO Lineal comentarios por mes
+                            <button className={getButtonClassName("chart5")} onClick={() => setChart("chart5")}>
+                                Comentarios
                             </button>
                         </li>
                     </ul>
                 </nav>
             </div>
             <div className="chart-container dashboard-main">
+                {chart === "maintenance" && <Maintenance />}
                 {chart === "chart1" && <Chart1 />}
                 {chart === "chart2" && <Chart2 />}
                 {chart === "chart2b" && <Chart2b />}
@@ -78,7 +82,6 @@ const Dashboard = () => {
                 {chart === "chart4" && <Chart4 />}
                 {chart === "chart4b" && <Chart4b />}
                 {chart === "chart5" && <Chart5 />}
-                {chart === "maintenance" && <Maintenance />}
             </div>
         </div>
     );

@@ -1,3 +1,4 @@
+import './Employees.css';
 import { useState, useEffect } from "react";
 import {
     getAllEmployees,
