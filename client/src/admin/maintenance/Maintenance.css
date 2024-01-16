@@ -1,0 +1,165 @@
+.maintenance {
+    padding: 20px;
+    background-color: white;
+    /* Fondo blanco */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.maintenance h1 {
+    color: rgba(15, 0, 76);
+    /* Color del título */
+    margin-bottom: 20px;
+}
+
+.maintenance-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.maintenance-buttons button {
+    padding: 10px 15px;
+    background-color: #0F004C;
+    /* Ajustar según sea necesario */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.maintenance-buttons button:hover {
+    background-color: #6a89cc;
+    /* Ajustar según sea necesario */
+}
+
+.maintenance-buttons button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 105, 189, 0.5);
+}
+
+/* Estilos para departamentos */
+
+.container-maintenance-detail {
+    background-color: white;
+    /* Fondo blanco para el contenedor */
+    color: #333;
+    /* Color de texto oscuro para contraste */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+}
+
+.container-maintenance-detail h1 {
+    color: #102250;
+    /* Color de título oscuro */
+    margin-bottom: 20px;
+}
+
+.container-maintenance-detail button {
+    background-color: #102250;
+    /* Color de fondo para botones */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    /* Margen a la derecha de los botones */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.container-maintenance-detail button:hover {
+    background-color: #6a89cc;
+    /* Color de fondo al pasar el ratón */
+}
+
+.container-maintenance-detail .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    /* Espacio arriba de la tabla */
+}
+
+.container-maintenance-detail .table thead {
+    background-color: #f4f7fa;
+    /* Fondo claro para el encabezado de la tabla */
+}
+
+.container-maintenance-detail .table th,
+.container-maintenance-detail .table td {
+    padding: 10px;
+    border: 1px solid #e1e5eb;
+    /* Borde claro para las celdas */
+}
+
+.container-maintenance-detail .table th {
+    text-align: left;
+    color: #102250;
+    /* Color de texto para encabezado de la tabla */
+}
+
+.container-maintenance-detail .table tr:hover {
+    background-color: #e1e5eb;
+    /* Fondo al pasar el ratón por filas */
+}
+
+.container-maintenance-detail form {
+    margin-top: 20px;
+    /* Espacio arriba del formulario */
+}
+
+.container-maintenance-detail label {
+    display: block;
+    /* Asegura que los inputs no estén en la misma línea que los labels */
+    margin-bottom: 5px;
+    /* Espacio debajo de cada label */
+    color: #102250;
+    /* Color de texto para los labels */
+}
+
+.container-maintenance-detail input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    /* Espacio debajo de los inputs */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    /* Borde ligero para los inputs
+/
+box-sizing: border-box; / Asegura que el padding no añada ancho al elemento */
+}
+
+.container-maintenance-detail input[type="text"] {
+    font-size: 16px;
+    /* Tamaño de fuente para los inputs de texto */
+}
+
+.container-maintenance-detail input:disabled {
+    background-color: #f0f0f0;
+    /* Fondo para campos deshabilitados /
+color: #777; / Color de texto para campos deshabilitados */
+}
+
+.container-maintenance-detail .error-message {
+    color: red;
+    /* Color para mensajes de error */
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Estilos específicos para el botón de guardar en formularios */
+.container-maintenance-detail form button[type="submit"] {
+background-color: #27ae60; 
+color: white;
+padding: 10px 15px;
+margin-top: 10px;
+width: 100%;
+box-shadow: none;
+}
+
+.container-maintenance-detail form button[type="submit"]:hover {
+    background-color: #2ecc71;
+}

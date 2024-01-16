@@ -7,13 +7,15 @@ import Chart3b from "./charts/Chart3b";
 import Chart4 from "./charts/Chart4";
 import Chart4b from "./charts/Chart4b";
 import Chart5 from "./charts/Chart5";
-
 import Maintenance from "./maintenance/Maintenance";
-
 import "./Dashboard.css";
 
 const Dashboard = () => {
-    const [chart, setChart] = useState("");
+    const [chart, setChart] = useState("maintenance");
+
+    const getButtonClassName = (chartName) => {
+        return chart === chartName ? "active" : "";
+    };
 
     return (
         <div className="dashboard">
@@ -22,32 +24,32 @@ const Dashboard = () => {
                 <nav>
                     <ul>
                         <li>
-                            <button onClick={() => setChart("maintenance")}>
+                            <button className={getButtonClassName("maintenance")} onClick={() => setChart("maintenance")}>
                                 Mantenimiento
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("puntuaciones")}>
+                            <button className={getButtonClassName("puntuaciones")} onClick={() => setChart("puntuaciones")}>
                                 GRÁFICOS Lineal Puntuaciones
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("emociones")}>
+                            <button className={getButtonClassName("emociones")} onClick={() => setChart("emociones")}>
                                 GRÁFICOS Emociones
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("reasons")}>
+                            <button className={getButtonClassName("reasons")} onClick={() => setChart("reasons")}>
                                 GRÁFICOS Razones
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("nlp")}>
+                            <button className={getButtonClassName("nlp")} onClick={() => setChart("nlp")}>
                                 GRÁFICOS NLP
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("votings")}>
+                            <button className={getButtonClassName("votings")} onClick={() => setChart("votings")}>
                                 GRÁFICOS Votaciones/mes
                             </button>
                         </li>
