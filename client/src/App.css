@@ -43,6 +43,10 @@
   align-items: center;
 }
 
+.blur-back {
+  filter: blur(10px);
+}
+
 .button-container {
   top: 3px;
 }
