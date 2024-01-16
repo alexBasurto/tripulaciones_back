@@ -46,23 +46,21 @@ function LoginAdmin({ activeComponent, setActiveComponent }) {
         loginAdminApi(workerId, password)
             .then(response => {
                 if (!response.ok) {
-                    setError('Usuario o contraseña incorrectos');
+                    setError('Usuario o contraseña incorrectos1');
                     return;
                 }
-
                 // llamar a sessionAdminApi y setear el session
                 sessionAdminApi()
                     .then(response => {
                         if (!response.ok) {
-                            setError('Usuario o contraseña incorrectos');
+                            setError('Usuario o contraseña incorrectos2');
                             return;
                         }
                         return response.json();
                     }).then(data => {
                         setSession(data);
-                        
                     }).catch(error => {
-                        setError('Usuario o contraseña incorrectos', error);
+                        setError('Usuario o contraseña incorrectos3', error);
                     });
             }).catch(error => {
                 setError('Usuario o contraseña incorrectos', error);

@@ -219,9 +219,8 @@ const session = async (req, res) => {
 };
 
 const loginAdmin = async (req, res) => {
-    const { workerId, password } = req.body;
-
     try {
+        const { workerId, password } = req.body;
         const employee = await employeesModel.findOne({
             where: { workerId: workerId },
         });
