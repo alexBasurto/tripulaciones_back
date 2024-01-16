@@ -111,11 +111,20 @@
   height: 50px;
   z-index: 2;
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid white;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 10px;
+}
+
+.flame-svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--color-figura);
+  stroke: var(--color-figura);
+  stroke-width: 1px;
 }
 
 .blur-content {
