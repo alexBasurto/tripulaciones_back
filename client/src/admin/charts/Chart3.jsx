@@ -92,7 +92,6 @@ const Chart3 = () => {
                 <div>Loading...</div>
                 ) : (
                     <div className="chart-container">
-                    <h1>Conteo de sentimientos</h1>
                     <Chart />
                 </div>
             )}

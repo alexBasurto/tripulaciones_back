@@ -111,7 +111,6 @@ const Chart2b = () => {
                 <div>Loading...</div>
                 ) : (
                     <div className="chart-container">
-                    <h1>Conteo de motivos</h1>
                     <Chart />
                 </div>
             )}

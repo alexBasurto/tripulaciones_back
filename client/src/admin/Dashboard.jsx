@@ -27,57 +27,69 @@ const Dashboard = () => {
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart1")}>
-                                GRÁFICO Lineal Puntuaciones
+                            <button onClick={() => setChart("puntuaciones")}>
+                                GRÁFICOS Lineal Puntuaciones
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart2")}>
-                                GRÁFICO Barras Sentimientos
+                            <button onClick={() => setChart("emociones")}>
+                                GRÁFICOS Emociones
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart2b")}>
-                                GRÁFICO Barras Motivos
+                            <button onClick={() => setChart("reasons")}>
+                                GRÁFICOS Razones
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart3")}>
-                                GRÁFICO Donut Sentimientos
+                            <button onClick={() => setChart("nlp")}>
+                                GRÁFICOS NLP
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => setChart("chart3b")}>
-                                GRÁFICO Donut Motivos
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => setChart("chart4")}>
-                                GRÁFICO NLP Barras
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => setChart("chart4b")}>
-                                GRÁFICO NLP Donut
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => setChart("chart5")}>
-                                GRÁFICO Lineal comentarios por mes
+                            <button onClick={() => setChart("votings")}>
+                                GRÁFICOS Votaciones/mes
                             </button>
                         </li>
                     </ul>
                 </nav>
             </div>
             <div className="chart-container dashboard-main">
-                {chart === "chart1" && <Chart1 />}
-                {chart === "chart2" && <Chart2 />}
-                {chart === "chart2b" && <Chart2b />}
-                {chart === "chart3" && <Chart3 />}
-                {chart === "chart3b" && <Chart3b />}
-                {chart === "chart4" && <Chart4 />}
-                {chart === "chart4b" && <Chart4b />}
-                {chart === "chart5" && <Chart5 />}
+                {chart === "puntuaciones" && 
+                    <>
+                        <h2>Media mensual de puntajes del trabajador a lo largo del tiempo</h2>
+                        <Chart1 />
+                    </>
+                }
+                {chart === "emociones" &&
+                    <>
+                        <h2>Gráficos emociones</h2>
+                        <Chart2 />
+                        <Chart3 />
+                    </>
+                }
+                {chart === "reasons" &&
+                    <>
+                        <h2>Gráficos razones</h2>
+                        <Chart2b />
+                        <Chart3b />
+                    </>
+                }
+                {chart === "nlp" &&
+                    <>
+                        <h2>Gráficos NLP</h2>
+                        <Chart4 />
+                        <Chart4b />
+                    </>
+                }
+                {chart === "votings" && 
+                    <>
+                        <h2>Gráficos votos</h2>
+                        <Chart5 />
+                    </>
+                }
+                
+
                 {chart === "maintenance" && <Maintenance />}
             </div>
         </div>

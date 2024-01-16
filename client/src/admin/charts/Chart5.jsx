@@ -95,7 +95,6 @@ const Chart5 = () => {
                 <div>Loading...</div>
                 ) : (
                     <div className="chart-container">
-                    <h1>Cantidad de comentarios por mes | Último año</h1>
                     <Chart />
                 </div>
             )}

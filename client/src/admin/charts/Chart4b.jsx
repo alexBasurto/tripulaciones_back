@@ -102,7 +102,6 @@ const Chart4b = () => {
                 <div>Cargando...</div>
                 ) : (
                     <div className="chart-container">
-                    <h2>Clasificación de sentimientos en los comentarios | NLP</h2>
                     <Chart/>
                 </div>
             )}

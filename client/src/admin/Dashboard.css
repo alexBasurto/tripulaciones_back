@@ -22,6 +22,18 @@
   width: 80%;
   height: 100%;
 }
+/* 
+.chart-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.chart-container > div {
+  width: 50%;
+} */
 
 .maintenance {
   display: flex;
