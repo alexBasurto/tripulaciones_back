@@ -103,3 +103,9 @@
   color: #102250; /* Color del texto */
   margin-right: 10px;
 }
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}

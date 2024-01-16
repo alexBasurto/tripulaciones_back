@@ -22,6 +22,7 @@ const Employees = () => {
     const [branchesList, setBranchesList] = useState([]);
     const [shiftsList, setShiftsList] = useState([]);
     const [load, setLoad] = useState(false);
+    const [error, setError] = useState(null);
     const itemsPerPage = 10;
 
     useEffect(() => {
@@ -89,7 +90,7 @@ const Employees = () => {
         deleteEmployee(id)
             .then((response) => {
                 // alert en navegador
-                alert(`Empleado con id ${id} eliminado`);
+                alert(`Empleado creado`);
                 setEmployeesData(employeesData.filter((employee) => employee.id !== id));
                 setLoad(!load);
             })
@@ -186,7 +187,7 @@ const Employees = () => {
                                 }
                                 updateEmployee(employeeToUpdate.idEmployee, data)
                                     .then((response) => {
-                                        alert(`Empleado con id ${employeeToUpdate.idEmployee} actualizado`);
+                                        alert(`Empleado actualizado`);
                                         setCrudState("table");
                                     })
                                     .catch((error) => {
@@ -356,6 +357,7 @@ const Employees = () => {
                     <h2>Crear empleado</h2>
                     <button onClick={() => {
                         setCrudState("table");
+                        setError(null);
                         setDepartmentsList([]);
                         setBranchesList([]);
                         setShiftsList([]);
@@ -379,10 +381,12 @@ const Employees = () => {
                                 console.log(data);
                                 createEmployee(data)
                                     .then((response) => {
-                                        alert(`Empleado ${response.name} ${response.lastName} creado`);
+                                        alert(`Empleado creado`);
+                                        setError(null);
                                         setCrudState("table");
                                     })
                                     .catch((error) => {
+                                        setError('No se ha podido crear el empleado. Asegurese de que no existe ya un empleado con ese email, DNI o teléfono.')
                                         console.log(error);
                                     });
                         }
@@ -518,6 +522,9 @@ const Employees = () => {
                             />
                         </label>
                         <button type="submit">Guardar</button>
+                        {error && (
+                            <p className='error'>{error}</p>
+                        )}
                     </form>
                 </>
             )}
