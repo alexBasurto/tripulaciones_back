@@ -9,6 +9,7 @@ const getAllEmployees = async () => {
             method: "GET",
             credentials: "include",
         });
+        console.log(response);
         if (response.ok) {
             const data = await response.json();
             return data;
