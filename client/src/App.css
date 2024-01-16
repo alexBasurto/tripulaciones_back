@@ -147,3 +147,14 @@
     text-align: center;
     padding: 20px;
 }
+
+.p-txt4{
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: #fff 2px 0px 30px;
+    color: #0F004C;
+    text-align: center;
+    padding: 20px;
+}

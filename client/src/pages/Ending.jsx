@@ -67,7 +67,7 @@ const Ending = ({ justLogged }) => {
                     <p className="p-txt">Reporte enviado correctamente</p>
                 </div>
             </div>}
-            <p>{error}</p>
+            <p className="e-txt">{error}</p>
         </div>
     );
 }

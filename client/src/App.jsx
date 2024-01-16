@@ -99,7 +99,7 @@ const App = () => {
                         <p className="p-txt3">¡Gracias por participar!</p>
                         <p className="p-txt3">Tu racha es de {session.streak + 1} días</p>
                         <StreakIcons />
-                        <p className="p-txt3">
+                        <p className="p-txt4">
                             Recuerda que tu voto es anónimo y se registrará
                             junto al de otras {session.employeesCount} personas
                             {session.departmentName &&
