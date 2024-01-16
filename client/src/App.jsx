@@ -74,6 +74,7 @@ const App = () => {
 
   return (
     <div className="app">
+      <div className='subapp'>
       {(activeComponent === 'feelings' || activeComponent === 'reasons') && (
         <div className="button-container">
           <button
@@ -164,6 +165,7 @@ const App = () => {
           }>Siguiente</button>}
 
       {session !== null && <LogoutButton />}
+      </div>
     </div>
   );
 };

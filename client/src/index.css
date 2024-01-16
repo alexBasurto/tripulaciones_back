@@ -5,14 +5,18 @@
 
 *{
   font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  
   place-items: center;
   min-width: 320px;
   min-height: 100dvh;
+}
+
+#root {
+  width: 100%;
 }
 
 h1 {

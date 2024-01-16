@@ -1,14 +1,4 @@
 /* Establece tu contenedor .reasons para que se centre */
-.app {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: 'Inter', sans-serif;
-}
-
-
 
 .reasons {
     display: flex;
