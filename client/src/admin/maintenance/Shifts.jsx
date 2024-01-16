@@ -6,6 +6,7 @@ const Shifts = () => {
     const [readOrEditState, setReadOrEditState] = useState("read");
     const [shiftsData, setShiftsData] = useState([]);
     const [shiftToUpdate, setShiftToUpdate] = useState({});
+    const [load, setLoad] = useState(false);
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const Shifts = () => {
             }
             );
     }
-        , []);
+        , [load]);
 
 
     return (
@@ -121,11 +122,12 @@ const Shifts = () => {
             }
             {crudState === "create" &&
                 <div>
-                    <h1>Crear departamento</h1>
+                    <h1>Crear turno</h1>
                     <button onClick={() => {
                         setCrudState("table");
                         setError("");
                         setShiftsData([]);
+                        setLoad(!load);
                     }
                     }>Volver al listado</button>
                     <form

@@ -6,6 +6,7 @@ const Branches = () => {
     const [readOrEditState, setReadOrEditState] = useState("read");
     const [branchesData, setBranchesData] = useState([]);
     const [branchToUpdate, setBranchToUpdate] = useState({});
+    const [load, setLoad] = useState(false);
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const Branches = () => {
             }
             );
     }
-        , []);
+        , [load]);
     
     return (
         <div className="container-maintenance-detail">
@@ -78,7 +79,16 @@ const Branches = () => {
 
             {crudState === "create" &&
                 <>
-                    <h2>Agregar Sede</h2>
+                    <h2>Crear Sede</h2>
+                    <button onClick={() => {
+                        setCrudState("table");
+                        setBranchesData([]);
+                        setLoad(!load);
+                        setError("");
+                    }
+                    
+                    }>Volver al listado</button>
+
                     <form onSubmit={(e) => {
                         e.preventDefault();
                         const formData = new FormData(e.target);
@@ -107,7 +117,6 @@ const Branches = () => {
                         <label htmlFor="comments">Comentarios:</label>
                         <input type="text" id="comments" name="comments" />
                         <button type="submit">Agregar</button>
-                        <button onClick={() => setCrudState("table")}>Cancelar</button>
                     </form>
                 </>
             }

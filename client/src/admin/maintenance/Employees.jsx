@@ -22,7 +22,7 @@ const Employees = () => {
     const [branchesList, setBranchesList] = useState([]);
     const [shiftsList, setShiftsList] = useState([]);
     const [load, setLoad] = useState(false);
-    const itemsPerPage = 20;
+    const itemsPerPage = 10;
 
     useEffect(() => {
         // Fetch employees

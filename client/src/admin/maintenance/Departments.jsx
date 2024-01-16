@@ -7,6 +7,7 @@ const Departments = () => {
     const [readOrEditState, setReadOrEditState] = useState("read");
     const [departmentsData, setDepartmentsData] = useState([]);
     const [departmentToUpdate, setDepartmentToUpdate] = useState({});
+    const [load, setLoad] = useState(false);
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -14,8 +15,6 @@ const Departments = () => {
             .then(response => {
                 console.log(response);
                 setDepartmentsData(response);
-
-                
             })
             .catch(error => {
                 console.log(error);
@@ -23,12 +22,12 @@ const Departments = () => {
             }
             );
     }
-        , []);
+        , [load]);
 
 
     return (
         <div className="container-maintenance-detail">
-            <h1>Departmentos</h1>
+            <h1>Departamentos</h1>
             {crudState === "table" &&
                 <>
                     <button onClick={() => setCrudState("create")}>Agregar Departamento</button>
@@ -127,6 +126,7 @@ const Departments = () => {
                         setCrudState("table");
                         setError("");
                         setDepartmentsData([]);
+                        setLoad(!load);
                     }
                     }>Volver al listado</button>
                     <form
