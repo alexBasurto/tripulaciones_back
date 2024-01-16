@@ -10,7 +10,7 @@ const getAll = async (req, res) => {
                 cookiesObject[name] = value;
                 return cookiesObject;
             }, {});
-        const token = cookies.token;
+        const token = cookies.adminToken;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         const idCompany = decoded.idCompany;
@@ -45,7 +45,7 @@ const create = async (req, res) => {
                 cookiesObject[name] = value;
                 return cookiesObject;
             }, {});
-        const token = cookies.token;
+        const token = cookies.adminToken;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         const idCompany = decoded.idCompany;
@@ -78,7 +78,7 @@ const update = async (req, res) => {
                 cookiesObject[name] = value;
                 return cookiesObject;
             }, {});
-        const token = cookies.token;
+        const token = cookies.adminToken;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         const idCompany = decoded.idCompany;
