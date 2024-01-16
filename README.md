@@ -9,6 +9,8 @@ Creamos el fichero .env del back (/.env) tomando .env.example como ejemplo.
 Desde la carpeta del proyecto ejecutamos los siguientes comandos para poner en marcha el back:
 ```docker compose up --build```
 
+Creamos el fichero .env del front (/client/.env) tomando .env.example como ejemplo.
+
 En la terminal nos posicionamos en la carpeta del front:
 ```cd client```
 
