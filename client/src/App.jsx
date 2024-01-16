@@ -31,7 +31,6 @@ const App = () => {
     if (session === null) {
       setActiveComponent('login');
       } else {
-        console.log(session.latestVoting[0].currentDay, new Date().toISOString().slice(0, 10));
         if (session.latestVoting[0].currentDay === new Date().toISOString().slice(0, 10)) {
           setJustLogged(true);
           setActiveComponent('ending');
