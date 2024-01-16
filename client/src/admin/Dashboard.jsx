@@ -30,27 +30,27 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <button className={getButtonClassName("puntuaciones")} onClick={() => setChart("puntuaciones")}>
-                                GRÁFICOS Lineal Puntuaciones
+                                Lineal
                             </button>
                         </li>
                         <li>
                             <button className={getButtonClassName("emociones")} onClick={() => setChart("emociones")}>
-                                GRÁFICOS Emociones
+                                Emociones
                             </button>
                         </li>
                         <li>
                             <button className={getButtonClassName("reasons")} onClick={() => setChart("reasons")}>
-                                GRÁFICOS Razones
+                                Razones
                             </button>
                         </li>
                         <li>
                             <button className={getButtonClassName("nlp")} onClick={() => setChart("nlp")}>
-                                GRÁFICOS NLP
+                                NLP
                             </button>
                         </li>
                         <li>
                             <button className={getButtonClassName("votings")} onClick={() => setChart("votings")}>
-                                GRÁFICOS Votaciones/mes
+                                Votaciones
                             </button>
                         </li>
                     </ul>
@@ -65,28 +65,28 @@ const Dashboard = () => {
                 }
                 {chart === "emociones" &&
                     <>
-                        <h2>Gráficos emociones</h2>
+                        <h2>Emociones</h2>
                         <Chart2 />
                         <Chart3 />
                     </>
                 }
                 {chart === "reasons" &&
                     <>
-                        <h2>Gráficos razones</h2>
+                        <h2>Razones</h2>
                         <Chart2b />
                         <Chart3b />
                     </>
                 }
                 {chart === "nlp" &&
                     <>
-                        <h2>Gráficos NLP</h2>
+                        <h2>NLP</h2>
                         <Chart4 />
                         <Chart4b />
                     </>
                 }
                 {chart === "votings" && 
                     <>
-                        <h2>Gráficos votos</h2>
+                        <h2>Votos</h2>
                         <Chart5 />
                     </>
                 }

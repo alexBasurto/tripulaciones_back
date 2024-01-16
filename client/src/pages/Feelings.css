@@ -17,12 +17,22 @@
 }
 
 
-feelings-tags-box {
+.feelings-tags-box {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
     width: 100%;
     max-width: 500px;
+    justify-content: start;
+    align-items: start;
+}
+
+.feelings-tags{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
 }
 
 button.feelings-tags {

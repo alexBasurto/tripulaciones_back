@@ -7,9 +7,11 @@
 }
 
 .maintenance h1 {
-    color: rgba(15, 0, 76);
-    /* Color del título */
+    color: black;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .maintenance-buttons {
@@ -20,7 +22,7 @@
 
 .maintenance-buttons button {
     padding: 10px 15px;
-    background-color: #0F004C;
+    background-color: black;
     /* Ajustar según sea necesario */
     color: white;
     border: none;
@@ -30,7 +32,7 @@
 }
 
 .maintenance-buttons button:hover {
-    background-color: #6a89cc;
+    background-color: grey;
     /* Ajustar según sea necesario */
 }
 
@@ -53,13 +55,13 @@
 }
 
 .container-maintenance-detail h1 {
-    color: #102250;
+    color: black;
     /* Color de título oscuro */
     margin-bottom: 20px;
 }
 
 .container-maintenance-detail button {
-    background-color: #102250;
+    background-color: black;
     /* Color de fondo para botones */
     color: white;
     border: none;
@@ -72,7 +74,7 @@
 }
 
 .container-maintenance-detail button:hover {
-    background-color: #6a89cc;
+    background-color: grey;
     /* Color de fondo al pasar el ratón */
 }
 
@@ -97,7 +99,7 @@
 
 .container-maintenance-detail .table th {
     text-align: left;
-    color: #102250;
+    color: black;
     /* Color de texto para encabezado de la tabla */
 }
 
@@ -116,7 +118,7 @@
     /* Asegura que los inputs no estén en la misma línea que los labels */
     margin-bottom: 5px;
     /* Espacio debajo de cada label */
-    color: #102250;
+    color: black;
     /* Color de texto para los labels */
 }
 
@@ -152,7 +154,7 @@ color: #777; / Color de texto para campos deshabilitados */
 
 /* Estilos específicos para el botón de guardar en formularios */
 .container-maintenance-detail form button[type="submit"] {
-background-color: #27ae60; 
+background-color: black; 
 color: white;
 padding: 10px 15px;
 margin-top: 10px;
@@ -161,5 +163,5 @@ box-shadow: none;
 }
 
 .container-maintenance-detail form button[type="submit"]:hover {
-    background-color: #2ecc71;
+    background-color: black;
 }

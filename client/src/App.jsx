@@ -87,18 +87,19 @@ const App = () => {
             {registered1 && (
                 <div className="blur">
                     <div className="blur-content">
-                        <p className="p-txt">Registrado 1/2</p>
+                        <img src="cheque.png" alt="check" className="checklist2" />
+                        <p className="p-txt2">Registrado 1/2</p>
                     </div>
                 </div>
             )}
             {registered2 && (
                 <div className="blur">
                     <div className="blur-content">
-                        <span>Registrado 2/2</span>
-                        <span>¡Gracias por participar!</span>
-                        <span>Tu racha es de {session.streak + 1} días</span>
+                        <p className="p-txt3">Registrado 2/2</p>
+                        <p className="p-txt3">¡Gracias por participar!</p>
+                        <p className="p-txt3">Tu racha es de {session.streak + 1} días</p>
                         <StreakIcons />
-                        <span>
+                        <p className="p-txt3">
                             Recuerda que tu voto es anónimo y se registrará
                             junto al de otras {session.employeesCount} personas
                             {session.departmentName &&
@@ -108,7 +109,7 @@ const App = () => {
                             {session.shiftName &&
                                 `, del turno ${session.shiftName}`}
                             .
-                        </span>
+                        </p>
                     </div>
                 </div>
             )}
@@ -116,33 +117,33 @@ const App = () => {
             <div className={`subapp ${blurBack && "blur-back"}`}>
                 {(activeComponent === "feelings" ||
                     activeComponent === "reasons") && (
-                    <div className="button-container">
-                        <button
-                            className="btn-back"
-                            onClick={() => {
-                                if (activeComponent === "feelings") {
-                                    setFeelings([]);
-                                    setActiveComponent("preMood");
-                                } else if (activeComponent === "reasons") {
-                                    setActiveComponent("feelings");
-                                }
-                            }}
-                        >
-                            <span className="back-arrow">
-                                <img
-                                    src="/icons/arrowIcon.svg"
-                                    alt="Arrow"
-                                    className="arrow-icon"
-                                />
-                            </span>
-                            <span className="header-text">
-                                {activeComponent === "feelings"
-                                    ? "Estado de ánimo"
-                                    : "Emociones"}
-                            </span>
-                        </button>
-                    </div>
-                )}
+                        <div className="button-container">
+                            <button
+                                className="btn-back"
+                                onClick={() => {
+                                    if (activeComponent === "feelings") {
+                                        setFeelings([]);
+                                        setActiveComponent("preMood");
+                                    } else if (activeComponent === "reasons") {
+                                        setActiveComponent("feelings");
+                                    }
+                                }}
+                            >
+                                <span className="back-arrow">
+                                    <img
+                                        src="/icons/arrowIcon.svg"
+                                        alt="Arrow"
+                                        className="arrow-icon"
+                                    />
+                                </span>
+                                <span className="header-text">
+                                    {activeComponent === "feelings"
+                                        ? "Estado de ánimo"
+                                        : "Emociones"}
+                                </span>
+                            </button>
+                        </div>
+                    )}
 
                 {activeComponent == "loading" && (
                     <div className="blur">Cargando...</div>
@@ -180,36 +181,36 @@ const App = () => {
                     activeComponent == "feelings" ||
                     activeComponent == "reasons" ||
                     activeComponent == "curMood") && (
-                    <button
-                        className="btn-next text-button"
-                        onClick={() => {
-                            if (activeComponent == "preMood") {
-                                setActiveComponent("feelings");
-                            } else if (activeComponent == "feelings") {
-                                setActiveComponent("reasons");
-                            } else if (activeComponent == "reasons") {
-                                setBlurBack(true);
-                                setRegistered1(true);
-                                setTimeout(() => {
-                                    setBlurBack(false);
-                                    setRegistered1(false);
-                                    setActiveComponent("curMood");
-                                }, 3000);
-                            } else if (activeComponent == "curMood") {
-                                setBlurBack(true);
-                                setRegistered2(true);
-                                setSendVote(true);
-                                setTimeout(() => {
-                                    setBlurBack(false);
-                                    setRegistered2(false);
-                                    setActiveComponent("ending");
-                                }, 6000);
-                            }
-                        }}
-                    >
-                        Siguiente
-                    </button>
-                )}
+                        <button
+                            className="btn-next text-button"
+                            onClick={() => {
+                                if (activeComponent == "preMood") {
+                                    setActiveComponent("feelings");
+                                } else if (activeComponent == "feelings") {
+                                    setActiveComponent("reasons");
+                                } else if (activeComponent == "reasons") {
+                                    setBlurBack(true);
+                                    setRegistered1(true);
+                                    setTimeout(() => {
+                                        setBlurBack(false);
+                                        setRegistered1(false);
+                                        setActiveComponent("curMood");
+                                    }, 30000);
+                                } else if (activeComponent == "curMood") {
+                                    setBlurBack(true);
+                                    setRegistered2(true);
+                                    setSendVote(true);
+                                    setTimeout(() => {
+                                        setBlurBack(false);
+                                        setRegistered2(false);
+                                        setActiveComponent("ending");
+                                    }, 60000);
+                                }
+                            }}
+                        >
+                            Siguiente
+                        </button>
+                    )}
 
                 {session !== null && <LogoutButton />}
             </div>
