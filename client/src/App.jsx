@@ -195,7 +195,7 @@ const App = () => {
                                         setBlurBack(false);
                                         setRegistered1(false);
                                         setActiveComponent("curMood");
-                                    }, 30000);
+                                    }, 3000);
                                 } else if (activeComponent == "curMood") {
                                     setBlurBack(true);
                                     setRegistered2(true);
@@ -204,7 +204,7 @@ const App = () => {
                                         setBlurBack(false);
                                         setRegistered2(false);
                                         setActiveComponent("ending");
-                                    }, 60000);
+                                    }, 6000);
                                 }
                             }}
                         >

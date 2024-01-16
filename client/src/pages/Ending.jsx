@@ -13,14 +13,14 @@ const Ending = ({ justLogged }) => {
     const handleSubmit = () => {
         const sendComment = async () => {
             try {
-                const comment = document.querySelector('input').value;
+                const comment = document.querySelector('textarea').value;
                 await createCommentApi(session.idEmployee, session.idCompany, comment, isChecked);
             } catch (error) {
                 console.log(error);
             }
         }
 
-        const comment = document.querySelector('input').value;
+        const comment = document.querySelector('textarea').value;
         const regex = /^[^'";]{20,198}$/;
         if (regex.test(comment) && comment.length > 20) {
             setError('');
@@ -43,7 +43,7 @@ const Ending = ({ justLogged }) => {
             <p className="ending-txt2">¡Ya has realizado la encuesta!</p>
             <p className="ending-txt3">¿Hay algo más que nos quieras comentar?</p>
             <div className="comment-input">
-                <input type="text" placeholder="Escribe aquí" />
+                <textarea placeholder="Escribe aquí"></textarea>
                 <div className="checkbox">
                 <input type="checkbox" id="anonimousCheckbox" defaultChecked onChange={
                     () => {
