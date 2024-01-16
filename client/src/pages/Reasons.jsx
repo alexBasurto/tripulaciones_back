@@ -56,7 +56,6 @@ const Reasons = ({ preMood, reasons, setReasons }) => {
         </div>
             <div className="reasons-tags-box">
                 <p className='reasons-question'style={{ color: 'var(--estado-color)' }}>¿A qué se debía el cómo te sentiste ayer?</p>
-                <p className={`info ${maxAlert && 'max-alert'}`}style={{ marginLeft: '15%', fontSize: '10px' }}>Selecciona 3 opciones como máximo</p>
                 <div className="reasons-tags">
                     {Object.keys(reasonsToDisplay).map((key) => {
                         const reason = reasonsToDisplay[key];
@@ -83,6 +82,7 @@ const Reasons = ({ preMood, reasons, setReasons }) => {
                     })}
                 </div>
             </div>
+                <p className={`info ${maxAlert && 'max-alert'}`} style={{ fontSize: '10px', position: 'relative', top: '30px', marginLeft: '-190px'}}>Selecciona 3 opciones como máximo</p>
         </div>
     );
 

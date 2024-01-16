@@ -1,5 +1,5 @@
 const VITE_BACKEND_HOST =
-    import.meta.env.VITE_BACKEND_HOST || "http://localhost:3020";
+    import.meta.env.VITE_BACKEND_HOST;
 
 // Employees
 
@@ -9,6 +9,7 @@ const getAllEmployees = async () => {
             method: "GET",
             credentials: "include",
         });
+        console.log(response);
         if (response.ok) {
             const data = await response.json();
             return data;

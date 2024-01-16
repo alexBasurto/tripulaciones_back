@@ -10,10 +10,12 @@ const getAll = async (req, res) => {
                 cookiesObject[name] = value;
                 return cookiesObject;
             }, {});
-        const token = cookies.token;
+        const token = cookies.adminToken;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         const idCompany = decoded.idCompany;
+
+        console.log('aquí')
 
         const [users, metadata] = await employeesModel.sequelize.query(
             `SELECT 
@@ -71,7 +73,7 @@ const create = async (req, res) => {
                 cookiesObject[name] = value;
                 return cookiesObject;
             }, {});
-        const token = cookies.token;
+        const token = cookies.adminToken;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         req.body.idCompany = decoded.idCompany;

@@ -13,7 +13,7 @@ const isAuthenticated = (req, res, next) => {
                 cookiesObject[name] = value;
                 return cookiesObject;
             }, {});
-        const token = cookies.token;
+        const token = cookies.token || cookies.adminToken;
         if (!token) return res.status(401).json({ errorMessage: "Unauthorized" });
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         if (!decoded) return res.status(401).json({ errorMessage: "Unauthorized" });

@@ -94,7 +94,7 @@ const Feelings = ({ preMood, feelings, setFeelings }) => {
         </div>
             <div className="feelings-tags-box">
                 <p className='feelings-question'style={{ color: 'var(--estado-color)' }}>¿Qué define mejor lo que sentiste ayer?</p>
-                <p className={`info ${maxAlert && 'max-alert'}`} style={{ marginLeft: '10%', fontSize: '10px' }}>Selecciona 3 opciones como máximo</p>
+               
                 <div className="feelings-tags">
                     {/* // Utiliza el método map para renderizar las etiquetas de emociones en función del preMood. */}
                     {Object.keys(feelingsToDisplay).map((key) => (
@@ -128,8 +128,8 @@ const Feelings = ({ preMood, feelings, setFeelings }) => {
                             {feelingsToDisplay[key]}
                         </button>
                     ))}
-
                 </div>
+                <p className={`info ${maxAlert && 'max-alert'}`} style={{ marginLeft: '2%', fontSize: '10px' }}>Selecciona 3 opciones como máximo</p>
             </div>
         </div>
     );

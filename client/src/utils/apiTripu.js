@@ -1,5 +1,5 @@
 const VITE_BACKEND_HOST =
-    import.meta.env.VITE_BACKEND_HOST || "http://localhost:3020";
+    import.meta.env.VITE_BACKEND_HOST;
 
 const loginApi = async (workerId, password) => {
     try {
