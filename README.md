@@ -110,7 +110,12 @@ Proximamente.
 #### SuperAdministrador
 * Panel de administración para el personal de Moodly donde poder dar de alta empresas. Al dar de alta empresa, daría de alta a uno o varios futuros administradores de la plataforma en la empresa cliente, a quien le llegaría un mail con el enlace para terminar el alta.
 
-## COLABORADORES
+## CREADORES
 #### FULL-STACK WEB DEVELOPERS
+[VICTOR](https://github.com/Vtorcampos13)
+[ESTHER](https://github.com/LentinulaEdode)
+[ALEX](https://github.com/alexBasurto)
 
 #### UX-UI DESIGNERS
+[NAHIA](https://www.linkedin.com/in/nahia-alberdi-fdez/)
+[MONXXO](https://monxxo.es/)
