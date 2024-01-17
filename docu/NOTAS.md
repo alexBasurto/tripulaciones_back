@@ -163,11 +163,47 @@ Sacar la IP del contenedor de docker de node:
 ```docker inspect node_tripulaciones | grep IPAddress```
 
 
-#### Ventanas inicio sesión:
-Usuario:
-- localhost:3020/
-- dni
 
-Admin y superadmin:	
-- localhost:3020/admin
-- mail
+## Datos inventados:
+
+Chat GPT:
+Pregunta:
+
+```
+Creame un script para ejecutar en NodeJS que genere un documento de texto con lo siguiente:
+
+Dadas las siguientes máscaras de INSERT INTO:
+
+INSERT INTO `tripulaciones`.`tbVoting`(`idVoting`, `idEmployee`,`idCompany`,`previousDay`,`previousDayScore`,`currentDay`,`currentDayScore`)
+VALUES (<{idVoting: }>,<{idEmployee: }>,<{idCompany: }>,<{previousDay: }>,<{previousDayScore: }>,<{currentDay: }>,<{currentDayScore: }>);
+
+INSERT INTO `tripulaciones`.`tbVotingFeelings`(`idFeeling`,`idVoting`)
+VALUES (<{idFeeling: }>,<{idVoting: }>);
+
+INSERT INTO `tripulaciones`.`tbVotingReasons`(`idVoting`,`idReason`)
+VALUES (<{idVotingReasons: }>,<{idVoting: }>,<{idReason: }>);
+
+Y teniendo en cuenta que, para tbVoting:
+- idEmployee siempre tiene que ser 1
+- idCompany siempre tiene que ser 1
+- la fecha principal es currentDay
+- previousDay es currentDay menos 1 día
+- los campos fecha deben tener formato YYYY-MM-DD
+- currentDayScore y previousDayScore son siempre un número entero del 1 al 5, con la siguiente frecuencia: 
+        - 40% de 3 para currentDayScore, 50% para previousDayScore
+        - 25% del 4 para currentDayScore, 10% para previousDayScore
+        - 15% del 5 para currentDayScore, 10% para previousDayScore
+        - 10% del 1 para currentDayScore, 15% para previousDayScore
+        - 10% del 2 para currentDayScore, 15% para previousDayScore
+
+Que el documento de texto contenga tantas ordenes INSERT INTO como para rellenar del 1 de enero de 2023 al 16 de enero de 2024.
+
+Para tbVotingFeelings:
+- Por cada 3 registros en tbVoting habrá uno, dos o tres asociados a tbVotingFeelings.
+- idFeeling será un entero que irá del 1 al 34, apareciendo los que van del 1 al 11 el 50% de las veces
+
+Para tbVotingReasons: 
+- Por cada 3 registros en tbVoting habrá uno, dos o tres asociados a tbVotingReasons.
+- idReason será un entero que irá del 1 al 12, teniendo el 1, 2, 4 y 12 el doble de probabilidades de salir
+
+```

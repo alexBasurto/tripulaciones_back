@@ -19,3 +19,5 @@ Instalamos las dependencias:
 
 Ponemos en marcha el front:
 ```npm run dev```
+
+# next steps
