@@ -219,7 +219,6 @@ const App = () => {
                         </button>
                     )}
 
-                {session !== null && <LogoutButton />}
             </div>
         </div>
     );
