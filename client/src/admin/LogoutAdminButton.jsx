@@ -22,7 +22,7 @@ const LogoutAdminButton = () => {
                     style={{
                         position: 'absolute', 
                         bottom: '10px', 
-                        left: '50%', 
+                        left: '45%', 
                         transform: 'translateX(-50%)', 
                         backgroundColor: 'black',
                         color: 'white',
@@ -32,7 +32,7 @@ const LogoutAdminButton = () => {
                         border: 'none',
                         cursor: 'pointer',
                         textAlign: 'center',
-                        width: '60%'
+                        width: '70%'
                     }}
                 >
                     Cerrar sesión
