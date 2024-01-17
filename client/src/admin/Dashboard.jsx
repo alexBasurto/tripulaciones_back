@@ -30,7 +30,7 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <button className={getButtonClassName("puntuaciones")} onClick={() => setChart("puntuaciones")}>
-                                Lineal
+                                Puntuaciones
                             </button>
                         </li>
                         <li>
@@ -50,7 +50,7 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <button className={getButtonClassName("votings")} onClick={() => setChart("votings")}>
-                                Votaciones
+                                Comentarios
                             </button>
                         </li>
                     </ul>
@@ -86,7 +86,7 @@ const Dashboard = () => {
                 }
                 {chart === "votings" && 
                     <>
-                        <h2>Votos</h2>
+                        <h2>Comentarios</h2>
                         <Chart5 />
                     </>
                 }
