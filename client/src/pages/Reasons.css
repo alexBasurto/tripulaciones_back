@@ -62,10 +62,9 @@
     width: 77px; /* Ajusta el ancho automáticamente */
     height: 67px; /* Ajusta el alto automáticamente */
     text-align: center; /* Alinea el texto al centro */
-    border: 1px solid #e3e3e3; /* Borde para el botón, si es necesario */
     border-radius: 10px; /* Radio del borde para redondear los botones */
     background-color: #f5f5f5; /* Color de fondo para botones no seleccionados */
-    box-shadow: 0 0 5px #e3e3e3; /* Sombra alrededor del botón */
+    box-shadow: 0 0 3px #e3e3e3; /* Sombra alrededor del botón */
     cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
     transition: background-color 0.3s; /* Transición suave para el fondo */
 }
@@ -86,7 +85,7 @@
     justify-content: center;
     color: #000000;
     background-color: #f5f5f5;
-    border: 1px solid #e3e3e3;
+    border: 0.5px solid #f5f5f5;
     border-radius: 10px;
     padding: 5px;
     margin: 5px;
@@ -101,6 +100,7 @@
     color: white;
     font-weight: 600;
     background-color: #13121289;
+    border: none;
 }
 
 .button-container {

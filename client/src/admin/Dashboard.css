@@ -11,7 +11,7 @@
 .lateral-menu {
   width: 240px; /* Ancho basado en la imagen */
   background-color: #f4f7fa; /* Color de fondo claro para la barra lateral */
-  color: black; /* Color de texto para elementos de la barra lateral */
+  color: #666; /* Color de texto para elementos de la barra lateral */
   padding: 20px;
   box-sizing: border-box;
   display: flex;
@@ -30,7 +30,7 @@
 
 .lateral-menu button.active {
   font-weight: bold;
-  border-left: 4px solid black; /* El color que quieras para el borde */
+  border-left: 4px solid #666666; /* El color que quieras para el borde */
   background-color: #e1e5eb; /* Un fondo suave si deseas */
   padding-left: calc(10px - 4px); /* Ajusta el padding para compensar el borde */
 }
@@ -71,7 +71,7 @@
 .lateral-menu .logout-button {
   background: none;
   border: none;
-  color: black;
+  color: #666666;
   padding: 10px;
   text-align: left;
   cursor: pointer;
@@ -104,6 +104,6 @@
 
 .chart-container header .user-info .username {
   font-size: 18px;
-  color: black; /* Color del texto */
+  color: #666666; /* Color del texto */
   margin-right: 10px;
 }
