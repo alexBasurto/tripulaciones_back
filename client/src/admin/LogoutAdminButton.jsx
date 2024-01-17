@@ -14,25 +14,32 @@ const LogoutAdminButton = () => {
         });
     }
 
-    return (<>
-    {session && <button style={
-        {
-            position: 'absolute',
-            top: '10px',
-            right: '10px',
-            width: '30px',
-            height: '30px',
-            backgroundColor: 'red',
-            opacity: '0.5',
-            color: 'white',
-            fontSize: '12px',
-            fontWeight: 'bold',
-            borderRadius: '50%',
-            border: 'none',
-            cursor: 'pointer',
-        }
-    } onClick={handleLogout}>X</button>}
-    </>);
+    return (
+        <>
+            {session && (
+                <button 
+                    onClick={handleLogout}
+                    style={{
+                        position: 'absolute', 
+                        bottom: '10px', 
+                        left: '50%', 
+                        transform: 'translateX(-50%)', 
+                        backgroundColor: 'black',
+                        color: 'white',
+                        fontSize: '14px',
+                        padding: '10px 20px',
+                        borderRadius: '10px',
+                        border: 'none',
+                        cursor: 'pointer',
+                        textAlign: 'center',
+                        width: '60%'
+                    }}
+                >
+                    Cerrar sesión
+                </button>
+            )}
+        </>
+    );
 }
 
 export default LogoutAdminButton;

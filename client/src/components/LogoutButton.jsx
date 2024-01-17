@@ -7,32 +7,39 @@ const LogoutButton = () => {
 
     const handleLogout = () => {
         logoutApi()
-        .then(() => {
-            setSession(null);
-        }).catch(error => {
-            console.log(error);
-        });
+            .then(() => {
+                setSession(null);
+            }).catch(error => {
+                console.log(error);
+            });
     }
 
-    return (<>
-    {session && <button style={
-        {
-            position: 'absolute',
-            top: '10px',
-            right: '10px',
-            width: '30px',
-            height: '30px',
-            backgroundColor: 'red',
-            opacity: '0.5',
-            color: 'white',
-            fontSize: '12px',
-            fontWeight: 'bold',
-            borderRadius: '50%',
-            border: 'none',
-            cursor: 'pointer',
-        }
-    } onClick={handleLogout}>X</button>}
-    </>);
+    return (
+        <>
+            {session && (
+                <button
+                    style={{
+                        position: 'fixed', // Ubicado respecto a la ventana
+                        bottom: '10px',    // Posicionado en la parte inferior
+                        left: '50%',       // Centrado horizontalmente
+                        transform: 'translateX(-50%)',
+                        color: '#0F004C',
+                        fontSize: '14px',  
+                        fontWeight: 'bold',
+                        textDecoration: 'underline',
+                        border: 'none', 
+                        background: 'none', 
+                        cursor: 'pointer', 
+                        padding: '10px 20px',
+                    }}
+                    onClick={handleLogout}
+                >
+                    Cerrar sesión
+                </button>
+            )}
+        </>
+    );
 }
 
 export default LogoutButton;
+

@@ -37,7 +37,7 @@ const Chart2b = () => {
         );
 
         // // Obtener los 5 motivos más frecuentes
-        // reasonsCountSorted.splice(5);
+        reasonsCountSorted.splice(5);
 
         return {
             reasons: reasonsCountSorted.map((reason) => reason.name),

@@ -8,6 +8,7 @@ import Chart4 from "./charts/Chart4";
 import Chart4b from "./charts/Chart4b";
 import Chart5 from "./charts/Chart5";
 import Maintenance from "./maintenance/Maintenance";
+import LogoutAdminButton from "./LogoutAdminButton";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -21,7 +22,7 @@ const Dashboard = () => {
         <div className="dashboard">
             <div className="lateral-menu">
                 <img src="public/logo.svg" alt="Moodly Logo" />
-                <nav>
+                <nav className="navbar">
                     <ul>
                         <li>
                             <button className={getButtonClassName("maintenance")} onClick={() => setChart("maintenance")}>
@@ -30,7 +31,7 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <button className={getButtonClassName("puntuaciones")} onClick={() => setChart("puntuaciones")}>
-                                Lineal
+                                Puntuaciones
                             </button>
                         </li>
                         <li>
@@ -50,14 +51,15 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <button className={getButtonClassName("votings")} onClick={() => setChart("votings")}>
-                                Votaciones
+                                Comentarios
                             </button>
                         </li>
                     </ul>
                 </nav>
+                <LogoutAdminButton />
             </div>
             <div className="chart-container dashboard-main">
-                {chart === "puntuaciones" && 
+                {chart === "puntuaciones" &&
                     <>
                         <h2>Media mensual de puntajes del trabajador a lo largo del tiempo</h2>
                         <Chart1 />
@@ -84,13 +86,13 @@ const Dashboard = () => {
                         <Chart4b />
                     </>
                 }
-                {chart === "votings" && 
+                {chart === "votings" &&
                     <>
-                        <h2>Votos</h2>
+                        <h2>Comentarios</h2>
                         <Chart5 />
                     </>
                 }
-                
+
 
                 {chart === "maintenance" && <Maintenance />}
             </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createCommentApi } from "../utils/apiTripu";
 import { useSession } from "../context/SessionContext";
+import LogoutButton from "../components/LogoutButton";
 
 import './Ending.css';
 
@@ -68,6 +69,7 @@ const Ending = ({ justLogged }) => {
                 </div>
             </div>}
             <p className="e-txt">{error}</p>
+            {session !== null && <LogoutButton />}
         </div>
     );
 }

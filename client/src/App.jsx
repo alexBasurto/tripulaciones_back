@@ -87,7 +87,10 @@ const App = () => {
             {registered1 && (
                 <div className="blur">
                     <div className="blur-content">
-                        <img src="cheque.png" alt="check" className="checklist2" />
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle className="fill" cx="15" cy="15" r="11.7647" strokeWidth="1.47059" />
+                            <path d="M21.2735 10.6862L12.134 19.8774L9.01855 16.7444" stroke="white" strokeWidth="1.875" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
                         <p className="p-txt2">Registrado 1/2</p>
                     </div>
                 </div>
@@ -95,6 +98,10 @@ const App = () => {
             {registered2 && (
                 <div className="blur">
                     <div className="blur-content">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle className="fill" cx="15" cy="15" r="11.7647" strokeWidth="1.47059" />
+                            <path d="M21.2735 10.6862L12.134 19.8774L9.01855 16.7444" stroke="white" strokeWidth="1.875" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
                         <p className="p-txt3">Registrado 2/2</p>
                         <p className="p-txt3">¡Gracias por participar!</p>
                         <p className="p-txt3">Tu racha es de {session.streak + 1} días</p>
@@ -212,7 +219,6 @@ const App = () => {
                         </button>
                     )}
 
-                {session !== null && <LogoutButton />}
             </div>
         </div>
     );
