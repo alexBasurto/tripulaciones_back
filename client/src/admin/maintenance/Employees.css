@@ -156,7 +156,7 @@
 }
 
 .editdelete .edit-button {
-    background-image: url('./public/icons/edit-text.svg');
+    background-image: url('/icons/edit-text.svg');
     background-color: white; 
     background-repeat: no-repeat;
     background-size: contain;
@@ -168,7 +168,7 @@
  }
 
 .editdelete .delete-button {
-    background-image: url('./public/icons/trash-can.svg');
+    background-image: url('/icons/trash-can.svg');
     background-color: white; 
     background-repeat: no-repeat;
     background-size: contain;
