@@ -33,7 +33,8 @@ const Chart2 = () => {
         });
         // Ordenar feeligsCount de mayor a menor
         const feelingsCountSorted = feelingsCount.sort((a, b) => b.count - a.count);
-
+        //Filtrame los 5 primeros
+        feelingsCountSorted.splice(5);
         return {
             feelings: feelingsCountSorted.map((feeling) => feeling.name),
             votes: feelingsCountSorted.map((feeling) => feeling.count),

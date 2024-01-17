@@ -65,7 +65,7 @@ const Chart3 = () => {
                     layout={{
                         width: 720,
                         height: 440,
-                        title: 'Conteo de los 5 sentimientos más frecuentes',
+                        title: 'Proporción de los 5 sentimientos más frecuentes',
                         annotations: [
                             {
                                 text: `Votos totales: ${numberOfVotes}`,

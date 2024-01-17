@@ -1,6 +1,24 @@
 const fs = require('fs');
 const path = require('path');
 
+// Configuración de las probabilidades por mes
+const scoreProbabilities = {
+  '2023-01': { currentDay: { '1': 0.05, '2': 0.40, '3': 0.30, '4': 0.15, '5': 0.10 }, previousDay: { '1': 0.10, '2': 0.45, '3': 0.25, '4': 0.10, '5': 0.10 } },
+  '2023-02': { currentDay: { '1': 0.05, '2': 0.35, '3': 0.35, '4': 0.15, '5': 0.10 }, previousDay: { '1': 0.10, '2': 0.40, '3': 0.30, '4': 0.10, '5': 0.10 } },
+  '2023-03': { currentDay: { '1': 0.05, '2': 0.30, '3': 0.35, '4': 0.20, '5': 0.10 }, previousDay: { '1': 0.10, '2': 0.35, '3': 0.30, '4': 0.15, '5': 0.10 } },
+  '2023-04': { currentDay: { '1': 0.05, '2': 0.25, '3': 0.40, '4': 0.20, '5': 0.10 }, previousDay: { '1': 0.10, '2': 0.30, '3': 0.35, '4': 0.15, '5': 0.10 } },
+  '2023-05': { currentDay: { '1': 0.05, '2': 0.20, '3': 0.40, '4': 0.25, '5': 0.10 }, previousDay: { '1': 0.10, '2': 0.25, '3': 0.35, '4': 0.20, '5': 0.10 } },
+  '2023-06': { currentDay: { '1': 0.05, '2': 0.15, '3': 0.40, '4': 0.30, '5': 0.10 }, previousDay: { '1': 0.10, '2': 0.20, '3': 0.35, '4': 0.25, '5': 0.10 } },
+  '2023-07': { currentDay: { '1': 0.05, '2': 0.10, '3': 0.45, '4': 0.30, '5': 0.10 }, previousDay: { '1': 0.10, '2': 0.15, '3': 0.40, '4': 0.25, '5': 0.10 } },
+  '2023-08': { currentDay: { '1': 0.05, '2': 0.05, '3': 0.50, '4': 0.30, '5': 0.10 }, previousDay: { '1': 0.10, '2': 0.10, '3': 0.45, '4': 0.25, '5': 0.10 } },
+  '2023-09': { currentDay: { '1': 0.10, '2': 0.40, '3': 0.30, '4': 0.15, '5': 0.05 }, previousDay: { '1': 0.15, '2': 0.45, '3': 0.25, '4': 0.10, '5': 0.05 } },
+  '2023-10': { currentDay: { '1': 0.10, '2': 0.30, '3': 0.35, '4': 0.15, '5': 0.10 }, previousDay: { '1': 0.15, '2': 0.35, '3': 0.30, '4': 0.10, '5': 0.10 } },
+  '2023-11': { currentDay: { '1': 0.05, '2': 0.25, '3': 0.35, '4': 0.25, '5': 0.10 }, previousDay: { '1': 0.10, '2': 0.30, '3': 0.30, '4': 0.20, '5': 0.10 } },
+  '2023-12': { currentDay: { '1': 0.05, '2': 0.20, '3': 0.30, '4': 0.30, '5': 0.15 }, previousDay: { '1': 0.10, '2': 0.25, '3': 0.30, '4': 0.25, '5': 0.10 } },
+  '2024-01': { currentDay: { '1': 0.05, '2': 0.15, '3': 0.25, '4': 0.35, '5': 0.20 }, previousDay: { '1': 0.10, '2': 0.20, '3': 0.25, '4': 0.30, '5': 0.15 } }
+};
+
+
 function formatDate(date) {
   return date.toISOString().split('T')[0];
 }
@@ -14,6 +32,11 @@ function getScore(distribution) {
   }
 }
 
+function getMonthlyDistribution(date) {
+  const yearMonth = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+  return scoreProbabilities[yearMonth] || scoreProbabilities['2023-01']; // Default a enero 2023 si no se encuentra
+}
+
 function generateVotingData(startDate, endDate) {
   let data = '';
   let idVoting = 1;
@@ -22,8 +45,9 @@ function generateVotingData(startDate, endDate) {
     const currentDay = formatDate(date);
     const previousDay = formatDate(new Date(date.getTime() - 86400000));
 
-    const currentDayScore = getScore({ '1': 0.1, '2': 0.1, '3': 0.4, '4': 0.25, '5': 0.15 });
-    const previousDayScore = getScore({ '1': 0.15, '2': 0.15, '3': 0.5, '4': 0.1, '5': 0.1 });
+    const monthlyDistribution = getMonthlyDistribution(date);
+    const currentDayScore = getScore(monthlyDistribution.currentDay);
+    const previousDayScore = getScore(monthlyDistribution.previousDay);
 
     data += `INSERT INTO \`tripulaciones\`.\`tbVoting\`(\`idVoting\`, \`idEmployee\`,\`idCompany\`,\`previousDay\`,\`previousDayScore\`,\`currentDay\`,\`currentDayScore\`) VALUES (${idVoting}, 1, 1, '${previousDay}', ${previousDayScore}, '${currentDay}', ${currentDayScore});\n`;
 
