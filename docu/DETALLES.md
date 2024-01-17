@@ -1,11 +1,4 @@
-# BACK DESAFIO TRIPULACIONES
-
-## Apuntes varios
-- Repositorio privado y con licencia Creative Commons
-- Funciones extra como el 'superadministrador' podemos planificarlas, y dependiendo del tiempo que tengamos:
-    - No se llevan a cabo.
-    - Se llevan a cabo en el back.
-    - Se llevan a cabo en back y front.
+# DETALLES TÉCNICOS Y ANOTACIONES
 
 
 ## Funcionalidad del back
