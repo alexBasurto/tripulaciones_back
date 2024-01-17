@@ -7,6 +7,10 @@
   color: #333; /* Texto oscuro para contraste */
 }
 
+.dashboard-main {
+  margin-left: 240px; /* Ancho de la barra lateral */
+}
+
 /* Estilos para la barra lateral */
 .lateral-menu {
   position: fixed;
@@ -89,6 +93,10 @@
   padding: 40px; /* Espaciado interno */
   background-color: white; /* Fondo blanco */
   box-sizing: border-box;
+}
+
+.chart-container-mini {
+  width: 50%;
 }
 
 /* Estilos para el encabezado del contenedor principal */

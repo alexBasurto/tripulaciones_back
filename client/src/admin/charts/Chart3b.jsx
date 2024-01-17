@@ -63,7 +63,7 @@ const Chart3b = () => {
                         }
                     ]}
                     layout={{
-                        width: 720,
+                        width: 600,
                         height: 440,
                         title: 'Proporción de los 5 motivos más frecuentes',
                         annotations: [
@@ -90,7 +90,7 @@ const Chart3b = () => {
             {loading ? (
                 <div>Loading...</div>
                 ) : (
-                    <div className="chart-container">
+                    <div className="chart-container-mini">
                     <Chart />
                 </div>
             )}
