@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { SessionProvider } from './context/SessionContext'
 import App from './App.jsx'
 import Admin from './admin/Admin.jsx'
-import SuperAdmin from './superadmin/SuperAdmin.jsx'
 import './index.css'
 import { SessionAdminProvider } from './admin/SessionAdminContext.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -21,7 +20,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Admin />
           </SessionAdminProvider>
         } />
-        <Route path="/superadmin" element={<SuperAdmin />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
