@@ -1,12 +1,5 @@
-# BACK DESAFIO TRIPULACIONES
-
-## Apuntes varios
-- Repositorio privado y con licencia Creative Commons
-- Funciones extra como el 'superadministrador' podemos planificarlas, y dependiendo del tiempo que tengamos:
-    - No se llevan a cabo.
-    - Se llevan a cabo en el back.
-    - Se llevan a cabo en back y front.
-
+# DETALLES TÉCNICOS Y ANOTACIONES
+A continuación mostramos algunos detalles técnicos que el equipo considera relevantes y una serie de notas que se tomarons durante la planificación y transcurso del proyecto.
 
 ## Funcionalidad del back
 - Superadministrador:
@@ -24,13 +17,11 @@
     - Rellenar formulario diario.
     - Canal comunicación RRHH (anónimo por defecto).
 - Votaciones:
-    - CR de votación por cada trabajador.
-    - 
+    - Create + Read de votación por cada trabajador.
+
 
 ## Dudas
-- Las etiquetas son universales, no dependen de la puntuación del 1 al 5 previa
-- Los reportes a RRHH llegan solo por el dashboard, y en 2a fase, por mail.
-- Notificaciones del navegador.
+- *Las etiquetas son universales, no dependen de la puntuación del 1 al 5 previa* -> en el caso de 'razones' si, en el caso de 'emociones', no: dependen de la valoración general dada al día.
 
 ## Plazos
 - Back: día 9
@@ -162,12 +153,10 @@ erDiagram
 Sacar la IP del contenedor de docker de node:
 ```docker inspect node_tripulaciones | grep IPAddress```
 
-
-
-## Datos inventados:
+## Datos inventados para mostrar algo en los gráficos:
 
 Chat GPT:
-Pregunta:
+Pregunta inicial:
 
 ```
 Creame un script para ejecutar en NodeJS que genere un documento de texto con lo siguiente:
@@ -207,3 +196,28 @@ Para tbVotingReasons:
 - idReason será un entero que irá del 1 al 12, teniendo el 1, 2, 4 y 12 el doble de probabilidades de salir
 
 ```
+
+Pregunta 2:
+
+```
+el script va tal y como esperaba, pero quiero añadir algunas cosas:
+
+Quiero que las probabilidades para currentDayScore y previousDayScore cambien dependiendo del mes.
+
+Para ello, quiero que me devuelvas el script con un objeto al principio, por el cual pueda definir para cada mes desde el 2023/01 hasta 2024/01 las probabilidades para currentDayScore y para previousDayScore.
+```
+
+Pregunta 3:
+
+```
+devuelveme el objeto de forma que:
+- las puntuaciones currentDayScore siempre sean un poco superiores a previousDayScore
+- las puntuaciones irán mejorando, empezando en 2023/01 con alta probabilidad de 2 y llegue a 2023/08 con alta probabilidad de 3 y 4, en 2023/09 cae con alta probabilidad de 2 y va subiendo hasta 2024/01 con alta probabilidad de 4 y 5
+
+const scoreProbabilities = {
+  '2023-01': { currentDay: { '1': 0.1, '2': 0.1, '3': 0.4, '4': 0.25, '5': 0.15 }, previousDay: { '1': 0.15, '2': 0.15, '3': 0.5, '4': 0.1, '5': 0.1 } },
+  // continúa...
+}
+```
+
+Ubicación del sript: `/docu/sqlinvent.csj`
