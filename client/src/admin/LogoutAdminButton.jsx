@@ -17,24 +17,7 @@ const LogoutAdminButton = () => {
     return (
         <>
             {session && (
-                <button 
-                    onClick={handleLogout}
-                    style={{
-                        position: 'absolute', 
-                        bottom: '10px', 
-                        left: '45%', 
-                        transform: 'translateX(-50%)', 
-                        backgroundColor: 'black',
-                        color: 'white',
-                        fontSize: '14px',
-                        padding: '10px 20px',
-                        borderRadius: '10px',
-                        border: 'none',
-                        cursor: 'pointer',
-                        textAlign: 'center',
-                        width: '70%'
-                    }}
-                >
+                <button onClick={handleLogout}>
                     Cerrar sesión
                 </button>
             )}

@@ -54,9 +54,12 @@ const Dashboard = () => {
                                 Comentarios
                             </button>
                         </li>
+                        <li>
+                            <LogoutAdminButton />
+                        </li>
                     </ul>
                 </nav>
-                <LogoutAdminButton />
+                
             </div>
             <div className="chart-container dashboard-main">
                 {chart === "puntuaciones" &&
