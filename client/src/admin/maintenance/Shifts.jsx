@@ -28,7 +28,7 @@ const Shifts = () => {
 
     return (
         <div className="container-maintenance-detail">
-            <h1>Turnos</h1>
+            
             {crudState === "table" &&
                 <>
                     <button onClick={() => setCrudState("create")}>Agregar Turno</button>
@@ -44,11 +44,13 @@ const Shifts = () => {
                         <tbody>
                             {shiftsData.map((shift) => (
                                 <tr key={shift.idShift}>
-                                    <td><button onClick={() => {
+                                    <td className='editdelete'>
+                                        <button className='edit-button' onClick={() => {
                                         setShiftToUpdate(shift);
                                         setCrudState("read");
                                     }}>Ver</button></td>
-                                    <td><button className='delete-button' onClick={() => {
+                                    <td className='editdelete'>
+                                        <button className='delete-button' onClick={() => {
                                         deleteShift(shift.idShift)
                                             .then(response => {
                                                 console.log(response);

@@ -134,10 +134,10 @@ const Employees = () => {
                     {currentPageData.map((employee, index) => {
                         return (
                             <tr key={index}>
-                                <td>
+                                <td className='editdelete'>
                                     <button className='edit-button' onClick={() => { readRow(employee) }}>Ver</button>
                                 </td>
-                                <td>
+                                <td className='editdelete'>
                                     <button className='delete-button' onClick={() => { deleteRow(employee.idEmployee); }}>Eliminar</button>
                                 </td>
                                 <td>{employee.lastName}</td>

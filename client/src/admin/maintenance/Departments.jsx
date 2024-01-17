@@ -27,7 +27,7 @@ const Departments = () => {
 
     return (
         <div className="container-maintenance-detail">
-            <h1>Departamentos</h1>
+            
             {crudState === "table" &&
                 <>
                     <button onClick={() => setCrudState("create")}>Agregar Departamento</button>
@@ -44,11 +44,13 @@ const Departments = () => {
                         <tbody>
                             {departmentsData.map((department) => (
                                 <tr key={department.idDepartment}>
-                                    <td><button onClick={() => {
+                                    <td className='editdelete'>
+                                        <button className='edit-button' onClick={() => {
                                         setDepartmentToUpdate(department);
                                         setCrudState("read");
                                     }}>Ver</button></td>
-                                    <td><button onClick={() => {
+                                    <td className='editdelete'>
+                                        <button className='delete-button' onClick={() => {
                                         deleteDepartment(department.idDepartment)
                                             .then(response => {
                                                 console.log(response);

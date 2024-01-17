@@ -8,6 +8,7 @@
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     max-width: 100%;
+    min-width: 100%;
     padding: 5px;
 }
 
@@ -154,24 +155,26 @@
     margin-right: auto;
 }
 
-.edit-button {
+.editdelete .edit-button {
     background-image: url('./public/icons/edit-text.svg');
+    background-color: white; 
     background-repeat: no-repeat;
     background-size: contain;
     text-indent: -9999px;
     cursor: pointer;
-    border: 2px solid black;
+    border: none;
     outline: none;
     size: 32px;
  }
 
-.delete-button {
+.editdelete .delete-button {
     background-image: url('./public/icons/trash-can.svg');
+    background-color: white; 
     background-repeat: no-repeat;
     background-size: contain;
     text-indent: -9999px;
     cursor: pointer;
-    border: 2px solid black;
+    border: none;
     outline: none;
     size: 32px;
  }

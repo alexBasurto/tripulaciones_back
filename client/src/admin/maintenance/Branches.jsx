@@ -27,7 +27,7 @@ const Branches = () => {
     
     return (
         <div className="container-maintenance-detail">
-            <h1>Sedes</h1>
+            
             {crudState === "table" &&
                 <>
                     <button onClick={() => setCrudState("create")}>Agregar Sede</button>
@@ -47,13 +47,15 @@ const Branches = () => {
                         <tbody>
                             {branchesData.map((branch) => (
                                 <tr key={branch.idBranch}>
-                                    <td><button onClick={() => {
+                                    <td className='editdelete'>
+                                        <button className='edit-button' onClick={() => {
                                         console.log(branch);
                                         setBranchToUpdate(branch);
                                         setCrudState("read");
                                         setReadOrEditState("read");
                                     }}>Ver</button></td>
-                                    <td><button onClick={() => {
+                                    <td className='editdelete'>
+                                        <button className='delete-button'onClick={() => {
                                         deleteBranch(branch.idBranch)
                                             .then(response => {
                                                 console.log(response);
