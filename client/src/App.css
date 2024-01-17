@@ -142,9 +142,9 @@
     font-size: 20px;
     font-weight: bold;
     text-shadow: #fff 2px 0px 30px;
-    color: #0F004C;
+    color: var(--estado-color);
     text-align: center;
-    padding: 20px;
+    padding: 0px;
 }
 
 .p-txt3{
@@ -153,9 +153,8 @@
     font-size: 20px;
     font-weight: bold;
     text-shadow: #fff 2px 0px 30px;
-    color: #0F004C;
+    color: var(--estado-color);
     text-align: center;
-    padding: 20px;
 }
 
 .p-txt4{
@@ -164,7 +163,8 @@
     font-size: 14px;
     font-weight: bold;
     text-shadow: #fff 2px 0px 30px;
-    color: #0F004C;
+    color: var(--estado-color);
     text-align: center;
     padding: 20px;
+    margin: 0px;
 }
