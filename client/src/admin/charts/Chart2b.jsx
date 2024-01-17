@@ -77,7 +77,7 @@ const Chart2b = () => {
                         },
                     ]}
                     layout={{
-                        width: 720,
+                        width: 600,
                         height: 440,
                         title: "Conteo de los 5 motivos más frecuentes",
                         xaxis: {
@@ -110,7 +110,7 @@ const Chart2b = () => {
             {loading ? (
                 <div>Loading...</div>
                 ) : (
-                    <div className="chart-container">
+                    <div className="chart-container-mini">
                     <Chart />
                 </div>
             )}

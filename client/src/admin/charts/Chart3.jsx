@@ -63,7 +63,7 @@ const Chart3 = () => {
                         }
                     ]}
                     layout={{
-                        width: 720,
+                        width: 600,
                         height: 440,
                         title: 'Proporción de los 5 sentimientos más frecuentes',
                         annotations: [
@@ -87,15 +87,15 @@ const Chart3 = () => {
     }
 
     return (
-        <div>
+        <>
             {loading ? (
                 <div>Loading...</div>
                 ) : (
-                    <div className="chart-container">
+                    <div className="chart-container-mini">
                     <Chart />
                 </div>
             )}
-        </div>
+        </>
     );
 };
 
