@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import LoginAdmin from './LoginAdmin';
 import Dashboard from './Dashboard';
-import LogoutAdminButton from './LogoutAdminButton';
 import { useSession } from './SessionAdminContext';
 
 const Admin = () => {
@@ -24,7 +23,6 @@ const Admin = () => {
     {(activeComponent == 'loading') && <div className='blur'>Cargando...</div>}
     {activeComponent == 'login' && <LoginAdmin setActiveComponent={setActiveComponent} /> }
     {activeComponent == 'dashboard' && <Dashboard />}
-    {activeComponent == 'dashboard' && <LogoutAdminButton />}
     </div>
   );
 };

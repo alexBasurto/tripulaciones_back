@@ -9,7 +9,9 @@
 
 /* Estilos para la barra lateral */
 .lateral-menu {
+  position: fixed;
   width: 240px; /* Ancho basado en la imagen */
+  height: 100vh;
   background-color: #f4f7fa; /* Color de fondo claro para la barra lateral */
   color: #666; /* Color de texto para elementos de la barra lateral */
   padding: 20px;
