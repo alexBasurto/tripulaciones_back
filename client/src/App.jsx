@@ -6,7 +6,6 @@ import Feelings from "./pages/Feelings";
 import Reasons from "./pages/Reasons";
 import CurMoodTracker from "./pages/CurMoodTracker";
 import Ending from "./pages/Ending";
-import LogoutButton from "./components/LogoutButton";
 import StreakIcons from "./components/StreakIcons";
 import {
     createVoteApi,
