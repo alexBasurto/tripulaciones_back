@@ -58,7 +58,7 @@ button.feeling-tag {
 button.no-selected {
     color: var(--estado-color);
     background-color: #f5f5f5;
-    border: 1px solid #f5f3f3;
+    border: 1px solid #f5f5f5;
     border-radius: 20px;
     padding: 5px;
     margin: 5px;
