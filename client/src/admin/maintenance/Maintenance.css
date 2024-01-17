@@ -7,7 +7,7 @@
 }
 
 .maintenance h1 {
-    color: black;
+    color: #292929;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
@@ -17,22 +17,24 @@
 .maintenance-buttons {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-left: 8px;
 }
 
 .maintenance-buttons button {
     padding: 10px 15px;
-    background-color: black;
+    background-color: #292929;
     /* Ajustar según sea necesario */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .maintenance-buttons button:hover {
-    background-color: grey;
+    background-color: #666666;
     /* Ajustar según sea necesario */
 }
 
@@ -44,37 +46,36 @@
 /* Estilos para departamentos */
 
 .container-maintenance-detail {
-    background-color: white;
-    /* Fondo blanco para el contenedor */
-    color: #333;
-    /* Color de texto oscuro para contraste */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: 'Inter', sans-serif;
+        background-color: white;
+        color: #333;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        max-width: 100%;
+        padding: 20px;
 }
 
 .container-maintenance-detail h1 {
-    color: black;
+    color: #292929;
     /* Color de título oscuro */
     margin-bottom: 20px;
 }
 
 .container-maintenance-detail button {
-    background-color: black;
-    /* Color de fondo para botones */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    margin-right: 10px;
-    /* Margen a la derecha de los botones */
-    cursor: pointer;
-    transition: background-color 0.3s;
+        background-color: #292929;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-left: 8px;
+        margin-right: 8px;
 }
 
 .container-maintenance-detail button:hover {
-    background-color: grey;
+    background-color: #8c8989;
     /* Color de fondo al pasar el ratón */
 }
 
@@ -86,7 +87,7 @@
 }
 
 .container-maintenance-detail .table thead {
-    background-color: #f4f7fa;
+    background-color: #b7b6b6d3;
     /* Fondo claro para el encabezado de la tabla */
 }
 
@@ -98,13 +99,13 @@
 }
 
 .container-maintenance-detail .table th {
-    text-align: left;
-    color: black;
+    text-align: center;
+    color: #292929;
     /* Color de texto para encabezado de la tabla */
 }
 
 .container-maintenance-detail .table tr:hover {
-    background-color: #e1e5eb;
+    background-color: #e6e6e7b0;
     /* Fondo al pasar el ratón por filas */
 }
 
@@ -115,7 +116,7 @@
 
 .container-maintenance-detail label {
     display: block;
-    /* Asegura que los inputs no estén en la misma línea que los labels */
+    text-align: center;
     margin-bottom: 5px;
     /* Espacio debajo de cada label */
     color: black;
@@ -126,8 +127,6 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    /* Espacio debajo de los inputs */
-    border-radius: 5px;
     border: 1px solid #ccc;
     /* Borde ligero para los inputs
 /
@@ -154,7 +153,7 @@ color: #777; / Color de texto para campos deshabilitados */
 
 /* Estilos específicos para el botón de guardar en formularios */
 .container-maintenance-detail form button[type="submit"] {
-background-color: black; 
+background-color: #666666; 
 color: white;
 padding: 10px 15px;
 margin-top: 10px;
@@ -163,5 +162,5 @@ box-shadow: none;
 }
 
 .container-maintenance-detail form button[type="submit"]:hover {
-    background-color: black;
+    background-color: #666666;
 }

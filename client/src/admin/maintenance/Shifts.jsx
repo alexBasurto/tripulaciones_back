@@ -39,7 +39,6 @@ const Shifts = () => {
                                 <th></th>
                                 <th></th>
                                 <th>Nombre</th>
-                                <th>Comentarios</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,7 +48,7 @@ const Shifts = () => {
                                         setShiftToUpdate(shift);
                                         setCrudState("read");
                                     }}>Ver</button></td>
-                                    <td><button onClick={() => {
+                                    <td><button className='delete-button' onClick={() => {
                                         deleteShift(shift.idShift)
                                             .then(response => {
                                                 console.log(response);
@@ -62,7 +61,7 @@ const Shifts = () => {
                                             );
                                     }}>Eliminar</button></td>
                                     <td>{shift.name}</td>
-                                    <td>{shift.comments}</td>
+                                    
                                 </tr>
                             ))}
                         </tbody>

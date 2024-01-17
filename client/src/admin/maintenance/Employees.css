@@ -3,44 +3,42 @@
     /* Fondo blanco para el contenedor */
     color: #333;
     /* Color de texto oscuro para contraste */
-    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: 'Inter', sans-serif;
-    max-width: 1200px;
-    margin: auto;
-    /* Centra el contenedor si no ocupa todo el ancho */
+    font-size: 14px;
+    max-width: 100%;
+    padding: 5px;
 }
 
 .container-maintenance-detail h1,
 .container-maintenance-detail h2 {
-    color: black;
+    color: #292929;
     /* Color de título oscuro */
     margin-bottom: 20px;
 }
 
 .container-maintenance-detail button {
-    background-color: black;
+    background-color: #292929;
     /* Color de fondo para botones */
     color: white;
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
-    margin-right: 10px;
-    /* Margen a la derecha de los botones */
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .container-maintenance-detail button:hover {
-    background-color: grey;
+    background-color: #666666;
     /* Color de fondo al pasar el ratón */
 }
 
 .tb-employees {
-    width: 90%;
+    width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 25px;
+    margin-bottom: 10px;
     /* Espacio arriba de la tabla */
 }
 
@@ -51,19 +49,20 @@
 
 .tb-employees th,
 .tb-employees td {
-    padding: 10px;
-    border: 1px solid #e1e5eb;
+    
+    border: 2px solid #e1e5eb;
     /* Borde claro para las celdas */
-    text-align: left;
+    text-align: center;
+    padding: 3px;
 }
 
 .tb-employees th {
-    color: black;
+    color: #292929;
     /* Color de texto para encabezado de la tabla */
 }
 
 .tb-employees tr:hover {
-    background-color: grey;
+    background-color: #a7a7a73f;
     /* Fondo al pasar el ratón por filas */
 }
 
@@ -75,7 +74,7 @@
 }
 
 .container-maintenance-detail .pagination button {
-    margin: 0 5px;
+    margin: 5px 5px 5px 10px;
     /* Margen entre botones de paginación */
 }
 
@@ -87,9 +86,9 @@
 .container-maintenance-detail label {
     display: block;
     /* Asegura que los inputs no estén en la misma línea que los labels */
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     /* Espacio debajo de cada label */
-    color: black;
+    color: #292929;
     /* Color de texto para los labels */
 }
 
@@ -115,7 +114,7 @@
 }
 
 .container-maintenance-detail form button[type="submit"] {
-    background-color: black;
+    background-color: #292929;
     color: white;
     padding: 10px 15px;
     margin-top: 10px;
@@ -126,7 +125,7 @@
 }
 
 .container-maintenance-detail form button[type="submit"]:hover {
-    background-color: black;
+    background-color: #666666;
     /* Color de fondo al pasar el ratón */
 }
 
@@ -155,3 +154,25 @@
     /* Centra el formulario horizontalmente */
     margin-right: auto;
 }
+
+.edit-button {
+    background-image: url('./public/icons/edit-text.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-indent: -9999px;
+    cursor: pointer;
+    border: 2px solid black;
+    outline: none;
+    size: 32px;
+ }
+
+.delete-button {
+    background-image: url('./public/icons/trash-can.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-indent: -9999px;
+    cursor: pointer;
+    border: 2px solid black;
+    outline: none;
+    size: 32px;
+ }

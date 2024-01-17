@@ -54,7 +54,7 @@
 .lateral-menu nav ul li button {
   background: none;
   border: none;
-  color: black; /* Mismo color que el texto de la barra lateral */
+  color: #292929; /* Mismo color que el texto de la barra lateral */
   font-size: 16px;
   text-align: left;
   padding: 10px;

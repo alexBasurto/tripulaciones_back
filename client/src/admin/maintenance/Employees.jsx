@@ -108,7 +108,7 @@ const Employees = () => {
 
     return (
         <div className="container-maintenance-detail">
-            <h1>Empleados</h1>
+            
             {crudState === "table" && (
                 <>
                     <button onClick={() => { 
@@ -124,7 +124,6 @@ const Employees = () => {
                         <th scope="col">Nombre</th>
                         <th scope="col">Email</th>
                         <th scope="col">Teléfono</th>
-                        <th scope="col">Comentarios</th>
                         <th scope="col">Departamento</th>
                         <th scope="col">Turno</th>
                         <th scope="col">Campus</th>
@@ -136,16 +135,15 @@ const Employees = () => {
                         return (
                             <tr key={index}>
                                 <td>
-                                    <button onClick={() => { readRow(employee) }}>Ver</button>
+                                    <button className='edit-button' onClick={() => { readRow(employee) }}>Ver</button>
                                 </td>
                                 <td>
-                                    <button onClick={() => { deleteRow(employee.idEmployee); }}>Eliminar</button>
+                                    <button className='delete-button' onClick={() => { deleteRow(employee.idEmployee); }}>Eliminar</button>
                                 </td>
                                 <td>{employee.lastName}</td>
                                 <td>{employee.name}</td>
                                 <td>{employee.email}</td>
                                 <td>{employee.mobile}</td>
-                                <td>{employee.comments}</td>
                                 <td>{employee.departmentName}</td>
                                 <td>{employee.shiftName}</td>
                                 <td>{employee.branchName}</td>

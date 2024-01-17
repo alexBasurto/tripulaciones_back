@@ -10,7 +10,10 @@ const Maintenance = () => {
 
     return (
         <div className="maintenance">
-            <h1>Administración</h1>
+            {maintenance === "employees" && <h1>Empleados</h1>}
+            {maintenance === "departments" && <h1>Departamentos</h1>}
+            {maintenance === "branches" && <h1>Sedes</h1>}
+            {maintenance === "shifts" && <h1>Turnos</h1>}
             <div className="maintenance-buttons">
                 <button onClick={() => setMaintenance("employees")}>
                     Empleados
