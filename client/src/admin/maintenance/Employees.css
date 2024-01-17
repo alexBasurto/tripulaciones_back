@@ -19,8 +19,7 @@
 }
 
 .container-maintenance-detail button {
-    background-color: #292929;
-    /* Color de fondo para botones */
+    background-color: #292929;  /* Color de fondo para botones, aplica a los de edit y delete */
     color: white;
     border: none;
     border-radius: 5px;
@@ -156,7 +155,7 @@
 }
 
 .edit-button {
-    background-image: url('./public/icons/edit-text.png');
+    background-image: url('./public/icons/edit-text.svg');
     background-repeat: no-repeat;
     background-size: contain;
     text-indent: -9999px;
@@ -167,7 +166,7 @@
  }
 
 .delete-button {
-    background-image: url('./public/icons/trash-can.png');
+    background-image: url('./public/icons/trash-can.svg');
     background-repeat: no-repeat;
     background-size: contain;
     text-indent: -9999px;
