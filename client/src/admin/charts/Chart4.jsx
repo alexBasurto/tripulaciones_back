@@ -66,7 +66,7 @@ const Chart4 = () => {
                         },
                     ]}
                     layout={{
-                        width: 720,
+                        width: 600,
                         height: 440,
                         title: "Clasificación de sentimientos en los comentarios | NLP",
                         xaxis: {
@@ -99,7 +99,7 @@ const Chart4 = () => {
             {loading ? (
                 <div>Cargando...</div>
                 ) : (
-                    <div className="chart-container">
+                    <div className="chart-container-mini">
                     <Chart />
                 </div>
             )}

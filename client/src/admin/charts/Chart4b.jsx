@@ -72,7 +72,7 @@ const Chart4b = () => {
                         },
                     ]}
                     layout={{
-                        width: 720,
+                        width: 600,
                         height: 440,
                         title: "Clasificación de sentimientos en los comentarios | NLP",
                         annotations: [
@@ -101,7 +101,7 @@ const Chart4b = () => {
             {loading ? (
                 <div>Cargando...</div>
                 ) : (
-                    <div className="chart-container">
+                    <div className="chart-container-mini">
                     <Chart/>
                 </div>
             )}
