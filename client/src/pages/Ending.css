@@ -118,3 +118,8 @@ textarea{
     text-align: center;
     padding: 20px;
 }
+
+.fill{
+    fill: var(--estado-color);
+    stroke: var(--estado-color);
+}
