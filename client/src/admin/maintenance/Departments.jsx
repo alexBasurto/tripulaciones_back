@@ -31,7 +31,7 @@ const Departments = () => {
             
             {crudState === "table" && loading &&
                 <>
-                    <button onClick={() => setCrudState("create")}>Agregar Departamento</button>
+                    <button onClick={() => setCrudState("create")} className="std-button">Agregar Departamento</button>
                     {error && <div>{error}</div>}
                     <table className="table table-hover">
                         <thead>
@@ -46,12 +46,12 @@ const Departments = () => {
                             {departmentsData.map((department) => (
                                 <tr key={department.idDepartment}>
                                     <td className='editdelete'>
-                                        <button className='edit-button' onClick={() => {
+                                        <button className='edit-delete-button' onClick={() => {
                                         setDepartmentToUpdate(department);
                                         setCrudState("read");
-                                    }}>Ver</button></td>
+                                    }}><img src="/icons/editar.png" alt="Editar" /></button></td>
                                     <td className='editdelete'>
-                                        <button className='delete-button' onClick={() => {
+                                        <button className='edit-delete-button' onClick={() => {
                                         deleteDepartment(department.idDepartment)
                                             .then(response => {
                                                 console.log(response);
@@ -62,7 +62,9 @@ const Departments = () => {
                                                 setError('No se puede borrar el departamento.');
                                             }
                                             );
-                                    }}>Eliminar</button></td>
+                                    }}>
+                                        <img src="/icons/borrar.png" alt="Borrar" />
+                                        </button></td>
                                     <td>{department.name}</td>
                                     <td>{department.comments}</td>
                                 </tr>
@@ -79,12 +81,14 @@ const Departments = () => {
                         setError("");
                         setDepartmentToUpdate({});
                     }
-                    }>Volver al listado</button>
+                    }
+                    className="std-button"
+                    >Volver al listado</button>
                     {readOrEditState === "read" &&
-                    <button onClick={() => setReadOrEditState("edit")}>Editar</button>
+                    <button onClick={() => setReadOrEditState("edit")} className="std-button">Editar</button>
                     }
                     {readOrEditState === "edit" &&
-                    <button onClick={() => setReadOrEditState("read")}>Cancelar</button>
+                    <button onClick={() => setReadOrEditState("read")} className="std-button">Cancelar</button>
                     }
                     <form
                         onSubmit={(event) => {
@@ -113,7 +117,7 @@ const Departments = () => {
                             <input type="text" name="comments" id='comments' defaultValue={departmentToUpdate.comments} {...(readOrEditState === "read" && { disabled: true })} />
                         </label>
                         {readOrEditState === "edit" &&
-                            <button type="submit">Guardar</button>
+                            <button type="submit" className="std-button">Guardar</button>
                         }
                     </form>
                     
@@ -131,7 +135,9 @@ const Departments = () => {
                         setDepartmentsData([]);
                         setLoad(!load);
                     }
-                    }>Volver al listado</button>
+                    }
+                    className="std-button"
+                    >Volver al listado</button>
                     <form
                         onSubmit={(event) => {
                             event.preventDefault();
@@ -157,7 +163,7 @@ const Departments = () => {
                         <label htmlFor='comments'>Comentarios
                             <input type="text" name="comments" id='comments' />
                         </label>
-                        <button type="submit">Guardar</button>
+                        <button type="submit" className="std-button">Guardar</button>
                     </form>
                 </div>
             }

@@ -16,22 +16,22 @@ const Maintenance = () => {
             {maintenance === "shifts" && <h1>Turnos</h1>}
             <div className="maintenance-buttons">
                 {maintenance !== "employees" && (
-                    <button onClick={() => setMaintenance("employees")}>
+                    <button onClick={() => setMaintenance("employees")} className="std-button">
                         Empleados
                     </button>
                 )}
                 {maintenance !== "departments" && (
-                    <button onClick={() => setMaintenance("departments")}>
+                    <button onClick={() => setMaintenance("departments")} className="std-button">
                         Departamentos
                     </button>
                 )}
                 {maintenance !== "branches" && (
-                    <button onClick={() => setMaintenance("branches")}>
+                    <button onClick={() => setMaintenance("branches")} className="std-button">
                         Sedes
                     </button>
                 )}
                 {maintenance !== "shifts" && (
-                    <button onClick={() => setMaintenance("shifts")}>
+                    <button onClick={() => setMaintenance("shifts")} className="std-button">
                         Turnos
                     </button>
                 )}

@@ -29,7 +29,7 @@ const Branches = () => {
             
             {crudState === "table" && loading &&
                 <>
-                    <button onClick={() => setCrudState("create")}>Agregar Sede</button>
+                    <button onClick={() => setCrudState("create")} className="std-button">Agregar Sede</button>
                     {error && <div>{error}</div>}
                     <table className="table table-hover">
                         <thead>
@@ -47,14 +47,16 @@ const Branches = () => {
                             {branchesData.map((branch) => (
                                 <tr key={branch.idBranch}>
                                     <td className='editdelete'>
-                                        <button className='edit-button' onClick={() => {
+                                        <button className='edit-delete-button' onClick={() => {
                                         console.log(branch);
                                         setBranchToUpdate(branch);
                                         setCrudState("read");
                                         setReadOrEditState("read");
-                                    }}>Ver</button></td>
+                                    }}>
+                                        <img src="/icons/editar.png" alt="Editar" />
+                                        </button></td>
                                     <td className='editdelete'>
-                                        <button className='delete-button'onClick={() => {
+                                        <button className='edit-delete-button'onClick={() => {
                                         deleteBranch(branch.idBranch)
                                             .then(response => {
                                                 console.log(response);
@@ -65,7 +67,9 @@ const Branches = () => {
                                                 setError('No se puede borrar la sede.');
                                             }
                                             );
-                                    }}>Borrar</button></td>
+                                    }}>
+                                        <img src="/icons/borrar.png" alt="Borrar" />
+                                        </button></td>
                                     <td>{branch.name}</td>
                                     <td>{branch.address}</td>
                                     <td>{branch.city}</td>
@@ -87,8 +91,9 @@ const Branches = () => {
                         setLoad(!load);
                         setError("");
                     }
-                    
-                    }>Volver al listado</button>
+                    }
+                    className="std-button"
+                    >Volver al listado</button>
 
                     <form onSubmit={(e) => {
                         e.preventDefault();
@@ -117,7 +122,7 @@ const Branches = () => {
                         <input type="text" id="country" name="country" required />
                         <label htmlFor="comments">Comentarios:</label>
                         <input type="text" id="comments" name="comments" />
-                        <button type="submit">Agregar</button>
+                        <button type="submit" className="std-button">Agregar</button>
                     </form>
                 </>
             }
@@ -130,12 +135,14 @@ const Branches = () => {
                         setError("");
                         setBranchToUpdate({});
                     }
-                    }>Volver al listado</button>
+                    }
+                    className="std-button"
+                    >Volver al listado</button>
                     {readOrEditState === "read" &&
-                        <button onClick={() => setReadOrEditState("edit")}>Editar</button>
+                        <button onClick={() => setReadOrEditState("edit")} className="std-button">Editar</button>
                     }
                     {readOrEditState === "edit" &&
-                        <button onClick={() => setReadOrEditState("read")}>Cancelar</button>
+                        <button onClick={() => setReadOrEditState("read")} className="std-button">Cancelar</button>
                     }
                     <form
                         onSubmit={(event) => {
@@ -179,7 +186,7 @@ const Branches = () => {
                             />
                         </label>
                         {readOrEditState === "edit" &&
-                            <button type="submit">Guardar</button>
+                            <button type="submit" className="std-button">Guardar</button>
                         }
                     </form>
                 </div>

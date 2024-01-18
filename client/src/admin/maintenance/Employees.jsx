@@ -112,7 +112,9 @@ const Employees = () => {
             
             {crudState === "table" && loading && (
                 <>
-                    <button onClick={() => { 
+                    <button
+                    className="std-button"
+                    onClick={() => { 
                         getDeptBranchShift();
                         setCrudState("create") }}>Agregar Empleado</button>
 
@@ -137,13 +139,12 @@ const Employees = () => {
                             <tr key={index}>
                                 <td className='editdelete'>
                                     <button className='edit-delete-button' onClick={() => { readRow(employee) }}>
-                                        <img src="/icons/borrar.png" alt="" />
+                                        <img src="/icons/borrar.png" alt="Borrar" />
                                     </button>
                                 </td>
                                 <td className='editdelete'>
                                     <button className='edit-delete-button' onClick={() => { deleteRow(employee.idEmployee); }}>
-
-                                        <img src="/icons/editar.png" alt="" />
+                                        <img src="/icons/editar.png" alt="Editar" />
                                     </button>
                                 </td>
                                 <td>{employee.lastName}</td>
@@ -160,9 +161,9 @@ const Employees = () => {
                 </tbody>
             </table>
             <div className="pagination">
-                <button onClick={handlePrevPage} disabled={currentPage === 1}>Anterior</button>
+                <button onClick={handlePrevPage} disabled={currentPage === 1} className="std-button">Anterior</button>
                 <span>Página {currentPage} de {totalPages}</span>
-                <button onClick={handleNextPage} disabled={currentPage === totalPages}>Siguiente</button>
+                <button onClick={handleNextPage} disabled={currentPage === totalPages} className="std-button">Siguiente</button>
             </div>
             </>
             )}
@@ -170,12 +171,12 @@ const Employees = () => {
             {crudState === "read" && (
                 <>
                     <h2>Detalle de empleado</h2>
-                        <button onClick={() => { setCrudState("table") }}>Volver al listado</button>
+                        <button onClick={() => { setCrudState("table") }} className="std-button">Volver al listado</button>
                     {readOrEditState === "read" && (
-                    <button onClick={() => { setReadOrEditState('edit') }}>Editar</button>
+                    <button onClick={() => { setReadOrEditState('edit') }} className="std-button">Editar</button>
                     )}
                     {readOrEditState === "edit" && (
-                        <button onClick={() => { setReadOrEditState('read') }}>Cancelar</button>
+                        <button onClick={() => { setReadOrEditState('read') }} className="std-button">Cancelar</button>
                     )}
                     <form
                         onSubmit={
@@ -349,7 +350,7 @@ const Employees = () => {
                         
                         
                         {readOrEditState === "edit" && (
-                            <button type="submit" >Guardar</button>
+                            <button type="submit" className="std-button">Guardar</button>
                         )}
                         </form>
                 </>
@@ -363,7 +364,9 @@ const Employees = () => {
                         setDepartmentsList([]);
                         setBranchesList([]);
                         setShiftsList([]);
-                        }}>Volver al listado</button>
+                        }}
+                        className="std-button"
+                        >Volver al listado</button>
                     <form
                         onSubmit={
                             (event) => {
@@ -521,7 +524,7 @@ const Employees = () => {
                                 id="companyAdministrator"
                             />
                         </label>
-                        <button type="submit">Guardar</button>
+                        <button type="submit" className="std-button">Guardar</button>
                     </form>
                 </>
             )}
