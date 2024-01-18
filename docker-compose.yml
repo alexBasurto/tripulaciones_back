@@ -37,9 +37,9 @@ services:
       - LETSENCRYPT_EMAIL=admin@basurto.dev
     restart: always
 
-  networks:
-    proxy:
-       name: nginx-proxy
-       external: true
-    moodly_api:
-       name: moodly_api
+networks:
+   proxy:
+      name: nginx-proxy
+      external: true
+   moodly_api:
+      name: moodly_api
