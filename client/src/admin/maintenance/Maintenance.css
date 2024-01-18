@@ -22,7 +22,7 @@
     margin-left: 40px;
 }
 
-.maintenance-buttons button, .container-maintenance-detail button {
+.maintenance-buttons .std-button, .container-maintenance-detail .std-button {
     margin-right: 5%;
     width: 150px;
     padding: 10px 15px;
@@ -35,12 +35,12 @@
     transition: background-color 0.3s ease;
 }
 
-.maintenance-buttons button:hover, .container-maintenance-detail button:hover {
+.maintenance-buttons .std-button:hover, .container-maintenance-detail .std-button:hover {
     background-color: #666666;
     /* Ajustar según sea necesario */
 }
 
-.maintenance-buttons button:focus, .container-maintenance-detail button:focus {
+.maintenance-buttons .std-button:focus, .container-maintenance-detail .std-button:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(74, 105, 189, 0.5);
 }
@@ -134,7 +134,7 @@ color: #777; / Color de texto para campos deshabilitados */
 }
 
 /* Estilos específicos para el botón de guardar en formularios */
-.container-maintenance-detail form button[type="submit"] {
+.container-maintenance-detail form .std-button[type="submit"] {
 background-color: #666666; 
 color: white;
 padding: 10px 15px;
@@ -143,7 +143,7 @@ width: 100%;
 box-shadow: none;
 }
 
-.container-maintenance-detail form button[type="submit"]:hover {
+.container-maintenance-detail form .std-button[type="submit"]:hover {
     background-color: #666666;
 }
 
@@ -189,6 +189,9 @@ table td {
     max-width: 25px;
     max-height: 25px;
     background-color: white;
+    border: none;
+    padding: 0;
+    margin: 0 10px;
 }
 
 .edit-delete-button img {
@@ -197,4 +200,67 @@ table td {
     max-width: 100%;
     max-height: 100%;
 
+}
+
+td.editdelete {
+    padding: 0;
+}
+
+tr:hover {
+    background-color: #e6e6e7b0;
+}
+
+
+/* Employees css */
+
+
+.container-maintenance-detail form {
+    margin-top: 20px;
+}
+
+.container-maintenance-detail label {
+    display: block;
+    margin-bottom: 3px;
+    color: #292929;
+}
+
+.container-maintenance-detail input[type="text"],
+.container-maintenance-detail select,
+.container-maintenance-detail input[type="checkbox"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* Espacio debajo de los inputs */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    /* Borde ligero para los inputs */
+}
+
+.container-maintenance-detail input[type="checkbox"] {
+    width: auto;
+    /* Restablece el ancho para los checkbox */
+    margin-top: 2px;
+    /* Ajusta la alineación vertical para los checkbox */
+}
+
+.container-maintenance-detail form button[type="submit"]:hover {
+    background-color: #666666;
+    /* Color de fondo al pasar el ratón */
+}
+
+.container-maintenance-detail .error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.container-maintenance-detail form {
+    margin-top: 20px;
+    /* Espacio arriba del formulario */
+    max-width: 600px;
+    /* Establece un ancho máximo para el formulario */
+    margin-left: auto;
+    /* Centra el formulario horizontalmente */
+    margin-right: auto;
 }
