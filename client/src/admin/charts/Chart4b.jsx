@@ -16,8 +16,7 @@ const Chart4b = () => {
             setDataProcessed(data);
             setLoading(false);
         });
-    }
-    , []);
+    }, []);
 
     const processData = (data) => {
         setNumberOfComments(data.data.length);
@@ -34,21 +33,20 @@ const Chart4b = () => {
         const tagCountProcessed = {};
         for (const key in tagCount) {
             // Asegúrate de que la comparación se haga con el mismo tipo de datos
-        const tag = data.tags.find((tag) => tag.idTag.toString() === key);
-        
-        if (tag) {
-            tagCountProcessed[tag.name] = tagCount[key];
-        } else {
-            // Manejar el caso en que no se encuentra el tag
-            tagCountProcessed[`Unknown tag with id ${key}`] = tagCount[key];
-        }
+            const tag = data.tags.find((tag) => tag.idTag.toString() === key);
+
+            if (tag) {
+                tagCountProcessed[tag.name] = tagCount[key];
+            } else {
+                // Manejar el caso en que no se encuentra el tag
+                // tagCountProcessed[`Unknown tag with id ${key}`] = tagCount[key];
+                // no hacer nada
+                
+            }
         }
         return tagCountProcessed;
-    }
+    };
 
-
-
-   
     class Chart extends React.Component {
         render() {
             return (
@@ -66,7 +64,7 @@ const Chart4b = () => {
                                     "#6ECFBC",
                                     "#FF80A9",
                                     "#FFC466",
-                                    "#FF7453"
+                                    "#FF7453",
                                 ],
                             },
                         },
@@ -88,25 +86,23 @@ const Chart4b = () => {
                                 yanchor: "top",
                             },
                         ],
-
                     }}
                 />
             );
         }
     }
 
-
     return (
         <div className="chart">
             {loading ? (
                 <div>Cargando...</div>
-                ) : (
-                    <div className="chart-container-mini">
-                    <Chart/>
+            ) : (
+                <div className="chart-container-mini">
+                    <Chart />
                 </div>
             )}
         </div>
     );
-}
+};
 
 export default Chart4b;

@@ -38,7 +38,8 @@ const Chart4 = () => {
                 tagCountProcessed[tag.name] = tagCount[key];
             } else {
                 // Manejar el caso en que no se encuentra el tag
-                tagCountProcessed[`Unknown tag with id ${key}`] = tagCount[key];
+                // tagCountProcessed[`Unknown tag with id ${key}`] = tagCount[key];
+                // no hacer nada
             }
         }
         return tagCountProcessed;
