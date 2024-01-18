@@ -136,12 +136,12 @@ const Employees = () => {
                         return (
                             <tr key={index}>
                                 <td className='editdelete'>
-                                    <button className='edit-button' onClick={() => { readRow(employee) }}>
+                                    <button className='edit-delete-button' onClick={() => { readRow(employee) }}>
                                         <img src="/icons/borrar.png" alt="" />
                                     </button>
                                 </td>
                                 <td className='editdelete'>
-                                    <button className='delete-button' onClick={() => { deleteRow(employee.idEmployee); }}>
+                                    <button className='edit-delete-button' onClick={() => { deleteRow(employee.idEmployee); }}>
 
                                         <img src="/icons/editar.png" alt="" />
                                     </button>
