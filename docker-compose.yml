@@ -9,13 +9,14 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
-    ports:
-      - ${MYSQL_LOCAL_PORT}:${MYSQL_PORT}
     volumes:
       - ./db/data:/var/lib/mysql
       - ./db/init:/docker-entrypoint-initdb.d
     env_file:
       - .env
+    networks:
+      - moodly_api
+    restart: always
       
   node:
     build: .
@@ -27,3 +28,18 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    networks:
+      - moodly_api
+      - proxy
+    environment:
+      - VIRTUAL_HOST=moodlyapi.basurto.dev
+      - LETSENCRYPT_HOST=moodlyapi.basurto.dev
+      - LETSENCRYPT_EMAIL=admin@basurto.dev
+    restart: always
+
+  networks:
+    proxy:
+       name: nginx-proxy
+       external: true
+    moodly_api:
+       name: moodly_api
