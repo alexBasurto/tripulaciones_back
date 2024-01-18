@@ -15,18 +15,26 @@ const Maintenance = () => {
             {maintenance === "branches" && <h1>Sedes</h1>}
             {maintenance === "shifts" && <h1>Turnos</h1>}
             <div className="maintenance-buttons">
-                <button onClick={() => setMaintenance("employees")}>
-                    Empleados
-                </button>
-                <button onClick={() => setMaintenance("departments")}>
-                    Departamentos
-                </button>
-                <button onClick={() => setMaintenance("branches")}>
-                    Sedes
-                </button>
-                <button onClick={() => setMaintenance("shifts")}>
-                    Turnos
-                </button>
+                {maintenance !== "employees" && (
+                    <button onClick={() => setMaintenance("employees")}>
+                        Empleados
+                    </button>
+                )}
+                {maintenance !== "departments" && (
+                    <button onClick={() => setMaintenance("departments")}>
+                        Departamentos
+                    </button>
+                )}
+                {maintenance !== "branches" && (
+                    <button onClick={() => setMaintenance("branches")}>
+                        Sedes
+                    </button>
+                )}
+                {maintenance !== "shifts" && (
+                    <button onClick={() => setMaintenance("shifts")}>
+                        Turnos
+                    </button>
+                )}
             </div>
 
             {maintenance === "employees" && <Employees />}

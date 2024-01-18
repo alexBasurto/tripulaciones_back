@@ -6,16 +6,15 @@ const Branches = () => {
     const [readOrEditState, setReadOrEditState] = useState("read");
     const [branchesData, setBranchesData] = useState([]);
     const [branchToUpdate, setBranchToUpdate] = useState({});
+    const [loading, setLoading] = useState(false);
     const [load, setLoad] = useState(false);
     const [error, setError] = useState("");
 
     useEffect(() => {
         getAllBranches()
             .then(response => {
-                console.log(response);
                 setBranchesData(response);
-
-                
+                setLoading(true);
             })
             .catch(error => {
                 console.log(error);
@@ -28,7 +27,7 @@ const Branches = () => {
     return (
         <div className="container-maintenance-detail">
             
-            {crudState === "table" &&
+            {crudState === "table" && loading &&
                 <>
                     <button onClick={() => setCrudState("create")}>Agregar Sede</button>
                     {error && <div>{error}</div>}

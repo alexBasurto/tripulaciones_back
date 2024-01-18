@@ -6,16 +6,15 @@ const Shifts = () => {
     const [readOrEditState, setReadOrEditState] = useState("read");
     const [shiftsData, setShiftsData] = useState([]);
     const [shiftToUpdate, setShiftToUpdate] = useState({});
+    const [loading, setLoading] = useState(false);
     const [load, setLoad] = useState(false);
     const [error, setError] = useState("");
 
     useEffect(() => {
         getAllShifts()
             .then(response => {
-                console.log(response);
                 setShiftsData(response);
-
-                
+                setLoading(true);
             })
             .catch(error => {
                 console.log(error);
@@ -29,7 +28,7 @@ const Shifts = () => {
     return (
         <div className="container-maintenance-detail">
             
-            {crudState === "table" &&
+            {crudState === "table" && loading &&
                 <>
                     <button onClick={() => setCrudState("create")}>Agregar Turno</button>
                     {error && <div>{error}</div>}

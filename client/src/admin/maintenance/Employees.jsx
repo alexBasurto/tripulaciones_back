@@ -21,6 +21,7 @@ const Employees = () => {
     const [departmentsList, setDepartmentsList] = useState([]);
     const [branchesList, setBranchesList] = useState([]);
     const [shiftsList, setShiftsList] = useState([]);
+    const [loading, setLoading] = useState(false);
     const [load, setLoad] = useState(false);
     const itemsPerPage = 10;
 
@@ -29,6 +30,7 @@ const Employees = () => {
         getAllEmployees()
             .then((response) => {
                 setEmployeesData(response);
+                setLoading(true);
             })
             .catch((error) => {
                 console.log(error);
@@ -109,11 +111,11 @@ const Employees = () => {
     return (
         <div className="container-maintenance-detail">
             
-            {crudState === "table" && (
+            {crudState === "table" && loading && (
                 <>
                     <button onClick={() => { 
                         getDeptBranchShift();
-                        setCrudState("create") }}>Crear Empleado</button>
+                        setCrudState("create") }}>Agregar Empleado</button>
 
             <table className="tb-employees">
                 <thead>

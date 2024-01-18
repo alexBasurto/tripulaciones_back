@@ -7,14 +7,15 @@ const Departments = () => {
     const [readOrEditState, setReadOrEditState] = useState("read");
     const [departmentsData, setDepartmentsData] = useState([]);
     const [departmentToUpdate, setDepartmentToUpdate] = useState({});
+    const [loading, setLoading] = useState(false);
     const [load, setLoad] = useState(false);
     const [error, setError] = useState("");
 
     useEffect(() => {
         getAllDepartments()
             .then(response => {
-                console.log(response);
                 setDepartmentsData(response);
+                setLoading(true);
             })
             .catch(error => {
                 console.log(error);
@@ -28,7 +29,7 @@ const Departments = () => {
     return (
         <div className="container-maintenance-detail">
             
-            {crudState === "table" &&
+            {crudState === "table" && loading &&
                 <>
                     <button onClick={() => setCrudState("create")}>Agregar Departamento</button>
                     {error && <div>{error}</div>}
