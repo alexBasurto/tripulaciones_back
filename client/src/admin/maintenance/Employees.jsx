@@ -1,4 +1,3 @@
-import './Employees.css';
 import { useState, useEffect } from "react";
 import {
     getAllEmployees,
@@ -91,7 +90,7 @@ const Employees = () => {
         deleteEmployee(id)
             .then((response) => {
                 // alert en navegador
-                alert(`Empleado con id ${id} eliminado`);
+                alert(`Empleado eliminado`);
                 setEmployeesData(employeesData.filter((employee) => employee.id !== id));
                 setLoad(!load);
             })
@@ -160,7 +159,7 @@ const Employees = () => {
                     })}
                 </tbody>
             </table>
-            <div>
+            <div className="pagination">
                 <button onClick={handlePrevPage} disabled={currentPage === 1}>Anterior</button>
                 <span>Página {currentPage} de {totalPages}</span>
                 <button onClick={handleNextPage} disabled={currentPage === totalPages}>Siguiente</button>

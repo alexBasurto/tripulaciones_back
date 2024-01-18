@@ -25,32 +25,50 @@ const Dashboard = () => {
                 <nav className="navbar">
                     <ul>
                         <li>
-                            <button className={getButtonClassName("maintenance")} onClick={() => setChart("maintenance")}>
+                            <button
+                                className={getButtonClassName("maintenance")}
+                                onClick={() => setChart("maintenance")}
+                            >
                                 Mantenimiento
                             </button>
                         </li>
                         <li>
-                            <button className={getButtonClassName("puntuaciones")} onClick={() => setChart("puntuaciones")}>
+                            <button
+                                className={getButtonClassName("puntuaciones")}
+                                onClick={() => setChart("puntuaciones")}
+                            >
                                 Puntuaciones
                             </button>
                         </li>
                         <li>
-                            <button className={getButtonClassName("emociones")} onClick={() => setChart("emociones")}>
+                            <button
+                                className={getButtonClassName("emociones")}
+                                onClick={() => setChart("emociones")}
+                            >
                                 Emociones
                             </button>
                         </li>
                         <li>
-                            <button className={getButtonClassName("reasons")} onClick={() => setChart("reasons")}>
+                            <button
+                                className={getButtonClassName("reasons")}
+                                onClick={() => setChart("reasons")}
+                            >
                                 Razones
                             </button>
                         </li>
                         <li>
-                            <button className={getButtonClassName("nlp")} onClick={() => setChart("nlp")}>
+                            <button
+                                className={getButtonClassName("nlp")}
+                                onClick={() => setChart("nlp")}
+                            >
                                 NLP
                             </button>
                         </li>
                         <li>
-                            <button className={getButtonClassName("votings")} onClick={() => setChart("votings")}>
+                            <button
+                                className={getButtonClassName("votings")}
+                                onClick={() => setChart("votings")}
+                            >
                                 Comentarios
                             </button>
                         </li>
@@ -59,43 +77,48 @@ const Dashboard = () => {
                         </li>
                     </ul>
                 </nav>
-                
             </div>
-            <div className="chart-container dashboard-main">
-                {chart === "puntuaciones" &&
-                    <>
-                        <h2>Media mensual de puntajes del trabajador a lo largo del tiempo</h2>
-                        <Chart1 />
-                    </>
-                }
-                {chart === "emociones" &&
-                    <>
-                        <h2>Emociones</h2>
-                        <Chart2 />
-                        <Chart3 />
-                    </>
-                }
-                {chart === "reasons" &&
-                    <>
-                        <h2>Razones</h2>
-                        <Chart2b />
-                        <Chart3b />
-                    </>
-                }
-                {chart === "nlp" &&
-                    <>
-                        <h2>NLP</h2>
-                        <Chart4 />
-                        <Chart4b />
-                    </>
-                }
-                {chart === "votings" &&
-                    <>
-                        <h2>Comentarios</h2>
-                        <Chart5 />
-                    </>
-                }
-
+            <div className="dashboard-main">
+                {chart !== "maintenance" && (
+                    <div className="chart-container">
+                        {chart === "puntuaciones" && (
+                            <>
+                                <h2>
+                                    Media mensual de puntajes del trabajador a lo
+                                    largo del tiempo
+                                </h2>
+                                <Chart1 />
+                            </>
+                        )}
+                        {chart === "emociones" && (
+                            <>
+                                <h2>Emociones</h2>
+                                <Chart2 />
+                                <Chart3 />
+                            </>
+                        )}
+                        {chart === "reasons" && (
+                            <>
+                                <h2>Razones</h2>
+                                <Chart2b />
+                                <Chart3b />
+                            </>
+                        )}
+                        {chart === "nlp" && (
+                            <>
+                                <h2>NLP</h2>
+                                <Chart4 />
+                                <Chart4b />
+                            </>
+                        )}
+                        {chart === "votings" && (
+                            <>
+                                <h2>Comentarios</h2>
+                                <Chart5 />
+                            </>
+                        )}
+                    </div>
+                )}
 
                 {chart === "maintenance" && <Maintenance />}
             </div>
