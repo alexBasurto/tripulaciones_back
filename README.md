@@ -86,7 +86,22 @@ Acceda aquí:
 [DETALLES Y NOTAS](./docu/DETALLES.md)
 
 ## ACCESO A PRODUCCIÓN
-Proximamente.
+Para 
+
+- Usuarios estándar:
+
+A15251 : Adm1234567
+A15252 : Adm1234567
+A15253 : Adm1234567
+
+login usuario estándar: https://moodly.basurto.dev/
+
+- Usuarios panel RRHH:
+
+A15248 : Adm1234567
+A15249 : Adm1234567
+
+Login RRHH: https://moodly.basurto.dev/admin
 
 ## NEXT STEPS
 #### Panel RRHH (Administrador)
