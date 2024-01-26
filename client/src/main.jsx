@@ -6,6 +6,7 @@ import App from './App.jsx'
 import Admin from './admin/Admin.jsx'
 import './index.css'
 import { SessionAdminProvider } from './admin/SessionAdminContext.jsx';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
