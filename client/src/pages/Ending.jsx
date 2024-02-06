@@ -16,6 +16,8 @@ const Ending = ({ justLogged }) => {
             try {
                 const comment = document.querySelector('textarea').value;
                 await createCommentApi(session.idEmployee, session.idCompany, comment, isChecked);
+                document.querySelector('textarea').value = '';
+
             } catch (error) {
                 console.log(error);
             }

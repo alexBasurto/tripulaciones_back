@@ -21,7 +21,7 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
             <div className="lateral-menu">
-                <img src="public/logo.svg" alt="Moodly Logo" />
+                <img src="/logo.svg" alt="Moodly Logo" />
                 <nav className="navbar">
                     <ul>
                         <li>
